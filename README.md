@@ -372,10 +372,10 @@ The partner key should be passed in the request headers as `partner-key` along w
 - **API key parameter name**: partner-key
 - **Location**: HTTP header
 
+## Support and Feedback
+
+Be sure to visit the SendinBlue official [documentation website](https://sendinblue.readme.io/docs ) for additional information about our API.
+
 If you find a bug, please post the issue on [Github](https://github.com/sendinblue/APIv3-csharp-library/issues).
 
 As always, if you need additional assistance, drop us a note [here](https://account.sendinblue.com/support).
-
-## Author
-
-contact@sendinblue.com
