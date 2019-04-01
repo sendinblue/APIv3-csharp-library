@@ -35,7 +35,9 @@ NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploa
 
 <a name="installation"></a>
 ## Installation
-Include the Dependencies (RestSharp, Json.NET and JsonSubTypes as mentioned in Dependencies section) in the C# project, and use the namespaces:
+- Include the Dependencies (RestSharp, Json.NET and JsonSubTypes as mentioned in Dependencies section) in the C# project OR install the latest version of our sib_api_v3_sdk from [nuget](https://www.nuget.org/packages/sib_api_v3_sdk/)
+
+- Use the namespaces:
 ```csharp
 using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
