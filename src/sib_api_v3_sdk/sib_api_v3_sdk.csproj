@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net45;netstandard2.0;</TargetFramework>
     <AssemblyName>sib_api_v3_sdk</AssemblyName>
     <PackageId>sib_api_v3_sdk</PackageId>
     <OutputType>Library</OutputType>
