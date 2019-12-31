@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -142,7 +142,28 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
         ApiResponse<GetEmailCampaigns> GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Send an email campaign id of the campaign immediately
+        /// Get a shared template url
+        /// </summary>
+        /// <remarks>
+        /// Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>GetSharedTemplateUrl</returns>
+        GetSharedTemplateUrl GetSharedTemplateUrl (long? campaignId);
+
+        /// <summary>
+        /// Get a shared template url
+        /// </summary>
+        /// <remarks>
+        /// Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>ApiResponse of GetSharedTemplateUrl</returns>
+        ApiResponse<GetSharedTemplateUrl> GetSharedTemplateUrlWithHttpInfo (long? campaignId);
+        /// <summary>
+        /// Send an email campaign immediately, based on campaignId
         /// </summary>
         /// <remarks>
         /// 
@@ -153,7 +174,7 @@ namespace sib_api_v3_sdk.Api
         void SendEmailCampaignNow (long? campaignId);
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately
+        /// Send an email campaign immediately, based on campaignId
         /// </summary>
         /// <remarks>
         /// 
@@ -374,7 +395,28 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Send an email campaign id of the campaign immediately
+        /// Get a shared template url
+        /// </summary>
+        /// <remarks>
+        /// Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>Task of GetSharedTemplateUrl</returns>
+        System.Threading.Tasks.Task<GetSharedTemplateUrl> GetSharedTemplateUrlAsync (long? campaignId);
+
+        /// <summary>
+        /// Get a shared template url
+        /// </summary>
+        /// <remarks>
+        /// Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>Task of ApiResponse (GetSharedTemplateUrl)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetSharedTemplateUrl>> GetSharedTemplateUrlAsyncWithHttpInfo (long? campaignId);
+        /// <summary>
+        /// Send an email campaign immediately, based on campaignId
         /// </summary>
         /// <remarks>
         /// 
@@ -385,7 +427,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task SendEmailCampaignNowAsync (long? campaignId);
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately
+        /// Send an email campaign immediately, based on campaignId
         /// </summary>
         /// <remarks>
         /// 
@@ -610,7 +652,7 @@ namespace sib_api_v3_sdk.Api
             if (emailCampaigns == null)
                 throw new ApiException(400, "Missing required parameter 'emailCampaigns' when calling EmailCampaignsApi->CreateEmailCampaign");
 
-            var localVarPath = "/emailCampaigns";
+            var localVarPath = "./emailCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -666,7 +708,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -695,7 +737,7 @@ namespace sib_api_v3_sdk.Api
             if (emailCampaigns == null)
                 throw new ApiException(400, "Missing required parameter 'emailCampaigns' when calling EmailCampaignsApi->CreateEmailCampaign");
 
-            var localVarPath = "/emailCampaigns";
+            var localVarPath = "./emailCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -751,7 +793,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -778,7 +820,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->DeleteEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -827,7 +869,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -855,7 +897,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->DeleteEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -904,7 +946,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -934,7 +976,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->EmailExportRecipients");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/exportRecipients";
+            var localVarPath = "./emailCampaigns/{campaignId}/exportRecipients";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -991,7 +1033,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -1022,7 +1064,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->EmailExportRecipients");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/exportRecipients";
+            var localVarPath = "./emailCampaigns/{campaignId}/exportRecipients";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1079,7 +1121,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -1107,7 +1149,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1156,7 +1198,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailCampaign>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailCampaign) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailCampaign)));
         }
 
@@ -1185,7 +1227,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1234,7 +1276,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailCampaign>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailCampaign) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailCampaign)));
         }
 
@@ -1269,7 +1311,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetEmailCampaigns > GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/emailCampaigns";
+            var localVarPath = "./emailCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1323,7 +1365,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailCampaigns>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailCampaigns) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailCampaigns)));
         }
 
@@ -1359,7 +1401,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/emailCampaigns";
+            var localVarPath = "./emailCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1413,12 +1455,167 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailCampaigns>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailCampaigns) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailCampaigns)));
         }
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately 
+        /// Get a shared template url Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>GetSharedTemplateUrl</returns>
+        public GetSharedTemplateUrl GetSharedTemplateUrl (long? campaignId)
+        {
+             ApiResponse<GetSharedTemplateUrl> localVarResponse = GetSharedTemplateUrlWithHttpInfo(campaignId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a shared template url Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>ApiResponse of GetSharedTemplateUrl</returns>
+        public ApiResponse< GetSharedTemplateUrl > GetSharedTemplateUrlWithHttpInfo (long? campaignId)
+        {
+            // verify the required parameter 'campaignId' is set
+            if (campaignId == null)
+                throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetSharedTemplateUrl");
+
+            var localVarPath = "./emailCampaigns/{campaignId}/sharedUrl";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSharedTemplateUrl", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSharedTemplateUrl>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetSharedTemplateUrl) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSharedTemplateUrl)));
+        }
+
+        /// <summary>
+        /// Get a shared template url Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>Task of GetSharedTemplateUrl</returns>
+        public async System.Threading.Tasks.Task<GetSharedTemplateUrl> GetSharedTemplateUrlAsync (long? campaignId)
+        {
+             ApiResponse<GetSharedTemplateUrl> localVarResponse = await GetSharedTemplateUrlAsyncWithHttpInfo(campaignId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get a shared template url Get a unique URL to share &amp; import an email template from one Sendinblue account to another.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the campaign or template</param>
+        /// <returns>Task of ApiResponse (GetSharedTemplateUrl)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetSharedTemplateUrl>> GetSharedTemplateUrlAsyncWithHttpInfo (long? campaignId)
+        {
+            // verify the required parameter 'campaignId' is set
+            if (campaignId == null)
+                throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetSharedTemplateUrl");
+
+            var localVarPath = "./emailCampaigns/{campaignId}/sharedUrl";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSharedTemplateUrl", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSharedTemplateUrl>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetSharedTemplateUrl) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSharedTemplateUrl)));
+        }
+
+        /// <summary>
+        /// Send an email campaign immediately, based on campaignId 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1429,7 +1626,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately 
+        /// Send an email campaign immediately, based on campaignId 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1440,7 +1637,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->SendEmailCampaignNow");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendNow";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendNow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1489,12 +1686,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately 
+        /// Send an email campaign immediately, based on campaignId 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1506,7 +1703,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an email campaign id of the campaign immediately 
+        /// Send an email campaign immediately, based on campaignId 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1517,7 +1714,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->SendEmailCampaignNow");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendNow";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendNow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1566,7 +1763,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1598,7 +1795,7 @@ namespace sib_api_v3_sdk.Api
             if (sendReport == null)
                 throw new ApiException(400, "Missing required parameter 'sendReport' when calling EmailCampaignsApi->SendReport");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendReport";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1655,7 +1852,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1688,7 +1885,7 @@ namespace sib_api_v3_sdk.Api
             if (sendReport == null)
                 throw new ApiException(400, "Missing required parameter 'sendReport' when calling EmailCampaignsApi->SendReport");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendReport";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1745,7 +1942,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1777,7 +1974,7 @@ namespace sib_api_v3_sdk.Api
             if (emailTo == null)
                 throw new ApiException(400, "Missing required parameter 'emailTo' when calling EmailCampaignsApi->SendTestEmail");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendTest";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1834,7 +2031,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1867,7 +2064,7 @@ namespace sib_api_v3_sdk.Api
             if (emailTo == null)
                 throw new ApiException(400, "Missing required parameter 'emailTo' when calling EmailCampaignsApi->SendTestEmail");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/sendTest";
+            var localVarPath = "./emailCampaigns/{campaignId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1924,7 +2121,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1956,7 +2153,7 @@ namespace sib_api_v3_sdk.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling EmailCampaignsApi->UpdateCampaignStatus");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/status";
+            var localVarPath = "./emailCampaigns/{campaignId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2013,7 +2210,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2046,7 +2243,7 @@ namespace sib_api_v3_sdk.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling EmailCampaignsApi->UpdateCampaignStatus");
 
-            var localVarPath = "/emailCampaigns/{campaignId}/status";
+            var localVarPath = "./emailCampaigns/{campaignId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2103,7 +2300,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2135,7 +2332,7 @@ namespace sib_api_v3_sdk.Api
             if (emailCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'emailCampaign' when calling EmailCampaignsApi->UpdateEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2192,7 +2389,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2225,7 +2422,7 @@ namespace sib_api_v3_sdk.Api
             if (emailCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'emailCampaign' when calling EmailCampaignsApi->UpdateEmailCampaign");
 
-            var localVarPath = "/emailCampaigns/{campaignId}";
+            var localVarPath = "./emailCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2282,7 +2479,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

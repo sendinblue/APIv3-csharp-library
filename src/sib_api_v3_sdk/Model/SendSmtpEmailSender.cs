@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,7 +26,7 @@ namespace sib_api_v3_sdk.Model
     /// Mandatory if &#39;templateId&#39; is not passed. Pass name (optional) and email of sender from which emails will be sent. For example, {&#39;name&#39;:&#39;Mary from MyShop&#39;, &#39;email&#39;:&#39;no-reply@myshop.com&#39;}
     /// </summary>
     [DataContract]
-    public partial class SendSmtpEmailSender :  IEquatable<SendSmtpEmailSender>, IValidatableObject
+    public partial class SendSmtpEmailSender :  IEquatable<SendSmtpEmailSender>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SendSmtpEmailSender" /> class.
@@ -38,7 +36,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SendSmtpEmailSender" /> class.
         /// </summary>
-        /// <param name="name">Name of the sender from which the emails will be sent.</param>
+        /// <param name="name">Name of the sender from which the emails will be sent. Maximum allowed characters are 70..</param>
         /// <param name="email">Email of the sender from which the emails will be sent (required).</param>
         public SendSmtpEmailSender(string name = default(string), string email = default(string))
         {
@@ -55,9 +53,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Name of the sender from which the emails will be sent
+        /// Name of the sender from which the emails will be sent. Maximum allowed characters are 70.
         /// </summary>
-        /// <value>Name of the sender from which the emails will be sent</value>
+        /// <value>Name of the sender from which the emails will be sent. Maximum allowed characters are 70.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
@@ -139,16 +137,6 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

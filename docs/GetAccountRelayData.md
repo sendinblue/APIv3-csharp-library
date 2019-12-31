@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserName** | **string** | Email to use as login on SMTP | 
+**UserName** | **string** | Email to use as login on transactional platform | 
 **Relay** | **string** | URL of the SMTP Relay | 
 **Port** | **int?** | Port used for SMTP Relay | 
 

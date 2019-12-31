@@ -1,38 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>sib_api_v3_sdk</AssemblyName>
     <PackageId>sib_api_v3_sdk</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>Swagger</Authors>
-    <Company>Swagger</Company>
+    <Authors>Sendinblue Developers</Authors>
+    <Company>SendinBlue</Company>
     <AssemblyTitle>Swagger Library</AssemblyTitle>
-    <Description>A library generated from a Swagger doc</Description>
-    <Copyright>No Copyright</Copyright>
+    <Description>Official SendinBlue provided RESTFul API V3 C# Library</Description>
+    <Copyright>Copyright (c) 2019 SendinBlue</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>sib_api_v3_sdk</RootNamespace>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
+    <Product>sib_api_v3_sdk</Product>
+    <PackageLicenseUrl>https://github.com/sendinblue/APIv3-csharp-library/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/sendinblue/APIv3-csharp-library</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sendinblue/APIv3-csharp-librar</RepositoryUrl>
+    <PackageTags>sendinblue, sdk, swagger, api, csharp, .net, c#</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="105.1.0" />
+    <PackageReference Include="FubarCoder.RestSharp.Portable.Core" Version="4.0.7" />
+    <PackageReference Include="FubarCoder.RestSharp.Portable.HttpClient" Version="4.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="JsonSubTypes" Version="1.2.0" />
+    <PackageReference Include="JsonSubTypes" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
 
 </Project>

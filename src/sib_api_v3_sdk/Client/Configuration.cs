@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -29,7 +29,7 @@ namespace sib_api_v3_sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.0";
+        public const string Version = "2.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -57,11 +57,7 @@ namespace sib_api_v3_sdk.Client
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
                     response.Content);
             }
-            if (status == 0)
-            {
-                return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
-            }
+           
             return null;
         };
 
@@ -114,7 +110,7 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/1.0.0/csharp";
+            UserAgent = "Swagger-Codegen/2.0.0/csharp";
             BasePath = "https://api.sendinblue.com/v3";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -187,7 +183,7 @@ namespace sib_api_v3_sdk.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.0.0/csharp"
+            string userAgent = "Swagger-Codegen/2.0.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -248,9 +244,8 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public virtual int Timeout
         {
-            
-            get { return ApiClient.RestClient.Timeout; }
-            set { ApiClient.RestClient.Timeout = value; }
+            get { return (int)ApiClient.RestClient.Timeout.GetValueOrDefault(TimeSpan.FromSeconds(0)).TotalMilliseconds; }
+            set { ApiClient.RestClient.Timeout = TimeSpan.FromMilliseconds(value); }
         }
 
         /// <summary>
@@ -419,10 +414,9 @@ namespace sib_api_v3_sdk.Client
         public static String ToDebugReport()
         {
             String report = "C# SDK (sib_api_v3_sdk) Debug Report:\n";
-            report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
+            report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 3.0.0\n";
-            report += "    SDK Package Version: 1.0.0\n";
+            report += "    SDK Package Version: 2.0.0\n";
 
             return report;
         }

@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,23 +12,21 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Sender details including email and name (optional). For example {&#39;name&#39;:&#39;xyz&#39; , &#39;email&#39;:&#39;example@abc.com&#39;}
+    /// Sender details including id or email and name (optional). Only one of either Sender&#39;s email or Sender&#39;s ID shall be passed in one request at a time. For example &#x60;{\&quot;name\&quot;:\&quot;xyz\&quot;, \&quot;email\&quot;:\&quot;example@abc.com\&quot;}&#x60; , &#x60;{\&quot;name\&quot;:\&quot;xyz\&quot;, \&quot;id\&quot;:123}&#x60;
     /// </summary>
     [DataContract]
-    public partial class CreateSmtpTemplateSender :  IEquatable<CreateSmtpTemplateSender>, IValidatableObject
+    public partial class CreateSmtpTemplateSender :  IEquatable<CreateSmtpTemplateSender>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSmtpTemplateSender" /> class.
@@ -40,7 +38,8 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="name">Name of the sender. If not passed, will be set to default.</param>
         /// <param name="email">Email of the sender (required).</param>
-        public CreateSmtpTemplateSender(string name = default(string), string email = default(string))
+        /// <param name="id">Select the sender for the template on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)..</param>
+        public CreateSmtpTemplateSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -52,6 +51,7 @@ namespace sib_api_v3_sdk.Model
                 this.Email = email;
             }
             this.Name = name;
+            this.Id = id;
         }
         
         /// <summary>
@@ -69,6 +69,13 @@ namespace sib_api_v3_sdk.Model
         public string Email { get; set; }
 
         /// <summary>
+        /// Select the sender for the template on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email).
+        /// </summary>
+        /// <value>Select the sender for the template on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email).</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -78,6 +85,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class CreateSmtpTemplateSender {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,6 +129,11 @@ namespace sib_api_v3_sdk.Model
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -137,18 +150,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

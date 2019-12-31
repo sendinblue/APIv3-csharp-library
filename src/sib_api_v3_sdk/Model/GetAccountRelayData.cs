@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,23 +12,21 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Data regarding the SMTP account
+    /// Data regarding the transactional email account
     /// </summary>
     [DataContract]
-    public partial class GetAccountRelayData :  IEquatable<GetAccountRelayData>, IValidatableObject
+    public partial class GetAccountRelayData :  IEquatable<GetAccountRelayData>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAccountRelayData" /> class.
@@ -38,7 +36,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAccountRelayData" /> class.
         /// </summary>
-        /// <param name="userName">Email to use as login on SMTP (required).</param>
+        /// <param name="userName">Email to use as login on transactional platform (required).</param>
         /// <param name="relay">URL of the SMTP Relay (required).</param>
         /// <param name="port">Port used for SMTP Relay (required).</param>
         public GetAccountRelayData(string userName = default(string), string relay = default(string), int? port = default(int?))
@@ -73,9 +71,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Email to use as login on SMTP
+        /// Email to use as login on transactional platform
         /// </summary>
-        /// <value>Email to use as login on SMTP</value>
+        /// <value>Email to use as login on transactional platform</value>
         [DataMember(Name="userName", EmitDefaultValue=false)]
         public string UserName { get; set; }
 
@@ -172,16 +170,6 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

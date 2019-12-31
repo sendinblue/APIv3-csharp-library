@@ -4,25 +4,29 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSmtpTemplate**](SMTPApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an smtp template
+[**CreateSmtpTemplate**](SMTPApi.md#createsmtptemplate) | **POST** /smtp/templates | Create a transactional email template
 [**DeleteHardbounces**](SMTPApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
-[**DeleteSmtpTemplate**](SMTPApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive smtp template
-[**GetAggregatedSmtpReport**](SMTPApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your SMTP activity aggregated over a period of time
-[**GetEmailEventReport**](SMTPApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your SMTP activity (unaggregated events)
-[**GetSmtpReport**](SMTPApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your SMTP activity aggregated per day
+[**DeleteSmtpTemplate**](SMTPApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive transactional email template
+[**GetAggregatedSmtpReport**](SMTPApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
+[**GetEmailEventReport**](SMTPApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
+[**GetSmtpReport**](SMTPApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
 [**GetSmtpTemplate**](SMTPApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template informations
-[**GetSmtpTemplates**](SMTPApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of SMTP templates
+[**GetSmtpTemplates**](SMTPApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of transactional email templates
+[**GetTransacBlockedContacts**](SMTPApi.md#gettransacblockedcontacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
+[**GetTransacEmailContent**](SMTPApi.md#gettransacemailcontent) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
+[**GetTransacEmailsList**](SMTPApi.md#gettransacemailslist) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
 [**SendTemplate**](SMTPApi.md#sendtemplate) | **POST** /smtp/templates/{templateId}/send | Send a template
 [**SendTestTemplate**](SMTPApi.md#sendtesttemplate) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
 [**SendTransacEmail**](SMTPApi.md#sendtransacemail) | **POST** /smtp/email | Send a transactional email
-[**UpdateSmtpTemplate**](SMTPApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Updates an smtp templates
+[**SmtpBlockedContactsEmailDelete**](SMTPApi.md#smtpblockedcontactsemaildelete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
+[**UpdateSmtpTemplate**](SMTPApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Updates a transactional email templates
 
 
 <a name="createsmtptemplate"></a>
 # **CreateSmtpTemplate**
 > CreateModel CreateSmtpTemplate (CreateSmtpTemplate smtpTemplate)
 
-Create an smtp template
+Create a transactional email template
 
 ### Example
 ```csharp
@@ -48,11 +52,11 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new SMTPApi();
-            var smtpTemplate = new CreateSmtpTemplate(); // CreateSmtpTemplate | values to update in smtp template
+            var smtpTemplate = new CreateSmtpTemplate(); // CreateSmtpTemplate | values to update in transactional email template
 
             try
             {
-                // Create an smtp template
+                // Create a transactional email template
                 CreateModel result = apiInstance.CreateSmtpTemplate(smtpTemplate);
                 Debug.WriteLine(result);
             }
@@ -69,7 +73,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **smtpTemplate** | [**CreateSmtpTemplate**](CreateSmtpTemplate.md)| values to update in smtp template | 
+ **smtpTemplate** | [**CreateSmtpTemplate**](CreateSmtpTemplate.md)| values to update in transactional email template | 
 
 ### Return type
 
@@ -159,7 +163,7 @@ void (empty response body)
 # **DeleteSmtpTemplate**
 > void DeleteSmtpTemplate (long? templateId)
 
-Delete an inactive smtp template
+Delete an inactive transactional email template
 
 ### Example
 ```csharp
@@ -189,7 +193,7 @@ namespace Example
 
             try
             {
-                // Delete an inactive smtp template
+                // Delete an inactive transactional email template
                 apiInstance.DeleteSmtpTemplate(templateId);
             }
             catch (Exception e)
@@ -226,7 +230,7 @@ void (empty response body)
 # **GetAggregatedSmtpReport**
 > GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
 
-Get your SMTP activity aggregated over a period of time
+Get your transactional email activity aggregated over a period of time
 
 ### Example
 ```csharp
@@ -259,7 +263,7 @@ namespace Example
 
             try
             {
-                // Get your SMTP activity aggregated over a period of time
+                // Get your transactional email activity aggregated over a period of time
                 GetAggregatedReport result = apiInstance.GetAggregatedSmtpReport(startDate, endDate, days, tag);
                 Debug.WriteLine(result);
             }
@@ -300,7 +304,7 @@ Name | Type | Description  | Notes
 # **GetEmailEventReport**
 > GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null)
 
-Get all your SMTP activity (unaggregated events)
+Get all your transactional email activity (unaggregated events)
 
 ### Example
 ```csharp
@@ -339,7 +343,7 @@ namespace Example
 
             try
             {
-                // Get all your SMTP activity (unaggregated events)
+                // Get all your transactional email activity (unaggregated events)
                 GetEmailEventReport result = apiInstance.GetEmailEventReport(limit, offset, startDate, endDate, days, email, _event, tags, messageId, templateId);
                 Debug.WriteLine(result);
             }
@@ -386,7 +390,7 @@ Name | Type | Description  | Notes
 # **GetSmtpReport**
 > GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null)
 
-Get your SMTP activity aggregated per day
+Get your transactional email activity aggregated per day
 
 ### Example
 ```csharp
@@ -412,7 +416,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new SMTPApi();
-            var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
+            var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional) 
@@ -421,7 +425,7 @@ namespace Example
 
             try
             {
-                // Get your SMTP activity aggregated per day
+                // Get your transactional email activity aggregated per day
                 GetReports result = apiInstance.GetSmtpReport(limit, offset, startDate, endDate, days, tag);
                 Debug.WriteLine(result);
             }
@@ -438,7 +442,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
+ **limit** | **long?**| Number of documents returned per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
  **startDate** | **string**| Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) | [optional] 
@@ -532,7 +536,7 @@ Name | Type | Description  | Notes
 # **GetSmtpTemplates**
 > GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null)
 
-Get the list of SMTP templates
+Get the list of transactional email templates
 
 ### Example
 ```csharp
@@ -564,7 +568,7 @@ namespace Example
 
             try
             {
-                // Get the list of SMTP templates
+                // Get the list of transactional email templates
                 GetSmtpTemplates result = apiInstance.GetSmtpTemplates(templateStatus, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -588,6 +592,228 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetSmtpTemplates**](GetSmtpTemplates.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gettransacblockedcontacts"></a>
+# **GetTransacBlockedContacts**
+> GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+
+Get the list of blocked or unsubscribed transactional contacts
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetTransacBlockedContactsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new SMTPApi();
+            var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional) 
+            var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional) 
+            var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
+            var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
+            var senders = new List<string>(); // List<string> | Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional) 
+
+            try
+            {
+                // Get the list of blocked or unsubscribed transactional contacts
+                GetTransacBlockedContacts result = apiInstance.GetTransacBlockedContacts(startDate, endDate, limit, offset, senders);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SMTPApi.GetTransacBlockedContacts: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts | [optional] 
+ **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts | [optional] 
+ **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
+ **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
+ **senders** | [**List&lt;string&gt;**](string.md)| Comma separated list of emails of the senders from which contacts are blocked or unsubscribed | [optional] 
+
+### Return type
+
+[**GetTransacBlockedContacts**](GetTransacBlockedContacts.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gettransacemailcontent"></a>
+# **GetTransacEmailContent**
+> GetTransacEmailContent GetTransacEmailContent (string uuid)
+
+Get the personalized content of a sent transactional email
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetTransacEmailContentExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new SMTPApi();
+            var uuid = uuid_example;  // string | Unique id of the transactional email that has been sent to a particular contact
+
+            try
+            {
+                // Get the personalized content of a sent transactional email
+                GetTransacEmailContent result = apiInstance.GetTransacEmailContent(uuid);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SMTPApi.GetTransacEmailContent: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **string**| Unique id of the transactional email that has been sent to a particular contact | 
+
+### Return type
+
+[**GetTransacEmailContent**](GetTransacEmailContent.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gettransacemailslist"></a>
+# **GetTransacEmailsList**
+> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+
+Get the list of transactional emails on the basis of allowed filters
+
+This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetTransacEmailsListExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new SMTPApi();
+            var email = email_example;  // string | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional) 
+            var templateId = 789;  // long? | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional) 
+            var messageId = messageId_example;  // string | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional) 
+            var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+
+            try
+            {
+                // Get the list of transactional emails on the basis of allowed filters
+                GetTransacEmailsList result = apiInstance.GetTransacEmailsList(email, templateId, messageId, startDate, endDate);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SMTPApi.GetTransacEmailsList: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **string**| Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. | [optional] 
+ **templateId** | **long?**| Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. | [optional] 
+ **messageId** | **string**| Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. | [optional] 
+ **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+
+### Return type
+
+[**GetTransacEmailsList**](GetTransacEmailsList.md)
 
 ### Authorization
 
@@ -809,11 +1035,78 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="smtpblockedcontactsemaildelete"></a>
+# **SmtpBlockedContactsEmailDelete**
+> void SmtpBlockedContactsEmailDelete (string email)
+
+Unblock or resubscribe a transactional contact
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class SmtpBlockedContactsEmailDeleteExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new SMTPApi();
+            var email = email_example;  // string | contact email (urlencoded) to unblock.
+
+            try
+            {
+                // Unblock or resubscribe a transactional contact
+                apiInstance.SmtpBlockedContactsEmailDelete(email);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SMTPApi.SmtpBlockedContactsEmailDelete: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **string**| contact email (urlencoded) to unblock. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatesmtptemplate"></a>
 # **UpdateSmtpTemplate**
 > void UpdateSmtpTemplate (long? templateId, UpdateSmtpTemplate smtpTemplate)
 
-Updates an smtp templates
+Updates a transactional email templates
 
 ### Example
 ```csharp
@@ -840,11 +1133,11 @@ namespace Example
 
             var apiInstance = new SMTPApi();
             var templateId = 789;  // long? | id of the template
-            var smtpTemplate = new UpdateSmtpTemplate(); // UpdateSmtpTemplate | values to update in smtp template
+            var smtpTemplate = new UpdateSmtpTemplate(); // UpdateSmtpTemplate | values to update in transactional email template
 
             try
             {
-                // Updates an smtp templates
+                // Updates a transactional email templates
                 apiInstance.UpdateSmtpTemplate(templateId, smtpTemplate);
             }
             catch (Exception e)
@@ -861,7 +1154,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **templateId** | **long?**| id of the template | 
- **smtpTemplate** | [**UpdateSmtpTemplate**](UpdateSmtpTemplate.md)| values to update in smtp template | 
+ **smtpTemplate** | [**UpdateSmtpTemplate**](UpdateSmtpTemplate.md)| values to update in transactional email template | 
 
 ### Return type
 

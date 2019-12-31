@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,7 +26,7 @@ namespace sib_api_v3_sdk.Model
     /// UpdateEmailCampaign
     /// </summary>
     [DataContract]
-    public partial class UpdateEmailCampaign :  IEquatable<UpdateEmailCampaign>, IValidatableObject
+    public partial class UpdateEmailCampaign :  IEquatable<UpdateEmailCampaign>
     {
         /// <summary>
         /// Choose the metrics that will determinate the winning version. Considered if &#39;splitRule&#39; &gt;&#x3D; 1 and &lt; 50. If splitRule &#x3D; 50, &#39;winnerCriteria&#39; is ignored if passed or alreday exist in record
@@ -85,7 +83,10 @@ namespace sib_api_v3_sdk.Model
         /// <param name="splitRule">Add the size of your test groups. Considered if abTesting &#x3D; true. We&#39;ll send version A and B to a random sample of recipients, and then the winning version to everyone else.</param>
         /// <param name="winnerCriteria">Choose the metrics that will determinate the winning version. Considered if &#39;splitRule&#39; &gt;&#x3D; 1 and &lt; 50. If splitRule &#x3D; 50, &#39;winnerCriteria&#39; is ignored if passed or alreday exist in record.</param>
         /// <param name="winnerDelay">Choose the duration of the test in hours. Maximum is 7 days, pass 24*7 &#x3D; 168 hours. The winning version will be sent at the end of the test. Considered if &#39;splitRule&#39; &gt;&#x3D; 1 and &lt; 50. If splitRule &#x3D; 50, &#39;winnerDelay&#39; is ignored if passed or alreday exist in record.</param>
-        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), DateTime? scheduledAt = default(DateTime?), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?))
+        /// <param name="ipWarmupEnable">Available for dedicated ip clients. Set this to true if you wish to warm up your ip. (default to false).</param>
+        /// <param name="initialQuota">Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000..</param>
+        /// <param name="increaseRate">Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%..</param>
+        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), DateTime? scheduledAt = default(DateTime?), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?))
         {
             this.Tag = tag;
             this.Sender = sender;
@@ -136,6 +137,17 @@ namespace sib_api_v3_sdk.Model
             this.SplitRule = splitRule;
             this.WinnerCriteria = winnerCriteria;
             this.WinnerDelay = winnerDelay;
+            // use default value if no "ipWarmupEnable" provided
+            if (ipWarmupEnable == null)
+            {
+                this.IpWarmupEnable = false;
+            }
+            else
+            {
+                this.IpWarmupEnable = ipWarmupEnable;
+            }
+            this.InitialQuota = initialQuota;
+            this.IncreaseRate = increaseRate;
         }
         
         /// <summary>
@@ -306,6 +318,27 @@ namespace sib_api_v3_sdk.Model
         public long? WinnerDelay { get; set; }
 
         /// <summary>
+        /// Available for dedicated ip clients. Set this to true if you wish to warm up your ip.
+        /// </summary>
+        /// <value>Available for dedicated ip clients. Set this to true if you wish to warm up your ip.</value>
+        [DataMember(Name="ipWarmupEnable", EmitDefaultValue=false)]
+        public bool? IpWarmupEnable { get; set; }
+
+        /// <summary>
+        /// Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000.
+        /// </summary>
+        /// <value>Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000.</value>
+        [DataMember(Name="initialQuota", EmitDefaultValue=false)]
+        public long? InitialQuota { get; set; }
+
+        /// <summary>
+        /// Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%.
+        /// </summary>
+        /// <value>Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%.</value>
+        [DataMember(Name="increaseRate", EmitDefaultValue=false)]
+        public long? IncreaseRate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -338,6 +371,9 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  SplitRule: ").Append(SplitRule).Append("\n");
             sb.Append("  WinnerCriteria: ").Append(WinnerCriteria).Append("\n");
             sb.Append("  WinnerDelay: ").Append(WinnerDelay).Append("\n");
+            sb.Append("  IpWarmupEnable: ").Append(IpWarmupEnable).Append("\n");
+            sb.Append("  InitialQuota: ").Append(InitialQuota).Append("\n");
+            sb.Append("  IncreaseRate: ").Append(IncreaseRate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -496,6 +532,21 @@ namespace sib_api_v3_sdk.Model
                     this.WinnerDelay == input.WinnerDelay ||
                     (this.WinnerDelay != null &&
                     this.WinnerDelay.Equals(input.WinnerDelay))
+                ) && 
+                (
+                    this.IpWarmupEnable == input.IpWarmupEnable ||
+                    (this.IpWarmupEnable != null &&
+                    this.IpWarmupEnable.Equals(input.IpWarmupEnable))
+                ) && 
+                (
+                    this.InitialQuota == input.InitialQuota ||
+                    (this.InitialQuota != null &&
+                    this.InitialQuota.Equals(input.InitialQuota))
+                ) && 
+                (
+                    this.IncreaseRate == input.IncreaseRate ||
+                    (this.IncreaseRate != null &&
+                    this.IncreaseRate.Equals(input.IncreaseRate))
                 );
         }
 
@@ -558,42 +609,14 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.WinnerCriteria.GetHashCode();
                 if (this.WinnerDelay != null)
                     hashCode = hashCode * 59 + this.WinnerDelay.GetHashCode();
+                if (this.IpWarmupEnable != null)
+                    hashCode = hashCode * 59 + this.IpWarmupEnable.GetHashCode();
+                if (this.InitialQuota != null)
+                    hashCode = hashCode * 59 + this.InitialQuota.GetHashCode();
+                if (this.IncreaseRate != null)
+                    hashCode = hashCode * 59 + this.IncreaseRate.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // SplitRule (long?) maximum
-            if(this.SplitRule > (long?)50)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SplitRule, must be a value less than or equal to 50.", new [] { "SplitRule" });
-            }
-
-            // SplitRule (long?) minimum
-            if(this.SplitRule < (long?)1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SplitRule, must be a value greater than or equal to 1.", new [] { "SplitRule" });
-            }
-
-            // WinnerDelay (long?) maximum
-            if(this.WinnerDelay > (long?)168)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WinnerDelay, must be a value less than or equal to 168.", new [] { "WinnerDelay" });
-            }
-
-            // WinnerDelay (long?) minimum
-            if(this.WinnerDelay < (long?)1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WinnerDelay, must be a value greater than or equal to 1.", new [] { "WinnerDelay" });
-            }
-
-            yield break;
         }
     }
 

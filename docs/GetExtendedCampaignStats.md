@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Remaining** | **long?** | Number of remaning emails to send | 
 **LinksStats** | **Object** | Statistics about the number of clicks for the links | 
 **StatsByDomain** | [**GetStatsByDomain**](GetStatsByDomain.md) |  | 
+**StatsByDevice** | [**GetStatsByDevice**](GetStatsByDevice.md) | Statistics about the campaign on the basis of various devices | 
+**StatsByBrowser** | [**GetStatsByBrowser**](GetStatsByBrowser.md) | Statistics about the campaign on the basis of various browsers | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

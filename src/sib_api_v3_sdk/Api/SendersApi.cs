@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -403,7 +403,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< CreateSenderModel > CreateSenderWithHttpInfo (CreateSender sender = null)
         {
 
-            var localVarPath = "/senders";
+            var localVarPath = "./senders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -459,7 +459,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateSenderModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateSenderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSenderModel)));
         }
 
@@ -485,7 +485,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<CreateSenderModel>> CreateSenderAsyncWithHttpInfo (CreateSender sender = null)
         {
 
-            var localVarPath = "/senders";
+            var localVarPath = "./senders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -541,7 +541,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateSenderModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateSenderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSenderModel)));
         }
 
@@ -568,7 +568,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->DeleteSender");
 
-            var localVarPath = "/senders/{senderId}";
+            var localVarPath = "./senders/{senderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -617,7 +617,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -645,7 +645,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->DeleteSender");
 
-            var localVarPath = "/senders/{senderId}";
+            var localVarPath = "./senders/{senderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -694,7 +694,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -717,7 +717,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetIps > GetIpsWithHttpInfo ()
         {
 
-            var localVarPath = "/senders/ips";
+            var localVarPath = "./senders/ips";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -765,7 +765,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetIps>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetIps) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetIps)));
         }
 
@@ -789,7 +789,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetIps>> GetIpsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/senders/ips";
+            var localVarPath = "./senders/ips";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -837,7 +837,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetIps>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetIps) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetIps)));
         }
 
@@ -865,7 +865,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->GetIpsFromSender");
 
-            var localVarPath = "/senders/{senderId}/ips";
+            var localVarPath = "./senders/{senderId}/ips";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -914,7 +914,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetIpsFromSender>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetIpsFromSender) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetIpsFromSender)));
         }
 
@@ -943,7 +943,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->GetIpsFromSender");
 
-            var localVarPath = "/senders/{senderId}/ips";
+            var localVarPath = "./senders/{senderId}/ips";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -992,7 +992,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetIpsFromSender>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetIpsFromSender) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetIpsFromSender)));
         }
 
@@ -1019,7 +1019,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetSendersList > GetSendersWithHttpInfo (string ip = null, string domain = null)
         {
 
-            var localVarPath = "/senders";
+            var localVarPath = "./senders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1069,7 +1069,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSendersList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSendersList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSendersList)));
         }
 
@@ -1097,7 +1097,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetSendersList>> GetSendersAsyncWithHttpInfo (string ip = null, string domain = null)
         {
 
-            var localVarPath = "/senders";
+            var localVarPath = "./senders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1147,7 +1147,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSendersList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSendersList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSendersList)));
         }
 
@@ -1176,7 +1176,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->UpdateSender");
 
-            var localVarPath = "/senders/{senderId}";
+            var localVarPath = "./senders/{senderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1233,7 +1233,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1263,7 +1263,7 @@ namespace sib_api_v3_sdk.Api
             if (senderId == null)
                 throw new ApiException(400, "Missing required parameter 'senderId' when calling SendersApi->UpdateSender");
 
-            var localVarPath = "/senders/{senderId}";
+            var localVarPath = "./senders/{senderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1320,7 +1320,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

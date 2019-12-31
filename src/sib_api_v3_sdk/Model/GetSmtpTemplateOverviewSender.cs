@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,17 +26,19 @@ namespace sib_api_v3_sdk.Model
     /// GetSmtpTemplateOverviewSender
     /// </summary>
     [DataContract]
-    public partial class GetSmtpTemplateOverviewSender :  IEquatable<GetSmtpTemplateOverviewSender>, IValidatableObject
+    public partial class GetSmtpTemplateOverviewSender :  IEquatable<GetSmtpTemplateOverviewSender>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSmtpTemplateOverviewSender" /> class.
         /// </summary>
         /// <param name="name">From email for the template.</param>
         /// <param name="email">From email for the template.</param>
-        public GetSmtpTemplateOverviewSender(string name = default(string), string email = default(string))
+        /// <param name="id">Sender id of the template.</param>
+        public GetSmtpTemplateOverviewSender(string name = default(string), string email = default(string), string id = default(string))
         {
             this.Name = name;
             this.Email = email;
+            this.Id = id;
         }
         
         /// <summary>
@@ -56,6 +56,13 @@ namespace sib_api_v3_sdk.Model
         public string Email { get; set; }
 
         /// <summary>
+        /// Sender id of the template
+        /// </summary>
+        /// <value>Sender id of the template</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +72,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class GetSmtpTemplateOverviewSender {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,6 +116,11 @@ namespace sib_api_v3_sdk.Model
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -124,18 +137,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 
