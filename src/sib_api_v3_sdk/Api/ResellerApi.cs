@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -71,6 +71,29 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AssociateIpToChildWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
+        /// Creates a domain for a child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns></returns>
+        void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain);
+
+        /// <summary>
+        /// Creates a domain for a child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> CreateChildDomainWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain);
+        /// <summary>
         /// Creates a reseller child
         /// </summary>
         /// <remarks>
@@ -91,6 +114,29 @@ namespace sib_api_v3_sdk.Api
         /// <param name="resellerChild">reseller child to add (optional)</param>
         /// <returns>ApiResponse of CreateReseller</returns>
         ApiResponse<CreateReseller> CreateResellerChildWithHttpInfo (CreateChild resellerChild = null);
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns></returns>
+        void DeleteChildDomain (string childAuthKey, string domainName);
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteChildDomainWithHttpInfo (string childAuthKey, string domainName);
         /// <summary>
         /// Deletes a single reseller child based on the childAuthKey supplied
         /// </summary>
@@ -136,6 +182,48 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DissociateIpFromChildWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetChildAccountCreationStatus</returns>
+        GetChildAccountCreationStatus GetChildAccountCreationStatus (string childAuthKey);
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetChildAccountCreationStatus</returns>
+        ApiResponse<GetChildAccountCreationStatus> GetChildAccountCreationStatusWithHttpInfo (string childAuthKey);
+        /// <summary>
+        /// Gets all the sender domains of a specific child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetChildDomains</returns>
+        GetChildDomains GetChildDomains (string childAuthKey);
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetChildDomains</returns>
+        ApiResponse<GetChildDomains> GetChildDomainsWithHttpInfo (string childAuthKey);
+        /// <summary>
         /// Gets the info about a specific child account
         /// </summary>
         /// <remarks>
@@ -163,8 +251,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>GetChildrenList</returns>
-        GetChildrenList GetResellerChilds ();
+        GetChildrenList GetResellerChilds (long? limit = null, long? offset = null);
 
         /// <summary>
         /// Gets the list of all reseller&#39;s children accounts
@@ -173,8 +263,31 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>ApiResponse of GetChildrenList</returns>
-        ApiResponse<GetChildrenList> GetResellerChildsWithHttpInfo ();
+        ApiResponse<GetChildrenList> GetResellerChildsWithHttpInfo (long? limit = null, long? offset = null);
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO)
+        /// </summary>
+        /// <remarks>
+        /// It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetSsoToken</returns>
+        GetSsoToken GetSsoToken (string childAuthKey);
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO)
+        /// </summary>
+        /// <remarks>
+        /// It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetSsoToken</returns>
+        ApiResponse<GetSsoToken> GetSsoTokenWithHttpInfo (string childAuthKey);
         /// <summary>
         /// Remove Email and/or SMS credits from a specific child account
         /// </summary>
@@ -198,6 +311,54 @@ namespace sib_api_v3_sdk.Api
         /// <param name="removeCredits">Values to post to remove email or SMS credits from a specific child account</param>
         /// <returns>ApiResponse of RemainingCreditModel</returns>
         ApiResponse<RemainingCreditModel> RemoveCreditsWithHttpInfo (string childAuthKey, RemoveCredits removeCredits);
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns></returns>
+        void UpdateChildAccountStatus (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateChildAccountStatusWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns></returns>
+        void UpdateChildDomain (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateChildDomainWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
         /// <summary>
         /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
@@ -270,6 +431,29 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> AssociateIpToChildAsyncWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
+        /// Creates a domain for a child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task CreateChildDomainAsync (string childAuthKey, AddChildDomain addChildDomain);
+
+        /// <summary>
+        /// Creates a domain for a child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateChildDomainAsyncWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain);
+        /// <summary>
         /// Creates a reseller child
         /// </summary>
         /// <remarks>
@@ -290,6 +474,29 @@ namespace sib_api_v3_sdk.Api
         /// <param name="resellerChild">reseller child to add (optional)</param>
         /// <returns>Task of ApiResponse (CreateReseller)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateReseller>> CreateResellerChildAsyncWithHttpInfo (CreateChild resellerChild = null);
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteChildDomainAsync (string childAuthKey, string domainName);
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName);
         /// <summary>
         /// Deletes a single reseller child based on the childAuthKey supplied
         /// </summary>
@@ -335,6 +542,48 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DissociateIpFromChildAsyncWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetChildAccountCreationStatus</returns>
+        System.Threading.Tasks.Task<GetChildAccountCreationStatus> GetChildAccountCreationStatusAsync (string childAuthKey);
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetChildAccountCreationStatus)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetChildAccountCreationStatus>> GetChildAccountCreationStatusAsyncWithHttpInfo (string childAuthKey);
+        /// <summary>
+        /// Gets all the sender domains of a specific child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetChildDomains</returns>
+        System.Threading.Tasks.Task<GetChildDomains> GetChildDomainsAsync (string childAuthKey);
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetChildDomains)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetChildDomains>> GetChildDomainsAsyncWithHttpInfo (string childAuthKey);
+        /// <summary>
         /// Gets the info about a specific child account
         /// </summary>
         /// <remarks>
@@ -362,8 +611,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of GetChildrenList</returns>
-        System.Threading.Tasks.Task<GetChildrenList> GetResellerChildsAsync ();
+        System.Threading.Tasks.Task<GetChildrenList> GetResellerChildsAsync (long? limit = null, long? offset = null);
 
         /// <summary>
         /// Gets the list of all reseller&#39;s children accounts
@@ -372,8 +623,31 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (GetChildrenList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetChildrenList>> GetResellerChildsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<GetChildrenList>> GetResellerChildsAsyncWithHttpInfo (long? limit = null, long? offset = null);
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO)
+        /// </summary>
+        /// <remarks>
+        /// It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetSsoToken</returns>
+        System.Threading.Tasks.Task<GetSsoToken> GetSsoTokenAsync (string childAuthKey);
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO)
+        /// </summary>
+        /// <remarks>
+        /// It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetSsoToken)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetSsoToken>> GetSsoTokenAsyncWithHttpInfo (string childAuthKey);
         /// <summary>
         /// Remove Email and/or SMS credits from a specific child account
         /// </summary>
@@ -397,6 +671,54 @@ namespace sib_api_v3_sdk.Api
         /// <param name="removeCredits">Values to post to remove email or SMS credits from a specific child account</param>
         /// <returns>Task of ApiResponse (RemainingCreditModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<RemainingCreditModel>> RemoveCreditsAsyncWithHttpInfo (string childAuthKey, RemoveCredits removeCredits);
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateChildAccountStatusAsync (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildAccountStatusAsyncWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateChildDomainAsync (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
         /// <summary>
         /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
@@ -549,7 +871,7 @@ namespace sib_api_v3_sdk.Api
             if (addCredits == null)
                 throw new ApiException(400, "Missing required parameter 'addCredits' when calling ResellerApi->AddCredits");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/credits/add";
+            var localVarPath = "./reseller/children/{childAuthKey}/credits/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -606,7 +928,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<RemainingCreditModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (RemainingCreditModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RemainingCreditModel)));
         }
 
@@ -640,7 +962,7 @@ namespace sib_api_v3_sdk.Api
             if (addCredits == null)
                 throw new ApiException(400, "Missing required parameter 'addCredits' when calling ResellerApi->AddCredits");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/credits/add";
+            var localVarPath = "./reseller/children/{childAuthKey}/credits/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -697,7 +1019,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<RemainingCreditModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (RemainingCreditModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RemainingCreditModel)));
         }
 
@@ -729,7 +1051,7 @@ namespace sib_api_v3_sdk.Api
             if (ip == null)
                 throw new ApiException(400, "Missing required parameter 'ip' when calling ResellerApi->AssociateIpToChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/ips/associate";
+            var localVarPath = "./reseller/children/{childAuthKey}/ips/associate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -786,7 +1108,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -819,7 +1141,7 @@ namespace sib_api_v3_sdk.Api
             if (ip == null)
                 throw new ApiException(400, "Missing required parameter 'ip' when calling ResellerApi->AssociateIpToChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/ips/associate";
+            var localVarPath = "./reseller/children/{childAuthKey}/ips/associate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -876,7 +1198,186 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Creates a domain for a child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns></returns>
+        public void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain)
+        {
+             CreateChildDomainWithHttpInfo(childAuthKey, addChildDomain);
+        }
+
+        /// <summary>
+        /// Creates a domain for a child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> CreateChildDomainWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->CreateChildDomain");
+            // verify the required parameter 'addChildDomain' is set
+            if (addChildDomain == null)
+                throw new ApiException(400, "Missing required parameter 'addChildDomain' when calling ResellerApi->CreateChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (addChildDomain != null && addChildDomain.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addChildDomain); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addChildDomain; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Creates a domain for a child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task CreateChildDomainAsync (string childAuthKey, AddChildDomain addChildDomain)
+        {
+             await CreateChildDomainAsyncWithHttpInfo(childAuthKey, addChildDomain);
+
+        }
+
+        /// <summary>
+        /// Creates a domain for a child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateChildDomainAsyncWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->CreateChildDomain");
+            // verify the required parameter 'addChildDomain' is set
+            if (addChildDomain == null)
+                throw new ApiException(400, "Missing required parameter 'addChildDomain' when calling ResellerApi->CreateChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (addChildDomain != null && addChildDomain.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addChildDomain); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addChildDomain; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -901,7 +1402,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< CreateReseller > CreateResellerChildWithHttpInfo (CreateChild resellerChild = null)
         {
 
-            var localVarPath = "/reseller/children";
+            var localVarPath = "./reseller/children";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -957,7 +1458,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateReseller>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateReseller) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateReseller)));
         }
 
@@ -983,7 +1484,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<CreateReseller>> CreateResellerChildAsyncWithHttpInfo (CreateChild resellerChild = null)
         {
 
-            var localVarPath = "/reseller/children";
+            var localVarPath = "./reseller/children";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1039,8 +1540,173 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateReseller>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateReseller) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateReseller)));
+        }
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns></returns>
+        public void DeleteChildDomain (string childAuthKey, string domainName)
+        {
+             DeleteChildDomainWithHttpInfo(childAuthKey, domainName);
+        }
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteChildDomainWithHttpInfo (string childAuthKey, string domainName)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->DeleteChildDomain");
+            // verify the required parameter 'domainName' is set
+            if (domainName == null)
+                throw new ApiException(400, "Missing required parameter 'domainName' when calling ResellerApi->DeleteChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains/{domainName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (domainName != null) localVarPathParams.Add("domainName", this.Configuration.ApiClient.ParameterToString(domainName)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteChildDomainAsync (string childAuthKey, string domainName)
+        {
+             await DeleteChildDomainAsyncWithHttpInfo(childAuthKey, domainName);
+
+        }
+
+        /// <summary>
+        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be deleted</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->DeleteChildDomain");
+            // verify the required parameter 'domainName' is set
+            if (domainName == null)
+                throw new ApiException(400, "Missing required parameter 'domainName' when calling ResellerApi->DeleteChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains/{domainName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (domainName != null) localVarPathParams.Add("domainName", this.Configuration.ApiClient.ParameterToString(domainName)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -1066,7 +1732,7 @@ namespace sib_api_v3_sdk.Api
             if (childAuthKey == null)
                 throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->DeleteResellerChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1115,7 +1781,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1143,7 +1809,7 @@ namespace sib_api_v3_sdk.Api
             if (childAuthKey == null)
                 throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->DeleteResellerChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1192,7 +1858,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1224,7 +1890,7 @@ namespace sib_api_v3_sdk.Api
             if (ip == null)
                 throw new ApiException(400, "Missing required parameter 'ip' when calling ResellerApi->DissociateIpFromChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/ips/dissociate";
+            var localVarPath = "./reseller/children/{childAuthKey}/ips/dissociate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1281,7 +1947,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1314,7 +1980,7 @@ namespace sib_api_v3_sdk.Api
             if (ip == null)
                 throw new ApiException(400, "Missing required parameter 'ip' when calling ResellerApi->DissociateIpFromChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/ips/dissociate";
+            var localVarPath = "./reseller/children/{childAuthKey}/ips/dissociate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1371,8 +2037,318 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
+        }
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetChildAccountCreationStatus</returns>
+        public GetChildAccountCreationStatus GetChildAccountCreationStatus (string childAuthKey)
+        {
+             ApiResponse<GetChildAccountCreationStatus> localVarResponse = GetChildAccountCreationStatusWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetChildAccountCreationStatus</returns>
+        public ApiResponse< GetChildAccountCreationStatus > GetChildAccountCreationStatusWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildAccountCreationStatus");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/accountCreationStatus";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetChildAccountCreationStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetChildAccountCreationStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetChildAccountCreationStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildAccountCreationStatus)));
+        }
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetChildAccountCreationStatus</returns>
+        public async System.Threading.Tasks.Task<GetChildAccountCreationStatus> GetChildAccountCreationStatusAsync (string childAuthKey)
+        {
+             ApiResponse<GetChildAccountCreationStatus> localVarResponse = await GetChildAccountCreationStatusAsyncWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetChildAccountCreationStatus)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetChildAccountCreationStatus>> GetChildAccountCreationStatusAsyncWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildAccountCreationStatus");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/accountCreationStatus";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetChildAccountCreationStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetChildAccountCreationStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetChildAccountCreationStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildAccountCreationStatus)));
+        }
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetChildDomains</returns>
+        public GetChildDomains GetChildDomains (string childAuthKey)
+        {
+             ApiResponse<GetChildDomains> localVarResponse = GetChildDomainsWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetChildDomains</returns>
+        public ApiResponse< GetChildDomains > GetChildDomainsWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildDomains");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetChildDomains", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetChildDomains>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetChildDomains) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildDomains)));
+        }
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetChildDomains</returns>
+        public async System.Threading.Tasks.Task<GetChildDomains> GetChildDomainsAsync (string childAuthKey)
+        {
+             ApiResponse<GetChildDomains> localVarResponse = await GetChildDomainsAsyncWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets all the sender domains of a specific child account 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetChildDomains)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetChildDomains>> GetChildDomainsAsyncWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildDomains");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetChildDomains", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetChildDomains>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetChildDomains) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildDomains)));
         }
 
         /// <summary>
@@ -1399,7 +2375,7 @@ namespace sib_api_v3_sdk.Api
             if (childAuthKey == null)
                 throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildInfo");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1448,7 +2424,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetChildInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetChildInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildInfo)));
         }
 
@@ -1477,7 +2453,7 @@ namespace sib_api_v3_sdk.Api
             if (childAuthKey == null)
                 throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetChildInfo");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1526,7 +2502,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetChildInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetChildInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildInfo)));
         }
 
@@ -1534,10 +2510,12 @@ namespace sib_api_v3_sdk.Api
         /// Gets the list of all reseller&#39;s children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>GetChildrenList</returns>
-        public GetChildrenList GetResellerChilds ()
+        public GetChildrenList GetResellerChilds (long? limit = null, long? offset = null)
         {
-             ApiResponse<GetChildrenList> localVarResponse = GetResellerChildsWithHttpInfo();
+             ApiResponse<GetChildrenList> localVarResponse = GetResellerChildsWithHttpInfo(limit, offset);
              return localVarResponse.Data;
         }
 
@@ -1545,11 +2523,13 @@ namespace sib_api_v3_sdk.Api
         /// Gets the list of all reseller&#39;s children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>ApiResponse of GetChildrenList</returns>
-        public ApiResponse< GetChildrenList > GetResellerChildsWithHttpInfo ()
+        public ApiResponse< GetChildrenList > GetResellerChildsWithHttpInfo (long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/reseller/children";
+            var localVarPath = "./reseller/children";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1571,6 +2551,8 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1597,7 +2579,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetChildrenList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetChildrenList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildrenList)));
         }
 
@@ -1605,10 +2587,12 @@ namespace sib_api_v3_sdk.Api
         /// Gets the list of all reseller&#39;s children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of GetChildrenList</returns>
-        public async System.Threading.Tasks.Task<GetChildrenList> GetResellerChildsAsync ()
+        public async System.Threading.Tasks.Task<GetChildrenList> GetResellerChildsAsync (long? limit = null, long? offset = null)
         {
-             ApiResponse<GetChildrenList> localVarResponse = await GetResellerChildsAsyncWithHttpInfo();
+             ApiResponse<GetChildrenList> localVarResponse = await GetResellerChildsAsyncWithHttpInfo(limit, offset);
              return localVarResponse.Data;
 
         }
@@ -1617,11 +2601,13 @@ namespace sib_api_v3_sdk.Api
         /// Gets the list of all reseller&#39;s children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (GetChildrenList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetChildrenList>> GetResellerChildsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<GetChildrenList>> GetResellerChildsAsyncWithHttpInfo (long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/reseller/children";
+            var localVarPath = "./reseller/children";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1643,6 +2629,8 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1669,8 +2657,163 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetChildrenList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetChildrenList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetChildrenList)));
+        }
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO) It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>GetSsoToken</returns>
+        public GetSsoToken GetSsoToken (string childAuthKey)
+        {
+             ApiResponse<GetSsoToken> localVarResponse = GetSsoTokenWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO) It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>ApiResponse of GetSsoToken</returns>
+        public ApiResponse< GetSsoToken > GetSsoTokenWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetSsoToken");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/auth";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSsoToken", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSsoToken>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetSsoToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSsoToken)));
+        }
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO) It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of GetSsoToken</returns>
+        public async System.Threading.Tasks.Task<GetSsoToken> GetSsoTokenAsync (string childAuthKey)
+        {
+             ApiResponse<GetSsoToken> localVarResponse = await GetSsoTokenAsyncWithHttpInfo(childAuthKey);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get session token to access Sendinblue (SSO) It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern &#x3D;&gt; https:/email.mydomain.com/login/sso?token&#x3D;[token]
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <returns>Task of ApiResponse (GetSsoToken)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetSsoToken>> GetSsoTokenAsyncWithHttpInfo (string childAuthKey)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->GetSsoToken");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/auth";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSsoToken", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSsoToken>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetSsoToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSsoToken)));
         }
 
         /// <summary>
@@ -1702,7 +2845,7 @@ namespace sib_api_v3_sdk.Api
             if (removeCredits == null)
                 throw new ApiException(400, "Missing required parameter 'removeCredits' when calling ResellerApi->RemoveCredits");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/credits/remove";
+            var localVarPath = "./reseller/children/{childAuthKey}/credits/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1759,7 +2902,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<RemainingCreditModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (RemainingCreditModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RemainingCreditModel)));
         }
 
@@ -1793,7 +2936,7 @@ namespace sib_api_v3_sdk.Api
             if (removeCredits == null)
                 throw new ApiException(400, "Missing required parameter 'removeCredits' when calling ResellerApi->RemoveCredits");
 
-            var localVarPath = "/reseller/children/{childAuthKey}/credits/remove";
+            var localVarPath = "./reseller/children/{childAuthKey}/credits/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1850,8 +2993,378 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<RemainingCreditModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (RemainingCreditModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RemainingCreditModel)));
+        }
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns></returns>
+        public void UpdateChildAccountStatus (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
+        {
+             UpdateChildAccountStatusWithHttpInfo(childAuthKey, updateChildAccountStatus);
+        }
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdateChildAccountStatusWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->UpdateChildAccountStatus");
+            // verify the required parameter 'updateChildAccountStatus' is set
+            if (updateChildAccountStatus == null)
+                throw new ApiException(400, "Missing required parameter 'updateChildAccountStatus' when calling ResellerApi->UpdateChildAccountStatus");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/accountStatus";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (updateChildAccountStatus != null && updateChildAccountStatus.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateChildAccountStatus); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateChildAccountStatus; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateChildAccountStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateChildAccountStatusAsync (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
+        {
+             await UpdateChildAccountStatusAsyncWithHttpInfo(childAuthKey, updateChildAccountStatus);
+
+        }
+
+        /// <summary>
+        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="updateChildAccountStatus">values to update in child account status</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildAccountStatusAsyncWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->UpdateChildAccountStatus");
+            // verify the required parameter 'updateChildAccountStatus' is set
+            if (updateChildAccountStatus == null)
+                throw new ApiException(400, "Missing required parameter 'updateChildAccountStatus' when calling ResellerApi->UpdateChildAccountStatus");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/accountStatus";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (updateChildAccountStatus != null && updateChildAccountStatus.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateChildAccountStatus); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateChildAccountStatus; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateChildAccountStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns></returns>
+        public void UpdateChildDomain (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
+        {
+             UpdateChildDomainWithHttpInfo(childAuthKey, domainName, updateChildDomain);
+        }
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdateChildDomainWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->UpdateChildDomain");
+            // verify the required parameter 'domainName' is set
+            if (domainName == null)
+                throw new ApiException(400, "Missing required parameter 'domainName' when calling ResellerApi->UpdateChildDomain");
+            // verify the required parameter 'updateChildDomain' is set
+            if (updateChildDomain == null)
+                throw new ApiException(400, "Missing required parameter 'updateChildDomain' when calling ResellerApi->UpdateChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains/{domainName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (domainName != null) localVarPathParams.Add("domainName", this.Configuration.ApiClient.ParameterToString(domainName)); // path parameter
+            if (updateChildDomain != null && updateChildDomain.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateChildDomain); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateChildDomain; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateChildDomainAsync (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
+        {
+             await UpdateChildDomainAsyncWithHttpInfo(childAuthKey, domainName, updateChildDomain);
+
+        }
+
+        /// <summary>
+        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
+        /// <param name="domainName">Pass the existing domain that needs to be updated</param>
+        /// <param name="updateChildDomain">value to update for sender domain</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
+        {
+            // verify the required parameter 'childAuthKey' is set
+            if (childAuthKey == null)
+                throw new ApiException(400, "Missing required parameter 'childAuthKey' when calling ResellerApi->UpdateChildDomain");
+            // verify the required parameter 'domainName' is set
+            if (domainName == null)
+                throw new ApiException(400, "Missing required parameter 'domainName' when calling ResellerApi->UpdateChildDomain");
+            // verify the required parameter 'updateChildDomain' is set
+            if (updateChildDomain == null)
+                throw new ApiException(400, "Missing required parameter 'updateChildDomain' when calling ResellerApi->UpdateChildDomain");
+
+            var localVarPath = "./reseller/children/{childAuthKey}/domains/{domainName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (childAuthKey != null) localVarPathParams.Add("childAuthKey", this.Configuration.ApiClient.ParameterToString(childAuthKey)); // path parameter
+            if (domainName != null) localVarPathParams.Add("domainName", this.Configuration.ApiClient.ParameterToString(domainName)); // path parameter
+            if (updateChildDomain != null && updateChildDomain.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateChildDomain); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateChildDomain; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateChildDomain", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -1882,7 +3395,7 @@ namespace sib_api_v3_sdk.Api
             if (resellerChild == null)
                 throw new ApiException(400, "Missing required parameter 'resellerChild' when calling ResellerApi->UpdateResellerChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1939,7 +3452,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1972,7 +3485,7 @@ namespace sib_api_v3_sdk.Api
             if (resellerChild == null)
                 throw new ApiException(400, "Missing required parameter 'resellerChild' when calling ResellerApi->UpdateResellerChild");
 
-            var localVarPath = "/reseller/children/{childAuthKey}";
+            var localVarPath = "./reseller/children/{childAuthKey}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2029,7 +3542,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

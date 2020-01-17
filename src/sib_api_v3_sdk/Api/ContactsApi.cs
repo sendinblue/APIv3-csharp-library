@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -247,7 +247,7 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>GetExtendedContactDetails</returns>
         GetExtendedContactDetails GetContactInfo (string email);
 
@@ -258,7 +258,7 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
         ApiResponse<GetExtendedContactDetails> GetContactInfoWithHttpInfo (string email);
         /// <summary>
@@ -831,7 +831,7 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
         System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string email);
 
@@ -842,7 +842,7 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string email);
         /// <summary>
@@ -1319,7 +1319,7 @@ namespace sib_api_v3_sdk.Api
             if (contactEmails == null)
                 throw new ApiException(400, "Missing required parameter 'contactEmails' when calling ContactsApi->AddContactToList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts/add";
+            var localVarPath = "./contacts/lists/{listId}/contacts/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1376,7 +1376,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<PostContactInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (PostContactInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PostContactInfo)));
         }
 
@@ -1410,7 +1410,7 @@ namespace sib_api_v3_sdk.Api
             if (contactEmails == null)
                 throw new ApiException(400, "Missing required parameter 'contactEmails' when calling ContactsApi->AddContactToList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts/add";
+            var localVarPath = "./contacts/lists/{listId}/contacts/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1467,7 +1467,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<PostContactInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (PostContactInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PostContactInfo)));
         }
 
@@ -1504,7 +1504,7 @@ namespace sib_api_v3_sdk.Api
             if (createAttribute == null)
                 throw new ApiException(400, "Missing required parameter 'createAttribute' when calling ContactsApi->CreateAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1562,7 +1562,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1600,7 +1600,7 @@ namespace sib_api_v3_sdk.Api
             if (createAttribute == null)
                 throw new ApiException(400, "Missing required parameter 'createAttribute' when calling ContactsApi->CreateAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1658,7 +1658,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1686,7 +1686,7 @@ namespace sib_api_v3_sdk.Api
             if (createContact == null)
                 throw new ApiException(400, "Missing required parameter 'createContact' when calling ContactsApi->CreateContact");
 
-            var localVarPath = "/contacts";
+            var localVarPath = "./contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1742,7 +1742,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateUpdateContactModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateUpdateContactModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateUpdateContactModel)));
         }
 
@@ -1771,7 +1771,7 @@ namespace sib_api_v3_sdk.Api
             if (createContact == null)
                 throw new ApiException(400, "Missing required parameter 'createContact' when calling ContactsApi->CreateContact");
 
-            var localVarPath = "/contacts";
+            var localVarPath = "./contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1827,7 +1827,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateUpdateContactModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateUpdateContactModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateUpdateContactModel)));
         }
 
@@ -1855,7 +1855,7 @@ namespace sib_api_v3_sdk.Api
             if (createFolder == null)
                 throw new ApiException(400, "Missing required parameter 'createFolder' when calling ContactsApi->CreateFolder");
 
-            var localVarPath = "/contacts/folders";
+            var localVarPath = "./contacts/folders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1911,7 +1911,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -1940,7 +1940,7 @@ namespace sib_api_v3_sdk.Api
             if (createFolder == null)
                 throw new ApiException(400, "Missing required parameter 'createFolder' when calling ContactsApi->CreateFolder");
 
-            var localVarPath = "/contacts/folders";
+            var localVarPath = "./contacts/folders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1996,7 +1996,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -2024,7 +2024,7 @@ namespace sib_api_v3_sdk.Api
             if (createList == null)
                 throw new ApiException(400, "Missing required parameter 'createList' when calling ContactsApi->CreateList");
 
-            var localVarPath = "/contacts/lists";
+            var localVarPath = "./contacts/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2080,7 +2080,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -2109,7 +2109,7 @@ namespace sib_api_v3_sdk.Api
             if (createList == null)
                 throw new ApiException(400, "Missing required parameter 'createList' when calling ContactsApi->CreateList");
 
-            var localVarPath = "/contacts/lists";
+            var localVarPath = "./contacts/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2165,7 +2165,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -2197,7 +2197,7 @@ namespace sib_api_v3_sdk.Api
             if (attributeName == null)
                 throw new ApiException(400, "Missing required parameter 'attributeName' when calling ContactsApi->DeleteAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2247,7 +2247,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2280,7 +2280,7 @@ namespace sib_api_v3_sdk.Api
             if (attributeName == null)
                 throw new ApiException(400, "Missing required parameter 'attributeName' when calling ContactsApi->DeleteAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2330,7 +2330,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2357,7 +2357,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->DeleteContact");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2406,7 +2406,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2434,7 +2434,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->DeleteContact");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2483,7 +2483,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2510,7 +2510,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->DeleteFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2559,7 +2559,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2587,7 +2587,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->DeleteFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2636,7 +2636,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2663,7 +2663,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->DeleteList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2712,7 +2712,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2740,7 +2740,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->DeleteList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2789,7 +2789,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2812,7 +2812,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetAttributes > GetAttributesWithHttpInfo ()
         {
 
-            var localVarPath = "/contacts/attributes";
+            var localVarPath = "./contacts/attributes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2860,7 +2860,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetAttributes>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetAttributes) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetAttributes)));
         }
 
@@ -2884,7 +2884,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetAttributes>> GetAttributesAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/contacts/attributes";
+            var localVarPath = "./contacts/attributes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2932,7 +2932,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetAttributes>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetAttributes) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetAttributes)));
         }
 
@@ -2940,7 +2940,7 @@ namespace sib_api_v3_sdk.Api
         /// Retrieves contact informations 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>GetExtendedContactDetails</returns>
         public GetExtendedContactDetails GetContactInfo (string email)
         {
@@ -2952,7 +2952,7 @@ namespace sib_api_v3_sdk.Api
         /// Retrieves contact informations 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
         public ApiResponse< GetExtendedContactDetails > GetContactInfoWithHttpInfo (string email)
         {
@@ -2960,7 +2960,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactInfo");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3009,7 +3009,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetExtendedContactDetails>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetExtendedContactDetails) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetExtendedContactDetails)));
         }
 
@@ -3017,7 +3017,7 @@ namespace sib_api_v3_sdk.Api
         /// Retrieves contact informations 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
         public async System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string email)
         {
@@ -3030,7 +3030,7 @@ namespace sib_api_v3_sdk.Api
         /// Retrieves contact informations 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string email)
         {
@@ -3038,7 +3038,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactInfo");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3087,7 +3087,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetExtendedContactDetails>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetExtendedContactDetails) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetExtendedContactDetails)));
         }
 
@@ -3115,7 +3115,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactStats");
 
-            var localVarPath = "/contacts/{email}/campaignStats";
+            var localVarPath = "./contacts/{email}/campaignStats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3164,7 +3164,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContactCampaignStats>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContactCampaignStats) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContactCampaignStats)));
         }
 
@@ -3193,7 +3193,7 @@ namespace sib_api_v3_sdk.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactStats");
 
-            var localVarPath = "/contacts/{email}/campaignStats";
+            var localVarPath = "./contacts/{email}/campaignStats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3242,7 +3242,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContactCampaignStats>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContactCampaignStats) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContactCampaignStats)));
         }
 
@@ -3271,7 +3271,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetContacts > GetContactsWithHttpInfo (long? limit = null, long? offset = null, DateTime? modifiedSince = null)
         {
 
-            var localVarPath = "/contacts";
+            var localVarPath = "./contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3322,7 +3322,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContacts>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContacts)));
         }
 
@@ -3352,7 +3352,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsAsyncWithHttpInfo (long? limit = null, long? offset = null, DateTime? modifiedSince = null)
         {
 
-            var localVarPath = "/contacts";
+            var localVarPath = "./contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3403,7 +3403,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContacts>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContacts)));
         }
 
@@ -3437,7 +3437,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->GetContactsFromList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts";
+            var localVarPath = "./contacts/lists/{listId}/contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3489,7 +3489,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContacts>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContacts)));
         }
 
@@ -3524,7 +3524,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->GetContactsFromList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts";
+            var localVarPath = "./contacts/lists/{listId}/contacts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3576,7 +3576,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetContacts>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetContacts)));
         }
 
@@ -3604,7 +3604,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->GetFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3653,7 +3653,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolder>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolder) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolder)));
         }
 
@@ -3682,7 +3682,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->GetFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3731,7 +3731,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolder>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolder) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolder)));
         }
 
@@ -3763,7 +3763,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->GetFolderLists");
 
-            var localVarPath = "/contacts/folders/{folderId}/lists";
+            var localVarPath = "./contacts/folders/{folderId}/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3814,7 +3814,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolderLists>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolderLists) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolderLists)));
         }
 
@@ -3847,7 +3847,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId == null)
                 throw new ApiException(400, "Missing required parameter 'folderId' when calling ContactsApi->GetFolderLists");
 
-            var localVarPath = "/contacts/folders/{folderId}/lists";
+            var localVarPath = "./contacts/folders/{folderId}/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3898,7 +3898,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolderLists>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolderLists) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolderLists)));
         }
 
@@ -3931,7 +3931,7 @@ namespace sib_api_v3_sdk.Api
             if (offset == null)
                 throw new ApiException(400, "Missing required parameter 'offset' when calling ContactsApi->GetFolders");
 
-            var localVarPath = "/contacts/folders";
+            var localVarPath = "./contacts/folders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3981,7 +3981,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolders>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolders) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolders)));
         }
 
@@ -4015,7 +4015,7 @@ namespace sib_api_v3_sdk.Api
             if (offset == null)
                 throw new ApiException(400, "Missing required parameter 'offset' when calling ContactsApi->GetFolders");
 
-            var localVarPath = "/contacts/folders";
+            var localVarPath = "./contacts/folders";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4065,7 +4065,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetFolders>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetFolders) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetFolders)));
         }
 
@@ -4093,7 +4093,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->GetList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4142,7 +4142,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetExtendedList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetExtendedList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetExtendedList)));
         }
 
@@ -4171,7 +4171,7 @@ namespace sib_api_v3_sdk.Api
             if (listId == null)
                 throw new ApiException(400, "Missing required parameter 'listId' when calling ContactsApi->GetList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4220,7 +4220,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetExtendedList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetExtendedList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetExtendedList)));
         }
 
@@ -4247,7 +4247,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetLists > GetListsWithHttpInfo (long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/contacts/lists";
+            var localVarPath = "./contacts/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4297,7 +4297,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetLists>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetLists) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetLists)));
         }
 
@@ -4325,7 +4325,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetLists>> GetListsAsyncWithHttpInfo (long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/contacts/lists";
+            var localVarPath = "./contacts/lists";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4375,7 +4375,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetLists>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetLists) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetLists)));
         }
 
@@ -4403,7 +4403,7 @@ namespace sib_api_v3_sdk.Api
             if (requestContactImport == null)
                 throw new ApiException(400, "Missing required parameter 'requestContactImport' when calling ContactsApi->ImportContacts");
 
-            var localVarPath = "/contacts/import";
+            var localVarPath = "./contacts/import";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4459,7 +4459,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -4488,7 +4488,7 @@ namespace sib_api_v3_sdk.Api
             if (requestContactImport == null)
                 throw new ApiException(400, "Missing required parameter 'requestContactImport' when calling ContactsApi->ImportContacts");
 
-            var localVarPath = "/contacts/import";
+            var localVarPath = "./contacts/import";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4544,7 +4544,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -4577,7 +4577,7 @@ namespace sib_api_v3_sdk.Api
             if (contactEmails == null)
                 throw new ApiException(400, "Missing required parameter 'contactEmails' when calling ContactsApi->RemoveContactFromList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts/remove";
+            var localVarPath = "./contacts/lists/{listId}/contacts/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4634,7 +4634,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<PostContactInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (PostContactInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PostContactInfo)));
         }
 
@@ -4668,7 +4668,7 @@ namespace sib_api_v3_sdk.Api
             if (contactEmails == null)
                 throw new ApiException(400, "Missing required parameter 'contactEmails' when calling ContactsApi->RemoveContactFromList");
 
-            var localVarPath = "/contacts/lists/{listId}/contacts/remove";
+            var localVarPath = "./contacts/lists/{listId}/contacts/remove";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4725,7 +4725,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<PostContactInfo>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (PostContactInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PostContactInfo)));
         }
 
@@ -4753,7 +4753,7 @@ namespace sib_api_v3_sdk.Api
             if (requestContactExport == null)
                 throw new ApiException(400, "Missing required parameter 'requestContactExport' when calling ContactsApi->RequestContactExport");
 
-            var localVarPath = "/contacts/export";
+            var localVarPath = "./contacts/export";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4809,7 +4809,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -4838,7 +4838,7 @@ namespace sib_api_v3_sdk.Api
             if (requestContactExport == null)
                 throw new ApiException(400, "Missing required parameter 'requestContactExport' when calling ContactsApi->RequestContactExport");
 
-            var localVarPath = "/contacts/export";
+            var localVarPath = "./contacts/export";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4894,7 +4894,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -4931,7 +4931,7 @@ namespace sib_api_v3_sdk.Api
             if (updateAttribute == null)
                 throw new ApiException(400, "Missing required parameter 'updateAttribute' when calling ContactsApi->UpdateAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4989,7 +4989,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5027,7 +5027,7 @@ namespace sib_api_v3_sdk.Api
             if (updateAttribute == null)
                 throw new ApiException(400, "Missing required parameter 'updateAttribute' when calling ContactsApi->UpdateAttribute");
 
-            var localVarPath = "/contacts/attributes/{attributeCategory}/{attributeName}";
+            var localVarPath = "./contacts/attributes/{attributeCategory}/{attributeName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5085,7 +5085,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5117,7 +5117,7 @@ namespace sib_api_v3_sdk.Api
             if (updateContact == null)
                 throw new ApiException(400, "Missing required parameter 'updateContact' when calling ContactsApi->UpdateContact");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5174,7 +5174,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5207,7 +5207,7 @@ namespace sib_api_v3_sdk.Api
             if (updateContact == null)
                 throw new ApiException(400, "Missing required parameter 'updateContact' when calling ContactsApi->UpdateContact");
 
-            var localVarPath = "/contacts/{email}";
+            var localVarPath = "./contacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5264,7 +5264,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5296,7 +5296,7 @@ namespace sib_api_v3_sdk.Api
             if (updateFolder == null)
                 throw new ApiException(400, "Missing required parameter 'updateFolder' when calling ContactsApi->UpdateFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5353,7 +5353,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5386,7 +5386,7 @@ namespace sib_api_v3_sdk.Api
             if (updateFolder == null)
                 throw new ApiException(400, "Missing required parameter 'updateFolder' when calling ContactsApi->UpdateFolder");
 
-            var localVarPath = "/contacts/folders/{folderId}";
+            var localVarPath = "./contacts/folders/{folderId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5443,7 +5443,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5475,7 +5475,7 @@ namespace sib_api_v3_sdk.Api
             if (updateList == null)
                 throw new ApiException(400, "Missing required parameter 'updateList' when calling ContactsApi->UpdateList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5532,7 +5532,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -5565,7 +5565,7 @@ namespace sib_api_v3_sdk.Api
             if (updateList == null)
                 throw new ApiException(400, "Missing required parameter 'updateList' when calling ContactsApi->UpdateList");
 
-            var localVarPath = "/contacts/lists/{listId}";
+            var localVarPath = "./contacts/lists/{listId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5622,7 +5622,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

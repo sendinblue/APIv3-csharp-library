@@ -741,7 +741,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var email = email_example;  // string | Email (urlencoded) of the contact
+            var email = email_example;  // string | Email (urlencoded) of the contact OR its SMS attribute value
 
             try
             {
@@ -762,7 +762,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**| Email (urlencoded) of the contact | 
+ **email** | **string**| Email (urlencoded) of the contact OR its SMS attribute value | 
 
 ### Return type
 

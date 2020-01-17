@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -381,7 +381,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetSmsEventReport > GetSmsEventsWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/events";
+            var localVarPath = "./transactionalSMS/statistics/events";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -437,7 +437,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsEventReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsEventReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsEventReport)));
         }
 
@@ -477,7 +477,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetSmsEventReport>> GetSmsEventsAsyncWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/events";
+            var localVarPath = "./transactionalSMS/statistics/events";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -533,7 +533,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsEventReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsEventReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsEventReport)));
         }
 
@@ -564,7 +564,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetTransacAggregatedSmsReport > GetTransacAggregatedSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/aggregatedReport";
+            var localVarPath = "./transactionalSMS/statistics/aggregatedReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -616,7 +616,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetTransacAggregatedSmsReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetTransacAggregatedSmsReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacAggregatedSmsReport)));
         }
 
@@ -648,7 +648,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetTransacAggregatedSmsReport>> GetTransacAggregatedSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/aggregatedReport";
+            var localVarPath = "./transactionalSMS/statistics/aggregatedReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -700,7 +700,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetTransacAggregatedSmsReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetTransacAggregatedSmsReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacAggregatedSmsReport)));
         }
 
@@ -731,7 +731,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetTransacSmsReport > GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/reports";
+            var localVarPath = "./transactionalSMS/statistics/reports";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -783,7 +783,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetTransacSmsReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetTransacSmsReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacSmsReport)));
         }
 
@@ -815,7 +815,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/transactionalSMS/statistics/reports";
+            var localVarPath = "./transactionalSMS/statistics/reports";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -867,7 +867,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetTransacSmsReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetTransacSmsReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacSmsReport)));
         }
 
@@ -895,7 +895,7 @@ namespace sib_api_v3_sdk.Api
             if (sendTransacSms == null)
                 throw new ApiException(400, "Missing required parameter 'sendTransacSms' when calling TransactionalSMSApi->SendTransacSms");
 
-            var localVarPath = "/transactionalSMS/sms";
+            var localVarPath = "./transactionalSMS/sms";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -951,7 +951,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<SendSms>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SendSms) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendSms)));
         }
 
@@ -980,7 +980,7 @@ namespace sib_api_v3_sdk.Api
             if (sendTransacSms == null)
                 throw new ApiException(400, "Missing required parameter 'sendTransacSms' when calling TransactionalSMSApi->SendTransacSms");
 
-            var localVarPath = "/transactionalSMS/sms";
+            var localVarPath = "./transactionalSMS/sms";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1036,7 +1036,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<SendSms>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SendSms) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendSms)));
         }
 

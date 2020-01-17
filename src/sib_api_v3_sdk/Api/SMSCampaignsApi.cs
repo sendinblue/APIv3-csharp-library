@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -606,7 +606,7 @@ namespace sib_api_v3_sdk.Api
             if (createSmsCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'createSmsCampaign' when calling SMSCampaignsApi->CreateSmsCampaign");
 
-            var localVarPath = "/smsCampaigns";
+            var localVarPath = "./smsCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -662,7 +662,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -691,7 +691,7 @@ namespace sib_api_v3_sdk.Api
             if (createSmsCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'createSmsCampaign' when calling SMSCampaignsApi->CreateSmsCampaign");
 
-            var localVarPath = "/smsCampaigns";
+            var localVarPath = "./smsCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -747,7 +747,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -774,7 +774,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->DeleteSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -823,7 +823,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -851,7 +851,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->DeleteSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -900,7 +900,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -928,7 +928,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->GetSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -977,7 +977,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsCampaign>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsCampaign) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsCampaign)));
         }
 
@@ -1006,7 +1006,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->GetSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1055,7 +1055,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsCampaign>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsCampaign) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsCampaign)));
         }
 
@@ -1088,7 +1088,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetSmsCampaigns > GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/smsCampaigns";
+            var localVarPath = "./smsCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1141,7 +1141,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsCampaigns>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsCampaigns) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsCampaigns)));
         }
 
@@ -1175,7 +1175,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/smsCampaigns";
+            var localVarPath = "./smsCampaigns";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1228,7 +1228,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmsCampaigns>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmsCampaigns) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmsCampaigns)));
         }
 
@@ -1258,7 +1258,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->RequestSmsRecipientExport");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/exportRecipients";
+            var localVarPath = "./smsCampaigns/{campaignId}/exportRecipients";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1315,7 +1315,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -1346,7 +1346,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->RequestSmsRecipientExport");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/exportRecipients";
+            var localVarPath = "./smsCampaigns/{campaignId}/exportRecipients";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1403,7 +1403,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
         }
 
@@ -1430,7 +1430,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->SendSmsCampaignNow");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendNow";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendNow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1479,7 +1479,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1507,7 +1507,7 @@ namespace sib_api_v3_sdk.Api
             if (campaignId == null)
                 throw new ApiException(400, "Missing required parameter 'campaignId' when calling SMSCampaignsApi->SendSmsCampaignNow");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendNow";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendNow";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1556,7 +1556,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1588,7 +1588,7 @@ namespace sib_api_v3_sdk.Api
             if (sendReport == null)
                 throw new ApiException(400, "Missing required parameter 'sendReport' when calling SMSCampaignsApi->SendSmsReport");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendReport";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1645,7 +1645,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1678,7 +1678,7 @@ namespace sib_api_v3_sdk.Api
             if (sendReport == null)
                 throw new ApiException(400, "Missing required parameter 'sendReport' when calling SMSCampaignsApi->SendSmsReport");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendReport";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1735,7 +1735,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1767,7 +1767,7 @@ namespace sib_api_v3_sdk.Api
             if (phoneNumber == null)
                 throw new ApiException(400, "Missing required parameter 'phoneNumber' when calling SMSCampaignsApi->SendTestSms");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendTest";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1824,7 +1824,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1857,7 +1857,7 @@ namespace sib_api_v3_sdk.Api
             if (phoneNumber == null)
                 throw new ApiException(400, "Missing required parameter 'phoneNumber' when calling SMSCampaignsApi->SendTestSms");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/sendTest";
+            var localVarPath = "./smsCampaigns/{campaignId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1914,7 +1914,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -1946,7 +1946,7 @@ namespace sib_api_v3_sdk.Api
             if (updateSmsCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'updateSmsCampaign' when calling SMSCampaignsApi->UpdateSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2003,7 +2003,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2036,7 +2036,7 @@ namespace sib_api_v3_sdk.Api
             if (updateSmsCampaign == null)
                 throw new ApiException(400, "Missing required parameter 'updateSmsCampaign' when calling SMSCampaignsApi->UpdateSmsCampaign");
 
-            var localVarPath = "/smsCampaigns/{campaignId}";
+            var localVarPath = "./smsCampaigns/{campaignId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2093,7 +2093,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2125,7 +2125,7 @@ namespace sib_api_v3_sdk.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling SMSCampaignsApi->UpdateSmsCampaignStatus");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/status";
+            var localVarPath = "./smsCampaigns/{campaignId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2182,7 +2182,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2215,7 +2215,7 @@ namespace sib_api_v3_sdk.Api
             if (status == null)
                 throw new ApiException(400, "Missing required parameter 'status' when calling SMSCampaignsApi->UpdateSmsCampaignStatus");
 
-            var localVarPath = "/smsCampaigns/{campaignId}/status";
+            var localVarPath = "./smsCampaigns/{campaignId}/status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2272,7 +2272,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

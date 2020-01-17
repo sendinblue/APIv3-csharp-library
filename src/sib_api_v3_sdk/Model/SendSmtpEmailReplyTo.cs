@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,7 +26,7 @@ namespace sib_api_v3_sdk.Model
     /// Email (required), along with name (optional), on which transactional mail recipients will be able to reply back. For example, {&#39;email&#39;:&#39;ann6533@example.com&#39;, &#39;name&#39;:&#39;Ann&#39;}.
     /// </summary>
     [DataContract]
-    public partial class SendSmtpEmailReplyTo :  IEquatable<SendSmtpEmailReplyTo>, IValidatableObject
+    public partial class SendSmtpEmailReplyTo :  IEquatable<SendSmtpEmailReplyTo>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo" /> class.
@@ -39,7 +37,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo" /> class.
         /// </summary>
         /// <param name="email">Email address in reply to (required).</param>
-        /// <param name="name">Name in reply to.</param>
+        /// <param name="name">Name in reply to. Maximum allowed characters are 70..</param>
         public SendSmtpEmailReplyTo(string email = default(string), string name = default(string))
         {
             // to ensure "email" is required (not null)
@@ -62,9 +60,9 @@ namespace sib_api_v3_sdk.Model
         public string Email { get; set; }
 
         /// <summary>
-        /// Name in reply to
+        /// Name in reply to. Maximum allowed characters are 70.
         /// </summary>
-        /// <value>Name in reply to</value>
+        /// <value>Name in reply to. Maximum allowed characters are 70.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
@@ -139,16 +137,6 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

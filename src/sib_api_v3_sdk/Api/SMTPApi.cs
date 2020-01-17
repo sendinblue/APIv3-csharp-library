@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
@@ -25,24 +25,24 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create an smtp template
+        /// Create a transactional email template
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>CreateModel</returns>
         CreateModel CreateSmtpTemplate (CreateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Create an smtp template
+        /// Create a transactional email template
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>ApiResponse of CreateModel</returns>
         ApiResponse<CreateModel> CreateSmtpTemplateWithHttpInfo (CreateSmtpTemplate smtpTemplate);
         /// <summary>
@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHardbouncesWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
-        /// Delete an inactive smtp template
+        /// Delete an inactive transactional email template
         /// </summary>
         /// <remarks>
         /// 
@@ -78,7 +78,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteSmtpTemplate (long? templateId);
 
         /// <summary>
-        /// Delete an inactive smtp template
+        /// Delete an inactive transactional email template
         /// </summary>
         /// <remarks>
         /// 
@@ -88,7 +88,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSmtpTemplateWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time
+        /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
         /// 
@@ -102,7 +102,7 @@ namespace sib_api_v3_sdk.Api
         GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, int? days = null, string tag = null);
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time
+        /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
         /// 
@@ -115,7 +115,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetAggregatedReport</returns>
         ApiResponse<GetAggregatedReport> GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events)
+        /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -135,7 +135,7 @@ namespace sib_api_v3_sdk.Api
         GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null);
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events)
+        /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -154,13 +154,13 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetEmailEventReport</returns>
         ApiResponse<GetEmailEventReport> GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null);
         /// <summary>
-        /// Get your SMTP activity aggregated per day
+        /// Get your transactional email activity aggregated per day
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -170,13 +170,13 @@ namespace sib_api_v3_sdk.Api
         GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null);
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day
+        /// Get your transactional email activity aggregated per day
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -206,7 +206,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetSmtpTemplateOverview</returns>
         ApiResponse<GetSmtpTemplateOverview> GetSmtpTemplateWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get the list of SMTP templates
+        /// Get the list of transactional email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -219,7 +219,7 @@ namespace sib_api_v3_sdk.Api
         GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the list of SMTP templates
+        /// Get the list of transactional email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -230,6 +230,85 @@ namespace sib_api_v3_sdk.Api
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>ApiResponse of GetSmtpTemplates</returns>
         ApiResponse<GetSmtpTemplates> GetSmtpTemplatesWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null);
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>GetTransacBlockedContacts</returns>
+        GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null);
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>ApiResponse of GetTransacBlockedContacts</returns>
+        ApiResponse<GetTransacBlockedContacts> GetTransacBlockedContactsWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null);
+        /// <summary>
+        /// Get the personalized content of a sent transactional email
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>GetTransacEmailContent</returns>
+        GetTransacEmailContent GetTransacEmailContent (string uuid);
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>ApiResponse of GetTransacEmailContent</returns>
+        ApiResponse<GetTransacEmailContent> GetTransacEmailContentWithHttpInfo (string uuid);
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>GetTransacEmailsList</returns>
+        GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>ApiResponse of GetTransacEmailsList</returns>
+        ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Send a template
         /// </summary>
@@ -298,49 +377,70 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreateSmtpEmail</returns>
         ApiResponse<CreateSmtpEmail> SendTransacEmailWithHttpInfo (SendSmtpEmail sendSmtpEmail);
         /// <summary>
-        /// Updates an smtp templates
+        /// Unblock or resubscribe a transactional contact
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns></returns>
+        void SmtpBlockedContactsEmailDelete (string email);
+
+        /// <summary>
+        /// Unblock or resubscribe a transactional contact
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> SmtpBlockedContactsEmailDeleteWithHttpInfo (string email);
+        /// <summary>
+        /// Updates a transactional email templates
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns></returns>
         void UpdateSmtpTemplate (long? templateId, UpdateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Updates an smtp templates
+        /// Updates a transactional email templates
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateSmtpTemplateWithHttpInfo (long? templateId, UpdateSmtpTemplate smtpTemplate);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create an smtp template
+        /// Create a transactional email template
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of CreateModel</returns>
         System.Threading.Tasks.Task<CreateModel> CreateSmtpTemplateAsync (CreateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Create an smtp template
+        /// Create a transactional email template
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of ApiResponse (CreateModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateModel>> CreateSmtpTemplateAsyncWithHttpInfo (CreateSmtpTemplate smtpTemplate);
         /// <summary>
@@ -365,7 +465,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteHardbouncesAsyncWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
-        /// Delete an inactive smtp template
+        /// Delete an inactive transactional email template
         /// </summary>
         /// <remarks>
         /// 
@@ -376,7 +476,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteSmtpTemplateAsync (long? templateId);
 
         /// <summary>
-        /// Delete an inactive smtp template
+        /// Delete an inactive transactional email template
         /// </summary>
         /// <remarks>
         /// 
@@ -386,7 +486,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSmtpTemplateAsyncWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time
+        /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
         /// 
@@ -400,7 +500,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetAggregatedReport> GetAggregatedSmtpReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null);
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time
+        /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
         /// 
@@ -413,7 +513,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetAggregatedReport)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events)
+        /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -433,7 +533,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetEmailEventReport> GetEmailEventReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null);
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events)
+        /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -452,13 +552,13 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetEmailEventReport)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null);
         /// <summary>
-        /// Get your SMTP activity aggregated per day
+        /// Get your transactional email activity aggregated per day
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -468,13 +568,13 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetReports> GetSmtpReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null);
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day
+        /// Get your transactional email activity aggregated per day
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -504,7 +604,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetSmtpTemplateOverview)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplateOverview>> GetSmtpTemplateAsyncWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get the list of SMTP templates
+        /// Get the list of transactional email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -517,7 +617,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetSmtpTemplates> GetSmtpTemplatesAsync (bool? templateStatus = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the list of SMTP templates
+        /// Get the list of transactional email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -528,6 +628,85 @@ namespace sib_api_v3_sdk.Api
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (GetSmtpTemplates)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplates>> GetSmtpTemplatesAsyncWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null);
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>Task of GetTransacBlockedContacts</returns>
+        System.Threading.Tasks.Task<GetTransacBlockedContacts> GetTransacBlockedContactsAsync (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null);
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>Task of ApiResponse (GetTransacBlockedContacts)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetTransacBlockedContacts>> GetTransacBlockedContactsAsyncWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null);
+        /// <summary>
+        /// Get the personalized content of a sent transactional email
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>Task of GetTransacEmailContent</returns>
+        System.Threading.Tasks.Task<GetTransacEmailContent> GetTransacEmailContentAsync (string uuid);
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>Task of ApiResponse (GetTransacEmailContent)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailContent>> GetTransacEmailContentAsyncWithHttpInfo (string uuid);
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of GetTransacEmailsList</returns>
+        System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Send a template
         /// </summary>
@@ -596,26 +775,47 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreateSmtpEmail)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateSmtpEmail>> SendTransacEmailAsyncWithHttpInfo (SendSmtpEmail sendSmtpEmail);
         /// <summary>
-        /// Updates an smtp templates
+        /// Unblock or resubscribe a transactional contact
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task SmtpBlockedContactsEmailDeleteAsync (string email);
+
+        /// <summary>
+        /// Unblock or resubscribe a transactional contact
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> SmtpBlockedContactsEmailDeleteAsyncWithHttpInfo (string email);
+        /// <summary>
+        /// Updates a transactional email templates
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task UpdateSmtpTemplateAsync (long? templateId, UpdateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Updates an smtp templates
+        /// Updates a transactional email templates
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSmtpTemplateAsyncWithHttpInfo (long? templateId, UpdateSmtpTemplate smtpTemplate);
         #endregion Asynchronous Operations
@@ -719,10 +919,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create an smtp template 
+        /// Create a transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>CreateModel</returns>
         public CreateModel CreateSmtpTemplate (CreateSmtpTemplate smtpTemplate)
         {
@@ -731,10 +931,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create an smtp template 
+        /// Create a transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>ApiResponse of CreateModel</returns>
         public ApiResponse< CreateModel > CreateSmtpTemplateWithHttpInfo (CreateSmtpTemplate smtpTemplate)
         {
@@ -742,7 +942,7 @@ namespace sib_api_v3_sdk.Api
             if (smtpTemplate == null)
                 throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->CreateSmtpTemplate");
 
-            var localVarPath = "/smtp/templates";
+            var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -798,15 +998,15 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
         /// <summary>
-        /// Create an smtp template 
+        /// Create a transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of CreateModel</returns>
         public async System.Threading.Tasks.Task<CreateModel> CreateSmtpTemplateAsync (CreateSmtpTemplate smtpTemplate)
         {
@@ -816,10 +1016,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create an smtp template 
+        /// Create a transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of ApiResponse (CreateModel)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<CreateModel>> CreateSmtpTemplateAsyncWithHttpInfo (CreateSmtpTemplate smtpTemplate)
         {
@@ -827,7 +1027,7 @@ namespace sib_api_v3_sdk.Api
             if (smtpTemplate == null)
                 throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->CreateSmtpTemplate");
 
-            var localVarPath = "/smtp/templates";
+            var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -883,7 +1083,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
         }
 
@@ -907,7 +1107,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse<Object> DeleteHardbouncesWithHttpInfo (DeleteHardbounces deleteHardbounces = null)
         {
 
-            var localVarPath = "/smtp/deleteHardbounces";
+            var localVarPath = "./smtp/deleteHardbounces";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -963,7 +1163,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -988,7 +1188,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteHardbouncesAsyncWithHttpInfo (DeleteHardbounces deleteHardbounces = null)
         {
 
-            var localVarPath = "/smtp/deleteHardbounces";
+            var localVarPath = "./smtp/deleteHardbounces";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1044,12 +1244,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
         /// <summary>
-        /// Delete an inactive smtp template 
+        /// Delete an inactive transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1060,7 +1260,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive smtp template 
+        /// Delete an inactive transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1071,7 +1271,7 @@ namespace sib_api_v3_sdk.Api
             if (templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->DeleteSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1120,12 +1320,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
         /// <summary>
-        /// Delete an inactive smtp template 
+        /// Delete an inactive transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1137,7 +1337,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive smtp template 
+        /// Delete an inactive transactional email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1148,7 +1348,7 @@ namespace sib_api_v3_sdk.Api
             if (templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->DeleteSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1197,12 +1397,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1217,7 +1417,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1228,7 +1428,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetAggregatedReport > GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/smtp/statistics/aggregatedReport";
+            var localVarPath = "./smtp/statistics/aggregatedReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1280,12 +1480,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetAggregatedReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetAggregatedReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetAggregatedReport)));
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1301,7 +1501,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1312,7 +1512,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/smtp/statistics/aggregatedReport";
+            var localVarPath = "./smtp/statistics/aggregatedReport";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1364,12 +1564,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetAggregatedReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetAggregatedReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetAggregatedReport)));
         }
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -1390,7 +1590,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -1407,7 +1607,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetEmailEventReport > GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null)
         {
 
-            var localVarPath = "/smtp/statistics/events";
+            var localVarPath = "./smtp/statistics/events";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1465,12 +1665,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailEventReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailEventReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailEventReport)));
         }
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -1492,7 +1692,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your SMTP activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -1509,7 +1709,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null)
         {
 
-            var localVarPath = "/smtp/statistics/events";
+            var localVarPath = "./smtp/statistics/events";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1567,15 +1767,15 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetEmailEventReport>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailEventReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailEventReport)));
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day 
+        /// Get your transactional email activity aggregated per day 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -1589,10 +1789,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day 
+        /// Get your transactional email activity aggregated per day 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -1602,7 +1802,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetReports > GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/smtp/statistics/reports";
+            var localVarPath = "./smtp/statistics/reports";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1656,15 +1856,15 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetReports>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetReports) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetReports)));
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day 
+        /// Get your transactional email activity aggregated per day 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -1679,10 +1879,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your SMTP activity aggregated per day 
+        /// Get your transactional email activity aggregated per day 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
@@ -1692,7 +1892,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null)
         {
 
-            var localVarPath = "/smtp/statistics/reports";
+            var localVarPath = "./smtp/statistics/reports";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1746,7 +1946,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetReports>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetReports) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetReports)));
         }
 
@@ -1774,7 +1974,7 @@ namespace sib_api_v3_sdk.Api
             if (templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->GetSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1823,7 +2023,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmtpTemplateOverview>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmtpTemplateOverview) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmtpTemplateOverview)));
         }
 
@@ -1852,7 +2052,7 @@ namespace sib_api_v3_sdk.Api
             if (templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->GetSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1901,12 +2101,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmtpTemplateOverview>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmtpTemplateOverview) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmtpTemplateOverview)));
         }
 
         /// <summary>
-        /// Get the list of SMTP templates 
+        /// Get the list of transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -1920,7 +2120,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of SMTP templates 
+        /// Get the list of transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -1930,7 +2130,7 @@ namespace sib_api_v3_sdk.Api
         public ApiResponse< GetSmtpTemplates > GetSmtpTemplatesWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/smtp/templates";
+            var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1981,12 +2181,12 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmtpTemplates>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmtpTemplates) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmtpTemplates)));
         }
 
         /// <summary>
-        /// Get the list of SMTP templates 
+        /// Get the list of transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2001,7 +2201,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of SMTP templates 
+        /// Get the list of transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2011,7 +2211,7 @@ namespace sib_api_v3_sdk.Api
         public async System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplates>> GetSmtpTemplatesAsyncWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null)
         {
 
-            var localVarPath = "/smtp/templates";
+            var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2062,8 +2262,509 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<GetSmtpTemplates>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetSmtpTemplates) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSmtpTemplates)));
+        }
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>GetTransacBlockedContacts</returns>
+        public GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+        {
+             ApiResponse<GetTransacBlockedContacts> localVarResponse = GetTransacBlockedContactsWithHttpInfo(startDate, endDate, limit, offset, senders);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>ApiResponse of GetTransacBlockedContacts</returns>
+        public ApiResponse< GetTransacBlockedContacts > GetTransacBlockedContactsWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+        {
+
+            var localVarPath = "./smtp/blockedContacts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (senders != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "senders", senders)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacBlockedContacts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacBlockedContacts>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacBlockedContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacBlockedContacts)));
+        }
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>Task of GetTransacBlockedContacts</returns>
+        public async System.Threading.Tasks.Task<GetTransacBlockedContacts> GetTransacBlockedContactsAsync (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+        {
+             ApiResponse<GetTransacBlockedContacts> localVarResponse = await GetTransacBlockedContactsAsyncWithHttpInfo(startDate, endDate, limit, offset, senders);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the list of blocked or unsubscribed transactional contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
+        /// <returns>Task of ApiResponse (GetTransacBlockedContacts)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacBlockedContacts>> GetTransacBlockedContactsAsyncWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+        {
+
+            var localVarPath = "./smtp/blockedContacts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (senders != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "senders", senders)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacBlockedContacts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacBlockedContacts>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacBlockedContacts) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacBlockedContacts)));
+        }
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>GetTransacEmailContent</returns>
+        public GetTransacEmailContent GetTransacEmailContent (string uuid)
+        {
+             ApiResponse<GetTransacEmailContent> localVarResponse = GetTransacEmailContentWithHttpInfo(uuid);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>ApiResponse of GetTransacEmailContent</returns>
+        public ApiResponse< GetTransacEmailContent > GetTransacEmailContentWithHttpInfo (string uuid)
+        {
+            // verify the required parameter 'uuid' is set
+            if (uuid == null)
+                throw new ApiException(400, "Missing required parameter 'uuid' when calling SMTPApi->GetTransacEmailContent");
+
+            var localVarPath = "./smtp/emails/{uuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uuid != null) localVarPathParams.Add("uuid", this.Configuration.ApiClient.ParameterToString(uuid)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacEmailContent", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacEmailContent>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacEmailContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacEmailContent)));
+        }
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>Task of GetTransacEmailContent</returns>
+        public async System.Threading.Tasks.Task<GetTransacEmailContent> GetTransacEmailContentAsync (string uuid)
+        {
+             ApiResponse<GetTransacEmailContent> localVarResponse = await GetTransacEmailContentAsyncWithHttpInfo(uuid);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the personalized content of a sent transactional email 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">Unique id of the transactional email that has been sent to a particular contact</param>
+        /// <returns>Task of ApiResponse (GetTransacEmailContent)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailContent>> GetTransacEmailContentAsyncWithHttpInfo (string uuid)
+        {
+            // verify the required parameter 'uuid' is set
+            if (uuid == null)
+                throw new ApiException(400, "Missing required parameter 'uuid' when calling SMTPApi->GetTransacEmailContent");
+
+            var localVarPath = "./smtp/emails/{uuid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uuid != null) localVarPathParams.Add("uuid", this.Configuration.ApiClient.ParameterToString(uuid)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacEmailContent", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacEmailContent>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacEmailContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacEmailContent)));
+        }
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>GetTransacEmailsList</returns>
+        public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        {
+             ApiResponse<GetTransacEmailsList> localVarResponse = GetTransacEmailsListWithHttpInfo(email, templateId, messageId, startDate, endDate);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>ApiResponse of GetTransacEmailsList</returns>
+        public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        {
+
+            var localVarPath = "./smtp/emails";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (templateId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "templateId", templateId)); // query parameter
+            if (messageId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "messageId", messageId)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacEmailsList", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacEmailsList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacEmailsList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacEmailsList)));
+        }
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of GetTransacEmailsList</returns>
+        public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        {
+             ApiResponse<GetTransacEmailsList> localVarResponse = await GetTransacEmailsListAsyncWithHttpInfo(email, templateId, messageId, startDate, endDate);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the list of transactional emails on the basis of allowed filters This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional)</param>
+        /// <param name="templateId">Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional)</param>
+        /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        {
+
+            var localVarPath = "./smtp/emails";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (templateId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "templateId", templateId)); // query parameter
+            if (messageId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "messageId", messageId)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTransacEmailsList", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetTransacEmailsList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetTransacEmailsList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacEmailsList)));
         }
 
         /// <summary>
@@ -2095,7 +2796,7 @@ namespace sib_api_v3_sdk.Api
             if (sendEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendEmail' when calling SMTPApi->SendTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}/send";
+            var localVarPath = "./smtp/templates/{templateId}/send";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2152,7 +2853,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<SendTemplateEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SendTemplateEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendTemplateEmail)));
         }
 
@@ -2186,7 +2887,7 @@ namespace sib_api_v3_sdk.Api
             if (sendEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendEmail' when calling SMTPApi->SendTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}/send";
+            var localVarPath = "./smtp/templates/{templateId}/send";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2243,7 +2944,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<SendTemplateEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SendTemplateEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendTemplateEmail)));
         }
 
@@ -2275,7 +2976,7 @@ namespace sib_api_v3_sdk.Api
             if (sendTestEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling SMTPApi->SendTestTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}/sendTest";
+            var localVarPath = "./smtp/templates/{templateId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2332,7 +3033,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2365,7 +3066,7 @@ namespace sib_api_v3_sdk.Api
             if (sendTestEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling SMTPApi->SendTestTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}/sendTest";
+            var localVarPath = "./smtp/templates/{templateId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2422,7 +3123,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -2450,7 +3151,7 @@ namespace sib_api_v3_sdk.Api
             if (sendSmtpEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling SMTPApi->SendTransacEmail");
 
-            var localVarPath = "/smtp/email";
+            var localVarPath = "./smtp/email";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2506,7 +3207,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateSmtpEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateSmtpEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSmtpEmail)));
         }
 
@@ -2535,7 +3236,7 @@ namespace sib_api_v3_sdk.Api
             if (sendSmtpEmail == null)
                 throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling SMTPApi->SendTransacEmail");
 
-            var localVarPath = "/smtp/email";
+            var localVarPath = "./smtp/email";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2591,16 +3292,169 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<CreateSmtpEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateSmtpEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSmtpEmail)));
         }
 
         /// <summary>
-        /// Updates an smtp templates 
+        /// Unblock or resubscribe a transactional contact 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns></returns>
+        public void SmtpBlockedContactsEmailDelete (string email)
+        {
+             SmtpBlockedContactsEmailDeleteWithHttpInfo(email);
+        }
+
+        /// <summary>
+        /// Unblock or resubscribe a transactional contact 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> SmtpBlockedContactsEmailDeleteWithHttpInfo (string email)
+        {
+            // verify the required parameter 'email' is set
+            if (email == null)
+                throw new ApiException(400, "Missing required parameter 'email' when calling SMTPApi->SmtpBlockedContactsEmailDelete");
+
+            var localVarPath = "./smtp/blockedContacts/{email}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SmtpBlockedContactsEmailDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Unblock or resubscribe a transactional contact 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task SmtpBlockedContactsEmailDeleteAsync (string email)
+        {
+             await SmtpBlockedContactsEmailDeleteAsyncWithHttpInfo(email);
+
+        }
+
+        /// <summary>
+        /// Unblock or resubscribe a transactional contact 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="email">contact email (urlencoded) to unblock.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SmtpBlockedContactsEmailDeleteAsyncWithHttpInfo (string email)
+        {
+            // verify the required parameter 'email' is set
+            if (email == null)
+                throw new ApiException(400, "Missing required parameter 'email' when calling SMTPApi->SmtpBlockedContactsEmailDelete");
+
+            var localVarPath = "./smtp/blockedContacts/{email}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SmtpBlockedContactsEmailDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Updates a transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns></returns>
         public void UpdateSmtpTemplate (long? templateId, UpdateSmtpTemplate smtpTemplate)
         {
@@ -2608,11 +3462,11 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an smtp templates 
+        /// Updates a transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> UpdateSmtpTemplateWithHttpInfo (long? templateId, UpdateSmtpTemplate smtpTemplate)
         {
@@ -2623,7 +3477,7 @@ namespace sib_api_v3_sdk.Api
             if (smtpTemplate == null)
                 throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->UpdateSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2680,16 +3534,16 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
         /// <summary>
-        /// Updates an smtp templates 
+        /// Updates a transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task UpdateSmtpTemplateAsync (long? templateId, UpdateSmtpTemplate smtpTemplate)
         {
@@ -2698,11 +3552,11 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an smtp templates 
+        /// Updates a transactional email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
-        /// <param name="smtpTemplate">values to update in smtp template</param>
+        /// <param name="smtpTemplate">values to update in transactional email template</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSmtpTemplateAsyncWithHttpInfo (long? templateId, UpdateSmtpTemplate smtpTemplate)
         {
@@ -2713,7 +3567,7 @@ namespace sib_api_v3_sdk.Api
             if (smtpTemplate == null)
                 throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->UpdateSmtpTemplate");
 
-            var localVarPath = "/smtp/templates/{templateId}";
+            var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2770,7 +3624,7 @@ namespace sib_api_v3_sdk.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 

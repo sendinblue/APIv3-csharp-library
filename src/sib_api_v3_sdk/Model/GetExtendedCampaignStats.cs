@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,7 +26,7 @@ namespace sib_api_v3_sdk.Model
     /// GetExtendedCampaignStats
     /// </summary>
     [DataContract]
-    public partial class GetExtendedCampaignStats :  IEquatable<GetExtendedCampaignStats>, IValidatableObject
+    public partial class GetExtendedCampaignStats :  IEquatable<GetExtendedCampaignStats>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetExtendedCampaignStats" /> class.
@@ -44,7 +42,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="remaining">Number of remaning emails to send (required).</param>
         /// <param name="linksStats">Statistics about the number of clicks for the links (required).</param>
         /// <param name="statsByDomain">statsByDomain (required).</param>
-        public GetExtendedCampaignStats(Object globalStats = default(Object), List<Object> campaignStats = default(List<Object>), long? mirrorClick = default(long?), long? remaining = default(long?), Object linksStats = default(Object), GetStatsByDomain statsByDomain = default(GetStatsByDomain))
+        /// <param name="statsByDevice">Statistics about the campaign on the basis of various devices (required).</param>
+        /// <param name="statsByBrowser">Statistics about the campaign on the basis of various browsers (required).</param>
+        public GetExtendedCampaignStats(Object globalStats = default(Object), List<Object> campaignStats = default(List<Object>), long? mirrorClick = default(long?), long? remaining = default(long?), Object linksStats = default(Object), GetStatsByDomain statsByDomain = default(GetStatsByDomain), GetStatsByDevice statsByDevice = default(GetStatsByDevice), GetStatsByBrowser statsByBrowser = default(GetStatsByBrowser))
         {
             // to ensure "globalStats" is required (not null)
             if (globalStats == null)
@@ -100,6 +100,24 @@ namespace sib_api_v3_sdk.Model
             {
                 this.StatsByDomain = statsByDomain;
             }
+            // to ensure "statsByDevice" is required (not null)
+            if (statsByDevice == null)
+            {
+                throw new InvalidDataException("statsByDevice is a required property for GetExtendedCampaignStats and cannot be null");
+            }
+            else
+            {
+                this.StatsByDevice = statsByDevice;
+            }
+            // to ensure "statsByBrowser" is required (not null)
+            if (statsByBrowser == null)
+            {
+                throw new InvalidDataException("statsByBrowser is a required property for GetExtendedCampaignStats and cannot be null");
+            }
+            else
+            {
+                this.StatsByBrowser = statsByBrowser;
+            }
         }
         
         /// <summary>
@@ -144,6 +162,20 @@ namespace sib_api_v3_sdk.Model
         public GetStatsByDomain StatsByDomain { get; set; }
 
         /// <summary>
+        /// Statistics about the campaign on the basis of various devices
+        /// </summary>
+        /// <value>Statistics about the campaign on the basis of various devices</value>
+        [DataMember(Name="statsByDevice", EmitDefaultValue=false)]
+        public GetStatsByDevice StatsByDevice { get; set; }
+
+        /// <summary>
+        /// Statistics about the campaign on the basis of various browsers
+        /// </summary>
+        /// <value>Statistics about the campaign on the basis of various browsers</value>
+        [DataMember(Name="statsByBrowser", EmitDefaultValue=false)]
+        public GetStatsByBrowser StatsByBrowser { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -157,6 +189,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Remaining: ").Append(Remaining).Append("\n");
             sb.Append("  LinksStats: ").Append(LinksStats).Append("\n");
             sb.Append("  StatsByDomain: ").Append(StatsByDomain).Append("\n");
+            sb.Append("  StatsByDevice: ").Append(StatsByDevice).Append("\n");
+            sb.Append("  StatsByBrowser: ").Append(StatsByBrowser).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -220,6 +254,16 @@ namespace sib_api_v3_sdk.Model
                     this.StatsByDomain == input.StatsByDomain ||
                     (this.StatsByDomain != null &&
                     this.StatsByDomain.Equals(input.StatsByDomain))
+                ) && 
+                (
+                    this.StatsByDevice == input.StatsByDevice ||
+                    (this.StatsByDevice != null &&
+                    this.StatsByDevice.Equals(input.StatsByDevice))
+                ) && 
+                (
+                    this.StatsByBrowser == input.StatsByBrowser ||
+                    (this.StatsByBrowser != null &&
+                    this.StatsByBrowser.Equals(input.StatsByBrowser))
                 );
         }
 
@@ -244,18 +288,12 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.LinksStats.GetHashCode();
                 if (this.StatsByDomain != null)
                     hashCode = hashCode * 59 + this.StatsByDomain.GetHashCode();
+                if (this.StatsByDevice != null)
+                    hashCode = hashCode * 59 + this.StatsByDevice.GetHashCode();
+                if (this.StatsByBrowser != null)
+                    hashCode = hashCode * 59 + this.StatsByBrowser.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

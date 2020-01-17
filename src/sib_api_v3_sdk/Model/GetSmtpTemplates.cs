@@ -1,7 +1,7 @@
 /* 
  * SendinBlue API
  *
- * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  | 
+ * SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/sendinblue  **Possible responses**   | Code | Message |   | :- -- -- -- -- -- --: | - -- -- -- -- -- -- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
  *
  * OpenAPI spec version: 3.0.0
  * Contact: contact@sendinblue.com
@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 
 namespace sib_api_v3_sdk.Model
@@ -28,12 +26,12 @@ namespace sib_api_v3_sdk.Model
     /// GetSmtpTemplates
     /// </summary>
     [DataContract]
-    public partial class GetSmtpTemplates :  IEquatable<GetSmtpTemplates>, IValidatableObject
+    public partial class GetSmtpTemplates :  IEquatable<GetSmtpTemplates>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSmtpTemplates" /> class.
         /// </summary>
-        /// <param name="count">Count of smtp templates.</param>
+        /// <param name="count">Count of transactional email templates.</param>
         /// <param name="templates">templates.</param>
         public GetSmtpTemplates(long? count = default(long?), List<GetSmtpTemplateOverview> templates = default(List<GetSmtpTemplateOverview>))
         {
@@ -42,9 +40,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Count of smtp templates
+        /// Count of transactional email templates
         /// </summary>
-        /// <value>Count of smtp templates</value>
+        /// <value>Count of transactional email templates</value>
         [DataMember(Name="count", EmitDefaultValue=false)]
         public long? Count { get; set; }
 
@@ -125,16 +123,6 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Templates.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

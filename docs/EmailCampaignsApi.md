@@ -7,9 +7,11 @@ Method | HTTP request | Description
 [**CreateEmailCampaign**](EmailCampaignsApi.md#createemailcampaign) | **POST** /emailCampaigns | Create an email campaign
 [**DeleteEmailCampaign**](EmailCampaignsApi.md#deleteemailcampaign) | **DELETE** /emailCampaigns/{campaignId} | Delete an email campaign
 [**EmailExportRecipients**](EmailCampaignsApi.md#emailexportrecipients) | **POST** /emailCampaigns/{campaignId}/exportRecipients | Export the recipients of a campaign
+[**GetAbTestCampaignResult**](EmailCampaignsApi.md#getabtestcampaignresult) | **GET** /emailCampaigns/{campaignId}/abTestCampaignResult | Get A/B test email campaign result
 [**GetEmailCampaign**](EmailCampaignsApi.md#getemailcampaign) | **GET** /emailCampaigns/{campaignId} | Get campaign informations
 [**GetEmailCampaigns**](EmailCampaignsApi.md#getemailcampaigns) | **GET** /emailCampaigns | Return all your created campaigns
-[**SendEmailCampaignNow**](EmailCampaignsApi.md#sendemailcampaignnow) | **POST** /emailCampaigns/{campaignId}/sendNow | Send an email campaign id of the campaign immediately
+[**GetSharedTemplateUrl**](EmailCampaignsApi.md#getsharedtemplateurl) | **GET** /emailCampaigns/{campaignId}/sharedUrl | Get a shared template url
+[**SendEmailCampaignNow**](EmailCampaignsApi.md#sendemailcampaignnow) | **POST** /emailCampaigns/{campaignId}/sendNow | Send an email campaign immediately, based on campaignId
 [**SendReport**](EmailCampaignsApi.md#sendreport) | **POST** /emailCampaigns/{campaignId}/sendReport | Send the report of a campaigns
 [**SendTestEmail**](EmailCampaignsApi.md#sendtestemail) | **POST** /emailCampaigns/{campaignId}/sendTest | Send an email campaign to your test list
 [**UpdateCampaignStatus**](EmailCampaignsApi.md#updatecampaignstatus) | **PUT** /emailCampaigns/{campaignId}/status | Update a campaign status
@@ -221,6 +223,76 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getabtestcampaignresult"></a>
+# **GetAbTestCampaignResult**
+> AbTestCampaignResult GetAbTestCampaignResult (long? campaignId)
+
+Get A/B test email campaign result
+
+Obtain winning version of an A/B test email campaign
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetAbTestCampaignResultExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new EmailCampaignsApi();
+            var campaignId = 789;  // long? | Id of the A/B test campaign
+
+            try
+            {
+                // Get A/B test email campaign result
+                AbTestCampaignResult result = apiInstance.GetAbTestCampaignResult(campaignId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailCampaignsApi.GetAbTestCampaignResult: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **long?**| Id of the A/B test campaign | 
+
+### Return type
+
+[**AbTestCampaignResult**](AbTestCampaignResult.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getemailcampaign"></a>
 # **GetEmailCampaign**
 > GetEmailCampaign GetEmailCampaign (long? campaignId)
@@ -367,11 +439,81 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getsharedtemplateurl"></a>
+# **GetSharedTemplateUrl**
+> GetSharedTemplateUrl GetSharedTemplateUrl (long? campaignId)
+
+Get a shared template url
+
+Get a unique URL to share & import an email template from one Sendinblue account to another.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetSharedTemplateUrlExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new EmailCampaignsApi();
+            var campaignId = 789;  // long? | Id of the campaign or template
+
+            try
+            {
+                // Get a shared template url
+                GetSharedTemplateUrl result = apiInstance.GetSharedTemplateUrl(campaignId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailCampaignsApi.GetSharedTemplateUrl: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **long?**| Id of the campaign or template | 
+
+### Return type
+
+[**GetSharedTemplateUrl**](GetSharedTemplateUrl.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="sendemailcampaignnow"></a>
 # **SendEmailCampaignNow**
 > void SendEmailCampaignNow (long? campaignId)
 
-Send an email campaign id of the campaign immediately
+Send an email campaign immediately, based on campaignId
 
 ### Example
 ```csharp
@@ -401,7 +543,7 @@ namespace Example
 
             try
             {
-                // Send an email campaign id of the campaign immediately
+                // Send an email campaign immediately, based on campaignId
                 apiInstance.SendEmailCampaignNow(campaignId);
             }
             catch (Exception e)
