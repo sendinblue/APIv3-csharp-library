@@ -90,6 +90,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreatedProcessId</returns>
         ApiResponse<CreatedProcessId> EmailExportRecipientsWithHttpInfo (long? campaignId, EmailExportRecipients recipientExport = null);
         /// <summary>
+        /// Get A/B test email campaign result
+        /// </summary>
+        /// <remarks>
+        /// Obtain winning version of an A/B test email campaign
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>AbTestCampaignResult</returns>
+        AbTestCampaignResult GetAbTestCampaignResult (long? campaignId);
+
+        /// <summary>
+        /// Get A/B test email campaign result
+        /// </summary>
+        /// <remarks>
+        /// Obtain winning version of an A/B test email campaign
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>ApiResponse of AbTestCampaignResult</returns>
+        ApiResponse<AbTestCampaignResult> GetAbTestCampaignResultWithHttpInfo (long? campaignId);
+        /// <summary>
         /// Get campaign informations
         /// </summary>
         /// <remarks>
@@ -342,6 +363,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="recipientExport">Values to send for a recipient export request (optional)</param>
         /// <returns>Task of ApiResponse (CreatedProcessId)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatedProcessId>> EmailExportRecipientsAsyncWithHttpInfo (long? campaignId, EmailExportRecipients recipientExport = null);
+        /// <summary>
+        /// Get A/B test email campaign result
+        /// </summary>
+        /// <remarks>
+        /// Obtain winning version of an A/B test email campaign
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>Task of AbTestCampaignResult</returns>
+        System.Threading.Tasks.Task<AbTestCampaignResult> GetAbTestCampaignResultAsync (long? campaignId);
+
+        /// <summary>
+        /// Get A/B test email campaign result
+        /// </summary>
+        /// <remarks>
+        /// Obtain winning version of an A/B test email campaign
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>Task of ApiResponse (AbTestCampaignResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AbTestCampaignResult>> GetAbTestCampaignResultAsyncWithHttpInfo (long? campaignId);
         /// <summary>
         /// Get campaign informations
         /// </summary>
@@ -1123,6 +1165,161 @@ namespace sib_api_v3_sdk.Api
             return new ApiResponse<CreatedProcessId>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreatedProcessId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreatedProcessId)));
+        }
+
+        /// <summary>
+        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>AbTestCampaignResult</returns>
+        public AbTestCampaignResult GetAbTestCampaignResult (long? campaignId)
+        {
+             ApiResponse<AbTestCampaignResult> localVarResponse = GetAbTestCampaignResultWithHttpInfo(campaignId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>ApiResponse of AbTestCampaignResult</returns>
+        public ApiResponse< AbTestCampaignResult > GetAbTestCampaignResultWithHttpInfo (long? campaignId)
+        {
+            // verify the required parameter 'campaignId' is set
+            if (campaignId == null)
+                throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetAbTestCampaignResult");
+
+            var localVarPath = "./emailCampaigns/{campaignId}/abTestCampaignResult";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAbTestCampaignResult", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AbTestCampaignResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (AbTestCampaignResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AbTestCampaignResult)));
+        }
+
+        /// <summary>
+        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>Task of AbTestCampaignResult</returns>
+        public async System.Threading.Tasks.Task<AbTestCampaignResult> GetAbTestCampaignResultAsync (long? campaignId)
+        {
+             ApiResponse<AbTestCampaignResult> localVarResponse = await GetAbTestCampaignResultAsyncWithHttpInfo(campaignId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="campaignId">Id of the A/B test campaign</param>
+        /// <returns>Task of ApiResponse (AbTestCampaignResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AbTestCampaignResult>> GetAbTestCampaignResultAsyncWithHttpInfo (long? campaignId)
+        {
+            // verify the required parameter 'campaignId' is set
+            if (campaignId == null)
+                throw new ApiException(400, "Missing required parameter 'campaignId' when calling EmailCampaignsApi->GetAbTestCampaignResult");
+
+            var localVarPath = "./emailCampaigns/{campaignId}/abTestCampaignResult";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAbTestCampaignResult", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AbTestCampaignResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (AbTestCampaignResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AbTestCampaignResult)));
         }
 
         /// <summary>
