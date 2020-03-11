@@ -192,7 +192,7 @@ namespace Example
 
             var apiInstance = new ResellerApi();
             var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
-            var addChildDomain = new AddChildDomain(); // AddChildDomain | Sender domain to add for a specific child account
+            var addChildDomain = new AddChildDomain(); // AddChildDomain | Sender domain to add for a specific child account. This will not be displayed to the parent account.
 
             try
             {
@@ -213,7 +213,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **childAuthKey** | **string**| auth key of reseller&#39;s child | 
- **addChildDomain** | [**AddChildDomain**](AddChildDomain.md)| Sender domain to add for a specific child account | 
+ **addChildDomain** | [**AddChildDomain**](AddChildDomain.md)| Sender domain to add for a specific child account. This will not be displayed to the parent account. | 
 
 ### Return type
 

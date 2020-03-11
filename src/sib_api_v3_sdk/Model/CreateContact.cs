@@ -31,7 +31,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateContact" /> class.
         /// </summary>
-        /// <param name="email">Email address of the user. Mandatory if \&quot;sms\&quot; field is not passed in \&quot;attributes\&quot; parameter&#39;.</param>
+        /// <param name="email">Email address of the user. Mandatory if \&quot;SMS\&quot; field is not passed in \&quot;attributes\&quot; parameter. For example {&#39;SMS&#39;:&#39;+91xxxxxxxxxx&#39;}.</param>
         /// <param name="attributes">Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {&#39;FNAME&#39;:&#39;Elly&#39;, &#39;LNAME&#39;:&#39;Roger&#39;}.</param>
         /// <param name="emailBlacklisted">Set this field to blacklist the contact for emails (emailBlacklisted &#x3D; true).</param>
         /// <param name="smsBlacklisted">Set this field to blacklist the contact for SMS (smsBlacklisted &#x3D; true).</param>
@@ -58,9 +58,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Email address of the user. Mandatory if \&quot;sms\&quot; field is not passed in \&quot;attributes\&quot; parameter&#39;
+        /// Email address of the user. Mandatory if \&quot;SMS\&quot; field is not passed in \&quot;attributes\&quot; parameter. For example {&#39;SMS&#39;:&#39;+91xxxxxxxxxx&#39;}
         /// </summary>
-        /// <value>Email address of the user. Mandatory if \&quot;sms\&quot; field is not passed in \&quot;attributes\&quot; parameter&#39;</value>
+        /// <value>Email address of the user. Mandatory if \&quot;SMS\&quot; field is not passed in \&quot;attributes\&quot; parameter. For example {&#39;SMS&#39;:&#39;+91xxxxxxxxxx&#39;}</value>
         [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
 

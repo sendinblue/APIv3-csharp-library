@@ -78,7 +78,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns></returns>
         void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain);
 
@@ -90,7 +90,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CreateChildDomainWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain);
         /// <summary>
@@ -438,7 +438,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task CreateChildDomainAsync (string childAuthKey, AddChildDomain addChildDomain);
 
@@ -450,7 +450,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> CreateChildDomainAsyncWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain);
         /// <summary>
@@ -1207,7 +1207,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns></returns>
         public void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain)
         {
@@ -1219,7 +1219,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> CreateChildDomainWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain)
         {
@@ -1296,7 +1296,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateChildDomainAsync (string childAuthKey, AddChildDomain addChildDomain)
         {
@@ -1309,7 +1309,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
-        /// <param name="addChildDomain">Sender domain to add for a specific child account</param>
+        /// <param name="addChildDomain">Sender domain to add for a specific child account. This will not be displayed to the parent account.</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateChildDomainAsyncWithHttpInfo (string childAuthKey, AddChildDomain addChildDomain)
         {
