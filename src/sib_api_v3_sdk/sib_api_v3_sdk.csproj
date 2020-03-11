@@ -8,7 +8,7 @@
     <Authors>Sendinblue Developers</Authors>
     <Company>Sendinblue</Company>
     <AssemblyTitle>Swagger Library</AssemblyTitle>
-    <Description>SendinBlue's API v3 C# Library</Description>
+    <Description>Official SendinBlue provided RESTFul API V3 C# Library</Description>
     <Copyright>Copyright (c) 2019 SendinBlue</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
