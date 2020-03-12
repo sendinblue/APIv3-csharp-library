@@ -398,6 +398,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SmtpBlockedContactsEmailDeleteWithHttpInfo (string email);
         /// <summary>
+        /// Delete an SMTP transactional log
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns></returns>
+        void SmtpLogMessageIdDelete (string messageId);
+
+        /// <summary>
+        /// Delete an SMTP transactional log
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> SmtpLogMessageIdDeleteWithHttpInfo (string messageId);
+        /// <summary>
         /// Updates a transactional email templates
         /// </summary>
         /// <remarks>
@@ -795,6 +816,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="email">contact email (urlencoded) to unblock.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SmtpBlockedContactsEmailDeleteAsyncWithHttpInfo (string email);
+        /// <summary>
+        /// Delete an SMTP transactional log
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task SmtpLogMessageIdDeleteAsync (string messageId);
+
+        /// <summary>
+        /// Delete an SMTP transactional log
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> SmtpLogMessageIdDeleteAsyncWithHttpInfo (string messageId);
         /// <summary>
         /// Updates a transactional email templates
         /// </summary>
@@ -3441,6 +3483,159 @@ namespace sib_api_v3_sdk.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SmtpBlockedContactsEmailDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Delete an SMTP transactional log 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns></returns>
+        public void SmtpLogMessageIdDelete (string messageId)
+        {
+             SmtpLogMessageIdDeleteWithHttpInfo(messageId);
+        }
+
+        /// <summary>
+        /// Delete an SMTP transactional log 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> SmtpLogMessageIdDeleteWithHttpInfo (string messageId)
+        {
+            // verify the required parameter 'messageId' is set
+            if (messageId == null)
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling SMTPApi->SmtpLogMessageIdDelete");
+
+            var localVarPath = "./smtp/log/{messageId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (messageId != null) localVarPathParams.Add("messageId", this.Configuration.ApiClient.ParameterToString(messageId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SmtpLogMessageIdDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Delete an SMTP transactional log 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task SmtpLogMessageIdDeleteAsync (string messageId)
+        {
+             await SmtpLogMessageIdDeleteAsyncWithHttpInfo(messageId);
+
+        }
+
+        /// <summary>
+        /// Delete an SMTP transactional log 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">MessageId of the transactional log to delete</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SmtpLogMessageIdDeleteAsyncWithHttpInfo (string messageId)
+        {
+            // verify the required parameter 'messageId' is set
+            if (messageId == null)
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling SMTPApi->SmtpLogMessageIdDelete");
+
+            var localVarPath = "./smtp/log/{messageId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (messageId != null) localVarPathParams.Add("messageId", this.Configuration.ApiClient.ParameterToString(messageId)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SmtpLogMessageIdDelete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
