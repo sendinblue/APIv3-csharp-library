@@ -42,7 +42,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="messageId">Message Id of the sent email (required).</param>
         /// <param name="uuid">Unique id of the email sent to a particular contact (required).</param>
         /// <param name="date">Date on which transactional email was sent (required).</param>
-        public GetTransacEmailsListTransactionalEmails(string email = default(string), string subject = default(string), long? templateId = default(long?), string messageId = default(string), string uuid = default(string), DateTime? date = default(DateTime?))
+        /// <param name="from">Email address of the sender from which the email was sent.</param>
+        /// <param name="tags">Tags used for your email.</param>
+        public GetTransacEmailsListTransactionalEmails(string email = default(string), string subject = default(string), long? templateId = default(long?), string messageId = default(string), string uuid = default(string), DateTime? date = default(DateTime?), string from = default(string), List<string> tags = default(List<string>))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -90,6 +92,8 @@ namespace sib_api_v3_sdk.Model
                 this.Date = date;
             }
             this.TemplateId = templateId;
+            this.From = from;
+            this.Tags = tags;
         }
         
         /// <summary>
@@ -135,6 +139,20 @@ namespace sib_api_v3_sdk.Model
         public DateTime? Date { get; set; }
 
         /// <summary>
+        /// Email address of the sender from which the email was sent
+        /// </summary>
+        /// <value>Email address of the sender from which the email was sent</value>
+        [DataMember(Name="from", EmitDefaultValue=false)]
+        public string From { get; set; }
+
+        /// <summary>
+        /// Tags used for your email
+        /// </summary>
+        /// <value>Tags used for your email</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<string> Tags { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -148,6 +166,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  MessageId: ").Append(MessageId).Append("\n");
             sb.Append("  Uuid: ").Append(Uuid).Append("\n");
             sb.Append("  Date: ").Append(Date).Append("\n");
+            sb.Append("  From: ").Append(From).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -211,6 +231,16 @@ namespace sib_api_v3_sdk.Model
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
+                ) && 
+                (
+                    this.From == input.From ||
+                    (this.From != null &&
+                    this.From.Equals(input.From))
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -235,6 +265,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Uuid.GetHashCode();
                 if (this.Date != null)
                     hashCode = hashCode * 59 + this.Date.GetHashCode();
+                if (this.From != null)
+                    hashCode = hashCode * 59 + this.From.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

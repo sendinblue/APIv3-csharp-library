@@ -296,6 +296,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="emailCampaign">Values to update a campaign</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateEmailCampaignWithHttpInfo (long? campaignId, UpdateEmailCampaign emailCampaign);
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns></returns>
+        void UploadImageToGallery (UploadImageToGallery uploadImage);
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -570,6 +591,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="emailCampaign">Values to update a campaign</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEmailCampaignAsyncWithHttpInfo (long? campaignId, UpdateEmailCampaign emailCampaign);
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Asynchronous Operations
     }
 
@@ -2672,6 +2714,173 @@ namespace sib_api_v3_sdk.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("UpdateEmailCampaign", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns></returns>
+        public void UploadImageToGallery (UploadImageToGallery uploadImage)
+        {
+             UploadImageToGalleryWithHttpInfo(uploadImage);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
+        {
+            // verify the required parameter 'uploadImage' is set
+            if (uploadImage == null)
+                throw new ApiException(400, "Missing required parameter 'uploadImage' when calling EmailCampaignsApi->UploadImageToGallery");
+
+            var localVarPath = "./emailCampaigns/images";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadImage != null && uploadImage.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(uploadImage); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uploadImage; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UploadImageToGallery", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
+        {
+             await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
+        {
+            // verify the required parameter 'uploadImage' is set
+            if (uploadImage == null)
+                throw new ApiException(400, "Missing required parameter 'uploadImage' when calling EmailCampaignsApi->UploadImageToGallery");
+
+            var localVarPath = "./emailCampaigns/images";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadImage != null && uploadImage.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(uploadImage); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uploadImage; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UploadImageToGallery", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**SendTestEmail**](EmailCampaignsApi.md#sendtestemail) | **POST** /emailCampaigns/{campaignId}/sendTest | Send an email campaign to your test list
 [**UpdateCampaignStatus**](EmailCampaignsApi.md#updatecampaignstatus) | **PUT** /emailCampaigns/{campaignId}/status | Update a campaign status
 [**UpdateEmailCampaign**](EmailCampaignsApi.md#updateemailcampaign) | **PUT** /emailCampaigns/{campaignId} | Update a campaign
+[**UploadImageToGallery**](EmailCampaignsApi.md#uploadimagetogallery) | **POST** /emailCampaigns/images | Upload an image to your account&#39;s image gallery
 
 
 <a name="createemailcampaign"></a>
@@ -838,6 +839,73 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaignId** | **long?**| Id of the campaign | 
  **emailCampaign** | [**UpdateEmailCampaign**](UpdateEmailCampaign.md)| Values to update a campaign | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="uploadimagetogallery"></a>
+# **UploadImageToGallery**
+> void UploadImageToGallery (UploadImageToGallery uploadImage)
+
+Upload an image to your account's image gallery
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class UploadImageToGalleryExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new EmailCampaignsApi();
+            var uploadImage = new UploadImageToGallery(); // UploadImageToGallery | Parameters to upload an image
+
+            try
+            {
+                // Upload an image to your account's image gallery
+                apiInstance.UploadImageToGallery(uploadImage);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailCampaignsApi.UploadImageToGallery: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadImage** | [**UploadImageToGallery**](UploadImageToGallery.md)| Parameters to upload an image | 
 
 ### Return type
 

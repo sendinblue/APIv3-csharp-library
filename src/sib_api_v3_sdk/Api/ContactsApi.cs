@@ -94,6 +94,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreateUpdateContactModel</returns>
         ApiResponse<CreateUpdateContactModel> CreateContactWithHttpInfo (CreateContact createContact);
         /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns></returns>
+        void CreateDoiContact (CreateDoiContact createDoiContact);
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> CreateDoiContactWithHttpInfo (CreateDoiContact createDoiContact);
+        /// <summary>
         /// Create a folder
         /// </summary>
         /// <remarks>
@@ -269,8 +290,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
-        GetContactCampaignStats GetContactStats (string email);
+        GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get the campaigns statistics for a contact
@@ -280,8 +303,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
-        ApiResponse<GetContactCampaignStats> GetContactStatsWithHttpInfo (string email);
+        ApiResponse<GetContactCampaignStats> GetContactStatsWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get all the contacts
         /// </summary>
@@ -678,6 +703,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreateUpdateContactModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateUpdateContactModel>> CreateContactAsyncWithHttpInfo (CreateContact createContact);
         /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task CreateDoiContactAsync (CreateDoiContact createDoiContact);
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> CreateDoiContactAsyncWithHttpInfo (CreateDoiContact createDoiContact);
+        /// <summary>
         /// Create a folder
         /// </summary>
         /// <remarks>
@@ -853,8 +899,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
-        System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email);
+        System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get the campaigns statistics for a contact
@@ -864,8 +912,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email);
+        System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get all the contacts
         /// </summary>
@@ -1829,6 +1879,173 @@ namespace sib_api_v3_sdk.Api
             return new ApiResponse<CreateUpdateContactModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (CreateUpdateContactModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateUpdateContactModel)));
+        }
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns></returns>
+        public void CreateDoiContact (CreateDoiContact createDoiContact)
+        {
+             CreateDoiContactWithHttpInfo(createDoiContact);
+        }
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> CreateDoiContactWithHttpInfo (CreateDoiContact createDoiContact)
+        {
+            // verify the required parameter 'createDoiContact' is set
+            if (createDoiContact == null)
+                throw new ApiException(400, "Missing required parameter 'createDoiContact' when calling ContactsApi->CreateDoiContact");
+
+            var localVarPath = "./contacts/doubleOptinConfirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (createDoiContact != null && createDoiContact.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(createDoiContact); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = createDoiContact; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateDoiContact", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task CreateDoiContactAsync (CreateDoiContact createDoiContact)
+        {
+             await CreateDoiContactAsyncWithHttpInfo(createDoiContact);
+
+        }
+
+        /// <summary>
+        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateDoiContactAsyncWithHttpInfo (CreateDoiContact createDoiContact)
+        {
+            // verify the required parameter 'createDoiContact' is set
+            if (createDoiContact == null)
+                throw new ApiException(400, "Missing required parameter 'createDoiContact' when calling ContactsApi->CreateDoiContact");
+
+            var localVarPath = "./contacts/doubleOptinConfirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (createDoiContact != null && createDoiContact.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(createDoiContact); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = createDoiContact; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateDoiContact", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -3096,10 +3313,12 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
-        public GetContactCampaignStats GetContactStats (string email)
+        public GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null)
         {
-             ApiResponse<GetContactCampaignStats> localVarResponse = GetContactStatsWithHttpInfo(email);
+             ApiResponse<GetContactCampaignStats> localVarResponse = GetContactStatsWithHttpInfo(email, startDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -3108,8 +3327,10 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
-        public ApiResponse< GetContactCampaignStats > GetContactStatsWithHttpInfo (string email)
+        public ApiResponse< GetContactCampaignStats > GetContactStatsWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null)
         {
             // verify the required parameter 'email' is set
             if (email == null)
@@ -3138,6 +3359,8 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3173,10 +3396,12 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
-        public async System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email)
+        public async System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email, DateTime? startDate = null, DateTime? endDate = null)
         {
-             ApiResponse<GetContactCampaignStats> localVarResponse = await GetContactStatsAsyncWithHttpInfo(email);
+             ApiResponse<GetContactCampaignStats> localVarResponse = await GetContactStatsAsyncWithHttpInfo(email, startDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -3186,8 +3411,10 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email)
+        public async System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null)
         {
             // verify the required parameter 'email' is set
             if (email == null)
@@ -3216,6 +3443,8 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

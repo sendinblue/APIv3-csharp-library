@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **MessageId** | **string** | Message Id of the sent email | 
 **Uuid** | **string** | Unique id of the email sent to a particular contact | 
 **Date** | **DateTime?** | Date on which transactional email was sent | 
+**From** | **string** | Email address of the sender from which the email was sent | [optional] 
+**Tags** | **List&lt;string&gt;** | Tags used for your email | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**AddContactToList**](ContactsApi.md#addcontacttolist) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
 [**CreateAttribute**](ContactsApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Creates contact attribute
 [**CreateContact**](ContactsApi.md#createcontact) | **POST** /contacts | Create a contact
+[**CreateDoiContact**](ContactsApi.md#createdoicontact) | **POST** /contacts/doubleOptinConfirmation | Create a contact to trigger the DOI workflow from a Landing Page form
 [**CreateFolder**](ContactsApi.md#createfolder) | **POST** /contacts/folders | Create a folder
 [**CreateList**](ContactsApi.md#createlist) | **POST** /contacts/lists | Create a list
 [**DeleteAttribute**](ContactsApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Deletes an attribute
@@ -229,6 +230,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateUpdateContactModel**](CreateUpdateContactModel.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createdoicontact"></a>
+# **CreateDoiContact**
+> void CreateDoiContact (CreateDoiContact createDoiContact)
+
+Create a contact to trigger the DOI workflow from a Landing Page form
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class CreateDoiContactExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new ContactsApi();
+            var createDoiContact = new CreateDoiContact(); // CreateDoiContact | Values to create the DOI contact
+
+            try
+            {
+                // Create a contact to trigger the DOI workflow from a Landing Page form
+                apiInstance.CreateDoiContact(createDoiContact);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContactsApi.CreateDoiContact: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDoiContact** | [**CreateDoiContact**](CreateDoiContact.md)| Values to create the DOI contact | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -781,7 +849,7 @@ Name | Type | Description  | Notes
 
 <a name="getcontactstats"></a>
 # **GetContactStats**
-> GetContactCampaignStats GetContactStats (string email)
+> GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null)
 
 Get the campaigns statistics for a contact
 
@@ -810,11 +878,13 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var email = email_example;  // string | Email address (urlencoded) of the contact
+            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
+            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
 
             try
             {
                 // Get the campaigns statistics for a contact
-                GetContactCampaignStats result = apiInstance.GetContactStats(email);
+                GetContactCampaignStats result = apiInstance.GetContactStats(email, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -831,6 +901,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **email** | **string**| Email address (urlencoded) of the contact | 
+ **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
+ **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
 
 ### Return type
 
