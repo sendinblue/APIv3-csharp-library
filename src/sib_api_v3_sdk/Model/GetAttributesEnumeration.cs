@@ -36,8 +36,8 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAttributesEnumeration" /> class.
         /// </summary>
-        /// <param name="value">ID of Value of the \&quot;category\&quot; type attribute (required).</param>
-        /// <param name="label">Label of the \&quot;category\&quot; type attribute (required).</param>
+        /// <param name="value">ID of Value of the &quot;category&quot; type attribute (required).</param>
+        /// <param name="label">Label of the &quot;category&quot; type attribute (required).</param>
         public GetAttributesEnumeration(long? value = default(long?), string label = default(string))
         {
             // to ensure "value" is required (not null)
@@ -61,16 +61,16 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// ID of Value of the \&quot;category\&quot; type attribute
+        /// ID of Value of the &quot;category&quot; type attribute
         /// </summary>
-        /// <value>ID of Value of the \&quot;category\&quot; type attribute</value>
+        /// <value>ID of Value of the &quot;category&quot; type attribute</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public long? Value { get; set; }
 
         /// <summary>
-        /// Label of the \&quot;category\&quot; type attribute
+        /// Label of the &quot;category&quot; type attribute
         /// </summary>
-        /// <value>Label of the \&quot;category\&quot; type attribute</value>
+        /// <value>Label of the &quot;category&quot; type attribute</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
         public string Label { get; set; }
 

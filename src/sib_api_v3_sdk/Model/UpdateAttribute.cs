@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="UpdateAttribute" /> class.
         /// </summary>
         /// <param name="value">Value of the attribute to update. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;.</param>
-        /// <param name="enumeration">List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is \&quot;category\&quot;. For example, [{\&quot;value\&quot;:1, \&quot;label\&quot;:\&quot;male\&quot;}, {\&quot;value\&quot;:2, \&quot;label\&quot;:\&quot;female\&quot;}].</param>
+        /// <param name="enumeration">List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}].</param>
         public UpdateAttribute(string value = default(string), List<UpdateAttributeEnumeration> enumeration = default(List<UpdateAttributeEnumeration>))
         {
             this.Value = value;
@@ -47,9 +47,9 @@ namespace sib_api_v3_sdk.Model
         public string Value { get; set; }
 
         /// <summary>
-        /// List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is \&quot;category\&quot;. For example, [{\&quot;value\&quot;:1, \&quot;label\&quot;:\&quot;male\&quot;}, {\&quot;value\&quot;:2, \&quot;label\&quot;:\&quot;female\&quot;}]
+        /// List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}]
         /// </summary>
-        /// <value>List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is \&quot;category\&quot;. For example, [{\&quot;value\&quot;:1, \&quot;label\&quot;:\&quot;male\&quot;}, {\&quot;value\&quot;:2, \&quot;label\&quot;:\&quot;female\&quot;}]</value>
+        /// <value>List of the values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}]</value>
         [DataMember(Name="enumeration", EmitDefaultValue=false)]
         public List<UpdateAttributeEnumeration> Enumeration { get; set; }
 

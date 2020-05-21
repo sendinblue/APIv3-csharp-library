@@ -42,8 +42,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="isActive">Status of template (true&#x3D;active, false&#x3D;inactive) (required).</param>
         /// <param name="testSent">Status of test sending for the template (true&#x3D;test email has been sent, false&#x3D;test email has not been sent) (required).</param>
         /// <param name="sender">sender (required).</param>
-        /// <param name="replyTo">Email defined as the \&quot;Reply to\&quot; for the template (required).</param>
-        /// <param name="toField">Customisation of the \&quot;to\&quot; field for the template (required).</param>
+        /// <param name="replyTo">Email defined as the &quot;Reply to&quot; for the template (required).</param>
+        /// <param name="toField">Customisation of the &quot;to&quot; field for the template (required).</param>
         /// <param name="tag">Tag of the template (required).</param>
         /// <param name="htmlContent">HTML content of the template (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
@@ -202,16 +202,16 @@ namespace sib_api_v3_sdk.Model
         public GetSmtpTemplateOverviewSender Sender { get; set; }
 
         /// <summary>
-        /// Email defined as the \&quot;Reply to\&quot; for the template
+        /// Email defined as the &quot;Reply to&quot; for the template
         /// </summary>
-        /// <value>Email defined as the \&quot;Reply to\&quot; for the template</value>
+        /// <value>Email defined as the &quot;Reply to&quot; for the template</value>
         [DataMember(Name="replyTo", EmitDefaultValue=false)]
         public string ReplyTo { get; set; }
 
         /// <summary>
-        /// Customisation of the \&quot;to\&quot; field for the template
+        /// Customisation of the &quot;to&quot; field for the template
         /// </summary>
-        /// <value>Customisation of the \&quot;to\&quot; field for the template</value>
+        /// <value>Customisation of the &quot;to&quot; field for the template</value>
         [DataMember(Name="toField", EmitDefaultValue=false)]
         public string ToField { get; set; }
 
