@@ -4,17 +4,17 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAttribute**](AttributesApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Creates contact attribute
-[**DeleteAttribute**](AttributesApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Deletes an attribute
-[**GetAttributes**](AttributesApi.md#getattributes) | **GET** /contacts/attributes | Lists all attributes
-[**UpdateAttribute**](AttributesApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Updates contact attribute
+[**CreateAttribute**](AttributesApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Create contact attribute
+[**DeleteAttribute**](AttributesApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Delete an attribute
+[**GetAttributes**](AttributesApi.md#getattributes) | **GET** /contacts/attributes | List all attributes
+[**UpdateAttribute**](AttributesApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
 
 
 <a name="createattribute"></a>
 # **CreateAttribute**
 > void CreateAttribute (string attributeCategory, string attributeName, CreateAttribute createAttribute)
 
-Creates contact attribute
+Create contact attribute
 
 ### Example
 ```csharp
@@ -46,7 +46,7 @@ namespace Example
 
             try
             {
-                // Creates contact attribute
+                // Create contact attribute
                 apiInstance.CreateAttribute(attributeCategory, attributeName, createAttribute);
             }
             catch (Exception e)
@@ -85,7 +85,7 @@ void (empty response body)
 # **DeleteAttribute**
 > void DeleteAttribute (string attributeCategory, string attributeName)
 
-Deletes an attribute
+Delete an attribute
 
 ### Example
 ```csharp
@@ -116,7 +116,7 @@ namespace Example
 
             try
             {
-                // Deletes an attribute
+                // Delete an attribute
                 apiInstance.DeleteAttribute(attributeCategory, attributeName);
             }
             catch (Exception e)
@@ -154,7 +154,7 @@ void (empty response body)
 # **GetAttributes**
 > GetAttributes GetAttributes ()
 
-Lists all attributes
+List all attributes
 
 ### Example
 ```csharp
@@ -183,7 +183,7 @@ namespace Example
 
             try
             {
-                // Lists all attributes
+                // List all attributes
                 GetAttributes result = apiInstance.GetAttributes();
                 Debug.WriteLine(result);
             }
@@ -218,7 +218,7 @@ This endpoint does not need any parameter.
 # **UpdateAttribute**
 > void UpdateAttribute (string attributeCategory, string attributeName, UpdateAttribute updateAttribute)
 
-Updates contact attribute
+Update contact attribute
 
 ### Example
 ```csharp
@@ -250,7 +250,7 @@ namespace Example
 
             try
             {
-                // Updates contact attribute
+                // Update contact attribute
                 apiInstance.UpdateAttribute(attributeCategory, attributeName, updateAttribute);
             }
             catch (Exception e)

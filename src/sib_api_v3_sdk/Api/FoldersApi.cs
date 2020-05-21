@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteFolderWithHttpInfo (long? folderId);
         /// <summary>
-        /// Returns folder details
+        /// Returns a folder&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -78,7 +78,7 @@ namespace sib_api_v3_sdk.Api
         GetFolder GetFolder (long? folderId);
 
         /// <summary>
-        /// Returns folder details
+        /// Returns a folder&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -88,7 +88,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetFolder</returns>
         ApiResponse<GetFolder> GetFolderWithHttpInfo (long? folderId);
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -101,7 +101,7 @@ namespace sib_api_v3_sdk.Api
         GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -113,7 +113,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetFolderLists</returns>
         ApiResponse<GetFolderLists> GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get all the folders
+        /// Get all folders
         /// </summary>
         /// <remarks>
         /// 
@@ -125,7 +125,7 @@ namespace sib_api_v3_sdk.Api
         GetFolders GetFolders (long? limit, long? offset);
 
         /// <summary>
-        /// Get all the folders
+        /// Get all folders
         /// </summary>
         /// <remarks>
         /// 
@@ -136,7 +136,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetFolders</returns>
         ApiResponse<GetFolders> GetFoldersWithHttpInfo (long? limit, long? offset);
         /// <summary>
-        /// Update a contact folder
+        /// Update a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -148,7 +148,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateFolder (long? folderId, CreateUpdateFolder updateFolder);
 
         /// <summary>
-        /// Update a contact folder
+        /// Update a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -203,7 +203,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFolderAsyncWithHttpInfo (long? folderId);
         /// <summary>
-        /// Returns folder details
+        /// Returns a folder&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -214,7 +214,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetFolder> GetFolderAsync (long? folderId);
 
         /// <summary>
-        /// Returns folder details
+        /// Returns a folder&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -224,7 +224,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetFolder)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFolder>> GetFolderAsyncWithHttpInfo (long? folderId);
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -237,7 +237,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -249,7 +249,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get all the folders
+        /// Get all folders
         /// </summary>
         /// <remarks>
         /// 
@@ -261,7 +261,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetFolders> GetFoldersAsync (long? limit, long? offset);
 
         /// <summary>
-        /// Get all the folders
+        /// Get all folders
         /// </summary>
         /// <remarks>
         /// 
@@ -272,7 +272,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetFolders)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFolders>> GetFoldersAsyncWithHttpInfo (long? limit, long? offset);
         /// <summary>
-        /// Update a contact folder
+        /// Update a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -284,7 +284,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateFolderAsync (long? folderId, CreateUpdateFolder updateFolder);
 
         /// <summary>
-        /// Update a contact folder
+        /// Update a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -717,7 +717,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns folder details 
+        /// Returns a folder&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">id of the folder</param>
@@ -729,7 +729,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns folder details 
+        /// Returns a folder&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">id of the folder</param>
@@ -794,7 +794,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns folder details 
+        /// Returns a folder&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">id of the folder</param>
@@ -807,7 +807,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns folder details 
+        /// Returns a folder&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">id of the folder</param>
@@ -872,7 +872,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -886,7 +886,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -955,7 +955,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -970,7 +970,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1039,7 +1039,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the folders 
+        /// Get all folders 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
@@ -1052,7 +1052,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the folders 
+        /// Get all folders 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
@@ -1122,7 +1122,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the folders 
+        /// Get all folders 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
@@ -1136,7 +1136,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the folders 
+        /// Get all folders 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
@@ -1206,7 +1206,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a contact folder 
+        /// Update a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1218,7 +1218,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a contact folder 
+        /// Update a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1295,7 +1295,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a contact folder 
+        /// Update a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1308,7 +1308,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a contact folder 
+        /// Update a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>

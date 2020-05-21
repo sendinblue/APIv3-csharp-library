@@ -90,7 +90,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteListWithHttpInfo (long? listId);
         /// <summary>
-        /// Get the contacts in a list
+        /// Get contacts in a list
         /// </summary>
         /// <remarks>
         /// 
@@ -104,7 +104,7 @@ namespace sib_api_v3_sdk.Api
         GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the contacts in a list
+        /// Get contacts in a list
         /// </summary>
         /// <remarks>
         /// 
@@ -117,7 +117,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetContacts</returns>
         ApiResponse<GetContacts> GetContactsFromListWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -130,7 +130,7 @@ namespace sib_api_v3_sdk.Api
         GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -142,7 +142,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetFolderLists</returns>
         ApiResponse<GetFolderLists> GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get the details of a list
+        /// Get a list&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -153,7 +153,7 @@ namespace sib_api_v3_sdk.Api
         GetExtendedList GetList (long? listId);
 
         /// <summary>
-        /// Get the details of a list
+        /// Get a list&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -186,7 +186,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetLists</returns>
         ApiResponse<GetLists> GetListsWithHttpInfo (long? limit = null, long? offset = null);
         /// <summary>
-        /// Remove existing contacts from a list
+        /// Delete a contact from a list
         /// </summary>
         /// <remarks>
         /// 
@@ -198,7 +198,7 @@ namespace sib_api_v3_sdk.Api
         PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails);
 
         /// <summary>
-        /// Remove existing contacts from a list
+        /// Delete a contact from a list
         /// </summary>
         /// <remarks>
         /// 
@@ -299,7 +299,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteListAsyncWithHttpInfo (long? listId);
         /// <summary>
-        /// Get the contacts in a list
+        /// Get contacts in a list
         /// </summary>
         /// <remarks>
         /// 
@@ -313,7 +313,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetContacts> GetContactsFromListAsync (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the contacts in a list
+        /// Get contacts in a list
         /// </summary>
         /// <remarks>
         /// 
@@ -326,7 +326,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetContacts)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsFromListAsyncWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -339,7 +339,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the lists in a folder
+        /// Get lists in a folder
         /// </summary>
         /// <remarks>
         /// 
@@ -351,7 +351,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
         /// <summary>
-        /// Get the details of a list
+        /// Get a list&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -362,7 +362,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetExtendedList> GetListAsync (long? listId);
 
         /// <summary>
-        /// Get the details of a list
+        /// Get a list&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -395,7 +395,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetLists)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetLists>> GetListsAsyncWithHttpInfo (long? limit = null, long? offset = null);
         /// <summary>
-        /// Remove existing contacts from a list
+        /// Delete a contact from a list
         /// </summary>
         /// <remarks>
         /// 
@@ -407,7 +407,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<PostContactInfo> RemoveContactFromListAsync (long? listId, RemoveContactFromList contactEmails);
 
         /// <summary>
-        /// Remove existing contacts from a list
+        /// Delete a contact from a list
         /// </summary>
         /// <remarks>
         /// 
@@ -1044,7 +1044,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the contacts in a list 
+        /// Get contacts in a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1059,7 +1059,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the contacts in a list 
+        /// Get contacts in a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1130,7 +1130,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the contacts in a list 
+        /// Get contacts in a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1146,7 +1146,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the contacts in a list 
+        /// Get contacts in a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1217,7 +1217,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1231,7 +1231,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1300,7 +1300,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1315,7 +1315,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the lists in a folder 
+        /// Get lists in a folder 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="folderId">Id of the folder</param>
@@ -1384,7 +1384,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the details of a list 
+        /// Get a list&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1396,7 +1396,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the details of a list 
+        /// Get a list&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1461,7 +1461,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the details of a list 
+        /// Get a list&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1474,7 +1474,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the details of a list 
+        /// Get a list&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1694,7 +1694,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Remove existing contacts from a list 
+        /// Delete a contact from a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1707,7 +1707,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Remove existing contacts from a list 
+        /// Delete a contact from a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1784,7 +1784,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Remove existing contacts from a list 
+        /// Delete a contact from a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
@@ -1798,7 +1798,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Remove existing contacts from a list 
+        /// Delete a contact from a list 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>

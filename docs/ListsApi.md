@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**AddContactToList**](ListsApi.md#addcontacttolist) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
 [**CreateList**](ListsApi.md#createlist) | **POST** /contacts/lists | Create a list
 [**DeleteList**](ListsApi.md#deletelist) | **DELETE** /contacts/lists/{listId} | Delete a list
-[**GetContactsFromList**](ListsApi.md#getcontactsfromlist) | **GET** /contacts/lists/{listId}/contacts | Get the contacts in a list
-[**GetFolderLists**](ListsApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get the lists in a folder
-[**GetList**](ListsApi.md#getlist) | **GET** /contacts/lists/{listId} | Get the details of a list
+[**GetContactsFromList**](ListsApi.md#getcontactsfromlist) | **GET** /contacts/lists/{listId}/contacts | Get contacts in a list
+[**GetFolderLists**](ListsApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get lists in a folder
+[**GetList**](ListsApi.md#getlist) | **GET** /contacts/lists/{listId} | Get a list&#39;s details
 [**GetLists**](ListsApi.md#getlists) | **GET** /contacts/lists | Get all the lists
-[**RemoveContactFromList**](ListsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Remove existing contacts from a list
+[**RemoveContactFromList**](ListsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
 [**UpdateList**](ListsApi.md#updatelist) | **PUT** /contacts/lists/{listId} | Update a list
 
 
@@ -224,7 +224,7 @@ void (empty response body)
 # **GetContactsFromList**
 > GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null)
 
-Get the contacts in a list
+Get contacts in a list
 
 ### Example
 ```csharp
@@ -257,7 +257,7 @@ namespace Example
 
             try
             {
-                // Get the contacts in a list
+                // Get contacts in a list
                 GetContacts result = apiInstance.GetContactsFromList(listId, modifiedSince, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 # **GetFolderLists**
 > GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null)
 
-Get the lists in a folder
+Get lists in a folder
 
 ### Example
 ```csharp
@@ -330,7 +330,7 @@ namespace Example
 
             try
             {
-                // Get the lists in a folder
+                // Get lists in a folder
                 GetFolderLists result = apiInstance.GetFolderLists(folderId, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 # **GetList**
 > GetExtendedList GetList (long? listId)
 
-Get the details of a list
+Get a list's details
 
 ### Example
 ```csharp
@@ -400,7 +400,7 @@ namespace Example
 
             try
             {
-                // Get the details of a list
+                // Get a list's details
                 GetExtendedList result = apiInstance.GetList(listId);
                 Debug.WriteLine(result);
             }
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 # **RemoveContactFromList**
 > PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails)
 
-Remove existing contacts from a list
+Delete a contact from a list
 
 ### Example
 ```csharp
@@ -539,7 +539,7 @@ namespace Example
 
             try
             {
-                // Remove existing contacts from a list
+                // Delete a contact from a list
                 PostContactInfo result = apiInstance.RemoveContactFromList(listId, contactEmails);
                 Debug.WriteLine(result);
             }

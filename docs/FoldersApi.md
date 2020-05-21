@@ -6,10 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateFolder**](FoldersApi.md#createfolder) | **POST** /contacts/folders | Create a folder
 [**DeleteFolder**](FoldersApi.md#deletefolder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
-[**GetFolder**](FoldersApi.md#getfolder) | **GET** /contacts/folders/{folderId} | Returns folder details
-[**GetFolderLists**](FoldersApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get the lists in a folder
-[**GetFolders**](FoldersApi.md#getfolders) | **GET** /contacts/folders | Get all the folders
-[**UpdateFolder**](FoldersApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a contact folder
+[**GetFolder**](FoldersApi.md#getfolder) | **GET** /contacts/folders/{folderId} | Returns a folder&#39;s details
+[**GetFolderLists**](FoldersApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get lists in a folder
+[**GetFolders**](FoldersApi.md#getfolders) | **GET** /contacts/folders | Get all folders
+[**UpdateFolder**](FoldersApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a folder
 
 
 <a name="createfolder"></a>
@@ -151,7 +151,7 @@ void (empty response body)
 # **GetFolder**
 > GetFolder GetFolder (long? folderId)
 
-Returns folder details
+Returns a folder's details
 
 ### Example
 ```csharp
@@ -181,7 +181,7 @@ namespace Example
 
             try
             {
-                // Returns folder details
+                // Returns a folder's details
                 GetFolder result = apiInstance.GetFolder(folderId);
                 Debug.WriteLine(result);
             }
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 # **GetFolderLists**
 > GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null)
 
-Get the lists in a folder
+Get lists in a folder
 
 ### Example
 ```csharp
@@ -251,7 +251,7 @@ namespace Example
 
             try
             {
-                // Get the lists in a folder
+                // Get lists in a folder
                 GetFolderLists result = apiInstance.GetFolderLists(folderId, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 # **GetFolders**
 > GetFolders GetFolders (long? limit, long? offset)
 
-Get all the folders
+Get all folders
 
 ### Example
 ```csharp
@@ -322,7 +322,7 @@ namespace Example
 
             try
             {
-                // Get all the folders
+                // Get all folders
                 GetFolders result = apiInstance.GetFolders(limit, offset);
                 Debug.WriteLine(result);
             }
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 # **UpdateFolder**
 > void UpdateFolder (long? folderId, CreateUpdateFolder updateFolder)
 
-Update a contact folder
+Update a folder
 
 ### Example
 ```csharp
@@ -392,7 +392,7 @@ namespace Example
 
             try
             {
-                // Update a contact folder
+                // Update a folder
                 apiInstance.UpdateFolder(folderId, updateFolder);
             }
             catch (Exception e)

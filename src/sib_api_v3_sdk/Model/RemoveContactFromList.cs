@@ -31,7 +31,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoveContactFromList" /> class.
         /// </summary>
-        /// <param name="emails">Required if &#39;all&#39; is false. Emails to remove from a list.</param>
+        /// <param name="emails">Required if &#39;all&#39; is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request..</param>
         /// <param name="all">Required if &#39;emails&#39; is empty. Remove all existing contacts from a list.</param>
         public RemoveContactFromList(List<string> emails = default(List<string>), bool? all = default(bool?))
         {
@@ -40,9 +40,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Required if &#39;all&#39; is false. Emails to remove from a list
+        /// Required if &#39;all&#39; is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.
         /// </summary>
-        /// <value>Required if &#39;all&#39; is false. Emails to remove from a list</value>
+        /// <value>Required if &#39;all&#39; is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.</value>
         [DataMember(Name="emails", EmitDefaultValue=false)]
         public List<string> Emails { get; set; }
 

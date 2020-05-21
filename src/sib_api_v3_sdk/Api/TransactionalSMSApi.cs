@@ -25,7 +25,7 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get all the SMS activity (unaggregated events)
+        /// Get all your SMS activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -43,7 +43,7 @@ namespace sib_api_v3_sdk.Api
         GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events)
+        /// Get all your SMS activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -114,7 +114,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetTransacSmsReport</returns>
         ApiResponse<GetTransacSmsReport> GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number
+        /// Send the SMS campaign to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -125,7 +125,7 @@ namespace sib_api_v3_sdk.Api
         SendSms SendTransacSms (SendTransacSms sendTransacSms);
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number
+        /// Send the SMS campaign to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -137,7 +137,7 @@ namespace sib_api_v3_sdk.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Get all the SMS activity (unaggregated events)
+        /// Get all your SMS activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -155,7 +155,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetSmsEventReport> GetSmsEventsAsync (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events)
+        /// Get all your SMS activity (unaggregated events)
         /// </summary>
         /// <remarks>
         /// 
@@ -226,7 +226,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetTransacSmsReport)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number
+        /// Send the SMS campaign to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -237,7 +237,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<SendSms> SendTransacSmsAsync (SendTransacSms sendTransacSms);
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number
+        /// Send the SMS campaign to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -347,7 +347,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events) 
+        /// Get all your SMS activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
@@ -366,7 +366,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events) 
+        /// Get all your SMS activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
@@ -442,7 +442,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events) 
+        /// Get all your SMS activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
@@ -462,7 +462,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all the SMS activity (unaggregated events) 
+        /// Get all your SMS activity (unaggregated events) 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
@@ -872,7 +872,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number 
+        /// Send the SMS campaign to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -884,7 +884,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number 
+        /// Send the SMS campaign to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -956,7 +956,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number 
+        /// Send the SMS campaign to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -969,7 +969,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to the specified mobile number 
+        /// Send the SMS campaign to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>

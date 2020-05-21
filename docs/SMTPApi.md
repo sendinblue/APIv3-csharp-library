@@ -4,14 +4,14 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSmtpTemplate**](SMTPApi.md#createsmtptemplate) | **POST** /smtp/templates | Create a transactional email template
+[**CreateSmtpTemplate**](SMTPApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an email template
 [**DeleteHardbounces**](SMTPApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
-[**DeleteSmtpTemplate**](SMTPApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive transactional email template
+[**DeleteSmtpTemplate**](SMTPApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
 [**GetAggregatedSmtpReport**](SMTPApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
 [**GetEmailEventReport**](SMTPApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
 [**GetSmtpReport**](SMTPApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
-[**GetSmtpTemplate**](SMTPApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template informations
-[**GetSmtpTemplates**](SMTPApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of transactional email templates
+[**GetSmtpTemplate**](SMTPApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template information
+[**GetSmtpTemplates**](SMTPApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of email templates
 [**GetTransacBlockedContacts**](SMTPApi.md#gettransacblockedcontacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
 [**GetTransacEmailContent**](SMTPApi.md#gettransacemailcontent) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
 [**GetTransacEmailsList**](SMTPApi.md#gettransacemailslist) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
@@ -20,14 +20,14 @@ Method | HTTP request | Description
 [**SendTransacEmail**](SMTPApi.md#sendtransacemail) | **POST** /smtp/email | Send a transactional email
 [**SmtpBlockedContactsEmailDelete**](SMTPApi.md#smtpblockedcontactsemaildelete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
 [**SmtpLogMessageIdDelete**](SMTPApi.md#smtplogmessageiddelete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
-[**UpdateSmtpTemplate**](SMTPApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Updates a transactional email templates
+[**UpdateSmtpTemplate**](SMTPApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Update an email template
 
 
 <a name="createsmtptemplate"></a>
 # **CreateSmtpTemplate**
 > CreateModel CreateSmtpTemplate (CreateSmtpTemplate smtpTemplate)
 
-Create a transactional email template
+Create an email template
 
 ### Example
 ```csharp
@@ -57,7 +57,7 @@ namespace Example
 
             try
             {
-                // Create a transactional email template
+                // Create an email template
                 CreateModel result = apiInstance.CreateSmtpTemplate(smtpTemplate);
                 Debug.WriteLine(result);
             }
@@ -164,7 +164,7 @@ void (empty response body)
 # **DeleteSmtpTemplate**
 > void DeleteSmtpTemplate (long? templateId)
 
-Delete an inactive transactional email template
+Delete an inactive email template
 
 ### Example
 ```csharp
@@ -194,7 +194,7 @@ namespace Example
 
             try
             {
-                // Delete an inactive transactional email template
+                // Delete an inactive email template
                 apiInstance.DeleteSmtpTemplate(templateId);
             }
             catch (Exception e)
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 # **GetSmtpTemplate**
 > GetSmtpTemplateOverview GetSmtpTemplate (long? templateId)
 
-Returns the template informations
+Returns the template information
 
 ### Example
 ```csharp
@@ -499,7 +499,7 @@ namespace Example
 
             try
             {
-                // Returns the template informations
+                // Returns the template information
                 GetSmtpTemplateOverview result = apiInstance.GetSmtpTemplate(templateId);
                 Debug.WriteLine(result);
             }
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 # **GetSmtpTemplates**
 > GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null)
 
-Get the list of transactional email templates
+Get the list of email templates
 
 ### Example
 ```csharp
@@ -569,7 +569,7 @@ namespace Example
 
             try
             {
-                // Get the list of transactional email templates
+                // Get the list of email templates
                 GetSmtpTemplates result = apiInstance.GetSmtpTemplates(templateStatus, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -751,7 +751,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacemailslist"></a>
 # **GetTransacEmailsList**
-> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
 
 Get the list of transactional emails on the basis of allowed filters
 
@@ -784,7 +784,7 @@ namespace Example
             var email = email_example;  // string | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional) 
             var templateId = 789;  // long? | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional) 
             var messageId = messageId_example;  // string | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional) 
-            var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
             var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
 
             try
@@ -809,7 +809,7 @@ Name | Type | Description  | Notes
  **email** | **string**| Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. | [optional] 
  **templateId** | **long?**| Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. | [optional] 
  **messageId** | **string**| Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. | [optional] 
- **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
  **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
 
 ### Return type
@@ -1174,7 +1174,7 @@ void (empty response body)
 # **UpdateSmtpTemplate**
 > void UpdateSmtpTemplate (long? templateId, UpdateSmtpTemplate smtpTemplate)
 
-Updates a transactional email templates
+Update an email template
 
 ### Example
 ```csharp
@@ -1205,7 +1205,7 @@ namespace Example
 
             try
             {
-                // Updates a transactional email templates
+                // Update an email template
                 apiInstance.UpdateSmtpTemplate(templateId, smtpTemplate);
             }
             catch (Exception e)

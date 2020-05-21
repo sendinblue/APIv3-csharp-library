@@ -31,16 +31,16 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddContactToList" /> class.
         /// </summary>
-        /// <param name="emails">Emails to add to a list.</param>
+        /// <param name="emails">Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api..</param>
         public AddContactToList(List<string> emails = default(List<string>))
         {
             this.Emails = emails;
         }
         
         /// <summary>
-        /// Emails to add to a list
+        /// Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
         /// </summary>
-        /// <value>Emails to add to a list</value>
+        /// <value>Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.</value>
         [DataMember(Name="emails", EmitDefaultValue=false)]
         public List<string> Emails { get; set; }
 

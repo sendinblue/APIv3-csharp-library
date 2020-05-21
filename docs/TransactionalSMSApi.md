@@ -4,17 +4,17 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetSmsEvents**](TransactionalSMSApi.md#getsmsevents) | **GET** /transactionalSMS/statistics/events | Get all the SMS activity (unaggregated events)
+[**GetSmsEvents**](TransactionalSMSApi.md#getsmsevents) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
 [**GetTransacAggregatedSmsReport**](TransactionalSMSApi.md#gettransacaggregatedsmsreport) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
 [**GetTransacSmsReport**](TransactionalSMSApi.md#gettransacsmsreport) | **GET** /transactionalSMS/statistics/reports | Get your SMS activity aggregated per day
-[**SendTransacSms**](TransactionalSMSApi.md#sendtransacsms) | **POST** /transactionalSMS/sms | Send the SMS campaign to the specified mobile number
+[**SendTransacSms**](TransactionalSMSApi.md#sendtransacsms) | **POST** /transactionalSMS/sms | Send the SMS campaign to a mobile number
 
 
 <a name="getsmsevents"></a>
 # **GetSmsEvents**
 > GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
 
-Get all the SMS activity (unaggregated events)
+Get all your SMS activity (unaggregated events)
 
 ### Example
 ```csharp
@@ -51,7 +51,7 @@ namespace Example
 
             try
             {
-                // Get all the SMS activity (unaggregated events)
+                // Get all your SMS activity (unaggregated events)
                 GetSmsEventReport result = apiInstance.GetSmsEvents(limit, startDate, endDate, offset, days, phoneNumber, _event, tags);
                 Debug.WriteLine(result);
             }
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 # **SendTransacSms**
 > SendSms SendTransacSms (SendTransacSms sendTransacSms)
 
-Send the SMS campaign to the specified mobile number
+Send the SMS campaign to a mobile number
 
 ### Example
 ```csharp
@@ -274,7 +274,7 @@ namespace Example
 
             try
             {
-                // Send the SMS campaign to the specified mobile number
+                // Send the SMS campaign to a mobile number
                 SendSms result = apiInstance.SendTransacSms(sendTransacSms);
                 Debug.WriteLine(result);
             }

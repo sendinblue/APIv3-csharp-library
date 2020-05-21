@@ -46,7 +46,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreateModel</returns>
         ApiResponse<CreateModel> CreateSmsCampaignWithHttpInfo (CreateSmsCampaign createSmsCampaign);
         /// <summary>
-        /// Delete the SMS campaign
+        /// Delete an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -57,7 +57,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteSmsCampaign (long? campaignId);
 
         /// <summary>
-        /// Delete the SMS campaign
+        /// Delete an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -88,7 +88,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetSmsCampaign</returns>
         ApiResponse<GetSmsCampaign> GetSmsCampaignWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns
+        /// Returns the information for all your created SMS campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -103,7 +103,7 @@ namespace sib_api_v3_sdk.Api
         GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns
+        /// Returns the information for all your created SMS campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -117,7 +117,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetSmsCampaigns</returns>
         ApiResponse<GetSmsCampaigns> GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Exports the recipients of the specified campaign.
+        /// Export an SMS campaign&#39;s recipients
         /// </summary>
         /// <remarks>
         /// It returns the background process ID which on completion calls the notify URL that you have set in the input.
@@ -129,7 +129,7 @@ namespace sib_api_v3_sdk.Api
         CreatedProcessId RequestSmsRecipientExport (long? campaignId, RequestSmsRecipientExport recipientExport = null);
 
         /// <summary>
-        /// Exports the recipients of the specified campaign.
+        /// Export an SMS campaign&#39;s recipients
         /// </summary>
         /// <remarks>
         /// It returns the background process ID which on completion calls the notify URL that you have set in the input.
@@ -161,7 +161,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SendSmsCampaignNowWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Send report of SMS campaigns
+        /// Send an SMS campaign&#39;s report
         /// </summary>
         /// <remarks>
         /// Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
@@ -173,7 +173,7 @@ namespace sib_api_v3_sdk.Api
         void SendSmsReport (long? campaignId, SendReport sendReport);
 
         /// <summary>
-        /// Send report of SMS campaigns
+        /// Send an SMS campaign&#39;s report
         /// </summary>
         /// <remarks>
         /// Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
@@ -184,7 +184,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SendSmsReportWithHttpInfo (long? campaignId, SendReport sendReport);
         /// <summary>
-        /// Send an SMS
+        /// Send a test SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -196,7 +196,7 @@ namespace sib_api_v3_sdk.Api
         void SendTestSms (long? campaignId, SendTestSms phoneNumber);
 
         /// <summary>
-        /// Send an SMS
+        /// Send a test SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -207,7 +207,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SendTestSmsWithHttpInfo (long? campaignId, SendTestSms phoneNumber);
         /// <summary>
-        /// Updates an SMS campaign
+        /// Update an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -219,7 +219,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateSmsCampaign (long? campaignId, UpdateSmsCampaign updateSmsCampaign);
 
         /// <summary>
-        /// Updates an SMS campaign
+        /// Update an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -230,7 +230,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateSmsCampaignWithHttpInfo (long? campaignId, UpdateSmsCampaign updateSmsCampaign);
         /// <summary>
-        /// Update the campaign status
+        /// Update a campaign&#39;s status
         /// </summary>
         /// <remarks>
         /// 
@@ -242,7 +242,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateSmsCampaignStatus (long? campaignId, UpdateCampaignStatus status);
 
         /// <summary>
-        /// Update the campaign status
+        /// Update a campaign&#39;s status
         /// </summary>
         /// <remarks>
         /// 
@@ -276,7 +276,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreateModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateModel>> CreateSmsCampaignAsyncWithHttpInfo (CreateSmsCampaign createSmsCampaign);
         /// <summary>
-        /// Delete the SMS campaign
+        /// Delete an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -287,7 +287,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteSmsCampaignAsync (long? campaignId);
 
         /// <summary>
-        /// Delete the SMS campaign
+        /// Delete an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -318,7 +318,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetSmsCampaign)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmsCampaign>> GetSmsCampaignAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns
+        /// Returns the information for all your created SMS campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -333,7 +333,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetSmsCampaigns> GetSmsCampaignsAsync (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns
+        /// Returns the information for all your created SMS campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -347,7 +347,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetSmsCampaigns)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
         /// <summary>
-        /// Exports the recipients of the specified campaign.
+        /// Export an SMS campaign&#39;s recipients
         /// </summary>
         /// <remarks>
         /// It returns the background process ID which on completion calls the notify URL that you have set in the input.
@@ -359,7 +359,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<CreatedProcessId> RequestSmsRecipientExportAsync (long? campaignId, RequestSmsRecipientExport recipientExport = null);
 
         /// <summary>
-        /// Exports the recipients of the specified campaign.
+        /// Export an SMS campaign&#39;s recipients
         /// </summary>
         /// <remarks>
         /// It returns the background process ID which on completion calls the notify URL that you have set in the input.
@@ -391,7 +391,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SendSmsCampaignNowAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Send report of SMS campaigns
+        /// Send an SMS campaign&#39;s report
         /// </summary>
         /// <remarks>
         /// Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
@@ -403,7 +403,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task SendSmsReportAsync (long? campaignId, SendReport sendReport);
 
         /// <summary>
-        /// Send report of SMS campaigns
+        /// Send an SMS campaign&#39;s report
         /// </summary>
         /// <remarks>
         /// Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
@@ -414,7 +414,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SendSmsReportAsyncWithHttpInfo (long? campaignId, SendReport sendReport);
         /// <summary>
-        /// Send an SMS
+        /// Send a test SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -426,7 +426,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task SendTestSmsAsync (long? campaignId, SendTestSms phoneNumber);
 
         /// <summary>
-        /// Send an SMS
+        /// Send a test SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -437,7 +437,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SendTestSmsAsyncWithHttpInfo (long? campaignId, SendTestSms phoneNumber);
         /// <summary>
-        /// Updates an SMS campaign
+        /// Update an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -449,7 +449,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateSmsCampaignAsync (long? campaignId, UpdateSmsCampaign updateSmsCampaign);
 
         /// <summary>
-        /// Updates an SMS campaign
+        /// Update an SMS campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -460,7 +460,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSmsCampaignAsyncWithHttpInfo (long? campaignId, UpdateSmsCampaign updateSmsCampaign);
         /// <summary>
-        /// Update the campaign status
+        /// Update a campaign&#39;s status
         /// </summary>
         /// <remarks>
         /// 
@@ -472,7 +472,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateSmsCampaignStatusAsync (long? campaignId, UpdateCampaignStatus status);
 
         /// <summary>
-        /// Update the campaign status
+        /// Update a campaign&#39;s status
         /// </summary>
         /// <remarks>
         /// 
@@ -752,7 +752,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete the SMS campaign 
+        /// Delete an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -763,7 +763,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete the SMS campaign 
+        /// Delete an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -828,7 +828,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete the SMS campaign 
+        /// Delete an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -840,7 +840,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete the SMS campaign 
+        /// Delete an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -1060,7 +1060,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns 
+        /// Returns the information for all your created SMS campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="status">Status of campaign. (optional)</param>
@@ -1076,7 +1076,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns 
+        /// Returns the information for all your created SMS campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="status">Status of campaign. (optional)</param>
@@ -1146,7 +1146,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns 
+        /// Returns the information for all your created SMS campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="status">Status of campaign. (optional)</param>
@@ -1163,7 +1163,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the informations for all your created SMS campaigns 
+        /// Returns the information for all your created SMS campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="status">Status of campaign. (optional)</param>
@@ -1233,7 +1233,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Exports the recipients of the specified campaign. It returns the background process ID which on completion calls the notify URL that you have set in the input.
+        /// Export an SMS campaign&#39;s recipients It returns the background process ID which on completion calls the notify URL that you have set in the input.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1246,7 +1246,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Exports the recipients of the specified campaign. It returns the background process ID which on completion calls the notify URL that you have set in the input.
+        /// Export an SMS campaign&#39;s recipients It returns the background process ID which on completion calls the notify URL that you have set in the input.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1320,7 +1320,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Exports the recipients of the specified campaign. It returns the background process ID which on completion calls the notify URL that you have set in the input.
+        /// Export an SMS campaign&#39;s recipients It returns the background process ID which on completion calls the notify URL that you have set in the input.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1334,7 +1334,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Exports the recipients of the specified campaign. It returns the background process ID which on completion calls the notify URL that you have set in the input.
+        /// Export an SMS campaign&#39;s recipients It returns the background process ID which on completion calls the notify URL that you have set in the input.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1561,7 +1561,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send report of SMS campaigns Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
+        /// Send an SMS campaign&#39;s report Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1573,7 +1573,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send report of SMS campaigns Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
+        /// Send an SMS campaign&#39;s report Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1650,7 +1650,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send report of SMS campaigns Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
+        /// Send an SMS campaign&#39;s report Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1663,7 +1663,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send report of SMS campaigns Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
+        /// Send an SMS campaign&#39;s report Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -1740,7 +1740,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an SMS 
+        /// Send a test SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the SMS campaign</param>
@@ -1752,7 +1752,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an SMS 
+        /// Send a test SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the SMS campaign</param>
@@ -1829,7 +1829,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an SMS 
+        /// Send a test SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the SMS campaign</param>
@@ -1842,7 +1842,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send an SMS 
+        /// Send a test SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the SMS campaign</param>
@@ -1919,7 +1919,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an SMS campaign 
+        /// Update an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -1931,7 +1931,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an SMS campaign 
+        /// Update an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -2008,7 +2008,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an SMS campaign 
+        /// Update an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -2021,7 +2021,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates an SMS campaign 
+        /// Update an SMS campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the SMS campaign</param>
@@ -2098,7 +2098,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update the campaign status 
+        /// Update a campaign&#39;s status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -2110,7 +2110,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update the campaign status 
+        /// Update a campaign&#39;s status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -2187,7 +2187,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update the campaign status 
+        /// Update a campaign&#39;s status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>
@@ -2200,7 +2200,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update the campaign status 
+        /// Update a campaign&#39;s status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">id of the campaign</param>

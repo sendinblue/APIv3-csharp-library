@@ -9,12 +9,12 @@
     <Company>Sendinblue</Company>
     <AssemblyTitle>Swagger Library</AssemblyTitle>
     <Description>Official SendinBlue provided RESTFul API V3 C# Library</Description>
-    <Copyright>Copyright (c) 2019 SendinBlue</Copyright>
+    <Copyright>Copyright (c) 2020 SendinBlue</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>sib_api_v3_sdk</RootNamespace>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <PackageLicenseUrl>https://github.com/sendinblue/APIv3-csharp-library/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sendinblue/APIv3-csharp-library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sendinblue/APIv3-csharp-library</RepositoryUrl>
@@ -24,8 +24,8 @@
   <ItemGroup>
     <PackageReference Include="FubarCoder.RestSharp.Portable.Core" Version="4.0.8" />
     <PackageReference Include="FubarCoder.RestSharp.Portable.HttpClient" Version="4.0.8" />
-    <PackageReference Include="JsonSubTypes" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="JsonSubTypes" Version="1.2.0" />
   </ItemGroup>
 
 

@@ -5,30 +5,31 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddContactToList**](ContactsApi.md#addcontacttolist) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
-[**CreateAttribute**](ContactsApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Creates contact attribute
+[**CreateAttribute**](ContactsApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Create contact attribute
 [**CreateContact**](ContactsApi.md#createcontact) | **POST** /contacts | Create a contact
+[**CreateDoiContact**](ContactsApi.md#createdoicontact) | **POST** /contacts/doubleOptinConfirmation | Create a contact to trigger the DOI workflow from a Landing Page form
 [**CreateFolder**](ContactsApi.md#createfolder) | **POST** /contacts/folders | Create a folder
 [**CreateList**](ContactsApi.md#createlist) | **POST** /contacts/lists | Create a list
-[**DeleteAttribute**](ContactsApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Deletes an attribute
-[**DeleteContact**](ContactsApi.md#deletecontact) | **DELETE** /contacts/{email} | Deletes a contact
+[**DeleteAttribute**](ContactsApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Delete an attribute
+[**DeleteContact**](ContactsApi.md#deletecontact) | **DELETE** /contacts/{email} | Delete a contact
 [**DeleteFolder**](ContactsApi.md#deletefolder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
 [**DeleteList**](ContactsApi.md#deletelist) | **DELETE** /contacts/lists/{listId} | Delete a list
-[**GetAttributes**](ContactsApi.md#getattributes) | **GET** /contacts/attributes | Lists all attributes
-[**GetContactInfo**](ContactsApi.md#getcontactinfo) | **GET** /contacts/{email} | Retrieves contact informations
-[**GetContactStats**](ContactsApi.md#getcontactstats) | **GET** /contacts/{email}/campaignStats | Get the campaigns statistics for a contact
+[**GetAttributes**](ContactsApi.md#getattributes) | **GET** /contacts/attributes | List all attributes
+[**GetContactInfo**](ContactsApi.md#getcontactinfo) | **GET** /contacts/{email} | Get a contact&#39;s details
+[**GetContactStats**](ContactsApi.md#getcontactstats) | **GET** /contacts/{email}/campaignStats | Get email campaigns&#39; statistics for a contact
 [**GetContacts**](ContactsApi.md#getcontacts) | **GET** /contacts | Get all the contacts
-[**GetContactsFromList**](ContactsApi.md#getcontactsfromlist) | **GET** /contacts/lists/{listId}/contacts | Get the contacts in a list
-[**GetFolder**](ContactsApi.md#getfolder) | **GET** /contacts/folders/{folderId} | Returns folder details
-[**GetFolderLists**](ContactsApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get the lists in a folder
-[**GetFolders**](ContactsApi.md#getfolders) | **GET** /contacts/folders | Get all the folders
-[**GetList**](ContactsApi.md#getlist) | **GET** /contacts/lists/{listId} | Get the details of a list
+[**GetContactsFromList**](ContactsApi.md#getcontactsfromlist) | **GET** /contacts/lists/{listId}/contacts | Get contacts in a list
+[**GetFolder**](ContactsApi.md#getfolder) | **GET** /contacts/folders/{folderId} | Returns a folder&#39;s details
+[**GetFolderLists**](ContactsApi.md#getfolderlists) | **GET** /contacts/folders/{folderId}/lists | Get lists in a folder
+[**GetFolders**](ContactsApi.md#getfolders) | **GET** /contacts/folders | Get all folders
+[**GetList**](ContactsApi.md#getlist) | **GET** /contacts/lists/{listId} | Get a list&#39;s details
 [**GetLists**](ContactsApi.md#getlists) | **GET** /contacts/lists | Get all the lists
 [**ImportContacts**](ContactsApi.md#importcontacts) | **POST** /contacts/import | Import contacts
-[**RemoveContactFromList**](ContactsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Remove existing contacts from a list
+[**RemoveContactFromList**](ContactsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
 [**RequestContactExport**](ContactsApi.md#requestcontactexport) | **POST** /contacts/export | Export contacts
-[**UpdateAttribute**](ContactsApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Updates contact attribute
-[**UpdateContact**](ContactsApi.md#updatecontact) | **PUT** /contacts/{email} | Updates a contact
-[**UpdateFolder**](ContactsApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a contact folder
+[**UpdateAttribute**](ContactsApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
+[**UpdateContact**](ContactsApi.md#updatecontact) | **PUT** /contacts/{email} | Update a contact
+[**UpdateFolder**](ContactsApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a folder
 [**UpdateList**](ContactsApi.md#updatelist) | **PUT** /contacts/lists/{listId} | Update a list
 
 
@@ -106,7 +107,7 @@ Name | Type | Description  | Notes
 # **CreateAttribute**
 > void CreateAttribute (string attributeCategory, string attributeName, CreateAttribute createAttribute)
 
-Creates contact attribute
+Create contact attribute
 
 ### Example
 ```csharp
@@ -138,7 +139,7 @@ namespace Example
 
             try
             {
-                // Creates contact attribute
+                // Create contact attribute
                 apiInstance.CreateAttribute(attributeCategory, attributeName, createAttribute);
             }
             catch (Exception e)
@@ -229,6 +230,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateUpdateContactModel**](CreateUpdateContactModel.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createdoicontact"></a>
+# **CreateDoiContact**
+> void CreateDoiContact (CreateDoiContact createDoiContact)
+
+Create a contact to trigger the DOI workflow from a Landing Page form
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class CreateDoiContactExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new ContactsApi();
+            var createDoiContact = new CreateDoiContact(); // CreateDoiContact | Values to create the DOI contact
+
+            try
+            {
+                // Create a contact to trigger the DOI workflow from a Landing Page form
+                apiInstance.CreateDoiContact(createDoiContact);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContactsApi.CreateDoiContact: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDoiContact** | [**CreateDoiContact**](CreateDoiContact.md)| Values to create the DOI contact | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -381,7 +449,7 @@ Name | Type | Description  | Notes
 # **DeleteAttribute**
 > void DeleteAttribute (string attributeCategory, string attributeName)
 
-Deletes an attribute
+Delete an attribute
 
 ### Example
 ```csharp
@@ -412,7 +480,7 @@ namespace Example
 
             try
             {
-                // Deletes an attribute
+                // Delete an attribute
                 apiInstance.DeleteAttribute(attributeCategory, attributeName);
             }
             catch (Exception e)
@@ -450,7 +518,7 @@ void (empty response body)
 # **DeleteContact**
 > void DeleteContact (string email)
 
-Deletes a contact
+Delete a contact
 
 ### Example
 ```csharp
@@ -480,7 +548,7 @@ namespace Example
 
             try
             {
-                // Deletes a contact
+                // Delete a contact
                 apiInstance.DeleteContact(email);
             }
             catch (Exception e)
@@ -651,7 +719,7 @@ void (empty response body)
 # **GetAttributes**
 > GetAttributes GetAttributes ()
 
-Lists all attributes
+List all attributes
 
 ### Example
 ```csharp
@@ -680,7 +748,7 @@ namespace Example
 
             try
             {
-                // Lists all attributes
+                // List all attributes
                 GetAttributes result = apiInstance.GetAttributes();
                 Debug.WriteLine(result);
             }
@@ -715,7 +783,7 @@ This endpoint does not need any parameter.
 # **GetContactInfo**
 > GetExtendedContactDetails GetContactInfo (string email)
 
-Retrieves contact informations
+Get a contact's details
 
 ### Example
 ```csharp
@@ -745,7 +813,7 @@ namespace Example
 
             try
             {
-                // Retrieves contact informations
+                // Get a contact's details
                 GetExtendedContactDetails result = apiInstance.GetContactInfo(email);
                 Debug.WriteLine(result);
             }
@@ -781,9 +849,9 @@ Name | Type | Description  | Notes
 
 <a name="getcontactstats"></a>
 # **GetContactStats**
-> GetContactCampaignStats GetContactStats (string email)
+> GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null)
 
-Get the campaigns statistics for a contact
+Get email campaigns' statistics for a contact
 
 ### Example
 ```csharp
@@ -810,11 +878,13 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var email = email_example;  // string | Email address (urlencoded) of the contact
+            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
+            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
 
             try
             {
-                // Get the campaigns statistics for a contact
-                GetContactCampaignStats result = apiInstance.GetContactStats(email);
+                // Get email campaigns' statistics for a contact
+                GetContactCampaignStats result = apiInstance.GetContactStats(email, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -831,6 +901,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **email** | **string**| Email address (urlencoded) of the contact | 
+ **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
+ **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
 
 ### Return type
 
@@ -923,7 +995,7 @@ Name | Type | Description  | Notes
 # **GetContactsFromList**
 > GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null)
 
-Get the contacts in a list
+Get contacts in a list
 
 ### Example
 ```csharp
@@ -956,7 +1028,7 @@ namespace Example
 
             try
             {
-                // Get the contacts in a list
+                // Get contacts in a list
                 GetContacts result = apiInstance.GetContactsFromList(listId, modifiedSince, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -997,7 +1069,7 @@ Name | Type | Description  | Notes
 # **GetFolder**
 > GetFolder GetFolder (long? folderId)
 
-Returns folder details
+Returns a folder's details
 
 ### Example
 ```csharp
@@ -1027,7 +1099,7 @@ namespace Example
 
             try
             {
-                // Returns folder details
+                // Returns a folder's details
                 GetFolder result = apiInstance.GetFolder(folderId);
                 Debug.WriteLine(result);
             }
@@ -1065,7 +1137,7 @@ Name | Type | Description  | Notes
 # **GetFolderLists**
 > GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null)
 
-Get the lists in a folder
+Get lists in a folder
 
 ### Example
 ```csharp
@@ -1097,7 +1169,7 @@ namespace Example
 
             try
             {
-                // Get the lists in a folder
+                // Get lists in a folder
                 GetFolderLists result = apiInstance.GetFolderLists(folderId, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -1137,7 +1209,7 @@ Name | Type | Description  | Notes
 # **GetFolders**
 > GetFolders GetFolders (long? limit, long? offset)
 
-Get all the folders
+Get all folders
 
 ### Example
 ```csharp
@@ -1168,7 +1240,7 @@ namespace Example
 
             try
             {
-                // Get all the folders
+                // Get all folders
                 GetFolders result = apiInstance.GetFolders(limit, offset);
                 Debug.WriteLine(result);
             }
@@ -1207,7 +1279,7 @@ Name | Type | Description  | Notes
 # **GetList**
 > GetExtendedList GetList (long? listId)
 
-Get the details of a list
+Get a list's details
 
 ### Example
 ```csharp
@@ -1237,7 +1309,7 @@ namespace Example
 
             try
             {
-                // Get the details of a list
+                // Get a list's details
                 GetExtendedList result = apiInstance.GetList(listId);
                 Debug.WriteLine(result);
             }
@@ -1415,7 +1487,7 @@ Name | Type | Description  | Notes
 # **RemoveContactFromList**
 > PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails)
 
-Remove existing contacts from a list
+Delete a contact from a list
 
 ### Example
 ```csharp
@@ -1446,7 +1518,7 @@ namespace Example
 
             try
             {
-                // Remove existing contacts from a list
+                // Delete a contact from a list
                 PostContactInfo result = apiInstance.RemoveContactFromList(listId, contactEmails);
                 Debug.WriteLine(result);
             }
@@ -1555,7 +1627,7 @@ Name | Type | Description  | Notes
 # **UpdateAttribute**
 > void UpdateAttribute (string attributeCategory, string attributeName, UpdateAttribute updateAttribute)
 
-Updates contact attribute
+Update contact attribute
 
 ### Example
 ```csharp
@@ -1587,7 +1659,7 @@ namespace Example
 
             try
             {
-                // Updates contact attribute
+                // Update contact attribute
                 apiInstance.UpdateAttribute(attributeCategory, attributeName, updateAttribute);
             }
             catch (Exception e)
@@ -1626,7 +1698,7 @@ void (empty response body)
 # **UpdateContact**
 > void UpdateContact (string email, UpdateContact updateContact)
 
-Updates a contact
+Update a contact
 
 ### Example
 ```csharp
@@ -1657,7 +1729,7 @@ namespace Example
 
             try
             {
-                // Updates a contact
+                // Update a contact
                 apiInstance.UpdateContact(email, updateContact);
             }
             catch (Exception e)
@@ -1695,7 +1767,7 @@ void (empty response body)
 # **UpdateFolder**
 > void UpdateFolder (long? folderId, CreateUpdateFolder updateFolder)
 
-Update a contact folder
+Update a folder
 
 ### Example
 ```csharp
@@ -1726,7 +1798,7 @@ namespace Example
 
             try
             {
-                // Update a contact folder
+                // Update a folder
                 apiInstance.UpdateFolder(folderId, updateFolder);
             }
             catch (Exception e)

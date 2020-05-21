@@ -6,16 +6,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateEmailCampaign**](EmailCampaignsApi.md#createemailcampaign) | **POST** /emailCampaigns | Create an email campaign
 [**DeleteEmailCampaign**](EmailCampaignsApi.md#deleteemailcampaign) | **DELETE** /emailCampaigns/{campaignId} | Delete an email campaign
-[**EmailExportRecipients**](EmailCampaignsApi.md#emailexportrecipients) | **POST** /emailCampaigns/{campaignId}/exportRecipients | Export the recipients of a campaign
-[**GetAbTestCampaignResult**](EmailCampaignsApi.md#getabtestcampaignresult) | **GET** /emailCampaigns/{campaignId}/abTestCampaignResult | Get A/B test email campaign result
-[**GetEmailCampaign**](EmailCampaignsApi.md#getemailcampaign) | **GET** /emailCampaigns/{campaignId} | Get campaign informations
-[**GetEmailCampaigns**](EmailCampaignsApi.md#getemailcampaigns) | **GET** /emailCampaigns | Return all your created campaigns
+[**EmailExportRecipients**](EmailCampaignsApi.md#emailexportrecipients) | **POST** /emailCampaigns/{campaignId}/exportRecipients | Export the recipients of an email campaign
+[**GetAbTestCampaignResult**](EmailCampaignsApi.md#getabtestcampaignresult) | **GET** /emailCampaigns/{campaignId}/abTestCampaignResult | Get an A/B test email campaign results
+[**GetEmailCampaign**](EmailCampaignsApi.md#getemailcampaign) | **GET** /emailCampaigns/{campaignId} | Get an email campaign report
+[**GetEmailCampaigns**](EmailCampaignsApi.md#getemailcampaigns) | **GET** /emailCampaigns | Return all your created email campaigns
 [**GetSharedTemplateUrl**](EmailCampaignsApi.md#getsharedtemplateurl) | **GET** /emailCampaigns/{campaignId}/sharedUrl | Get a shared template url
 [**SendEmailCampaignNow**](EmailCampaignsApi.md#sendemailcampaignnow) | **POST** /emailCampaigns/{campaignId}/sendNow | Send an email campaign immediately, based on campaignId
-[**SendReport**](EmailCampaignsApi.md#sendreport) | **POST** /emailCampaigns/{campaignId}/sendReport | Send the report of a campaigns
+[**SendReport**](EmailCampaignsApi.md#sendreport) | **POST** /emailCampaigns/{campaignId}/sendReport | Send the report of a campaign
 [**SendTestEmail**](EmailCampaignsApi.md#sendtestemail) | **POST** /emailCampaigns/{campaignId}/sendTest | Send an email campaign to your test list
-[**UpdateCampaignStatus**](EmailCampaignsApi.md#updatecampaignstatus) | **PUT** /emailCampaigns/{campaignId}/status | Update a campaign status
-[**UpdateEmailCampaign**](EmailCampaignsApi.md#updateemailcampaign) | **PUT** /emailCampaigns/{campaignId} | Update a campaign
+[**UpdateCampaignStatus**](EmailCampaignsApi.md#updatecampaignstatus) | **PUT** /emailCampaigns/{campaignId}/status | Update an email campaign status
+[**UpdateEmailCampaign**](EmailCampaignsApi.md#updateemailcampaign) | **PUT** /emailCampaigns/{campaignId} | Update an email campaign
+[**UploadImageToGallery**](EmailCampaignsApi.md#uploadimagetogallery) | **POST** /emailCampaigns/images | Upload an image to your account&#39;s image gallery
 
 
 <a name="createemailcampaign"></a>
@@ -157,7 +158,7 @@ void (empty response body)
 # **EmailExportRecipients**
 > CreatedProcessId EmailExportRecipients (long? campaignId, EmailExportRecipients recipientExport = null)
 
-Export the recipients of a campaign
+Export the recipients of an email campaign
 
 ### Example
 ```csharp
@@ -188,7 +189,7 @@ namespace Example
 
             try
             {
-                // Export the recipients of a campaign
+                // Export the recipients of an email campaign
                 CreatedProcessId result = apiInstance.EmailExportRecipients(campaignId, recipientExport);
                 Debug.WriteLine(result);
             }
@@ -227,7 +228,7 @@ Name | Type | Description  | Notes
 # **GetAbTestCampaignResult**
 > AbTestCampaignResult GetAbTestCampaignResult (long? campaignId)
 
-Get A/B test email campaign result
+Get an A/B test email campaign results
 
 Obtain winning version of an A/B test email campaign
 
@@ -259,7 +260,7 @@ namespace Example
 
             try
             {
-                // Get A/B test email campaign result
+                // Get an A/B test email campaign results
                 AbTestCampaignResult result = apiInstance.GetAbTestCampaignResult(campaignId);
                 Debug.WriteLine(result);
             }
@@ -297,7 +298,7 @@ Name | Type | Description  | Notes
 # **GetEmailCampaign**
 > GetEmailCampaign GetEmailCampaign (long? campaignId)
 
-Get campaign informations
+Get an email campaign report
 
 ### Example
 ```csharp
@@ -327,7 +328,7 @@ namespace Example
 
             try
             {
-                // Get campaign informations
+                // Get an email campaign report
                 GetEmailCampaign result = apiInstance.GetEmailCampaign(campaignId);
                 Debug.WriteLine(result);
             }
@@ -365,7 +366,7 @@ Name | Type | Description  | Notes
 # **GetEmailCampaigns**
 > GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
 
-Return all your created campaigns
+Return all your created email campaigns
 
 ### Example
 ```csharp
@@ -400,7 +401,7 @@ namespace Example
 
             try
             {
-                // Return all your created campaigns
+                // Return all your created email campaigns
                 GetEmailCampaigns result = apiInstance.GetEmailCampaigns(type, status, startDate, endDate, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -580,7 +581,7 @@ void (empty response body)
 # **SendReport**
 > void SendReport (long? campaignId, SendReport sendReport)
 
-Send the report of a campaigns
+Send the report of a campaign
 
 A PDF will be sent to the specified email addresses
 
@@ -613,7 +614,7 @@ namespace Example
 
             try
             {
-                // Send the report of a campaigns
+                // Send the report of a campaign
                 apiInstance.SendReport(campaignId, sendReport);
             }
             catch (Exception e)
@@ -720,7 +721,7 @@ void (empty response body)
 # **UpdateCampaignStatus**
 > void UpdateCampaignStatus (long? campaignId, UpdateCampaignStatus status)
 
-Update a campaign status
+Update an email campaign status
 
 ### Example
 ```csharp
@@ -751,7 +752,7 @@ namespace Example
 
             try
             {
-                // Update a campaign status
+                // Update an email campaign status
                 apiInstance.UpdateCampaignStatus(campaignId, status);
             }
             catch (Exception e)
@@ -789,7 +790,7 @@ void (empty response body)
 # **UpdateEmailCampaign**
 > void UpdateEmailCampaign (long? campaignId, UpdateEmailCampaign emailCampaign)
 
-Update a campaign
+Update an email campaign
 
 ### Example
 ```csharp
@@ -820,7 +821,7 @@ namespace Example
 
             try
             {
-                // Update a campaign
+                // Update an email campaign
                 apiInstance.UpdateEmailCampaign(campaignId, emailCampaign);
             }
             catch (Exception e)
@@ -838,6 +839,73 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaignId** | **long?**| Id of the campaign | 
  **emailCampaign** | [**UpdateEmailCampaign**](UpdateEmailCampaign.md)| Values to update a campaign | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="uploadimagetogallery"></a>
+# **UploadImageToGallery**
+> void UploadImageToGallery (UploadImageToGallery uploadImage)
+
+Upload an image to your account's image gallery
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class UploadImageToGalleryExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new EmailCampaignsApi();
+            var uploadImage = new UploadImageToGallery(); // UploadImageToGallery | Parameters to upload an image
+
+            try
+            {
+                // Upload an image to your account's image gallery
+                apiInstance.UploadImageToGallery(uploadImage);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailCampaignsApi.UploadImageToGallery: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadImage** | [**UploadImageToGallery**](UploadImageToGallery.md)| Parameters to upload an image | 
 
 ### Return type
 

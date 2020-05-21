@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSenderWithHttpInfo (long? senderId);
         /// <summary>
-        /// Return all the dedicated IPs for your account
+        /// Get all the dedicated IPs for your account
         /// </summary>
         /// <remarks>
         /// 
@@ -77,7 +77,7 @@ namespace sib_api_v3_sdk.Api
         GetIps GetIps ();
 
         /// <summary>
-        /// Return all the dedicated IPs for your account
+        /// Get all the dedicated IPs for your account
         /// </summary>
         /// <remarks>
         /// 
@@ -86,7 +86,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetIps</returns>
         ApiResponse<GetIps> GetIpsWithHttpInfo ();
         /// <summary>
-        /// Return all the dedicated IPs for a sender
+        /// Get all the dedicated IPs for a sender
         /// </summary>
         /// <remarks>
         /// 
@@ -97,7 +97,7 @@ namespace sib_api_v3_sdk.Api
         GetIpsFromSender GetIpsFromSender (long? senderId);
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender
+        /// Get all the dedicated IPs for a sender
         /// </summary>
         /// <remarks>
         /// 
@@ -197,7 +197,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSenderAsyncWithHttpInfo (long? senderId);
         /// <summary>
-        /// Return all the dedicated IPs for your account
+        /// Get all the dedicated IPs for your account
         /// </summary>
         /// <remarks>
         /// 
@@ -207,7 +207,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetIps> GetIpsAsync ();
 
         /// <summary>
-        /// Return all the dedicated IPs for your account
+        /// Get all the dedicated IPs for your account
         /// </summary>
         /// <remarks>
         /// 
@@ -216,7 +216,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetIps)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetIps>> GetIpsAsyncWithHttpInfo ();
         /// <summary>
-        /// Return all the dedicated IPs for a sender
+        /// Get all the dedicated IPs for a sender
         /// </summary>
         /// <remarks>
         /// 
@@ -227,7 +227,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetIpsFromSender> GetIpsFromSenderAsync (long? senderId);
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender
+        /// Get all the dedicated IPs for a sender
         /// </summary>
         /// <remarks>
         /// 
@@ -699,7 +699,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for your account 
+        /// Get all the dedicated IPs for your account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetIps</returns>
@@ -710,7 +710,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for your account 
+        /// Get all the dedicated IPs for your account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetIps</returns>
@@ -770,7 +770,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for your account 
+        /// Get all the dedicated IPs for your account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of GetIps</returns>
@@ -782,7 +782,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for your account 
+        /// Get all the dedicated IPs for your account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (GetIps)</returns>
@@ -842,7 +842,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender 
+        /// Get all the dedicated IPs for a sender 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="senderId">Id of the sender</param>
@@ -854,7 +854,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender 
+        /// Get all the dedicated IPs for a sender 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="senderId">Id of the sender</param>
@@ -919,7 +919,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender 
+        /// Get all the dedicated IPs for a sender 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="senderId">Id of the sender</param>
@@ -932,7 +932,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all the dedicated IPs for a sender 
+        /// Get all the dedicated IPs for a sender 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="senderId">Id of the sender</param>

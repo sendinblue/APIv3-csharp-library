@@ -4,14 +4,14 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccount**](AccountApi.md#getaccount) | **GET** /account | Get your account informations, plans and credits details
+[**GetAccount**](AccountApi.md#getaccount) | **GET** /account | Get your account information, plan and credits details
 
 
 <a name="getaccount"></a>
 # **GetAccount**
 > GetAccount GetAccount ()
 
-Get your account informations, plans and credits details
+Get your account information, plan and credits details
 
 ### Example
 ```csharp
@@ -40,7 +40,7 @@ namespace Example
 
             try
             {
-                // Get your account informations, plans and credits details
+                // Get your account information, plan and credits details
                 GetAccount result = apiInstance.GetAccount();
                 Debug.WriteLine(result);
             }

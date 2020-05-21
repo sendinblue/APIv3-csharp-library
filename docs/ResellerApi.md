@@ -6,20 +6,20 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddCredits**](ResellerApi.md#addcredits) | **POST** /reseller/children/{childAuthKey}/credits/add | Add Email and/or SMS credits to a specific child account
 [**AssociateIpToChild**](ResellerApi.md#associateiptochild) | **POST** /reseller/children/{childAuthKey}/ips/associate | Associate a dedicated IP to the child
-[**CreateChildDomain**](ResellerApi.md#createchilddomain) | **POST** /reseller/children/{childAuthKey}/domains | Creates a domain for a child account
+[**CreateChildDomain**](ResellerApi.md#createchilddomain) | **POST** /reseller/children/{childAuthKey}/domains | Create a domain for a child account
 [**CreateResellerChild**](ResellerApi.md#createresellerchild) | **POST** /reseller/children | Creates a reseller child
-[**DeleteChildDomain**](ResellerApi.md#deletechilddomain) | **DELETE** /reseller/children/{childAuthKey}/domains/{domainName} | Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
-[**DeleteResellerChild**](ResellerApi.md#deleteresellerchild) | **DELETE** /reseller/children/{childAuthKey} | Deletes a single reseller child based on the childAuthKey supplied
+[**DeleteChildDomain**](ResellerApi.md#deletechilddomain) | **DELETE** /reseller/children/{childAuthKey}/domains/{domainName} | Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
+[**DeleteResellerChild**](ResellerApi.md#deleteresellerchild) | **DELETE** /reseller/children/{childAuthKey} | Delete a single reseller child based on the childAuthKey supplied
 [**DissociateIpFromChild**](ResellerApi.md#dissociateipfromchild) | **POST** /reseller/children/{childAuthKey}/ips/dissociate | Dissociate a dedicated IP to the child
-[**GetChildAccountCreationStatus**](ResellerApi.md#getchildaccountcreationstatus) | **GET** /reseller/children/{childAuthKey}/accountCreationStatus | Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
-[**GetChildDomains**](ResellerApi.md#getchilddomains) | **GET** /reseller/children/{childAuthKey}/domains | Gets all the sender domains of a specific child account
-[**GetChildInfo**](ResellerApi.md#getchildinfo) | **GET** /reseller/children/{childAuthKey} | Gets the info about a specific child account
-[**GetResellerChilds**](ResellerApi.md#getresellerchilds) | **GET** /reseller/children | Gets the list of all reseller&#39;s children accounts
+[**GetChildAccountCreationStatus**](ResellerApi.md#getchildaccountcreationstatus) | **GET** /reseller/children/{childAuthKey}/accountCreationStatus | Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+[**GetChildDomains**](ResellerApi.md#getchilddomains) | **GET** /reseller/children/{childAuthKey}/domains | Get all sender domains for a specific child account
+[**GetChildInfo**](ResellerApi.md#getchildinfo) | **GET** /reseller/children/{childAuthKey} | Get a child account&#39;s details
+[**GetResellerChilds**](ResellerApi.md#getresellerchilds) | **GET** /reseller/children | Get the list of all children accounts
 [**GetSsoToken**](ResellerApi.md#getssotoken) | **GET** /reseller/children/{childAuthKey}/auth | Get session token to access Sendinblue (SSO)
 [**RemoveCredits**](ResellerApi.md#removecredits) | **POST** /reseller/children/{childAuthKey}/credits/remove | Remove Email and/or SMS credits from a specific child account
-[**UpdateChildAccountStatus**](ResellerApi.md#updatechildaccountstatus) | **PUT** /reseller/children/{childAuthKey}/accountStatus | Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
-[**UpdateChildDomain**](ResellerApi.md#updatechilddomain) | **PUT** /reseller/children/{childAuthKey}/domains/{domainName} | Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
-[**UpdateResellerChild**](ResellerApi.md#updateresellerchild) | **PUT** /reseller/children/{childAuthKey} | Updates infos of reseller&#39;s child based on the childAuthKey supplied
+[**UpdateChildAccountStatus**](ResellerApi.md#updatechildaccountstatus) | **PUT** /reseller/children/{childAuthKey}/accountStatus | Update info of reseller&#39;s child account status based on the childAuthKey supplied
+[**UpdateChildDomain**](ResellerApi.md#updatechilddomain) | **PUT** /reseller/children/{childAuthKey}/domains/{domainName} | Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+[**UpdateResellerChild**](ResellerApi.md#updateresellerchild) | **PUT** /reseller/children/{childAuthKey} | Update info of reseller&#39;s child based on the childAuthKey supplied
 
 
 <a name="addcredits"></a>
@@ -165,7 +165,7 @@ void (empty response body)
 # **CreateChildDomain**
 > void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain)
 
-Creates a domain for a child account
+Create a domain for a child account
 
 ### Example
 ```csharp
@@ -196,7 +196,7 @@ namespace Example
 
             try
             {
-                // Creates a domain for a child account
+                // Create a domain for a child account
                 apiInstance.CreateChildDomain(childAuthKey, addChildDomain);
             }
             catch (Exception e)
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 # **DeleteChildDomain**
 > void DeleteChildDomain (string childAuthKey, string domainName)
 
-Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
 
 ### Example
 ```csharp
@@ -333,7 +333,7 @@ namespace Example
 
             try
             {
-                // Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+                // Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
                 apiInstance.DeleteChildDomain(childAuthKey, domainName);
             }
             catch (Exception e)
@@ -371,7 +371,7 @@ void (empty response body)
 # **DeleteResellerChild**
 > void DeleteResellerChild (string childAuthKey)
 
-Deletes a single reseller child based on the childAuthKey supplied
+Delete a single reseller child based on the childAuthKey supplied
 
 ### Example
 ```csharp
@@ -401,7 +401,7 @@ namespace Example
 
             try
             {
-                // Deletes a single reseller child based on the childAuthKey supplied
+                // Delete a single reseller child based on the childAuthKey supplied
                 apiInstance.DeleteResellerChild(childAuthKey);
             }
             catch (Exception e)
@@ -507,7 +507,7 @@ void (empty response body)
 # **GetChildAccountCreationStatus**
 > GetChildAccountCreationStatus GetChildAccountCreationStatus (string childAuthKey)
 
-Returns the status of reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
 
 ### Example
 ```csharp
@@ -537,7 +537,7 @@ namespace Example
 
             try
             {
-                // Returns the status of reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+                // Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
                 GetChildAccountCreationStatus result = apiInstance.GetChildAccountCreationStatus(childAuthKey);
                 Debug.WriteLine(result);
             }
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 # **GetChildDomains**
 > GetChildDomains GetChildDomains (string childAuthKey)
 
-Gets all the sender domains of a specific child account
+Get all sender domains for a specific child account
 
 ### Example
 ```csharp
@@ -605,7 +605,7 @@ namespace Example
 
             try
             {
-                // Gets all the sender domains of a specific child account
+                // Get all sender domains for a specific child account
                 GetChildDomains result = apiInstance.GetChildDomains(childAuthKey);
                 Debug.WriteLine(result);
             }
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
 # **GetChildInfo**
 > GetChildInfo GetChildInfo (string childAuthKey)
 
-Gets the info about a specific child account
+Get a child account's details
 
 ### Example
 ```csharp
@@ -673,7 +673,7 @@ namespace Example
 
             try
             {
-                // Gets the info about a specific child account
+                // Get a child account's details
                 GetChildInfo result = apiInstance.GetChildInfo(childAuthKey);
                 Debug.WriteLine(result);
             }
@@ -711,7 +711,7 @@ Name | Type | Description  | Notes
 # **GetResellerChilds**
 > GetChildrenList GetResellerChilds (long? limit = null, long? offset = null)
 
-Gets the list of all reseller's children accounts
+Get the list of all children accounts
 
 ### Example
 ```csharp
@@ -742,7 +742,7 @@ namespace Example
 
             try
             {
-                // Gets the list of all reseller's children accounts
+                // Get the list of all children accounts
                 GetChildrenList result = apiInstance.GetResellerChilds(limit, offset);
                 Debug.WriteLine(result);
             }
@@ -921,7 +921,7 @@ Name | Type | Description  | Notes
 # **UpdateChildAccountStatus**
 > void UpdateChildAccountStatus (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
 
-Updates infos of reseller's child account status based on the childAuthKey supplied
+Update info of reseller's child account status based on the childAuthKey supplied
 
 ### Example
 ```csharp
@@ -952,7 +952,7 @@ namespace Example
 
             try
             {
-                // Updates infos of reseller's child account status based on the childAuthKey supplied
+                // Update info of reseller's child account status based on the childAuthKey supplied
                 apiInstance.UpdateChildAccountStatus(childAuthKey, updateChildAccountStatus);
             }
             catch (Exception e)
@@ -990,7 +990,7 @@ void (empty response body)
 # **UpdateChildDomain**
 > void UpdateChildDomain (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
 
-Updates the sender domain of reseller's child based on the childAuthKey and domainName passed
+Update the sender domain of reseller's child based on the childAuthKey and domainName passed
 
 ### Example
 ```csharp
@@ -1022,7 +1022,7 @@ namespace Example
 
             try
             {
-                // Updates the sender domain of reseller's child based on the childAuthKey and domainName passed
+                // Update the sender domain of reseller's child based on the childAuthKey and domainName passed
                 apiInstance.UpdateChildDomain(childAuthKey, domainName, updateChildDomain);
             }
             catch (Exception e)
@@ -1061,7 +1061,7 @@ void (empty response body)
 # **UpdateResellerChild**
 > void UpdateResellerChild (string childAuthKey, UpdateChild resellerChild)
 
-Updates infos of reseller's child based on the childAuthKey supplied
+Update info of reseller's child based on the childAuthKey supplied
 
 ### Example
 ```csharp
@@ -1092,7 +1092,7 @@ namespace Example
 
             try
             {
-                // Updates infos of reseller's child based on the childAuthKey supplied
+                // Update info of reseller's child based on the childAuthKey supplied
                 apiInstance.UpdateResellerChild(childAuthKey, resellerChild);
             }
             catch (Exception e)
