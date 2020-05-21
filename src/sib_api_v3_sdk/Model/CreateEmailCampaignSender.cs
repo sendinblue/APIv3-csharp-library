@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Sender details including id or email and name (optional). Only one of either Sender&#39;s email or Sender&#39;s ID shall be passed in one request at a time. For example &#x60;{\\&quot;name\\&quot;:\\&quot;xyz\\&quot;, \\&quot;email\\&quot;:\\&quot;example@abc.com\\&quot;}&#x60; , &#x60;{\\&quot;name\\&quot;:\\&quot;xyz\\&quot;, \\&quot;id\\&quot;:123}&#x60;
+    /// Sender details including id or email and name (optional). Only one of either Sender&#39;s email or Sender&#39;s ID shall be passed in one request at a time. For example &#x60;{&quot;name&quot;:&quot;xyz&quot;, &quot;email&quot;:&quot;example@abc.com&quot;}&#x60; , &#x60;{&quot;name&quot;:&quot;xyz&quot;, &quot;id&quot;:123}&#x60;
     /// </summary>
     [DataContract]
     public partial class CreateEmailCampaignSender :  IEquatable<CreateEmailCampaignSender>

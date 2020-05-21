@@ -83,7 +83,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="CreateAttribute" /> class.
         /// </summary>
         /// <param name="value">Value of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;.</param>
-        /// <param name="enumeration">List of values and labels that the attribute can take. Use only if the attribute&#39;s category is \\&quot;category\\&quot;. For example, [{\\&quot;value\\&quot;:1, \\&quot;label\\&quot;:\\&quot;male\\&quot;}, {\\&quot;value\\&quot;:2, \\&quot;label\\&quot;:\\&quot;female\\&quot;}].</param>
+        /// <param name="enumeration">List of values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}].</param>
         /// <param name="type">Type of the attribute. Use only if the attribute&#39;s category is &#39;normal&#39;, &#39;category&#39; or &#39;transactional&#39; ( type &#39;boolean&#39; is only available if the category is &#39;normal&#39; attribute, type &#39;id&#39; is only available if the category is &#39;transactional&#39; attribute &amp; type &#39;category&#39; is only available if the category is &#39;category&#39; attribute ).</param>
         public CreateAttribute(string value = default(string), List<CreateAttributeEnumeration> enumeration = default(List<CreateAttributeEnumeration>), TypeEnum? type = default(TypeEnum?))
         {
@@ -100,9 +100,9 @@ namespace sib_api_v3_sdk.Model
         public string Value { get; set; }
 
         /// <summary>
-        /// List of values and labels that the attribute can take. Use only if the attribute&#39;s category is \\&quot;category\\&quot;. For example, [{\\&quot;value\\&quot;:1, \\&quot;label\\&quot;:\\&quot;male\\&quot;}, {\\&quot;value\\&quot;:2, \\&quot;label\\&quot;:\\&quot;female\\&quot;}]
+        /// List of values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}]
         /// </summary>
-        /// <value>List of values and labels that the attribute can take. Use only if the attribute&#39;s category is \\&quot;category\\&quot;. For example, [{\\&quot;value\\&quot;:1, \\&quot;label\\&quot;:\\&quot;male\\&quot;}, {\\&quot;value\\&quot;:2, \\&quot;label\\&quot;:\\&quot;female\\&quot;}]</value>
+        /// <value>List of values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}]</value>
         [DataMember(Name="enumeration", EmitDefaultValue=false)]
         public List<CreateAttributeEnumeration> Enumeration { get; set; }
 

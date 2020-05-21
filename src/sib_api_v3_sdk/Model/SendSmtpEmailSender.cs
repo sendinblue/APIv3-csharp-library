@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Mandatory if &#39;templateId&#39; is not passed. Pass name (optional) and email of sender from which emails will be sent. For example, {\\&quot;name\\&quot;:\\&quot;Mary from MyShop\\&quot;, \\&quot;email\\&quot;:\\&quot;no-reply@myshop.com\\&quot;}
+    /// Mandatory if &#39;templateId&#39; is not passed. Pass name (optional) and email of sender from which emails will be sent. For example, {&quot;name&quot;:&quot;Mary from MyShop&quot;, &quot;email&quot;:&quot;no-reply@myshop.com&quot;}
     /// </summary>
     [DataContract]
     public partial class SendSmtpEmailSender :  IEquatable<SendSmtpEmailSender>
