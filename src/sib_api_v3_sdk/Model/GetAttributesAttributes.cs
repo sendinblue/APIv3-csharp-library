@@ -129,7 +129,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="name">Name of the attribute (required).</param>
         /// <param name="category">Category of the attribute (required).</param>
         /// <param name="type">Type of the attribute.</param>
-        /// <param name="enumeration">Parameter only available for &quot;category&quot; type attributes..</param>
+        /// <param name="enumeration">Parameter only available for \\&quot;category\\&quot; type attributes..</param>
         /// <param name="calculatedValue">Calculated value formula.</param>
         public GetAttributesAttributes(string name = default(string), CategoryEnum category = default(CategoryEnum), TypeEnum? type = default(TypeEnum?), List<GetAttributesEnumeration> enumeration = default(List<GetAttributesEnumeration>), string calculatedValue = default(string))
         {
@@ -166,9 +166,9 @@ namespace sib_api_v3_sdk.Model
 
 
         /// <summary>
-        /// Parameter only available for &quot;category&quot; type attributes.
+        /// Parameter only available for \\&quot;category\\&quot; type attributes.
         /// </summary>
-        /// <value>Parameter only available for &quot;category&quot; type attributes.</value>
+        /// <value>Parameter only available for \\&quot;category\\&quot; type attributes.</value>
         [DataMember(Name="enumeration", EmitDefaultValue=false)]
         public List<GetAttributesEnumeration> Enumeration { get; set; }
 

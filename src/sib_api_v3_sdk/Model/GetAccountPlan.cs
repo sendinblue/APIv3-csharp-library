@@ -74,9 +74,9 @@ namespace sib_api_v3_sdk.Model
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// This is the type of the credit, &quot;Send Limit&quot; is one of the possible types of credit of a user. &quot;Send Limit&quot; implies the total number of emails you can send to the subscribers in your account.
+        /// This is the type of the credit, \\&quot;Send Limit\\&quot; is one of the possible types of credit of a user. \\&quot;Send Limit\\&quot; implies the total number of emails you can send to the subscribers in your account.
         /// </summary>
-        /// <value>This is the type of the credit, &quot;Send Limit&quot; is one of the possible types of credit of a user. &quot;Send Limit&quot; implies the total number of emails you can send to the subscribers in your account.</value>
+        /// <value>This is the type of the credit, \\&quot;Send Limit\\&quot; is one of the possible types of credit of a user. \\&quot;Send Limit\\&quot; implies the total number of emails you can send to the subscribers in your account.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum CreditsTypeEnum
         {
@@ -89,9 +89,9 @@ namespace sib_api_v3_sdk.Model
         }
 
         /// <summary>
-        /// This is the type of the credit, &quot;Send Limit&quot; is one of the possible types of credit of a user. &quot;Send Limit&quot; implies the total number of emails you can send to the subscribers in your account.
+        /// This is the type of the credit, \\&quot;Send Limit\\&quot; is one of the possible types of credit of a user. \\&quot;Send Limit\\&quot; implies the total number of emails you can send to the subscribers in your account.
         /// </summary>
-        /// <value>This is the type of the credit, &quot;Send Limit&quot; is one of the possible types of credit of a user. &quot;Send Limit&quot; implies the total number of emails you can send to the subscribers in your account.</value>
+        /// <value>This is the type of the credit, \\&quot;Send Limit\\&quot; is one of the possible types of credit of a user. \\&quot;Send Limit\\&quot; implies the total number of emails you can send to the subscribers in your account.</value>
         [DataMember(Name="creditsType", EmitDefaultValue=false)]
         public CreditsTypeEnum CreditsType { get; set; }
         /// <summary>
@@ -103,10 +103,10 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="GetAccountPlan" /> class.
         /// </summary>
         /// <param name="type">Displays the plan type of the user (required).</param>
-        /// <param name="creditsType">This is the type of the credit, &quot;Send Limit&quot; is one of the possible types of credit of a user. &quot;Send Limit&quot; implies the total number of emails you can send to the subscribers in your account. (required).</param>
+        /// <param name="creditsType">This is the type of the credit, \\&quot;Send Limit\\&quot; is one of the possible types of credit of a user. \\&quot;Send Limit\\&quot; implies the total number of emails you can send to the subscribers in your account. (required).</param>
         /// <param name="credits">Remaining credits of the user (required).</param>
-        /// <param name="startDate">Date of the period from which the plan will start (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type).</param>
-        /// <param name="endDate">Date of the period from which the plan will end (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type).</param>
+        /// <param name="startDate">Date of the period from which the plan will start (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type).</param>
+        /// <param name="endDate">Date of the period from which the plan will end (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type).</param>
         /// <param name="userLimit">Only in case of reseller account. It implies the total number of child accounts you can add to your account..</param>
         public GetAccountPlan(TypeEnum type = default(TypeEnum), CreditsTypeEnum creditsType = default(CreditsTypeEnum), float? credits = default(float?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), int? userLimit = default(int?))
         {
@@ -152,17 +152,17 @@ namespace sib_api_v3_sdk.Model
         public float? Credits { get; set; }
 
         /// <summary>
-        /// Date of the period from which the plan will start (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type)
+        /// Date of the period from which the plan will start (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type)
         /// </summary>
-        /// <value>Date of the period from which the plan will start (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type)</value>
+        /// <value>Date of the period from which the plan will start (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type)</value>
         [DataMember(Name="startDate", EmitDefaultValue=false)]
         [JsonConverter(typeof(SwaggerDateConverter))]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// Date of the period from which the plan will end (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type)
+        /// Date of the period from which the plan will end (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type)
         /// </summary>
-        /// <value>Date of the period from which the plan will end (only available for &quot;subscription&quot; and &quot;reseller&quot; plan type)</value>
+        /// <value>Date of the period from which the plan will end (only available for \\&quot;subscription\\&quot; and \\&quot;reseller\\&quot; plan type)</value>
         [DataMember(Name="endDate", EmitDefaultValue=false)]
         [JsonConverter(typeof(SwaggerDateConverter))]
         public DateTime? EndDate { get; set; }
