@@ -25,7 +25,7 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get your account informations, plans and credits details
+        /// Get your account information, plan and credits details
         /// </summary>
         /// <remarks>
         /// 
@@ -35,7 +35,7 @@ namespace sib_api_v3_sdk.Api
         GetAccount GetAccount ();
 
         /// <summary>
-        /// Get your account informations, plans and credits details
+        /// Get your account information, plan and credits details
         /// </summary>
         /// <remarks>
         /// 
@@ -46,7 +46,7 @@ namespace sib_api_v3_sdk.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Get your account informations, plans and credits details
+        /// Get your account information, plan and credits details
         /// </summary>
         /// <remarks>
         /// 
@@ -56,7 +56,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetAccount> GetAccountAsync ();
 
         /// <summary>
-        /// Get your account informations, plans and credits details
+        /// Get your account information, plan and credits details
         /// </summary>
         /// <remarks>
         /// 
@@ -165,7 +165,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your account informations, plans and credits details 
+        /// Get your account information, plan and credits details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetAccount</returns>
@@ -176,7 +176,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your account informations, plans and credits details 
+        /// Get your account information, plan and credits details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAccount</returns>
@@ -236,7 +236,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your account informations, plans and credits details 
+        /// Get your account information, plan and credits details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of GetAccount</returns>
@@ -248,7 +248,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your account informations, plans and credits details 
+        /// Get your account information, plan and credits details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (GetAccount)</returns>

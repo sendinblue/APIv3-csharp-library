@@ -131,8 +131,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="header">Header of the campaign (required).</param>
         /// <param name="footer">Footer of the campaign (required).</param>
         /// <param name="sender">sender (required).</param>
-        /// <param name="replyTo">Email defined as the \&quot;Reply to\&quot; of the campaign (required).</param>
-        /// <param name="toField">Customisation of the \&quot;to\&quot; field of the campaign (required).</param>
+        /// <param name="replyTo">Email defined as the &quot;Reply to&quot; of the campaign (required).</param>
+        /// <param name="toField">Customisation of the &quot;to&quot; field of the campaign (required).</param>
         /// <param name="htmlContent">HTML content of the campaign (required).</param>
         /// <param name="shareLink">Link to share the campaign on social medias.</param>
         /// <param name="tag">Tag of the campaign (required).</param>
@@ -393,16 +393,16 @@ namespace sib_api_v3_sdk.Model
         public GetExtendedCampaignOverviewSender Sender { get; set; }
 
         /// <summary>
-        /// Email defined as the \&quot;Reply to\&quot; of the campaign
+        /// Email defined as the &quot;Reply to&quot; of the campaign
         /// </summary>
-        /// <value>Email defined as the \&quot;Reply to\&quot; of the campaign</value>
+        /// <value>Email defined as the &quot;Reply to&quot; of the campaign</value>
         [DataMember(Name="replyTo", EmitDefaultValue=false)]
         public string ReplyTo { get; set; }
 
         /// <summary>
-        /// Customisation of the \&quot;to\&quot; field of the campaign
+        /// Customisation of the &quot;to&quot; field of the campaign
         /// </summary>
-        /// <value>Customisation of the \&quot;to\&quot; field of the campaign</value>
+        /// <value>Customisation of the &quot;to&quot; field of the campaign</value>
         [DataMember(Name="toField", EmitDefaultValue=false)]
         public string ToField { get; set; }
 

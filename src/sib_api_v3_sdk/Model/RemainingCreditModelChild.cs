@@ -38,7 +38,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="sms">SMS Credits remaining for child account (required).</param>
         /// <param name="email">Email Credits remaining for child account (required).</param>
-        public RemainingCreditModelChild(long? sms = default(long?), long? email = default(long?))
+        public RemainingCreditModelChild(double? sms = default(double?), double? email = default(double?))
         {
             // to ensure "sms" is required (not null)
             if (sms == null)
@@ -65,14 +65,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>SMS Credits remaining for child account</value>
         [DataMember(Name="sms", EmitDefaultValue=false)]
-        public long? Sms { get; set; }
+        public double? Sms { get; set; }
 
         /// <summary>
         /// Email Credits remaining for child account
         /// </summary>
         /// <value>Email Credits remaining for child account</value>
         [DataMember(Name="email", EmitDefaultValue=false)]
-        public long? Email { get; set; }
+        public double? Email { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

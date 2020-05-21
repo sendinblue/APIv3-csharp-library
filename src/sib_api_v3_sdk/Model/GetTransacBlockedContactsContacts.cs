@@ -105,7 +105,6 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Date when the contact was blocked or unsubscribed on</value>
         [DataMember(Name="blockedAt", EmitDefaultValue=false)]
-        [JsonConverter(typeof(SwaggerDateConverter))]
         public DateTime? BlockedAt { get; set; }
 
         /// <summary>

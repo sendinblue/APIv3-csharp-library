@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteEmailCampaignWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Export the recipients of a campaign
+        /// Export the recipients of an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -79,7 +79,7 @@ namespace sib_api_v3_sdk.Api
         CreatedProcessId EmailExportRecipients (long? campaignId, EmailExportRecipients recipientExport = null);
 
         /// <summary>
-        /// Export the recipients of a campaign
+        /// Export the recipients of an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -90,7 +90,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreatedProcessId</returns>
         ApiResponse<CreatedProcessId> EmailExportRecipientsWithHttpInfo (long? campaignId, EmailExportRecipients recipientExport = null);
         /// <summary>
-        /// Get A/B test email campaign result
+        /// Get an A/B test email campaign results
         /// </summary>
         /// <remarks>
         /// Obtain winning version of an A/B test email campaign
@@ -101,7 +101,7 @@ namespace sib_api_v3_sdk.Api
         AbTestCampaignResult GetAbTestCampaignResult (long? campaignId);
 
         /// <summary>
-        /// Get A/B test email campaign result
+        /// Get an A/B test email campaign results
         /// </summary>
         /// <remarks>
         /// Obtain winning version of an A/B test email campaign
@@ -111,7 +111,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of AbTestCampaignResult</returns>
         ApiResponse<AbTestCampaignResult> GetAbTestCampaignResultWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Get campaign informations
+        /// Get an email campaign report
         /// </summary>
         /// <remarks>
         /// 
@@ -122,7 +122,7 @@ namespace sib_api_v3_sdk.Api
         GetEmailCampaign GetEmailCampaign (long? campaignId);
 
         /// <summary>
-        /// Get campaign informations
+        /// Get an email campaign report
         /// </summary>
         /// <remarks>
         /// 
@@ -132,7 +132,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetEmailCampaign</returns>
         ApiResponse<GetEmailCampaign> GetEmailCampaignWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Return all your created campaigns
+        /// Return all your created email campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -148,7 +148,7 @@ namespace sib_api_v3_sdk.Api
         GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Return all your created campaigns
+        /// Return all your created email campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -205,7 +205,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SendEmailCampaignNowWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Send the report of a campaigns
+        /// Send the report of a campaign
         /// </summary>
         /// <remarks>
         /// A PDF will be sent to the specified email addresses
@@ -217,7 +217,7 @@ namespace sib_api_v3_sdk.Api
         void SendReport (long? campaignId, SendReport sendReport);
 
         /// <summary>
-        /// Send the report of a campaigns
+        /// Send the report of a campaign
         /// </summary>
         /// <remarks>
         /// A PDF will be sent to the specified email addresses
@@ -251,7 +251,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SendTestEmailWithHttpInfo (long? campaignId, SendTestEmail emailTo);
         /// <summary>
-        /// Update a campaign status
+        /// Update an email campaign status
         /// </summary>
         /// <remarks>
         /// 
@@ -263,7 +263,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateCampaignStatus (long? campaignId, UpdateCampaignStatus status);
 
         /// <summary>
-        /// Update a campaign status
+        /// Update an email campaign status
         /// </summary>
         /// <remarks>
         /// 
@@ -274,7 +274,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateCampaignStatusWithHttpInfo (long? campaignId, UpdateCampaignStatus status);
         /// <summary>
-        /// Update a campaign
+        /// Update an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -286,7 +286,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateEmailCampaign (long? campaignId, UpdateEmailCampaign emailCampaign);
 
         /// <summary>
-        /// Update a campaign
+        /// Update an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -296,6 +296,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="emailCampaign">Values to update a campaign</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateEmailCampaignWithHttpInfo (long? campaignId, UpdateEmailCampaign emailCampaign);
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns></returns>
+        void UploadImageToGallery (UploadImageToGallery uploadImage);
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -341,7 +362,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEmailCampaignAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Export the recipients of a campaign
+        /// Export the recipients of an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -353,7 +374,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<CreatedProcessId> EmailExportRecipientsAsync (long? campaignId, EmailExportRecipients recipientExport = null);
 
         /// <summary>
-        /// Export the recipients of a campaign
+        /// Export the recipients of an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -364,7 +385,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreatedProcessId)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatedProcessId>> EmailExportRecipientsAsyncWithHttpInfo (long? campaignId, EmailExportRecipients recipientExport = null);
         /// <summary>
-        /// Get A/B test email campaign result
+        /// Get an A/B test email campaign results
         /// </summary>
         /// <remarks>
         /// Obtain winning version of an A/B test email campaign
@@ -375,7 +396,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<AbTestCampaignResult> GetAbTestCampaignResultAsync (long? campaignId);
 
         /// <summary>
-        /// Get A/B test email campaign result
+        /// Get an A/B test email campaign results
         /// </summary>
         /// <remarks>
         /// Obtain winning version of an A/B test email campaign
@@ -385,7 +406,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (AbTestCampaignResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<AbTestCampaignResult>> GetAbTestCampaignResultAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Get campaign informations
+        /// Get an email campaign report
         /// </summary>
         /// <remarks>
         /// 
@@ -396,7 +417,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetEmailCampaign> GetEmailCampaignAsync (long? campaignId);
 
         /// <summary>
-        /// Get campaign informations
+        /// Get an email campaign report
         /// </summary>
         /// <remarks>
         /// 
@@ -406,7 +427,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetEmailCampaign)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetEmailCampaign>> GetEmailCampaignAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Return all your created campaigns
+        /// Return all your created email campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -422,7 +443,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Return all your created campaigns
+        /// Return all your created email campaigns
         /// </summary>
         /// <remarks>
         /// 
@@ -479,7 +500,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SendEmailCampaignNowAsyncWithHttpInfo (long? campaignId);
         /// <summary>
-        /// Send the report of a campaigns
+        /// Send the report of a campaign
         /// </summary>
         /// <remarks>
         /// A PDF will be sent to the specified email addresses
@@ -491,7 +512,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task SendReportAsync (long? campaignId, SendReport sendReport);
 
         /// <summary>
-        /// Send the report of a campaigns
+        /// Send the report of a campaign
         /// </summary>
         /// <remarks>
         /// A PDF will be sent to the specified email addresses
@@ -525,7 +546,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SendTestEmailAsyncWithHttpInfo (long? campaignId, SendTestEmail emailTo);
         /// <summary>
-        /// Update a campaign status
+        /// Update an email campaign status
         /// </summary>
         /// <remarks>
         /// 
@@ -537,7 +558,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateCampaignStatusAsync (long? campaignId, UpdateCampaignStatus status);
 
         /// <summary>
-        /// Update a campaign status
+        /// Update an email campaign status
         /// </summary>
         /// <remarks>
         /// 
@@ -548,7 +569,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateCampaignStatusAsyncWithHttpInfo (long? campaignId, UpdateCampaignStatus status);
         /// <summary>
-        /// Update a campaign
+        /// Update an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -560,7 +581,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateEmailCampaignAsync (long? campaignId, UpdateEmailCampaign emailCampaign);
 
         /// <summary>
-        /// Update a campaign
+        /// Update an email campaign
         /// </summary>
         /// <remarks>
         /// 
@@ -570,6 +591,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="emailCampaign">Values to update a campaign</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEmailCampaignAsyncWithHttpInfo (long? campaignId, UpdateEmailCampaign emailCampaign);
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Asynchronous Operations
     }
 
@@ -993,7 +1035,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Export the recipients of a campaign 
+        /// Export the recipients of an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1006,7 +1048,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Export the recipients of a campaign 
+        /// Export the recipients of an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1080,7 +1122,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Export the recipients of a campaign 
+        /// Export the recipients of an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1094,7 +1136,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Export the recipients of a campaign 
+        /// Export the recipients of an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1168,7 +1210,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// Get an A/B test email campaign results Obtain winning version of an A/B test email campaign
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the A/B test campaign</param>
@@ -1180,7 +1222,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// Get an A/B test email campaign results Obtain winning version of an A/B test email campaign
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the A/B test campaign</param>
@@ -1245,7 +1287,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// Get an A/B test email campaign results Obtain winning version of an A/B test email campaign
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the A/B test campaign</param>
@@ -1258,7 +1300,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get A/B test email campaign result Obtain winning version of an A/B test email campaign
+        /// Get an A/B test email campaign results Obtain winning version of an A/B test email campaign
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the A/B test campaign</param>
@@ -1323,7 +1365,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get campaign informations 
+        /// Get an email campaign report 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1335,7 +1377,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get campaign informations 
+        /// Get an email campaign report 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1400,7 +1442,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get campaign informations 
+        /// Get an email campaign report 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1413,7 +1455,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get campaign informations 
+        /// Get an email campaign report 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1478,7 +1520,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all your created campaigns 
+        /// Return all your created email campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
@@ -1495,7 +1537,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all your created campaigns 
+        /// Return all your created email campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
@@ -1567,7 +1609,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all your created campaigns 
+        /// Return all your created email campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
@@ -1585,7 +1627,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Return all your created campaigns 
+        /// Return all your created email campaigns 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
@@ -1965,7 +2007,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the report of a campaigns A PDF will be sent to the specified email addresses
+        /// Send the report of a campaign A PDF will be sent to the specified email addresses
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -1977,7 +2019,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the report of a campaigns A PDF will be sent to the specified email addresses
+        /// Send the report of a campaign A PDF will be sent to the specified email addresses
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2054,7 +2096,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the report of a campaigns A PDF will be sent to the specified email addresses
+        /// Send the report of a campaign A PDF will be sent to the specified email addresses
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2067,7 +2109,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the report of a campaigns A PDF will be sent to the specified email addresses
+        /// Send the report of a campaign A PDF will be sent to the specified email addresses
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2323,7 +2365,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign status 
+        /// Update an email campaign status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2335,7 +2377,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign status 
+        /// Update an email campaign status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2412,7 +2454,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign status 
+        /// Update an email campaign status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2425,7 +2467,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign status 
+        /// Update an email campaign status 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2502,7 +2544,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign 
+        /// Update an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2514,7 +2556,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign 
+        /// Update an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2591,7 +2633,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign 
+        /// Update an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2604,7 +2646,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Update a campaign 
+        /// Update an email campaign 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
@@ -2672,6 +2714,173 @@ namespace sib_api_v3_sdk.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("UpdateEmailCampaign", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns></returns>
+        public void UploadImageToGallery (UploadImageToGallery uploadImage)
+        {
+             UploadImageToGalleryWithHttpInfo(uploadImage);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
+        {
+            // verify the required parameter 'uploadImage' is set
+            if (uploadImage == null)
+                throw new ApiException(400, "Missing required parameter 'uploadImage' when calling EmailCampaignsApi->UploadImageToGallery");
+
+            var localVarPath = "./emailCampaigns/images";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadImage != null && uploadImage.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(uploadImage); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uploadImage; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UploadImageToGallery", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
+        {
+             await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+
+        }
+
+        /// <summary>
+        /// Upload an image to your account&#39;s image gallery 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadImage">Parameters to upload an image</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
+        {
+            // verify the required parameter 'uploadImage' is set
+            if (uploadImage == null)
+                throw new ApiException(400, "Missing required parameter 'uploadImage' when calling EmailCampaignsApi->UploadImageToGallery");
+
+            var localVarPath = "./emailCampaigns/images";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadImage != null && uploadImage.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(uploadImage); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uploadImage; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UploadImageToGallery", localVarResponse);
                 if (exception != null) throw exception;
             }
 

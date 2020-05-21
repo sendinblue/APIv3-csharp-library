@@ -25,7 +25,7 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Creates contact attribute
+        /// Create contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -38,7 +38,7 @@ namespace sib_api_v3_sdk.Api
         void CreateAttribute (string attributeCategory, string attributeName, CreateAttribute createAttribute);
 
         /// <summary>
-        /// Creates contact attribute
+        /// Create contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -50,7 +50,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CreateAttributeWithHttpInfo (string attributeCategory, string attributeName, CreateAttribute createAttribute);
         /// <summary>
-        /// Deletes an attribute
+        /// Delete an attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -62,7 +62,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteAttribute (string attributeCategory, string attributeName);
 
         /// <summary>
-        /// Deletes an attribute
+        /// Delete an attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -73,7 +73,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAttributeWithHttpInfo (string attributeCategory, string attributeName);
         /// <summary>
-        /// Lists all attributes
+        /// List all attributes
         /// </summary>
         /// <remarks>
         /// 
@@ -83,7 +83,7 @@ namespace sib_api_v3_sdk.Api
         GetAttributes GetAttributes ();
 
         /// <summary>
-        /// Lists all attributes
+        /// List all attributes
         /// </summary>
         /// <remarks>
         /// 
@@ -92,7 +92,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetAttributes</returns>
         ApiResponse<GetAttributes> GetAttributesWithHttpInfo ();
         /// <summary>
-        /// Updates contact attribute
+        /// Update contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -105,7 +105,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateAttribute (string attributeCategory, string attributeName, UpdateAttribute updateAttribute);
 
         /// <summary>
-        /// Updates contact attribute
+        /// Update contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -119,7 +119,7 @@ namespace sib_api_v3_sdk.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Creates contact attribute
+        /// Create contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -132,7 +132,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task CreateAttributeAsync (string attributeCategory, string attributeName, CreateAttribute createAttribute);
 
         /// <summary>
-        /// Creates contact attribute
+        /// Create contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -144,7 +144,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> CreateAttributeAsyncWithHttpInfo (string attributeCategory, string attributeName, CreateAttribute createAttribute);
         /// <summary>
-        /// Deletes an attribute
+        /// Delete an attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -156,7 +156,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteAttributeAsync (string attributeCategory, string attributeName);
 
         /// <summary>
-        /// Deletes an attribute
+        /// Delete an attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -167,7 +167,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAttributeAsyncWithHttpInfo (string attributeCategory, string attributeName);
         /// <summary>
-        /// Lists all attributes
+        /// List all attributes
         /// </summary>
         /// <remarks>
         /// 
@@ -177,7 +177,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetAttributes> GetAttributesAsync ();
 
         /// <summary>
-        /// Lists all attributes
+        /// List all attributes
         /// </summary>
         /// <remarks>
         /// 
@@ -186,7 +186,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetAttributes)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAttributes>> GetAttributesAsyncWithHttpInfo ();
         /// <summary>
-        /// Updates contact attribute
+        /// Update contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -199,7 +199,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateAttributeAsync (string attributeCategory, string attributeName, UpdateAttribute updateAttribute);
 
         /// <summary>
-        /// Updates contact attribute
+        /// Update contact attribute
         /// </summary>
         /// <remarks>
         /// 
@@ -311,7 +311,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates contact attribute 
+        /// Create contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -324,7 +324,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates contact attribute 
+        /// Create contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -406,7 +406,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates contact attribute 
+        /// Create contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -420,7 +420,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates contact attribute 
+        /// Create contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -502,7 +502,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes an attribute 
+        /// Delete an attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -514,7 +514,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes an attribute 
+        /// Delete an attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -584,7 +584,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes an attribute 
+        /// Delete an attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -597,7 +597,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes an attribute 
+        /// Delete an attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -667,7 +667,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Lists all attributes 
+        /// List all attributes 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetAttributes</returns>
@@ -678,7 +678,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Lists all attributes 
+        /// List all attributes 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAttributes</returns>
@@ -738,7 +738,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Lists all attributes 
+        /// List all attributes 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of GetAttributes</returns>
@@ -750,7 +750,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Lists all attributes 
+        /// List all attributes 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (GetAttributes)</returns>
@@ -810,7 +810,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates contact attribute 
+        /// Update contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -823,7 +823,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates contact attribute 
+        /// Update contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -905,7 +905,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates contact attribute 
+        /// Update contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>
@@ -919,7 +919,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates contact attribute 
+        /// Update contact attribute 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="attributeCategory">Category of the attribute</param>

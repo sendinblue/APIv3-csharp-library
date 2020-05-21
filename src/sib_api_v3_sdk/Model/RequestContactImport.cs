@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="RequestContactImport" /> class.
         /// </summary>
         /// <param name="fileUrl">Mandatory if fileBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv.</param>
-        /// <param name="fileBody">Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes.</param>
+        /// <param name="fileBody">Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files..</param>
         /// <param name="listIds">Mandatory if newList is not defined. Ids of the lists in which the contacts shall be imported. For example, [2, 4, 7]..</param>
         /// <param name="notifyUrl">URL that will be called once the export process is finished.</param>
         /// <param name="newList">newList.</param>
@@ -93,9 +93,9 @@ namespace sib_api_v3_sdk.Model
         public string FileUrl { get; set; }
 
         /// <summary>
-        /// Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes
+        /// Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.
         /// </summary>
-        /// <value>Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes</value>
+        /// <value>Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.</value>
         [DataMember(Name="fileBody", EmitDefaultValue=false)]
         public string FileBody { get; set; }
 

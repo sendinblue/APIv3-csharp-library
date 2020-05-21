@@ -269,6 +269,8 @@ namespace sib_api_v3_sdk.Client
                 }
                 return flattenedString.ToString();
             }
+            else if (obj is bool)
+                return ((bool)obj).ToString().ToLower();
             else
                 return Convert.ToString (obj);
         }

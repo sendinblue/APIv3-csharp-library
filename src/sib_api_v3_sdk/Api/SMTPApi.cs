@@ -25,7 +25,7 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a transactional email template
+        /// Create an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -36,7 +36,7 @@ namespace sib_api_v3_sdk.Api
         CreateModel CreateSmtpTemplate (CreateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Create a transactional email template
+        /// Create an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHardbouncesWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
-        /// Delete an inactive transactional email template
+        /// Delete an inactive email template
         /// </summary>
         /// <remarks>
         /// 
@@ -78,7 +78,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteSmtpTemplate (long? templateId);
 
         /// <summary>
-        /// Delete an inactive transactional email template
+        /// Delete an inactive email template
         /// </summary>
         /// <remarks>
         /// 
@@ -185,7 +185,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetReports</returns>
         ApiResponse<GetReports> GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Returns the template informations
+        /// Returns the template information
         /// </summary>
         /// <remarks>
         /// 
@@ -196,7 +196,7 @@ namespace sib_api_v3_sdk.Api
         GetSmtpTemplateOverview GetSmtpTemplate (long? templateId);
 
         /// <summary>
-        /// Returns the template informations
+        /// Returns the template information
         /// </summary>
         /// <remarks>
         /// 
@@ -206,7 +206,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetSmtpTemplateOverview</returns>
         ApiResponse<GetSmtpTemplateOverview> GetSmtpTemplateWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get the list of transactional email templates
+        /// Get the list of email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -219,7 +219,7 @@ namespace sib_api_v3_sdk.Api
         GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the list of transactional email templates
+        /// Get the list of email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -293,7 +293,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>GetTransacEmailsList</returns>
-        GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+        GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get the list of transactional emails on the basis of allowed filters
@@ -308,7 +308,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
-        ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+        ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Send a template
         /// </summary>
@@ -419,7 +419,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SmtpLogMessageIdDeleteWithHttpInfo (string messageId);
         /// <summary>
-        /// Updates a transactional email templates
+        /// Update an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -431,7 +431,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateSmtpTemplate (long? templateId, UpdateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Updates a transactional email templates
+        /// Update an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -444,7 +444,7 @@ namespace sib_api_v3_sdk.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create a transactional email template
+        /// Create an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -455,7 +455,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<CreateModel> CreateSmtpTemplateAsync (CreateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Create a transactional email template
+        /// Create an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -486,7 +486,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteHardbouncesAsyncWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
-        /// Delete an inactive transactional email template
+        /// Delete an inactive email template
         /// </summary>
         /// <remarks>
         /// 
@@ -497,7 +497,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteSmtpTemplateAsync (long? templateId);
 
         /// <summary>
-        /// Delete an inactive transactional email template
+        /// Delete an inactive email template
         /// </summary>
         /// <remarks>
         /// 
@@ -604,7 +604,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetReports)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Returns the template informations
+        /// Returns the template information
         /// </summary>
         /// <remarks>
         /// 
@@ -615,7 +615,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetSmtpTemplateOverview> GetSmtpTemplateAsync (long? templateId);
 
         /// <summary>
-        /// Returns the template informations
+        /// Returns the template information
         /// </summary>
         /// <remarks>
         /// 
@@ -625,7 +625,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetSmtpTemplateOverview)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplateOverview>> GetSmtpTemplateAsyncWithHttpInfo (long? templateId);
         /// <summary>
-        /// Get the list of transactional email templates
+        /// Get the list of email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -638,7 +638,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetSmtpTemplates> GetSmtpTemplatesAsync (bool? templateStatus = null, long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Get the list of transactional email templates
+        /// Get the list of email templates
         /// </summary>
         /// <remarks>
         /// 
@@ -712,7 +712,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
-        System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+        System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get the list of transactional emails on the basis of allowed filters
@@ -727,7 +727,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null);
+        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Send a template
         /// </summary>
@@ -838,7 +838,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SmtpLogMessageIdDeleteAsyncWithHttpInfo (string messageId);
         /// <summary>
-        /// Updates a transactional email templates
+        /// Update an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -850,7 +850,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateSmtpTemplateAsync (long? templateId, UpdateSmtpTemplate smtpTemplate);
 
         /// <summary>
-        /// Updates a transactional email templates
+        /// Update an email template
         /// </summary>
         /// <remarks>
         /// 
@@ -961,7 +961,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a transactional email template 
+        /// Create an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="smtpTemplate">values to update in transactional email template</param>
@@ -973,7 +973,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a transactional email template 
+        /// Create an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="smtpTemplate">values to update in transactional email template</param>
@@ -1045,7 +1045,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a transactional email template 
+        /// Create an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="smtpTemplate">values to update in transactional email template</param>
@@ -1058,7 +1058,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a transactional email template 
+        /// Create an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="smtpTemplate">values to update in transactional email template</param>
@@ -1291,7 +1291,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive transactional email template 
+        /// Delete an inactive email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1302,7 +1302,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive transactional email template 
+        /// Delete an inactive email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1367,7 +1367,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive transactional email template 
+        /// Delete an inactive email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1379,7 +1379,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Delete an inactive transactional email template 
+        /// Delete an inactive email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -1993,7 +1993,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the template informations 
+        /// Returns the template information 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -2005,7 +2005,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the template informations 
+        /// Returns the template information 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -2070,7 +2070,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the template informations 
+        /// Returns the template information 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -2083,7 +2083,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the template informations 
+        /// Returns the template information 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -2148,7 +2148,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of transactional email templates 
+        /// Get the list of email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2162,7 +2162,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of transactional email templates 
+        /// Get the list of email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2228,7 +2228,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of transactional email templates 
+        /// Get the list of email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2243,7 +2243,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get the list of transactional email templates 
+        /// Get the list of email templates 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
@@ -2646,7 +2646,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>GetTransacEmailsList</returns>
-        public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
         {
              ApiResponse<GetTransacEmailsList> localVarResponse = GetTransacEmailsListWithHttpInfo(email, templateId, messageId, startDate, endDate);
              return localVarResponse.Data;
@@ -2662,7 +2662,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
-        public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
         {
 
             var localVarPath = "./smtp/emails";
@@ -2732,7 +2732,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
-        public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
         {
              ApiResponse<GetTransacEmailsList> localVarResponse = await GetTransacEmailsListAsyncWithHttpInfo(email, templateId, messageId, startDate, endDate);
              return localVarResponse.Data;
@@ -2749,7 +2749,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, DateTime? endDate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
         {
 
             var localVarPath = "./smtp/emails";
@@ -3645,7 +3645,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates a transactional email templates 
+        /// Update an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -3657,7 +3657,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates a transactional email templates 
+        /// Update an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -3734,7 +3734,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates a transactional email templates 
+        /// Update an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>
@@ -3747,7 +3747,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates a transactional email templates 
+        /// Update an email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId">id of the template</param>

@@ -33,7 +33,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="success">success.</param>
         /// <param name="failure">failure.</param>
-        /// <param name="total">Displays the count of total number of contacts removed from list when user opts for \&quot;all\&quot; option..</param>
+        /// <param name="total">Displays the count of total number of contacts removed from list when user opts for &quot;all&quot; option..</param>
         public PostContactInfoContacts(List<string> success = default(List<string>), List<string> failure = default(List<string>), long? total = default(long?))
         {
             this.Success = success;
@@ -54,9 +54,9 @@ namespace sib_api_v3_sdk.Model
         public List<string> Failure { get; set; }
 
         /// <summary>
-        /// Displays the count of total number of contacts removed from list when user opts for \&quot;all\&quot; option.
+        /// Displays the count of total number of contacts removed from list when user opts for &quot;all&quot; option.
         /// </summary>
-        /// <value>Displays the count of total number of contacts removed from list when user opts for \&quot;all\&quot; option.</value>
+        /// <value>Displays the count of total number of contacts removed from list when user opts for &quot;all&quot; option.</value>
         [DataMember(Name="total", EmitDefaultValue=false)]
         public long? Total { get; set; }
 

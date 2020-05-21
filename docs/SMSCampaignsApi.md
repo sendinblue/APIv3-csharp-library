@@ -5,15 +5,15 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSmsCampaign**](SMSCampaignsApi.md#createsmscampaign) | **POST** /smsCampaigns | Creates an SMS campaign
-[**DeleteSmsCampaign**](SMSCampaignsApi.md#deletesmscampaign) | **DELETE** /smsCampaigns/{campaignId} | Delete the SMS campaign
+[**DeleteSmsCampaign**](SMSCampaignsApi.md#deletesmscampaign) | **DELETE** /smsCampaigns/{campaignId} | Delete an SMS campaign
 [**GetSmsCampaign**](SMSCampaignsApi.md#getsmscampaign) | **GET** /smsCampaigns/{campaignId} | Get an SMS campaign
-[**GetSmsCampaigns**](SMSCampaignsApi.md#getsmscampaigns) | **GET** /smsCampaigns | Returns the informations for all your created SMS campaigns
-[**RequestSmsRecipientExport**](SMSCampaignsApi.md#requestsmsrecipientexport) | **POST** /smsCampaigns/{campaignId}/exportRecipients | Exports the recipients of the specified campaign.
+[**GetSmsCampaigns**](SMSCampaignsApi.md#getsmscampaigns) | **GET** /smsCampaigns | Returns the information for all your created SMS campaigns
+[**RequestSmsRecipientExport**](SMSCampaignsApi.md#requestsmsrecipientexport) | **POST** /smsCampaigns/{campaignId}/exportRecipients | Export an SMS campaign&#39;s recipients
 [**SendSmsCampaignNow**](SMSCampaignsApi.md#sendsmscampaignnow) | **POST** /smsCampaigns/{campaignId}/sendNow | Send your SMS campaign immediately
-[**SendSmsReport**](SMSCampaignsApi.md#sendsmsreport) | **POST** /smsCampaigns/{campaignId}/sendReport | Send report of SMS campaigns
-[**SendTestSms**](SMSCampaignsApi.md#sendtestsms) | **POST** /smsCampaigns/{campaignId}/sendTest | Send an SMS
-[**UpdateSmsCampaign**](SMSCampaignsApi.md#updatesmscampaign) | **PUT** /smsCampaigns/{campaignId} | Updates an SMS campaign
-[**UpdateSmsCampaignStatus**](SMSCampaignsApi.md#updatesmscampaignstatus) | **PUT** /smsCampaigns/{campaignId}/status | Update the campaign status
+[**SendSmsReport**](SMSCampaignsApi.md#sendsmsreport) | **POST** /smsCampaigns/{campaignId}/sendReport | Send an SMS campaign&#39;s report
+[**SendTestSms**](SMSCampaignsApi.md#sendtestsms) | **POST** /smsCampaigns/{campaignId}/sendTest | Send a test SMS campaign
+[**UpdateSmsCampaign**](SMSCampaignsApi.md#updatesmscampaign) | **PUT** /smsCampaigns/{campaignId} | Update an SMS campaign
+[**UpdateSmsCampaignStatus**](SMSCampaignsApi.md#updatesmscampaignstatus) | **PUT** /smsCampaigns/{campaignId}/status | Update a campaign&#39;s status
 
 
 <a name="createsmscampaign"></a>
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 # **DeleteSmsCampaign**
 > void DeleteSmsCampaign (long? campaignId)
 
-Delete the SMS campaign
+Delete an SMS campaign
 
 ### Example
 ```csharp
@@ -118,7 +118,7 @@ namespace Example
 
             try
             {
-                // Delete the SMS campaign
+                // Delete an SMS campaign
                 apiInstance.DeleteSmsCampaign(campaignId);
             }
             catch (Exception e)
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 # **GetSmsCampaigns**
 > GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
 
-Returns the informations for all your created SMS campaigns
+Returns the information for all your created SMS campaigns
 
 ### Example
 ```csharp
@@ -257,7 +257,7 @@ namespace Example
 
             try
             {
-                // Returns the informations for all your created SMS campaigns
+                // Returns the information for all your created SMS campaigns
                 GetSmsCampaigns result = apiInstance.GetSmsCampaigns(status, startDate, endDate, limit, offset);
                 Debug.WriteLine(result);
             }
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 # **RequestSmsRecipientExport**
 > CreatedProcessId RequestSmsRecipientExport (long? campaignId, RequestSmsRecipientExport recipientExport = null)
 
-Exports the recipients of the specified campaign.
+Export an SMS campaign's recipients
 
 It returns the background process ID which on completion calls the notify URL that you have set in the input.
 
@@ -332,7 +332,7 @@ namespace Example
 
             try
             {
-                // Exports the recipients of the specified campaign.
+                // Export an SMS campaign's recipients
                 CreatedProcessId result = apiInstance.RequestSmsRecipientExport(campaignId, recipientExport);
                 Debug.WriteLine(result);
             }
@@ -438,7 +438,7 @@ void (empty response body)
 # **SendSmsReport**
 > void SendSmsReport (long? campaignId, SendReport sendReport)
 
-Send report of SMS campaigns
+Send an SMS campaign's report
 
 Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.
 
@@ -471,7 +471,7 @@ namespace Example
 
             try
             {
-                // Send report of SMS campaigns
+                // Send an SMS campaign's report
                 apiInstance.SendSmsReport(campaignId, sendReport);
             }
             catch (Exception e)
@@ -509,7 +509,7 @@ void (empty response body)
 # **SendTestSms**
 > void SendTestSms (long? campaignId, SendTestSms phoneNumber)
 
-Send an SMS
+Send a test SMS campaign
 
 ### Example
 ```csharp
@@ -540,7 +540,7 @@ namespace Example
 
             try
             {
-                // Send an SMS
+                // Send a test SMS campaign
                 apiInstance.SendTestSms(campaignId, phoneNumber);
             }
             catch (Exception e)
@@ -578,7 +578,7 @@ void (empty response body)
 # **UpdateSmsCampaign**
 > void UpdateSmsCampaign (long? campaignId, UpdateSmsCampaign updateSmsCampaign)
 
-Updates an SMS campaign
+Update an SMS campaign
 
 ### Example
 ```csharp
@@ -609,7 +609,7 @@ namespace Example
 
             try
             {
-                // Updates an SMS campaign
+                // Update an SMS campaign
                 apiInstance.UpdateSmsCampaign(campaignId, updateSmsCampaign);
             }
             catch (Exception e)
@@ -647,7 +647,7 @@ void (empty response body)
 # **UpdateSmsCampaignStatus**
 > void UpdateSmsCampaignStatus (long? campaignId, UpdateCampaignStatus status)
 
-Update the campaign status
+Update a campaign's status
 
 ### Example
 ```csharp
@@ -678,7 +678,7 @@ namespace Example
 
             try
             {
-                // Update the campaign status
+                // Update a campaign's status
                 apiInstance.UpdateSmsCampaignStatus(campaignId, status);
             }
             catch (Exception e)

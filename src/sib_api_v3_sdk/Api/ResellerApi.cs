@@ -71,7 +71,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AssociateIpToChildWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
-        /// Creates a domain for a child account
+        /// Create a domain for a child account
         /// </summary>
         /// <remarks>
         /// 
@@ -83,7 +83,7 @@ namespace sib_api_v3_sdk.Api
         void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain);
 
         /// <summary>
-        /// Creates a domain for a child account
+        /// Create a domain for a child account
         /// </summary>
         /// <remarks>
         /// 
@@ -115,7 +115,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreateReseller</returns>
         ApiResponse<CreateReseller> CreateResellerChildWithHttpInfo (CreateChild resellerChild = null);
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -127,7 +127,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteChildDomain (string childAuthKey, string domainName);
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -138,7 +138,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteChildDomainWithHttpInfo (string childAuthKey, string domainName);
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied
+        /// Delete a single reseller child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -149,7 +149,7 @@ namespace sib_api_v3_sdk.Api
         void DeleteResellerChild (string childAuthKey);
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied
+        /// Delete a single reseller child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -182,7 +182,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DissociateIpFromChildWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -193,7 +193,7 @@ namespace sib_api_v3_sdk.Api
         GetChildAccountCreationStatus GetChildAccountCreationStatus (string childAuthKey);
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -203,7 +203,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetChildAccountCreationStatus</returns>
         ApiResponse<GetChildAccountCreationStatus> GetChildAccountCreationStatusWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets all the sender domains of a specific child account
+        /// Get all sender domains for a specific child account
         /// </summary>
         /// <remarks>
         /// 
@@ -214,7 +214,7 @@ namespace sib_api_v3_sdk.Api
         GetChildDomains GetChildDomains (string childAuthKey);
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account
+        /// Get all sender domains for a specific child account
         /// </summary>
         /// <remarks>
         /// 
@@ -224,7 +224,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetChildDomains</returns>
         ApiResponse<GetChildDomains> GetChildDomainsWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets the info about a specific child account
+        /// Get a child account&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -235,7 +235,7 @@ namespace sib_api_v3_sdk.Api
         GetChildInfo GetChildInfo (string childAuthKey);
 
         /// <summary>
-        /// Gets the info about a specific child account
+        /// Get a child account&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -245,7 +245,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetChildInfo</returns>
         ApiResponse<GetChildInfo> GetChildInfoWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts
+        /// Get the list of all children accounts
         /// </summary>
         /// <remarks>
         /// 
@@ -257,7 +257,7 @@ namespace sib_api_v3_sdk.Api
         GetChildrenList GetResellerChilds (long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts
+        /// Get the list of all children accounts
         /// </summary>
         /// <remarks>
         /// 
@@ -312,7 +312,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of RemainingCreditModel</returns>
         ApiResponse<RemainingCreditModel> RemoveCreditsWithHttpInfo (string childAuthKey, RemoveCredits removeCredits);
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -324,7 +324,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateChildAccountStatus (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -335,7 +335,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateChildAccountStatusWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -348,7 +348,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateChildDomain (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -360,7 +360,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateChildDomainWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -372,7 +372,7 @@ namespace sib_api_v3_sdk.Api
         void UpdateResellerChild (string childAuthKey, UpdateChild resellerChild);
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -431,7 +431,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> AssociateIpToChildAsyncWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
-        /// Creates a domain for a child account
+        /// Create a domain for a child account
         /// </summary>
         /// <remarks>
         /// 
@@ -443,7 +443,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task CreateChildDomainAsync (string childAuthKey, AddChildDomain addChildDomain);
 
         /// <summary>
-        /// Creates a domain for a child account
+        /// Create a domain for a child account
         /// </summary>
         /// <remarks>
         /// 
@@ -475,7 +475,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreateReseller)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateReseller>> CreateResellerChildAsyncWithHttpInfo (CreateChild resellerChild = null);
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -487,7 +487,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteChildDomainAsync (string childAuthKey, string domainName);
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -498,7 +498,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName);
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied
+        /// Delete a single reseller child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -509,7 +509,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task DeleteResellerChildAsync (string childAuthKey);
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied
+        /// Delete a single reseller child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -542,7 +542,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DissociateIpFromChildAsyncWithHttpInfo (string childAuthKey, ManageIp ip);
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -553,7 +553,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetChildAccountCreationStatus> GetChildAccountCreationStatusAsync (string childAuthKey);
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -563,7 +563,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetChildAccountCreationStatus)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetChildAccountCreationStatus>> GetChildAccountCreationStatusAsyncWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets all the sender domains of a specific child account
+        /// Get all sender domains for a specific child account
         /// </summary>
         /// <remarks>
         /// 
@@ -574,7 +574,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetChildDomains> GetChildDomainsAsync (string childAuthKey);
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account
+        /// Get all sender domains for a specific child account
         /// </summary>
         /// <remarks>
         /// 
@@ -584,7 +584,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetChildDomains)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetChildDomains>> GetChildDomainsAsyncWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets the info about a specific child account
+        /// Get a child account&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -595,7 +595,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetChildInfo> GetChildInfoAsync (string childAuthKey);
 
         /// <summary>
-        /// Gets the info about a specific child account
+        /// Get a child account&#39;s details
         /// </summary>
         /// <remarks>
         /// 
@@ -605,7 +605,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetChildInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetChildInfo>> GetChildInfoAsyncWithHttpInfo (string childAuthKey);
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts
+        /// Get the list of all children accounts
         /// </summary>
         /// <remarks>
         /// 
@@ -617,7 +617,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<GetChildrenList> GetResellerChildsAsync (long? limit = null, long? offset = null);
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts
+        /// Get the list of all children accounts
         /// </summary>
         /// <remarks>
         /// 
@@ -672,7 +672,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (RemainingCreditModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<RemainingCreditModel>> RemoveCreditsAsyncWithHttpInfo (string childAuthKey, RemoveCredits removeCredits);
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -684,7 +684,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateChildAccountStatusAsync (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -695,7 +695,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildAccountStatusAsyncWithHttpInfo (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus);
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -708,7 +708,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateChildDomainAsync (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
         /// </summary>
         /// <remarks>
         /// 
@@ -720,7 +720,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateChildDomainAsyncWithHttpInfo (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain);
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -732,7 +732,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task UpdateResellerChildAsync (string childAuthKey, UpdateChild resellerChild);
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied
         /// </summary>
         /// <remarks>
         /// 
@@ -1203,7 +1203,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates a domain for a child account 
+        /// Create a domain for a child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1215,7 +1215,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates a domain for a child account 
+        /// Create a domain for a child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1292,7 +1292,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates a domain for a child account 
+        /// Create a domain for a child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1305,7 +1305,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Creates a domain for a child account 
+        /// Create a domain for a child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1545,7 +1545,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1557,7 +1557,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1627,7 +1627,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1640,7 +1640,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes the sender domain of the reseller child based on the childAuthKey and domainName passed 
+        /// Delete the sender domain of the reseller child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1710,7 +1710,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied 
+        /// Delete a single reseller child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1721,7 +1721,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied 
+        /// Delete a single reseller child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1786,7 +1786,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied 
+        /// Delete a single reseller child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -1798,7 +1798,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Deletes a single reseller child based on the childAuthKey supplied 
+        /// Delete a single reseller child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2042,7 +2042,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2054,7 +2054,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2119,7 +2119,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2132,7 +2132,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Returns the status of reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
+        /// Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2197,7 +2197,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account 
+        /// Get all sender domains for a specific child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2209,7 +2209,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account 
+        /// Get all sender domains for a specific child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2274,7 +2274,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account 
+        /// Get all sender domains for a specific child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2287,7 +2287,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets all the sender domains of a specific child account 
+        /// Get all sender domains for a specific child account 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2352,7 +2352,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the info about a specific child account 
+        /// Get a child account&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2364,7 +2364,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the info about a specific child account 
+        /// Get a child account&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2429,7 +2429,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the info about a specific child account 
+        /// Get a child account&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2442,7 +2442,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the info about a specific child account 
+        /// Get a child account&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -2507,7 +2507,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts 
+        /// Get the list of all children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
@@ -2520,7 +2520,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts 
+        /// Get the list of all children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
@@ -2584,7 +2584,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts 
+        /// Get the list of all children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
@@ -2598,7 +2598,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the list of all reseller&#39;s children accounts 
+        /// Get the list of all children accounts 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents for child accounts information per page (optional, default to 10)</param>
@@ -2998,7 +2998,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3010,7 +3010,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3087,7 +3087,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3100,7 +3100,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child account status based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child account status based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3177,7 +3177,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3190,7 +3190,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3272,7 +3272,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3286,7 +3286,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
+        /// Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3368,7 +3368,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3380,7 +3380,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3457,7 +3457,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>
@@ -3470,7 +3470,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Updates infos of reseller&#39;s child based on the childAuthKey supplied 
+        /// Update info of reseller&#39;s child based on the childAuthKey supplied 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="childAuthKey">auth key of reseller&#39;s child</param>

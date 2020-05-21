@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **Header** | **string** | Header of the campaign | 
 **Footer** | **string** | Footer of the campaign | 
 **Sender** | [**GetExtendedCampaignOverviewSender**](GetExtendedCampaignOverviewSender.md) |  | 
-**ReplyTo** | **string** | Email defined as the \&quot;Reply to\&quot; of the campaign | 
-**ToField** | **string** | Customisation of the \&quot;to\&quot; field of the campaign | 
+**ReplyTo** | **string** | Email defined as the &quot;Reply to&quot; of the campaign | 
+**ToField** | **string** | Customisation of the &quot;to&quot; field of the campaign | 
 **HtmlContent** | **string** | HTML content of the campaign | 
 **ShareLink** | **string** | Link to share the campaign on social medias | [optional] 
 **Tag** | **string** | Tag of the campaign | 

@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSender**](SendersApi.md#createsender) | **POST** /senders | Create a new sender
 [**DeleteSender**](SendersApi.md#deletesender) | **DELETE** /senders/{senderId} | Delete a sender
-[**GetIps**](SendersApi.md#getips) | **GET** /senders/ips | Return all the dedicated IPs for your account
-[**GetIpsFromSender**](SendersApi.md#getipsfromsender) | **GET** /senders/{senderId}/ips | Return all the dedicated IPs for a sender
+[**GetIps**](SendersApi.md#getips) | **GET** /senders/ips | Get all the dedicated IPs for your account
+[**GetIpsFromSender**](SendersApi.md#getipsfromsender) | **GET** /senders/{senderId}/ips | Get all the dedicated IPs for a sender
 [**GetSenders**](SendersApi.md#getsenders) | **GET** /senders | Get the list of all your senders
 [**UpdateSender**](SendersApi.md#updatesender) | **PUT** /senders/{senderId} | Update a sender
 
@@ -151,7 +151,7 @@ void (empty response body)
 # **GetIps**
 > GetIps GetIps ()
 
-Return all the dedicated IPs for your account
+Get all the dedicated IPs for your account
 
 ### Example
 ```csharp
@@ -180,7 +180,7 @@ namespace Example
 
             try
             {
-                // Return all the dedicated IPs for your account
+                // Get all the dedicated IPs for your account
                 GetIps result = apiInstance.GetIps();
                 Debug.WriteLine(result);
             }
@@ -215,7 +215,7 @@ This endpoint does not need any parameter.
 # **GetIpsFromSender**
 > GetIpsFromSender GetIpsFromSender (long? senderId)
 
-Return all the dedicated IPs for a sender
+Get all the dedicated IPs for a sender
 
 ### Example
 ```csharp
@@ -245,7 +245,7 @@ namespace Example
 
             try
             {
-                // Return all the dedicated IPs for a sender
+                // Get all the dedicated IPs for a sender
                 GetIpsFromSender result = apiInstance.GetIpsFromSender(senderId);
                 Debug.WriteLine(result);
             }

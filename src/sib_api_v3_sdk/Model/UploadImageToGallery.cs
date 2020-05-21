@@ -23,46 +23,46 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Email (required), along with name (optional), on which transactional mail recipients will be able to reply back. For example, {&quot;email&quot;:&quot;ann6533@example.com&quot;, &quot;name&quot;:&quot;Ann&quot;}.
+    /// UploadImageToGallery
     /// </summary>
     [DataContract]
-    public partial class SendSmtpEmailReplyTo :  IEquatable<SendSmtpEmailReplyTo>
+    public partial class UploadImageToGallery :  IEquatable<UploadImageToGallery>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo" /> class.
+        /// Initializes a new instance of the <see cref="UploadImageToGallery" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SendSmtpEmailReplyTo() { }
+        protected UploadImageToGallery() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo" /> class.
+        /// Initializes a new instance of the <see cref="UploadImageToGallery" /> class.
         /// </summary>
-        /// <param name="email">Email address in reply to (required).</param>
-        /// <param name="name">Name in reply to. Maximum allowed characters are 70..</param>
-        public SendSmtpEmailReplyTo(string email = default(string), string name = default(string))
+        /// <param name="imageUrl">The absolute url of the image (no local file). Maximum allowed size for image is 2MB. Allowed extensions for images are - jpeg, jpg, png, bmp, gif. (required).</param>
+        /// <param name="name">Name of the image..</param>
+        public UploadImageToGallery(string imageUrl = default(string), string name = default(string))
         {
-            // to ensure "email" is required (not null)
-            if (email == null)
+            // to ensure "imageUrl" is required (not null)
+            if (imageUrl == null)
             {
-                throw new InvalidDataException("email is a required property for SendSmtpEmailReplyTo and cannot be null");
+                throw new InvalidDataException("imageUrl is a required property for UploadImageToGallery and cannot be null");
             }
             else
             {
-                this.Email = email;
+                this.ImageUrl = imageUrl;
             }
             this.Name = name;
         }
         
         /// <summary>
-        /// Email address in reply to
+        /// The absolute url of the image (no local file). Maximum allowed size for image is 2MB. Allowed extensions for images are - jpeg, jpg, png, bmp, gif.
         /// </summary>
-        /// <value>Email address in reply to</value>
-        [DataMember(Name="email", EmitDefaultValue=false)]
-        public string Email { get; set; }
+        /// <value>The absolute url of the image (no local file). Maximum allowed size for image is 2MB. Allowed extensions for images are - jpeg, jpg, png, bmp, gif.</value>
+        [DataMember(Name="imageUrl", EmitDefaultValue=false)]
+        public string ImageUrl { get; set; }
 
         /// <summary>
-        /// Name in reply to. Maximum allowed characters are 70.
+        /// Name of the image.
         /// </summary>
-        /// <value>Name in reply to. Maximum allowed characters are 70.</value>
+        /// <value>Name of the image.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
@@ -73,8 +73,8 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SendSmtpEmailReplyTo {\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("class UploadImageToGallery {\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -96,24 +96,24 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendSmtpEmailReplyTo);
+            return this.Equals(input as UploadImageToGallery);
         }
 
         /// <summary>
-        /// Returns true if SendSmtpEmailReplyTo instances are equal
+        /// Returns true if UploadImageToGallery instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendSmtpEmailReplyTo to be compared</param>
+        /// <param name="input">Instance of UploadImageToGallery to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendSmtpEmailReplyTo input)
+        public bool Equals(UploadImageToGallery input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -131,8 +131,8 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Email != null)
-                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.ImageUrl != null)
+                    hashCode = hashCode * 59 + this.ImageUrl.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
