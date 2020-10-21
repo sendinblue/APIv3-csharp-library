@@ -34,11 +34,12 @@ namespace sib_api_v3_sdk.Model
         /// <param name="success">success.</param>
         /// <param name="failure">failure.</param>
         /// <param name="total">Displays the count of total number of contacts removed from list when user opts for &quot;all&quot; option..</param>
-        public PostContactInfoContacts(List<string> success = default(List<string>), List<string> failure = default(List<string>), long? total = default(long?))
+        public PostContactInfoContacts(List<string> success = default(List<string>), List<string> failure = default(List<string>), long? total = default(long?), long? processId = default(long?))
         {
             this.Success = success;
             this.Failure = failure;
             this.Total = total;
+            this.ProcessId = processId;
         }
         
         /// <summary>
@@ -61,6 +62,13 @@ namespace sib_api_v3_sdk.Model
         public long? Total { get; set; }
 
         /// <summary>
+        /// Id of the process created
+        /// </summary>
+        /// <value>Id of the process created</value>
+        [DataMember(Name = "processId", EmitDefaultValue = false)]
+        public long? ProcessId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -71,6 +79,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Failure: ").Append(Failure).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
+            sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +128,11 @@ namespace sib_api_v3_sdk.Model
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
+                ) &&
+                (
+                    this.ProcessId == input.ProcessId ||
+                    (this.ProcessId != null &&
+                    this.ProcessId.Equals(input.ProcessId))
                 );
         }
 
@@ -137,6 +151,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Failure.GetHashCode();
                 if (this.Total != null)
                     hashCode = hashCode * 59 + this.Total.GetHashCode();
+                if (this.ProcessId != null)
+                    hashCode = hashCode * 59 + this.ProcessId.GetHashCode();
                 return hashCode;
             }
         }
