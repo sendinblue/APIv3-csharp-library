@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Sender** | **string** | Name of the sender. Only alphanumeric characters. No more than 11 characters | 
+**Sender** | **string** | Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters** | 
 **Recipient** | **string** | Mobile number to send SMS with the country code | 
 **Content** | **string** | Content of the message. If more than 160 characters long, will be sent as multiple text messages | 
 **Type** | **string** | Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc. | [optional] [default to TypeEnum.Transactional]

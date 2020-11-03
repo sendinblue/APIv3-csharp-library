@@ -7,16 +7,16 @@ Method | HTTP request | Description
 [**AddContactToList**](ContactsApi.md#addcontacttolist) | **POST** /contacts/lists/{listId}/contacts/add | Add existing contacts to a list
 [**CreateAttribute**](ContactsApi.md#createattribute) | **POST** /contacts/attributes/{attributeCategory}/{attributeName} | Create contact attribute
 [**CreateContact**](ContactsApi.md#createcontact) | **POST** /contacts | Create a contact
-[**CreateDoiContact**](ContactsApi.md#createdoicontact) | **POST** /contacts/doubleOptinConfirmation | Create a contact to trigger the DOI workflow from a Landing Page form
+[**CreateDoiContact**](ContactsApi.md#createdoicontact) | **POST** /contacts/doubleOptinConfirmation | Create Contact via DOI (Double-Opt-In) Flow
 [**CreateFolder**](ContactsApi.md#createfolder) | **POST** /contacts/folders | Create a folder
 [**CreateList**](ContactsApi.md#createlist) | **POST** /contacts/lists | Create a list
 [**DeleteAttribute**](ContactsApi.md#deleteattribute) | **DELETE** /contacts/attributes/{attributeCategory}/{attributeName} | Delete an attribute
-[**DeleteContact**](ContactsApi.md#deletecontact) | **DELETE** /contacts/{email} | Delete a contact
+[**DeleteContact**](ContactsApi.md#deletecontact) | **DELETE** /contacts/{identifier} | Delete a contact
 [**DeleteFolder**](ContactsApi.md#deletefolder) | **DELETE** /contacts/folders/{folderId} | Delete a folder (and all its lists)
 [**DeleteList**](ContactsApi.md#deletelist) | **DELETE** /contacts/lists/{listId} | Delete a list
 [**GetAttributes**](ContactsApi.md#getattributes) | **GET** /contacts/attributes | List all attributes
-[**GetContactInfo**](ContactsApi.md#getcontactinfo) | **GET** /contacts/{email} | Get a contact&#39;s details
-[**GetContactStats**](ContactsApi.md#getcontactstats) | **GET** /contacts/{email}/campaignStats | Get email campaigns&#39; statistics for a contact
+[**GetContactInfo**](ContactsApi.md#getcontactinfo) | **GET** /contacts/{identifier} | Get a contact&#39;s details
+[**GetContactStats**](ContactsApi.md#getcontactstats) | **GET** /contacts/{identifier}/campaignStats | Get email campaigns&#39; statistics for a contact
 [**GetContacts**](ContactsApi.md#getcontacts) | **GET** /contacts | Get all the contacts
 [**GetContactsFromList**](ContactsApi.md#getcontactsfromlist) | **GET** /contacts/lists/{listId}/contacts | Get contacts in a list
 [**GetFolder**](ContactsApi.md#getfolder) | **GET** /contacts/folders/{folderId} | Returns a folder&#39;s details
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**RemoveContactFromList**](ContactsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
 [**RequestContactExport**](ContactsApi.md#requestcontactexport) | **POST** /contacts/export | Export contacts
 [**UpdateAttribute**](ContactsApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
-[**UpdateContact**](ContactsApi.md#updatecontact) | **PUT** /contacts/{email} | Update a contact
+[**UpdateContact**](ContactsApi.md#updatecontact) | **PUT** /contacts/{identifier} | Update a contact
 [**UpdateFolder**](ContactsApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a folder
 [**UpdateList**](ContactsApi.md#updatelist) | **PUT** /contacts/lists/{listId} | Update a list
 
@@ -64,7 +64,7 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var listId = 789;  // long? | Id of the list
-            var contactEmails = new AddContactToList(); // AddContactToList | Emails addresses of the contacts
+            var contactEmails = new AddContactToList(); // AddContactToList | Emails addresses OR IDs of the contacts
 
             try
             {
@@ -86,7 +86,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **long?**| Id of the list | 
- **contactEmails** | [**AddContactToList**](AddContactToList.md)| Emails addresses of the contacts | 
+ **contactEmails** | [**AddContactToList**](AddContactToList.md)| Emails addresses OR IDs of the contacts | 
 
 ### Return type
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 # **CreateDoiContact**
 > void CreateDoiContact (CreateDoiContact createDoiContact)
 
-Create a contact to trigger the DOI workflow from a Landing Page form
+Create Contact via DOI (Double-Opt-In) Flow
 
 ### Example
 ```csharp
@@ -272,11 +272,11 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var createDoiContact = new CreateDoiContact(); // CreateDoiContact | Values to create the DOI contact
+            var createDoiContact = new CreateDoiContact(); // CreateDoiContact | Values to create the Double opt-in (DOI) contact
 
             try
             {
-                // Create a contact to trigger the DOI workflow from a Landing Page form
+                // Create Contact via DOI (Double-Opt-In) Flow
                 apiInstance.CreateDoiContact(createDoiContact);
             }
             catch (Exception e)
@@ -292,7 +292,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createDoiContact** | [**CreateDoiContact**](CreateDoiContact.md)| Values to create the DOI contact | 
+ **createDoiContact** | [**CreateDoiContact**](CreateDoiContact.md)| Values to create the Double opt-in (DOI) contact | 
 
 ### Return type
 
@@ -516,7 +516,7 @@ void (empty response body)
 
 <a name="deletecontact"></a>
 # **DeleteContact**
-> void DeleteContact (string email)
+> void DeleteContact (string identifier)
 
 Delete a contact
 
@@ -544,12 +544,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var email = email_example;  // string | Email (urlencoded) of the contact
+            var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact
 
             try
             {
                 // Delete a contact
-                apiInstance.DeleteContact(email);
+                apiInstance.DeleteContact(identifier);
             }
             catch (Exception e)
             {
@@ -564,7 +564,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**| Email (urlencoded) of the contact | 
+ **identifier** | **string**| Email (urlencoded) OR ID of the contact | 
 
 ### Return type
 
@@ -781,7 +781,7 @@ This endpoint does not need any parameter.
 
 <a name="getcontactinfo"></a>
 # **GetContactInfo**
-> GetExtendedContactDetails GetContactInfo (string email)
+> GetExtendedContactDetails GetContactInfo (string identifier)
 
 Get a contact's details
 
@@ -809,12 +809,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var email = email_example;  // string | Email (urlencoded) of the contact OR its SMS attribute value
+            var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact OR its SMS attribute value
 
             try
             {
                 // Get a contact's details
-                GetExtendedContactDetails result = apiInstance.GetContactInfo(email);
+                GetExtendedContactDetails result = apiInstance.GetContactInfo(identifier);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -830,7 +830,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**| Email (urlencoded) of the contact OR its SMS attribute value | 
+ **identifier** | **string**| Email (urlencoded) OR ID of the contact OR its SMS attribute value | 
 
 ### Return type
 
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 
 <a name="getcontactstats"></a>
 # **GetContactStats**
-> GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null)
+> GetContactCampaignStats GetContactStats (string identifier, DateTime? startDate = null, DateTime? endDate = null)
 
 Get email campaigns' statistics for a contact
 
@@ -877,14 +877,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var email = email_example;  // string | Email address (urlencoded) of the contact
+            var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact
             var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
             var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
 
             try
             {
                 // Get email campaigns' statistics for a contact
-                GetContactCampaignStats result = apiInstance.GetContactStats(email, startDate, endDate);
+                GetContactCampaignStats result = apiInstance.GetContactStats(identifier, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -900,7 +900,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**| Email address (urlencoded) of the contact | 
+ **identifier** | **string**| Email (urlencoded) OR ID of the contact | 
  **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
  **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
 
@@ -1514,7 +1514,7 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var listId = 789;  // long? | Id of the list
-            var contactEmails = new RemoveContactFromList(); // RemoveContactFromList | Emails adresses of the contact
+            var contactEmails = new RemoveContactFromList(); // RemoveContactFromList | Emails addresses OR IDs of the contacts
 
             try
             {
@@ -1536,7 +1536,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **long?**| Id of the list | 
- **contactEmails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails adresses of the contact | 
+ **contactEmails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails addresses OR IDs of the contacts | 
 
 ### Return type
 
@@ -1696,7 +1696,7 @@ void (empty response body)
 
 <a name="updatecontact"></a>
 # **UpdateContact**
-> void UpdateContact (string email, UpdateContact updateContact)
+> void UpdateContact (string identifier, UpdateContact updateContact)
 
 Update a contact
 
@@ -1724,13 +1724,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ContactsApi();
-            var email = email_example;  // string | Email (urlencoded) of the contact
+            var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact
             var updateContact = new UpdateContact(); // UpdateContact | Values to update a contact
 
             try
             {
                 // Update a contact
-                apiInstance.UpdateContact(email, updateContact);
+                apiInstance.UpdateContact(identifier, updateContact);
             }
             catch (Exception e)
             {
@@ -1745,7 +1745,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**| Email (urlencoded) of the contact | 
+ **identifier** | **string**| Email (urlencoded) OR ID of the contact | 
  **updateContact** | [**UpdateContact**](UpdateContact.md)| Values to update a contact | 
 
 ### Return type

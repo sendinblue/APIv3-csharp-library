@@ -31,18 +31,27 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddContactToList" /> class.
         /// </summary>
-        /// <param name="emails">Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api..</param>
-        public AddContactToList(List<string> emails = default(List<string>))
+        /// <param name="emails">Mandatory if IDs are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api..</param>
+        /// <param name="ids">Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api..</param>
+        public AddContactToList(List<string> emails = default(List<string>), List<long?> ids = default(List<long?>))
         {
             this.Emails = emails;
+            this.Ids = ids;
         }
         
         /// <summary>
-        /// Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+        /// Mandatory if IDs are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
         /// </summary>
-        /// <value>Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.</value>
+        /// <value>Mandatory if IDs are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.</value>
         [DataMember(Name="emails", EmitDefaultValue=false)]
         public List<string> Emails { get; set; }
+
+        /// <summary>
+        /// Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+        /// </summary>
+        /// <value>Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.</value>
+        [DataMember(Name="ids", EmitDefaultValue=false)]
+        public List<long?> Ids { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -53,6 +62,7 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class AddContactToList {\n");
             sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  Ids: ").Append(Ids).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,6 +101,11 @@ namespace sib_api_v3_sdk.Model
                     this.Emails == input.Emails ||
                     this.Emails != null &&
                     this.Emails.SequenceEqual(input.Emails)
+                ) && 
+                (
+                    this.Ids == input.Ids ||
+                    this.Ids != null &&
+                    this.Ids.SequenceEqual(input.Ids)
                 );
         }
 
@@ -105,6 +120,8 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.Emails != null)
                     hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.Ids != null)
+                    hashCode = hashCode * 59 + this.Ids.GetHashCode();
                 return hashCode;
             }
         }

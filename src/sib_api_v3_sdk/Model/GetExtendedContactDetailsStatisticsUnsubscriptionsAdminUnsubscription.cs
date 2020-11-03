@@ -37,7 +37,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription" /> class.
         /// </summary>
         /// <param name="eventTime">UTC date-time of the event (required).</param>
-        /// <param name="ip">IP from which the user has been unsubscribed (required).</param>
+        /// <param name="ip">IP from which the user has been unsubscribed.</param>
         public GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription(DateTime? eventTime = default(DateTime?), string ip = default(string))
         {
             // to ensure "eventTime" is required (not null)
@@ -49,15 +49,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.EventTime = eventTime;
             }
-            // to ensure "ip" is required (not null)
-            if (ip == null)
-            {
-                throw new InvalidDataException("ip is a required property for GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription and cannot be null");
-            }
-            else
-            {
-                this.Ip = ip;
-            }
+            this.Ip = ip;
         }
         
         /// <summary>

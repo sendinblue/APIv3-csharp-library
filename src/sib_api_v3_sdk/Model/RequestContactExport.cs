@@ -34,7 +34,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="exportAttributes">List of all the attributes that you want to export. These attributes must be present in your contact database. For example, [&#39;fname&#39;, &#39;lname&#39;, &#39;email&#39;]..</param>
         /// <param name="contactFilter">This attribute has been deprecated and will be removed by January 1st, 2021. Only one of the two filter options (contactFilter or customContactFilter) can be passed in the request. Set the filter for the contacts to be exported. For example, {&quot;blacklisted&quot;:true} will export all the blacklisted contacts. .</param>
         /// <param name="customContactFilter">customContactFilter.</param>
-        /// <param name="notifyUrl">Webhook that will be called once the export process is finished.</param>
+        /// <param name="notifyUrl">Webhook that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479.</param>
         public RequestContactExport(List<string> exportAttributes = default(List<string>), Object contactFilter = default(Object), RequestContactExportCustomContactFilter customContactFilter = default(RequestContactExportCustomContactFilter), string notifyUrl = default(string))
         {
             this.ExportAttributes = exportAttributes;
@@ -64,9 +64,9 @@ namespace sib_api_v3_sdk.Model
         public RequestContactExportCustomContactFilter CustomContactFilter { get; set; }
 
         /// <summary>
-        /// Webhook that will be called once the export process is finished
+        /// Webhook that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479
         /// </summary>
-        /// <value>Webhook that will be called once the export process is finished</value>
+        /// <value>Webhook that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479</value>
         [DataMember(Name="notifyUrl", EmitDefaultValue=false)]
         public string NotifyUrl { get; set; }
 

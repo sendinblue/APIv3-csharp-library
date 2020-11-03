@@ -23,56 +23,54 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Custom attributes for the report email.
+    /// AbTestCampaignResultClickedLinks
     /// </summary>
     [DataContract]
-    public partial class SendReportEmail :  IEquatable<SendReportEmail>
+    public partial class AbTestCampaignResultClickedLinks :  IEquatable<AbTestCampaignResultClickedLinks>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendReportEmail" /> class.
+        /// Initializes a new instance of the <see cref="AbTestCampaignResultClickedLinks" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SendReportEmail() { }
+        protected AbTestCampaignResultClickedLinks() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendReportEmail" /> class.
+        /// Initializes a new instance of the <see cref="AbTestCampaignResultClickedLinks" /> class.
         /// </summary>
-        /// <param name="to">Email addresses of the recipients (required).</param>
-        /// <param name="body">Custom text message to be presented in the report email. (required).</param>
-        public SendReportEmail(List<string> to = default(List<string>), string body = default(string))
+        /// <param name="versionA">versionA (required).</param>
+        /// <param name="versionB">versionB (required).</param>
+        public AbTestCampaignResultClickedLinks(AbTestVersionClicks versionA = default(AbTestVersionClicks), AbTestVersionClicks versionB = default(AbTestVersionClicks))
         {
-            // to ensure "to" is required (not null)
-            if (to == null)
+            // to ensure "versionA" is required (not null)
+            if (versionA == null)
             {
-                throw new InvalidDataException("to is a required property for SendReportEmail and cannot be null");
+                throw new InvalidDataException("versionA is a required property for AbTestCampaignResultClickedLinks and cannot be null");
             }
             else
             {
-                this.To = to;
+                this.VersionA = versionA;
             }
-            // to ensure "body" is required (not null)
-            if (body == null)
+            // to ensure "versionB" is required (not null)
+            if (versionB == null)
             {
-                throw new InvalidDataException("body is a required property for SendReportEmail and cannot be null");
+                throw new InvalidDataException("versionB is a required property for AbTestCampaignResultClickedLinks and cannot be null");
             }
             else
             {
-                this.Body = body;
+                this.VersionB = versionB;
             }
         }
         
         /// <summary>
-        /// Email addresses of the recipients
+        /// Gets or Sets VersionA
         /// </summary>
-        /// <value>Email addresses of the recipients</value>
-        [DataMember(Name="to", EmitDefaultValue=false)]
-        public List<string> To { get; set; }
+        [DataMember(Name="Version A", EmitDefaultValue=false)]
+        public AbTestVersionClicks VersionA { get; set; }
 
         /// <summary>
-        /// Custom text message to be presented in the report email.
+        /// Gets or Sets VersionB
         /// </summary>
-        /// <value>Custom text message to be presented in the report email.</value>
-        [DataMember(Name="body", EmitDefaultValue=false)]
-        public string Body { get; set; }
+        [DataMember(Name="Version B", EmitDefaultValue=false)]
+        public AbTestVersionClicks VersionB { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,9 +79,9 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SendReportEmail {\n");
-            sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("class AbTestCampaignResultClickedLinks {\n");
+            sb.Append("  VersionA: ").Append(VersionA).Append("\n");
+            sb.Append("  VersionB: ").Append(VersionB).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,29 +102,29 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendReportEmail);
+            return this.Equals(input as AbTestCampaignResultClickedLinks);
         }
 
         /// <summary>
-        /// Returns true if SendReportEmail instances are equal
+        /// Returns true if AbTestCampaignResultClickedLinks instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendReportEmail to be compared</param>
+        /// <param name="input">Instance of AbTestCampaignResultClickedLinks to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendReportEmail input)
+        public bool Equals(AbTestCampaignResultClickedLinks input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.To == input.To ||
-                    this.To != null &&
-                    this.To.SequenceEqual(input.To)
+                    this.VersionA == input.VersionA ||
+                    (this.VersionA != null &&
+                    this.VersionA.Equals(input.VersionA))
                 ) && 
                 (
-                    this.Body == input.Body ||
-                    (this.Body != null &&
-                    this.Body.Equals(input.Body))
+                    this.VersionB == input.VersionB ||
+                    (this.VersionB != null &&
+                    this.VersionB.Equals(input.VersionB))
                 );
         }
 
@@ -139,10 +137,10 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.To != null)
-                    hashCode = hashCode * 59 + this.To.GetHashCode();
-                if (this.Body != null)
-                    hashCode = hashCode * 59 + this.Body.GetHashCode();
+                if (this.VersionA != null)
+                    hashCode = hashCode * 59 + this.VersionA.GetHashCode();
+                if (this.VersionB != null)
+                    hashCode = hashCode * 59 + this.VersionB.GetHashCode();
                 return hashCode;
             }
         }

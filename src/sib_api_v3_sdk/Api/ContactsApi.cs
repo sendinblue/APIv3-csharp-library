@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         PostContactInfo AddContactToList (long? listId, AddContactToList contactEmails);
 
@@ -44,7 +44,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         ApiResponse<PostContactInfo> AddContactToListWithHttpInfo (long? listId, AddContactToList contactEmails);
         /// <summary>
@@ -94,24 +94,24 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of CreateUpdateContactModel</returns>
         ApiResponse<CreateUpdateContactModel> CreateContactWithHttpInfo (CreateContact createContact);
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// Create Contact via DOI (Double-Opt-In) Flow
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns></returns>
         void CreateDoiContact (CreateDoiContact createDoiContact);
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// Create Contact via DOI (Double-Opt-In) Flow
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CreateDoiContactWithHttpInfo (CreateDoiContact createDoiContact);
         /// <summary>
@@ -186,9 +186,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns></returns>
-        void DeleteContact (string email);
+        void DeleteContact (string identifier);
 
         /// <summary>
         /// Delete a contact
@@ -197,9 +197,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteContactWithHttpInfo (string email);
+        ApiResponse<Object> DeleteContactWithHttpInfo (string identifier);
         /// <summary>
         /// Delete a folder (and all its lists)
         /// </summary>
@@ -268,9 +268,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>GetExtendedContactDetails</returns>
-        GetExtendedContactDetails GetContactInfo (string email);
+        GetExtendedContactDetails GetContactInfo (string identifier);
 
         /// <summary>
         /// Get a contact&#39;s details
@@ -279,9 +279,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
-        ApiResponse<GetExtendedContactDetails> GetContactInfoWithHttpInfo (string email);
+        ApiResponse<GetExtendedContactDetails> GetContactInfoWithHttpInfo (string identifier);
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
         /// </summary>
@@ -289,11 +289,11 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
-        GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null);
+        GetContactCampaignStats GetContactStats (string identifier, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
@@ -302,11 +302,11 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
-        ApiResponse<GetContactCampaignStats> GetContactStatsWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null);
+        ApiResponse<GetContactCampaignStats> GetContactStatsWithHttpInfo (string identifier, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get all the contacts
         /// </summary>
@@ -501,7 +501,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails);
 
@@ -513,7 +513,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         ApiResponse<PostContactInfo> RemoveContactFromListWithHttpInfo (long? listId, RemoveContactFromList contactEmails);
         /// <summary>
@@ -569,10 +569,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns></returns>
-        void UpdateContact (string email, UpdateContact updateContact);
+        void UpdateContact (string identifier, UpdateContact updateContact);
 
         /// <summary>
         /// Update a contact
@@ -581,10 +581,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateContactWithHttpInfo (string email, UpdateContact updateContact);
+        ApiResponse<Object> UpdateContactWithHttpInfo (string identifier, UpdateContact updateContact);
         /// <summary>
         /// Update a folder
         /// </summary>
@@ -641,7 +641,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         System.Threading.Tasks.Task<PostContactInfo> AddContactToListAsync (long? listId, AddContactToList contactEmails);
 
@@ -653,7 +653,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> AddContactToListAsyncWithHttpInfo (long? listId, AddContactToList contactEmails);
         /// <summary>
@@ -703,24 +703,24 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (CreateUpdateContactModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateUpdateContactModel>> CreateContactAsyncWithHttpInfo (CreateContact createContact);
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// Create Contact via DOI (Double-Opt-In) Flow
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task CreateDoiContactAsync (CreateDoiContact createDoiContact);
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form
+        /// Create Contact via DOI (Double-Opt-In) Flow
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> CreateDoiContactAsyncWithHttpInfo (CreateDoiContact createDoiContact);
         /// <summary>
@@ -795,9 +795,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteContactAsync (string email);
+        System.Threading.Tasks.Task DeleteContactAsync (string identifier);
 
         /// <summary>
         /// Delete a contact
@@ -806,9 +806,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactAsyncWithHttpInfo (string email);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactAsyncWithHttpInfo (string identifier);
         /// <summary>
         /// Delete a folder (and all its lists)
         /// </summary>
@@ -877,9 +877,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
-        System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string email);
+        System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier);
 
         /// <summary>
         /// Get a contact&#39;s details
@@ -888,9 +888,9 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string email);
+        System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier);
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
         /// </summary>
@@ -898,11 +898,11 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
-        System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email, DateTime? startDate = null, DateTime? endDate = null);
+        System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string identifier, DateTime? startDate = null, DateTime? endDate = null);
 
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
@@ -911,11 +911,11 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null);
+        System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string identifier, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get all the contacts
         /// </summary>
@@ -1110,7 +1110,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         System.Threading.Tasks.Task<PostContactInfo> RemoveContactFromListAsync (long? listId, RemoveContactFromList contactEmails);
 
@@ -1122,7 +1122,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> RemoveContactFromListAsyncWithHttpInfo (long? listId, RemoveContactFromList contactEmails);
         /// <summary>
@@ -1178,10 +1178,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateContactAsync (string email, UpdateContact updateContact);
+        System.Threading.Tasks.Task UpdateContactAsync (string identifier, UpdateContact updateContact);
 
         /// <summary>
         /// Update a contact
@@ -1190,10 +1190,10 @@ namespace sib_api_v3_sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateContactAsyncWithHttpInfo (string email, UpdateContact updateContact);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateContactAsyncWithHttpInfo (string identifier, UpdateContact updateContact);
         /// <summary>
         /// Update a folder
         /// </summary>
@@ -1345,7 +1345,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         public PostContactInfo AddContactToList (long? listId, AddContactToList contactEmails)
         {
@@ -1358,7 +1358,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         public ApiResponse< PostContactInfo > AddContactToListWithHttpInfo (long? listId, AddContactToList contactEmails)
         {
@@ -1435,7 +1435,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         public async System.Threading.Tasks.Task<PostContactInfo> AddContactToListAsync (long? listId, AddContactToList contactEmails)
         {
@@ -1449,7 +1449,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> AddContactToListAsyncWithHttpInfo (long? listId, AddContactToList contactEmails)
         {
@@ -1882,10 +1882,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// Create Contact via DOI (Double-Opt-In) Flow 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns></returns>
         public void CreateDoiContact (CreateDoiContact createDoiContact)
         {
@@ -1893,10 +1893,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// Create Contact via DOI (Double-Opt-In) Flow 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> CreateDoiContactWithHttpInfo (CreateDoiContact createDoiContact)
         {
@@ -1965,10 +1965,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// Create Contact via DOI (Double-Opt-In) Flow 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateDoiContactAsync (CreateDoiContact createDoiContact)
         {
@@ -1977,10 +1977,10 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Create a contact to trigger the DOI workflow from a Landing Page form 
+        /// Create Contact via DOI (Double-Opt-In) Flow 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createDoiContact">Values to create the DOI contact</param>
+        /// <param name="createDoiContact">Values to create the Double opt-in (DOI) contact</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateDoiContactAsyncWithHttpInfo (CreateDoiContact createDoiContact)
         {
@@ -2555,26 +2555,26 @@ namespace sib_api_v3_sdk.Api
         /// Delete a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns></returns>
-        public void DeleteContact (string email)
+        public void DeleteContact (string identifier)
         {
-             DeleteContactWithHttpInfo(email);
+             DeleteContactWithHttpInfo(identifier);
         }
 
         /// <summary>
         /// Delete a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteContactWithHttpInfo (string email)
+        public ApiResponse<Object> DeleteContactWithHttpInfo (string identifier)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->DeleteContact");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->DeleteContact");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2596,7 +2596,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -2631,11 +2631,11 @@ namespace sib_api_v3_sdk.Api
         /// Delete a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteContactAsync (string email)
+        public async System.Threading.Tasks.Task DeleteContactAsync (string identifier)
         {
-             await DeleteContactAsyncWithHttpInfo(email);
+             await DeleteContactAsyncWithHttpInfo(identifier);
 
         }
 
@@ -2643,15 +2643,15 @@ namespace sib_api_v3_sdk.Api
         /// Delete a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactAsyncWithHttpInfo (string email)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactAsyncWithHttpInfo (string identifier)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->DeleteContact");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->DeleteContact");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2673,7 +2673,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3157,11 +3157,11 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>GetExtendedContactDetails</returns>
-        public GetExtendedContactDetails GetContactInfo (string email)
+        public GetExtendedContactDetails GetContactInfo (string identifier)
         {
-             ApiResponse<GetExtendedContactDetails> localVarResponse = GetContactInfoWithHttpInfo(email);
+             ApiResponse<GetExtendedContactDetails> localVarResponse = GetContactInfoWithHttpInfo(identifier);
              return localVarResponse.Data;
         }
 
@@ -3169,15 +3169,15 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
-        public ApiResponse< GetExtendedContactDetails > GetContactInfoWithHttpInfo (string email)
+        public ApiResponse< GetExtendedContactDetails > GetContactInfoWithHttpInfo (string identifier)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactInfo");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->GetContactInfo");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3199,7 +3199,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3234,11 +3234,11 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
-        public async System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string email)
+        public async System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier)
         {
-             ApiResponse<GetExtendedContactDetails> localVarResponse = await GetContactInfoAsyncWithHttpInfo(email);
+             ApiResponse<GetExtendedContactDetails> localVarResponse = await GetContactInfoAsyncWithHttpInfo(identifier);
              return localVarResponse.Data;
 
         }
@@ -3247,15 +3247,15 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact OR its SMS attribute value</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string email)
+        public async System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactInfo");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->GetContactInfo");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3277,7 +3277,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3312,13 +3312,13 @@ namespace sib_api_v3_sdk.Api
         /// Get email campaigns&#39; statistics for a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
-        public GetContactCampaignStats GetContactStats (string email, DateTime? startDate = null, DateTime? endDate = null)
+        public GetContactCampaignStats GetContactStats (string identifier, DateTime? startDate = null, DateTime? endDate = null)
         {
-             ApiResponse<GetContactCampaignStats> localVarResponse = GetContactStatsWithHttpInfo(email, startDate, endDate);
+             ApiResponse<GetContactCampaignStats> localVarResponse = GetContactStatsWithHttpInfo(identifier, startDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -3326,17 +3326,17 @@ namespace sib_api_v3_sdk.Api
         /// Get email campaigns&#39; statistics for a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
-        public ApiResponse< GetContactCampaignStats > GetContactStatsWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null)
+        public ApiResponse< GetContactCampaignStats > GetContactStatsWithHttpInfo (string identifier, DateTime? startDate = null, DateTime? endDate = null)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactStats");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->GetContactStats");
 
-            var localVarPath = "./contacts/{email}/campaignStats";
+            var localVarPath = "./contacts/{identifier}/campaignStats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3358,7 +3358,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
@@ -3395,13 +3395,13 @@ namespace sib_api_v3_sdk.Api
         /// Get email campaigns&#39; statistics for a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
-        public async System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string email, DateTime? startDate = null, DateTime? endDate = null)
+        public async System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string identifier, DateTime? startDate = null, DateTime? endDate = null)
         {
-             ApiResponse<GetContactCampaignStats> localVarResponse = await GetContactStatsAsyncWithHttpInfo(email, startDate, endDate);
+             ApiResponse<GetContactCampaignStats> localVarResponse = await GetContactStatsAsyncWithHttpInfo(identifier, startDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -3410,17 +3410,17 @@ namespace sib_api_v3_sdk.Api
         /// Get email campaigns&#39; statistics for a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email address (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string email, DateTime? startDate = null, DateTime? endDate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string identifier, DateTime? startDate = null, DateTime? endDate = null)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->GetContactStats");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->GetContactStats");
 
-            var localVarPath = "./contacts/{email}/campaignStats";
+            var localVarPath = "./contacts/{identifier}/campaignStats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3442,7 +3442,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
@@ -4782,7 +4782,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         public PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails)
         {
@@ -4795,7 +4795,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         public ApiResponse< PostContactInfo > RemoveContactFromListWithHttpInfo (long? listId, RemoveContactFromList contactEmails)
         {
@@ -4872,7 +4872,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         public async System.Threading.Tasks.Task<PostContactInfo> RemoveContactFromListAsync (long? listId, RemoveContactFromList contactEmails)
         {
@@ -4886,7 +4886,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> RemoveContactFromListAsyncWithHttpInfo (long? listId, RemoveContactFromList contactEmails)
         {
@@ -5322,31 +5322,31 @@ namespace sib_api_v3_sdk.Api
         /// Update a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns></returns>
-        public void UpdateContact (string email, UpdateContact updateContact)
+        public void UpdateContact (string identifier, UpdateContact updateContact)
         {
-             UpdateContactWithHttpInfo(email, updateContact);
+             UpdateContactWithHttpInfo(identifier, updateContact);
         }
 
         /// <summary>
         /// Update a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateContactWithHttpInfo (string email, UpdateContact updateContact)
+        public ApiResponse<Object> UpdateContactWithHttpInfo (string identifier, UpdateContact updateContact)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->UpdateContact");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->UpdateContact");
             // verify the required parameter 'updateContact' is set
             if (updateContact == null)
                 throw new ApiException(400, "Missing required parameter 'updateContact' when calling ContactsApi->UpdateContact");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5368,7 +5368,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
             if (updateContact != null && updateContact.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateContact); // http body (model) parameter
@@ -5411,12 +5411,12 @@ namespace sib_api_v3_sdk.Api
         /// Update a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateContactAsync (string email, UpdateContact updateContact)
+        public async System.Threading.Tasks.Task UpdateContactAsync (string identifier, UpdateContact updateContact)
         {
-             await UpdateContactAsyncWithHttpInfo(email, updateContact);
+             await UpdateContactAsyncWithHttpInfo(identifier, updateContact);
 
         }
 
@@ -5424,19 +5424,19 @@ namespace sib_api_v3_sdk.Api
         /// Update a contact 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="email">Email (urlencoded) of the contact</param>
+        /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="updateContact">Values to update a contact</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateContactAsyncWithHttpInfo (string email, UpdateContact updateContact)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateContactAsyncWithHttpInfo (string identifier, UpdateContact updateContact)
         {
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling ContactsApi->UpdateContact");
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling ContactsApi->UpdateContact");
             // verify the required parameter 'updateContact' is set
             if (updateContact == null)
                 throw new ApiException(400, "Missing required parameter 'updateContact' when calling ContactsApi->UpdateContact");
 
-            var localVarPath = "./contacts/{email}";
+            var localVarPath = "./contacts/{identifier}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5458,7 +5458,7 @@ namespace sib_api_v3_sdk.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (email != null) localVarPathParams.Add("email", this.Configuration.ApiClient.ParameterToString(email)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
             if (updateContact != null && updateContact.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateContact); // http body (model) parameter

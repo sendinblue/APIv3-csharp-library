@@ -63,7 +63,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SendTransacSms" /> class.
         /// </summary>
-        /// <param name="sender">Name of the sender. Only alphanumeric characters. No more than 11 characters (required).</param>
+        /// <param name="sender">Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters** (required).</param>
         /// <param name="recipient">Mobile number to send SMS with the country code (required).</param>
         /// <param name="content">Content of the message. If more than 160 characters long, will be sent as multiple text messages (required).</param>
         /// <param name="type">Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc. (default to TypeEnum.Transactional).</param>
@@ -112,9 +112,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Name of the sender. Only alphanumeric characters. No more than 11 characters
+        /// Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**
         /// </summary>
-        /// <value>Name of the sender. Only alphanumeric characters. No more than 11 characters</value>
+        /// <value>Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**</value>
         [DataMember(Name="sender", EmitDefaultValue=false)]
         public string Sender { get; set; }
 

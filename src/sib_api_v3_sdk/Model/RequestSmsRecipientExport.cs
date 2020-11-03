@@ -87,7 +87,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestSmsRecipientExport" /> class.
         /// </summary>
-        /// <param name="notifyURL">URL that will be called once the export process is finished.</param>
+        /// <param name="notifyURL">URL that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479.</param>
         /// <param name="recipientsType">Filter the recipients based on how they interacted with the campaign (required).</param>
         public RequestSmsRecipientExport(string notifyURL = default(string), RecipientsTypeEnum recipientsType = default(RecipientsTypeEnum))
         {
@@ -104,9 +104,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// URL that will be called once the export process is finished
+        /// URL that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479
         /// </summary>
-        /// <value>URL that will be called once the export process is finished</value>
+        /// <value>URL that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479</value>
         [DataMember(Name="notifyURL", EmitDefaultValue=false)]
         public string NotifyURL { get; set; }
 

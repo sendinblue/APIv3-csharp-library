@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetSmsEvents**](TransactionalSMSApi.md#getsmsevents) | **GET** /transactionalSMS/statistics/events | Get all your SMS activity (unaggregated events)
 [**GetTransacAggregatedSmsReport**](TransactionalSMSApi.md#gettransacaggregatedsmsreport) | **GET** /transactionalSMS/statistics/aggregatedReport | Get your SMS activity aggregated over a period of time
 [**GetTransacSmsReport**](TransactionalSMSApi.md#gettransacsmsreport) | **GET** /transactionalSMS/statistics/reports | Get your SMS activity aggregated per day
-[**SendTransacSms**](TransactionalSMSApi.md#sendtransacsms) | **POST** /transactionalSMS/sms | Send the SMS campaign to a mobile number
+[**SendTransacSms**](TransactionalSMSApi.md#sendtransacsms) | **POST** /transactionalSMS/sms | Send SMS message to a mobile number
 
 
 <a name="getsmsevents"></a>
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 # **SendTransacSms**
 > SendSms SendTransacSms (SendTransacSms sendTransacSms)
 
-Send the SMS campaign to a mobile number
+Send SMS message to a mobile number
 
 ### Example
 ```csharp
@@ -274,7 +274,7 @@ namespace Example
 
             try
             {
-                // Send the SMS campaign to a mobile number
+                // Send SMS message to a mobile number
                 SendSms result = apiInstance.SendTransacSms(sendTransacSms);
                 Debug.WriteLine(result);
             }

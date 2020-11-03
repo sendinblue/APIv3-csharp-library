@@ -29,6 +29,57 @@ namespace sib_api_v3_sdk.Model
     public partial class CreateChild :  IEquatable<CreateChild>
     {
         /// <summary>
+        /// Language of the child account
+        /// </summary>
+        /// <value>Language of the child account</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum LanguageEnum
+        {
+            
+            /// <summary>
+            /// Enum Fr for value: fr
+            /// </summary>
+            [EnumMember(Value = "fr")]
+            Fr = 1,
+            
+            /// <summary>
+            /// Enum Es for value: es
+            /// </summary>
+            [EnumMember(Value = "es")]
+            Es = 2,
+            
+            /// <summary>
+            /// Enum Pt for value: pt
+            /// </summary>
+            [EnumMember(Value = "pt")]
+            Pt = 3,
+            
+            /// <summary>
+            /// Enum It for value: it
+            /// </summary>
+            [EnumMember(Value = "it")]
+            It = 4,
+            
+            /// <summary>
+            /// Enum De for value: de
+            /// </summary>
+            [EnumMember(Value = "de")]
+            De = 5,
+            
+            /// <summary>
+            /// Enum En for value: en
+            /// </summary>
+            [EnumMember(Value = "en")]
+            En = 6
+        }
+
+        /// <summary>
+        /// Language of the child account
+        /// </summary>
+        /// <value>Language of the child account</value>
+        [DataMember(Name="language", EmitDefaultValue=false)]
+        public LanguageEnum? Language { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateChild" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,7 +92,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="lastName">Last name to use to create the child account (required).</param>
         /// <param name="companyName">Company name to use to create the child account (required).</param>
         /// <param name="password">Password for the child account to login (required).</param>
-        public CreateChild(string email = default(string), string firstName = default(string), string lastName = default(string), string companyName = default(string), string password = default(string))
+        /// <param name="language">Language of the child account.</param>
+        public CreateChild(string email = default(string), string firstName = default(string), string lastName = default(string), string companyName = default(string), string password = default(string), LanguageEnum? language = default(LanguageEnum?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -88,6 +140,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.Password = password;
             }
+            this.Language = language;
         }
         
         /// <summary>
@@ -125,6 +178,7 @@ namespace sib_api_v3_sdk.Model
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -138,6 +192,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +251,11 @@ namespace sib_api_v3_sdk.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.Language == input.Language ||
+                    (this.Language != null &&
+                    this.Language.Equals(input.Language))
                 );
         }
 
@@ -218,6 +278,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.Language != null)
+                    hashCode = hashCode * 59 + this.Language.GetHashCode();
                 return hashCode;
             }
         }

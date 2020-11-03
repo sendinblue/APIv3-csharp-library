@@ -4,27 +4,27 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddCredits**](ResellerApi.md#addcredits) | **POST** /reseller/children/{childAuthKey}/credits/add | Add Email and/or SMS credits to a specific child account
-[**AssociateIpToChild**](ResellerApi.md#associateiptochild) | **POST** /reseller/children/{childAuthKey}/ips/associate | Associate a dedicated IP to the child
-[**CreateChildDomain**](ResellerApi.md#createchilddomain) | **POST** /reseller/children/{childAuthKey}/domains | Create a domain for a child account
+[**AddCredits**](ResellerApi.md#addcredits) | **POST** /reseller/children/{childIdentifier}/credits/add | Add Email and/or SMS credits to a specific child account
+[**AssociateIpToChild**](ResellerApi.md#associateiptochild) | **POST** /reseller/children/{childIdentifier}/ips/associate | Associate a dedicated IP to the child
+[**CreateChildDomain**](ResellerApi.md#createchilddomain) | **POST** /reseller/children/{childIdentifier}/domains | Create a domain for a child account
 [**CreateResellerChild**](ResellerApi.md#createresellerchild) | **POST** /reseller/children | Creates a reseller child
-[**DeleteChildDomain**](ResellerApi.md#deletechilddomain) | **DELETE** /reseller/children/{childAuthKey}/domains/{domainName} | Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
-[**DeleteResellerChild**](ResellerApi.md#deleteresellerchild) | **DELETE** /reseller/children/{childAuthKey} | Delete a single reseller child based on the childAuthKey supplied
-[**DissociateIpFromChild**](ResellerApi.md#dissociateipfromchild) | **POST** /reseller/children/{childAuthKey}/ips/dissociate | Dissociate a dedicated IP to the child
-[**GetChildAccountCreationStatus**](ResellerApi.md#getchildaccountcreationstatus) | **GET** /reseller/children/{childAuthKey}/accountCreationStatus | Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
-[**GetChildDomains**](ResellerApi.md#getchilddomains) | **GET** /reseller/children/{childAuthKey}/domains | Get all sender domains for a specific child account
-[**GetChildInfo**](ResellerApi.md#getchildinfo) | **GET** /reseller/children/{childAuthKey} | Get a child account&#39;s details
+[**DeleteChildDomain**](ResellerApi.md#deletechilddomain) | **DELETE** /reseller/children/{childIdentifier}/domains/{domainName} | Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
+[**DeleteResellerChild**](ResellerApi.md#deleteresellerchild) | **DELETE** /reseller/children/{childIdentifier} | Delete a single reseller child based on the child identifier supplied
+[**DissociateIpFromChild**](ResellerApi.md#dissociateipfromchild) | **POST** /reseller/children/{childIdentifier}/ips/dissociate | Dissociate a dedicated IP to the child
+[**GetChildAccountCreationStatus**](ResellerApi.md#getchildaccountcreationstatus) | **GET** /reseller/children/{childIdentifier}/accountCreationStatus | Get the status of a reseller&#39;s child account creation, whether it is successfully created (exists) or not based on the identifier supplied
+[**GetChildDomains**](ResellerApi.md#getchilddomains) | **GET** /reseller/children/{childIdentifier}/domains | Get all sender domains for a specific child account
+[**GetChildInfo**](ResellerApi.md#getchildinfo) | **GET** /reseller/children/{childIdentifier} | Get a child account&#39;s details
 [**GetResellerChilds**](ResellerApi.md#getresellerchilds) | **GET** /reseller/children | Get the list of all children accounts
-[**GetSsoToken**](ResellerApi.md#getssotoken) | **GET** /reseller/children/{childAuthKey}/auth | Get session token to access Sendinblue (SSO)
-[**RemoveCredits**](ResellerApi.md#removecredits) | **POST** /reseller/children/{childAuthKey}/credits/remove | Remove Email and/or SMS credits from a specific child account
-[**UpdateChildAccountStatus**](ResellerApi.md#updatechildaccountstatus) | **PUT** /reseller/children/{childAuthKey}/accountStatus | Update info of reseller&#39;s child account status based on the childAuthKey supplied
-[**UpdateChildDomain**](ResellerApi.md#updatechilddomain) | **PUT** /reseller/children/{childAuthKey}/domains/{domainName} | Update the sender domain of reseller&#39;s child based on the childAuthKey and domainName passed
-[**UpdateResellerChild**](ResellerApi.md#updateresellerchild) | **PUT** /reseller/children/{childAuthKey} | Update info of reseller&#39;s child based on the childAuthKey supplied
+[**GetSsoToken**](ResellerApi.md#getssotoken) | **GET** /reseller/children/{childIdentifier}/auth | Get session token to access Sendinblue (SSO)
+[**RemoveCredits**](ResellerApi.md#removecredits) | **POST** /reseller/children/{childIdentifier}/credits/remove | Remove Email and/or SMS credits from a specific child account
+[**UpdateChildAccountStatus**](ResellerApi.md#updatechildaccountstatus) | **PUT** /reseller/children/{childIdentifier}/accountStatus | Update info of reseller&#39;s child account status based on the childIdentifier supplied
+[**UpdateChildDomain**](ResellerApi.md#updatechilddomain) | **PUT** /reseller/children/{childIdentifier}/domains/{domainName} | Update the sender domain of reseller&#39;s child based on the childIdentifier and domainName passed
+[**UpdateResellerChild**](ResellerApi.md#updateresellerchild) | **PUT** /reseller/children/{childIdentifier} | Update info of reseller&#39;s child based on the child identifier supplied
 
 
 <a name="addcredits"></a>
 # **AddCredits**
-> RemainingCreditModel AddCredits (string childAuthKey, AddCredits addCredits)
+> RemainingCreditModel AddCredits (string childIdentifier, AddCredits addCredits)
 
 Add Email and/or SMS credits to a specific child account
 
@@ -52,13 +52,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var addCredits = new AddCredits(); // AddCredits | Values to post to add credit to a specific child account
 
             try
             {
                 // Add Email and/or SMS credits to a specific child account
-                RemainingCreditModel result = apiInstance.AddCredits(childAuthKey, addCredits);
+                RemainingCreditModel result = apiInstance.AddCredits(childIdentifier, addCredits);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -74,7 +74,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **addCredits** | [**AddCredits**](AddCredits.md)| Values to post to add credit to a specific child account | 
 
 ### Return type
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 <a name="associateiptochild"></a>
 # **AssociateIpToChild**
-> void AssociateIpToChild (string childAuthKey, ManageIp ip)
+> void AssociateIpToChild (string childIdentifier, ManageIp ip)
 
 Associate a dedicated IP to the child
 
@@ -122,13 +122,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var ip = new ManageIp(); // ManageIp | IP to associate
 
             try
             {
                 // Associate a dedicated IP to the child
-                apiInstance.AssociateIpToChild(childAuthKey, ip);
+                apiInstance.AssociateIpToChild(childIdentifier, ip);
             }
             catch (Exception e)
             {
@@ -143,7 +143,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **ip** | [**ManageIp**](ManageIp.md)| IP to associate | 
 
 ### Return type
@@ -163,7 +163,7 @@ void (empty response body)
 
 <a name="createchilddomain"></a>
 # **CreateChildDomain**
-> void CreateChildDomain (string childAuthKey, AddChildDomain addChildDomain)
+> void CreateChildDomain (string childIdentifier, AddChildDomain addChildDomain)
 
 Create a domain for a child account
 
@@ -191,13 +191,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var addChildDomain = new AddChildDomain(); // AddChildDomain | Sender domain to add for a specific child account. This will not be displayed to the parent account.
 
             try
             {
                 // Create a domain for a child account
-                apiInstance.CreateChildDomain(childAuthKey, addChildDomain);
+                apiInstance.CreateChildDomain(childIdentifier, addChildDomain);
             }
             catch (Exception e)
             {
@@ -212,7 +212,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **addChildDomain** | [**AddChildDomain**](AddChildDomain.md)| Sender domain to add for a specific child account. This will not be displayed to the parent account. | 
 
 ### Return type
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
 
 <a name="deletechilddomain"></a>
 # **DeleteChildDomain**
-> void DeleteChildDomain (string childAuthKey, string domainName)
+> void DeleteChildDomain (string childIdentifier, string domainName)
 
-Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
+Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
 
 ### Example
 ```csharp
@@ -328,13 +328,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var domainName = domainName_example;  // string | Pass the existing domain that needs to be deleted
 
             try
             {
-                // Delete the sender domain of the reseller child based on the childAuthKey and domainName passed
-                apiInstance.DeleteChildDomain(childAuthKey, domainName);
+                // Delete the sender domain of the reseller child based on the childIdentifier and domainName passed
+                apiInstance.DeleteChildDomain(childIdentifier, domainName);
             }
             catch (Exception e)
             {
@@ -349,7 +349,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **domainName** | **string**| Pass the existing domain that needs to be deleted | 
 
 ### Return type
@@ -369,9 +369,9 @@ void (empty response body)
 
 <a name="deleteresellerchild"></a>
 # **DeleteResellerChild**
-> void DeleteResellerChild (string childAuthKey)
+> void DeleteResellerChild (string childIdentifier)
 
-Delete a single reseller child based on the childAuthKey supplied
+Delete a single reseller child based on the child identifier supplied
 
 ### Example
 ```csharp
@@ -397,12 +397,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or child id of reseller's child
 
             try
             {
-                // Delete a single reseller child based on the childAuthKey supplied
-                apiInstance.DeleteResellerChild(childAuthKey);
+                // Delete a single reseller child based on the child identifier supplied
+                apiInstance.DeleteResellerChild(childIdentifier);
             }
             catch (Exception e)
             {
@@ -417,7 +417,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or child id of reseller&#39;s child | 
 
 ### Return type
 
@@ -436,7 +436,7 @@ void (empty response body)
 
 <a name="dissociateipfromchild"></a>
 # **DissociateIpFromChild**
-> void DissociateIpFromChild (string childAuthKey, ManageIp ip)
+> void DissociateIpFromChild (string childIdentifier, ManageIp ip)
 
 Dissociate a dedicated IP to the child
 
@@ -464,13 +464,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var ip = new ManageIp(); // ManageIp | IP to dissociate
 
             try
             {
                 // Dissociate a dedicated IP to the child
-                apiInstance.DissociateIpFromChild(childAuthKey, ip);
+                apiInstance.DissociateIpFromChild(childIdentifier, ip);
             }
             catch (Exception e)
             {
@@ -485,7 +485,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **ip** | [**ManageIp**](ManageIp.md)| IP to dissociate | 
 
 ### Return type
@@ -505,9 +505,9 @@ void (empty response body)
 
 <a name="getchildaccountcreationstatus"></a>
 # **GetChildAccountCreationStatus**
-> GetChildAccountCreationStatus GetChildAccountCreationStatus (string childAuthKey)
+> GetChildAccountCreationStatus GetChildAccountCreationStatus (string childIdentifier)
 
-Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
+Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the identifier supplied
 
 ### Example
 ```csharp
@@ -533,12 +533,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
 
             try
             {
-                // Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childAuthKey supplied
-                GetChildAccountCreationStatus result = apiInstance.GetChildAccountCreationStatus(childAuthKey);
+                // Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the identifier supplied
+                GetChildAccountCreationStatus result = apiInstance.GetChildAccountCreationStatus(childIdentifier);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -554,7 +554,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
 
 ### Return type
 
@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 
 <a name="getchilddomains"></a>
 # **GetChildDomains**
-> GetChildDomains GetChildDomains (string childAuthKey)
+> GetChildDomains GetChildDomains (string childIdentifier)
 
 Get all sender domains for a specific child account
 
@@ -601,12 +601,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
 
             try
             {
                 // Get all sender domains for a specific child account
-                GetChildDomains result = apiInstance.GetChildDomains(childAuthKey);
+                GetChildDomains result = apiInstance.GetChildDomains(childIdentifier);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -622,7 +622,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
 
 ### Return type
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 <a name="getchildinfo"></a>
 # **GetChildInfo**
-> GetChildInfo GetChildInfo (string childAuthKey)
+> GetChildInfo GetChildInfo (string childIdentifier)
 
 Get a child account's details
 
@@ -669,12 +669,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
 
             try
             {
                 // Get a child account's details
-                GetChildInfo result = apiInstance.GetChildInfo(childAuthKey);
+                GetChildInfo result = apiInstance.GetChildInfo(childIdentifier);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -690,7 +690,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
 
 ### Return type
 
@@ -779,7 +779,7 @@ Name | Type | Description  | Notes
 
 <a name="getssotoken"></a>
 # **GetSsoToken**
-> GetSsoToken GetSsoToken (string childAuthKey)
+> GetSsoToken GetSsoToken (string childIdentifier)
 
 Get session token to access Sendinblue (SSO)
 
@@ -809,12 +809,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
 
             try
             {
                 // Get session token to access Sendinblue (SSO)
-                GetSsoToken result = apiInstance.GetSsoToken(childAuthKey);
+                GetSsoToken result = apiInstance.GetSsoToken(childIdentifier);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -830,7 +830,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
 
 ### Return type
 
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 
 <a name="removecredits"></a>
 # **RemoveCredits**
-> RemainingCreditModel RemoveCredits (string childAuthKey, RemoveCredits removeCredits)
+> RemainingCreditModel RemoveCredits (string childIdentifier, RemoveCredits removeCredits)
 
 Remove Email and/or SMS credits from a specific child account
 
@@ -877,13 +877,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var removeCredits = new RemoveCredits(); // RemoveCredits | Values to post to remove email or SMS credits from a specific child account
 
             try
             {
                 // Remove Email and/or SMS credits from a specific child account
-                RemainingCreditModel result = apiInstance.RemoveCredits(childAuthKey, removeCredits);
+                RemainingCreditModel result = apiInstance.RemoveCredits(childIdentifier, removeCredits);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -899,7 +899,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **removeCredits** | [**RemoveCredits**](RemoveCredits.md)| Values to post to remove email or SMS credits from a specific child account | 
 
 ### Return type
@@ -919,9 +919,9 @@ Name | Type | Description  | Notes
 
 <a name="updatechildaccountstatus"></a>
 # **UpdateChildAccountStatus**
-> void UpdateChildAccountStatus (string childAuthKey, UpdateChildAccountStatus updateChildAccountStatus)
+> void UpdateChildAccountStatus (string childIdentifier, UpdateChildAccountStatus updateChildAccountStatus)
 
-Update info of reseller's child account status based on the childAuthKey supplied
+Update info of reseller's child account status based on the childIdentifier supplied
 
 ### Example
 ```csharp
@@ -947,13 +947,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var updateChildAccountStatus = new UpdateChildAccountStatus(); // UpdateChildAccountStatus | values to update in child account status
 
             try
             {
-                // Update info of reseller's child account status based on the childAuthKey supplied
-                apiInstance.UpdateChildAccountStatus(childAuthKey, updateChildAccountStatus);
+                // Update info of reseller's child account status based on the childIdentifier supplied
+                apiInstance.UpdateChildAccountStatus(childIdentifier, updateChildAccountStatus);
             }
             catch (Exception e)
             {
@@ -968,7 +968,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **updateChildAccountStatus** | [**UpdateChildAccountStatus**](UpdateChildAccountStatus.md)| values to update in child account status | 
 
 ### Return type
@@ -988,9 +988,9 @@ void (empty response body)
 
 <a name="updatechilddomain"></a>
 # **UpdateChildDomain**
-> void UpdateChildDomain (string childAuthKey, string domainName, UpdateChildDomain updateChildDomain)
+> void UpdateChildDomain (string childIdentifier, string domainName, UpdateChildDomain updateChildDomain)
 
-Update the sender domain of reseller's child based on the childAuthKey and domainName passed
+Update the sender domain of reseller's child based on the childIdentifier and domainName passed
 
 ### Example
 ```csharp
@@ -1016,14 +1016,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var domainName = domainName_example;  // string | Pass the existing domain that needs to be updated
             var updateChildDomain = new UpdateChildDomain(); // UpdateChildDomain | value to update for sender domain
 
             try
             {
-                // Update the sender domain of reseller's child based on the childAuthKey and domainName passed
-                apiInstance.UpdateChildDomain(childAuthKey, domainName, updateChildDomain);
+                // Update the sender domain of reseller's child based on the childIdentifier and domainName passed
+                apiInstance.UpdateChildDomain(childIdentifier, domainName, updateChildDomain);
             }
             catch (Exception e)
             {
@@ -1038,7 +1038,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **domainName** | **string**| Pass the existing domain that needs to be updated | 
  **updateChildDomain** | [**UpdateChildDomain**](UpdateChildDomain.md)| value to update for sender domain | 
 
@@ -1059,9 +1059,9 @@ void (empty response body)
 
 <a name="updateresellerchild"></a>
 # **UpdateResellerChild**
-> void UpdateResellerChild (string childAuthKey, UpdateChild resellerChild)
+> void UpdateResellerChild (string childIdentifier, UpdateChild resellerChild)
 
-Update info of reseller's child based on the childAuthKey supplied
+Update info of reseller's child based on the child identifier supplied
 
 ### Example
 ```csharp
@@ -1087,13 +1087,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ResellerApi();
-            var childAuthKey = childAuthKey_example;  // string | auth key of reseller's child
+            var childIdentifier = childIdentifier_example;  // string | Either auth key or id of reseller's child
             var resellerChild = new UpdateChild(); // UpdateChild | values to update in child profile
 
             try
             {
-                // Update info of reseller's child based on the childAuthKey supplied
-                apiInstance.UpdateResellerChild(childAuthKey, resellerChild);
+                // Update info of reseller's child based on the child identifier supplied
+                apiInstance.UpdateResellerChild(childIdentifier, resellerChild);
             }
             catch (Exception e)
             {
@@ -1108,7 +1108,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **childAuthKey** | **string**| auth key of reseller&#39;s child | 
+ **childIdentifier** | **string**| Either auth key or id of reseller&#39;s child | 
  **resellerChild** | [**UpdateChild**](UpdateChild.md)| values to update in child profile | 
 
 ### Return type

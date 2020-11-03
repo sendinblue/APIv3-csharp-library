@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Mandatory if &#39;templateId&#39; is not passed. Pass name (optional) and email of sender from which emails will be sent. For example, {&quot;name&quot;:&quot;Mary from MyShop&quot;, &quot;email&quot;:&quot;no-reply@myshop.com&quot;}
+    /// Mandatory if &#x60;templateId&#x60; is not passed. Pass name (optional) and email or id of sender from which emails will be sent. &#x60;name&#x60; will be ignored if passed along with sender &#x60;id&#x60;. For example, {&quot;name&quot;:&quot;Mary from MyShop&quot;, &quot;email&quot;:&quot;no-reply@myshop.com&quot;} or {&quot;id&quot;:2}
     /// </summary>
     [DataContract]
     public partial class SendSmtpEmailSender :  IEquatable<SendSmtpEmailSender>
@@ -38,7 +38,8 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="name">Name of the sender from which the emails will be sent. Maximum allowed characters are 70..</param>
         /// <param name="email">Email of the sender from which the emails will be sent (required).</param>
-        public SendSmtpEmailSender(string name = default(string), string email = default(string))
+        /// <param name="id">Id of the sender from which the emails will be sent.</param>
+        public SendSmtpEmailSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -50,6 +51,7 @@ namespace sib_api_v3_sdk.Model
                 this.Email = email;
             }
             this.Name = name;
+            this.Id = id;
         }
         
         /// <summary>
@@ -67,6 +69,13 @@ namespace sib_api_v3_sdk.Model
         public string Email { get; set; }
 
         /// <summary>
+        /// Id of the sender from which the emails will be sent
+        /// </summary>
+        /// <value>Id of the sender from which the emails will be sent</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,6 +85,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class SendSmtpEmailSender {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +129,11 @@ namespace sib_api_v3_sdk.Model
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -135,6 +150,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;
             }
         }

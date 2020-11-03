@@ -46,7 +46,7 @@ namespace Example
 
             var apiInstance = new ListsApi();
             var listId = 789;  // long? | Id of the list
-            var contactEmails = new AddContactToList(); // AddContactToList | Emails addresses of the contacts
+            var contactEmails = new AddContactToList(); // AddContactToList | Emails addresses OR IDs of the contacts
 
             try
             {
@@ -68,7 +68,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **long?**| Id of the list | 
- **contactEmails** | [**AddContactToList**](AddContactToList.md)| Emails addresses of the contacts | 
+ **contactEmails** | [**AddContactToList**](AddContactToList.md)| Emails addresses OR IDs of the contacts | 
 
 ### Return type
 
@@ -535,7 +535,7 @@ namespace Example
 
             var apiInstance = new ListsApi();
             var listId = 789;  // long? | Id of the list
-            var contactEmails = new RemoveContactFromList(); // RemoveContactFromList | Emails adresses of the contact
+            var contactEmails = new RemoveContactFromList(); // RemoveContactFromList | Emails addresses OR IDs of the contacts
 
             try
             {
@@ -557,7 +557,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **long?**| Id of the list | 
- **contactEmails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails adresses of the contact | 
+ **contactEmails** | [**RemoveContactFromList**](RemoveContactFromList.md)| Emails addresses OR IDs of the contacts | 
 
 ### Return type
 
