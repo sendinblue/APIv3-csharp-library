@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="UpdateSmsCampaign" /> class.
         /// </summary>
         /// <param name="name">Name of the campaign.</param>
-        /// <param name="sender">Name of the sender. The number of characters is limited to 11.</param>
+        /// <param name="sender">Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**.</param>
         /// <param name="content">Content of the message. The maximum characters used per SMS is 160, if used more than that, it will be counted as more than one SMS.</param>
         /// <param name="recipients">recipients.</param>
         /// <param name="scheduledAt">UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result..</param>
@@ -53,9 +53,9 @@ namespace sib_api_v3_sdk.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Name of the sender. The number of characters is limited to 11
+        /// Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**
         /// </summary>
-        /// <value>Name of the sender. The number of characters is limited to 11</value>
+        /// <value>Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**</value>
         [DataMember(Name="sender", EmitDefaultValue=false)]
         public string Sender { get; set; }
 

@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         PostContactInfo AddContactToList (long? listId, AddContactToList contactEmails);
 
@@ -44,7 +44,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         ApiResponse<PostContactInfo> AddContactToListWithHttpInfo (long? listId, AddContactToList contactEmails);
         /// <summary>
@@ -193,7 +193,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails);
 
@@ -205,7 +205,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         ApiResponse<PostContactInfo> RemoveContactFromListWithHttpInfo (long? listId, RemoveContactFromList contactEmails);
         /// <summary>
@@ -241,7 +241,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         System.Threading.Tasks.Task<PostContactInfo> AddContactToListAsync (long? listId, AddContactToList contactEmails);
 
@@ -253,7 +253,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> AddContactToListAsyncWithHttpInfo (long? listId, AddContactToList contactEmails);
         /// <summary>
@@ -402,7 +402,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         System.Threading.Tasks.Task<PostContactInfo> RemoveContactFromListAsync (long? listId, RemoveContactFromList contactEmails);
 
@@ -414,7 +414,7 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> RemoveContactFromListAsyncWithHttpInfo (long? listId, RemoveContactFromList contactEmails);
         /// <summary>
@@ -545,7 +545,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         public PostContactInfo AddContactToList (long? listId, AddContactToList contactEmails)
         {
@@ -558,7 +558,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         public ApiResponse< PostContactInfo > AddContactToListWithHttpInfo (long? listId, AddContactToList contactEmails)
         {
@@ -635,7 +635,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         public async System.Threading.Tasks.Task<PostContactInfo> AddContactToListAsync (long? listId, AddContactToList contactEmails)
         {
@@ -649,7 +649,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails addresses of the contacts</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> AddContactToListAsyncWithHttpInfo (long? listId, AddContactToList contactEmails)
         {
@@ -1698,7 +1698,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>PostContactInfo</returns>
         public PostContactInfo RemoveContactFromList (long? listId, RemoveContactFromList contactEmails)
         {
@@ -1711,7 +1711,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>ApiResponse of PostContactInfo</returns>
         public ApiResponse< PostContactInfo > RemoveContactFromListWithHttpInfo (long? listId, RemoveContactFromList contactEmails)
         {
@@ -1788,7 +1788,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of PostContactInfo</returns>
         public async System.Threading.Tasks.Task<PostContactInfo> RemoveContactFromListAsync (long? listId, RemoveContactFromList contactEmails)
         {
@@ -1802,7 +1802,7 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listId">Id of the list</param>
-        /// <param name="contactEmails">Emails adresses of the contact</param>
+        /// <param name="contactEmails">Emails addresses OR IDs of the contacts</param>
         /// <returns>Task of ApiResponse (PostContactInfo)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PostContactInfo>> RemoveContactFromListAsyncWithHttpInfo (long? listId, RemoveContactFromList contactEmails)
         {

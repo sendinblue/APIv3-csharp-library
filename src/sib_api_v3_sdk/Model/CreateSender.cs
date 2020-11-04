@@ -37,7 +37,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="CreateSender" /> class.
         /// </summary>
         /// <param name="name">From Name to use for the sender (required).</param>
-        /// <param name="email">From Email to use for the sender (required).</param>
+        /// <param name="email">From email to use for the sender. A verification email will be sent to this address. (required).</param>
         /// <param name="ips">Mandatory in case of dedicated IP, IPs to associate to the sender.</param>
         public CreateSender(string name = default(string), string email = default(string), List<CreateSenderIps> ips = default(List<CreateSenderIps>))
         {
@@ -70,9 +70,9 @@ namespace sib_api_v3_sdk.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// From Email to use for the sender
+        /// From email to use for the sender. A verification email will be sent to this address.
         /// </summary>
-        /// <value>From Email to use for the sender</value>
+        /// <value>From email to use for the sender. A verification email will be sent to this address.</value>
         [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
 

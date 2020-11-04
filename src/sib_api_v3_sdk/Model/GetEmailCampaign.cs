@@ -142,9 +142,10 @@ namespace sib_api_v3_sdk.Model
         /// <param name="mirrorActive">Status of mirror links in campaign. mirrorActive &#x3D; false means mirror links are deactivated, &amp; mirrorActive &#x3D; true means mirror links are activated, in the campaign.</param>
         /// <param name="recurring">FOR TRIGGER ONLY ! Type of trigger campaign.recurring &#x3D; false means contact can receive the same Trigger campaign only once, &amp; recurring &#x3D; true means contact can receive the same Trigger campaign several times.</param>
         /// <param name="sentDate">Sent UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if &#39;status&#39; of the campaign is &#39;sent&#39;.</param>
+        /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
         /// <param name="recipients">recipients (required).</param>
         /// <param name="statistics">statistics (required).</param>
-        public GetEmailCampaign(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), DateTime? scheduledAt = default(DateTime?), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), DateTime? sentDate = default(DateTime?), Object recipients = default(Object), Object statistics = default(Object))
+        public GetEmailCampaign(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), DateTime? scheduledAt = default(DateTime?), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), DateTime? sentDate = default(DateTime?), long? returnBounce = default(long?), Object recipients = default(Object), Object statistics = default(Object))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -304,6 +305,7 @@ namespace sib_api_v3_sdk.Model
             this.MirrorActive = mirrorActive;
             this.Recurring = recurring;
             this.SentDate = sentDate;
+            this.ReturnBounce = returnBounce;
         }
         
         /// <summary>
@@ -490,6 +492,13 @@ namespace sib_api_v3_sdk.Model
         public DateTime? SentDate { get; set; }
 
         /// <summary>
+        /// Total number of non-delivered campaigns for a particular campaign id.
+        /// </summary>
+        /// <value>Total number of non-delivered campaigns for a particular campaign id.</value>
+        [DataMember(Name="returnBounce", EmitDefaultValue=false)]
+        public long? ReturnBounce { get; set; }
+
+        /// <summary>
         /// Gets or Sets Recipients
         /// </summary>
         [DataMember(Name="recipients", EmitDefaultValue=false)]
@@ -537,6 +546,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  MirrorActive: ").Append(MirrorActive).Append("\n");
             sb.Append("  Recurring: ").Append(Recurring).Append("\n");
             sb.Append("  SentDate: ").Append(SentDate).Append("\n");
+            sb.Append("  ReturnBounce: ").Append(ReturnBounce).Append("\n");
             sb.Append("  Recipients: ").Append(Recipients).Append("\n");
             sb.Append("  Statistics: ").Append(Statistics).Append("\n");
             sb.Append("}\n");
@@ -714,6 +724,11 @@ namespace sib_api_v3_sdk.Model
                     this.SentDate.Equals(input.SentDate))
                 ) && 
                 (
+                    this.ReturnBounce == input.ReturnBounce ||
+                    (this.ReturnBounce != null &&
+                    this.ReturnBounce.Equals(input.ReturnBounce))
+                ) && 
+                (
                     this.Recipients == input.Recipients ||
                     (this.Recipients != null &&
                     this.Recipients.Equals(input.Recipients))
@@ -790,6 +805,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Recurring.GetHashCode();
                 if (this.SentDate != null)
                     hashCode = hashCode * 59 + this.SentDate.GetHashCode();
+                if (this.ReturnBounce != null)
+                    hashCode = hashCode * 59 + this.ReturnBounce.GetHashCode();
                 if (this.Recipients != null)
                     hashCode = hashCode * 59 + this.Recipients.GetHashCode();
                 if (this.Statistics != null)

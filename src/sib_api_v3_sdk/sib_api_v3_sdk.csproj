@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>sib_api_v3_sdk</RootNamespace>
-    <Version>2.1.1</Version>
+    <Version>3.0.0</Version>
     <PackageLicenseUrl>https://github.com/sendinblue/APIv3-csharp-library/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sendinblue/APIv3-csharp-library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sendinblue/APIv3-csharp-library</RepositoryUrl>

@@ -21,7 +21,7 @@ namespace sib_api_v3_sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ISMTPApi : IApiAccessor
+    public interface ITransactionalEmailsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -866,15 +866,15 @@ namespace sib_api_v3_sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class SMTPApi : ISMTPApi
+    public partial class TransactionalEmailsApi : ITransactionalEmailsApi
     {
         private sib_api_v3_sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SMTPApi"/> class.
+        /// Initializes a new instance of the <see cref="TransactionalEmailsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public SMTPApi(String basePath)
+        public TransactionalEmailsApi(String basePath)
         {
             this.Configuration = new sib_api_v3_sdk.Client.Configuration { BasePath = basePath };
 
@@ -882,12 +882,12 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SMTPApi"/> class
+        /// Initializes a new instance of the <see cref="TransactionalEmailsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public SMTPApi(sib_api_v3_sdk.Client.Configuration configuration = null)
+        public TransactionalEmailsApi(sib_api_v3_sdk.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = sib_api_v3_sdk.Client.Configuration.Default;
@@ -982,7 +982,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'smtpTemplate' is set
             if (smtpTemplate == null)
-                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->CreateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling TransactionalEmailsApi->CreateSmtpTemplate");
 
             var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1067,7 +1067,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'smtpTemplate' is set
             if (smtpTemplate == null)
-                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->CreateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling TransactionalEmailsApi->CreateSmtpTemplate");
 
             var localVarPath = "./smtp/templates";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1311,7 +1311,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->DeleteSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->DeleteSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1388,7 +1388,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->DeleteSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->DeleteSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2014,7 +2014,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->GetSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->GetSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2092,7 +2092,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->GetSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->GetSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2503,7 +2503,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
-                throw new ApiException(400, "Missing required parameter 'uuid' when calling SMTPApi->GetTransacEmailContent");
+                throw new ApiException(400, "Missing required parameter 'uuid' when calling TransactionalEmailsApi->GetTransacEmailContent");
 
             var localVarPath = "./smtp/emails/{uuid}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2581,7 +2581,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
-                throw new ApiException(400, "Missing required parameter 'uuid' when calling SMTPApi->GetTransacEmailContent");
+                throw new ApiException(400, "Missing required parameter 'uuid' when calling TransactionalEmailsApi->GetTransacEmailContent");
 
             var localVarPath = "./smtp/emails/{uuid}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2833,10 +2833,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->SendTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTemplate");
             // verify the required parameter 'sendEmail' is set
             if (sendEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling SMTPApi->SendTemplate");
+                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling TransactionalEmailsApi->SendTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}/send";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2924,10 +2924,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->SendTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTemplate");
             // verify the required parameter 'sendEmail' is set
             if (sendEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling SMTPApi->SendTemplate");
+                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling TransactionalEmailsApi->SendTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}/send";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3013,10 +3013,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->SendTestTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTestTemplate");
             // verify the required parameter 'sendTestEmail' is set
             if (sendTestEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling SMTPApi->SendTestTemplate");
+                throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling TransactionalEmailsApi->SendTestTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3103,10 +3103,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->SendTestTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTestTemplate");
             // verify the required parameter 'sendTestEmail' is set
             if (sendTestEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling SMTPApi->SendTestTemplate");
+                throw new ApiException(400, "Missing required parameter 'sendTestEmail' when calling TransactionalEmailsApi->SendTestTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}/sendTest";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3191,7 +3191,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'sendSmtpEmail' is set
             if (sendSmtpEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling SMTPApi->SendTransacEmail");
+                throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling TransactionalEmailsApi->SendTransacEmail");
 
             var localVarPath = "./smtp/email";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3276,7 +3276,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'sendSmtpEmail' is set
             if (sendSmtpEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling SMTPApi->SendTransacEmail");
+                throw new ApiException(400, "Missing required parameter 'sendSmtpEmail' when calling TransactionalEmailsApi->SendTransacEmail");
 
             var localVarPath = "./smtp/email";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3359,7 +3359,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'email' is set
             if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling SMTPApi->SmtpBlockedContactsEmailDelete");
+                throw new ApiException(400, "Missing required parameter 'email' when calling TransactionalEmailsApi->SmtpBlockedContactsEmailDelete");
 
             var localVarPath = "./smtp/blockedContacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3436,7 +3436,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'email' is set
             if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling SMTPApi->SmtpBlockedContactsEmailDelete");
+                throw new ApiException(400, "Missing required parameter 'email' when calling TransactionalEmailsApi->SmtpBlockedContactsEmailDelete");
 
             var localVarPath = "./smtp/blockedContacts/{email}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3512,7 +3512,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'messageId' is set
             if (messageId == null)
-                throw new ApiException(400, "Missing required parameter 'messageId' when calling SMTPApi->SmtpLogMessageIdDelete");
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling TransactionalEmailsApi->SmtpLogMessageIdDelete");
 
             var localVarPath = "./smtp/log/{messageId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3589,7 +3589,7 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'messageId' is set
             if (messageId == null)
-                throw new ApiException(400, "Missing required parameter 'messageId' when calling SMTPApi->SmtpLogMessageIdDelete");
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling TransactionalEmailsApi->SmtpLogMessageIdDelete");
 
             var localVarPath = "./smtp/log/{messageId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3667,10 +3667,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->UpdateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->UpdateSmtpTemplate");
             // verify the required parameter 'smtpTemplate' is set
             if (smtpTemplate == null)
-                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->UpdateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling TransactionalEmailsApi->UpdateSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -3757,10 +3757,10 @@ namespace sib_api_v3_sdk.Api
         {
             // verify the required parameter 'templateId' is set
             if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling SMTPApi->UpdateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->UpdateSmtpTemplate");
             // verify the required parameter 'smtpTemplate' is set
             if (smtpTemplate == null)
-                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling SMTPApi->UpdateSmtpTemplate");
+                throw new ApiException(400, "Missing required parameter 'smtpTemplate' when calling TransactionalEmailsApi->UpdateSmtpTemplate");
 
             var localVarPath = "./smtp/templates/{templateId}";
             var localVarPathParams = new Dictionary<String, String>();

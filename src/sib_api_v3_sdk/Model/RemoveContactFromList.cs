@@ -32,10 +32,12 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="RemoveContactFromList" /> class.
         /// </summary>
         /// <param name="emails">Required if &#39;all&#39; is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request..</param>
-        /// <param name="all">Required if &#39;emails&#39; is empty. Remove all existing contacts from a list.</param>
-        public RemoveContactFromList(List<string> emails = default(List<string>), bool? all = default(bool?))
+        /// <param name="ids">Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api..</param>
+        /// <param name="all">Required if none of &#39;emails&#39; or &#39;ids&#39; are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress.</param>
+        public RemoveContactFromList(List<string> emails = default(List<string>), List<long?> ids = default(List<long?>), bool? all = default(bool?))
         {
             this.Emails = emails;
+            this.Ids = ids;
             this.All = all;
         }
         
@@ -47,9 +49,16 @@ namespace sib_api_v3_sdk.Model
         public List<string> Emails { get; set; }
 
         /// <summary>
-        /// Required if &#39;emails&#39; is empty. Remove all existing contacts from a list
+        /// Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
         /// </summary>
-        /// <value>Required if &#39;emails&#39; is empty. Remove all existing contacts from a list</value>
+        /// <value>Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.</value>
+        [DataMember(Name="ids", EmitDefaultValue=false)]
+        public List<long?> Ids { get; set; }
+
+        /// <summary>
+        /// Required if none of &#39;emails&#39; or &#39;ids&#39; are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress
+        /// </summary>
+        /// <value>Required if none of &#39;emails&#39; or &#39;ids&#39; are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress</value>
         [DataMember(Name="all", EmitDefaultValue=false)]
         public bool? All { get; set; }
 
@@ -62,6 +71,7 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class RemoveContactFromList {\n");
             sb.Append("  Emails: ").Append(Emails).Append("\n");
+            sb.Append("  Ids: ").Append(Ids).Append("\n");
             sb.Append("  All: ").Append(All).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,6 +113,11 @@ namespace sib_api_v3_sdk.Model
                     this.Emails.SequenceEqual(input.Emails)
                 ) && 
                 (
+                    this.Ids == input.Ids ||
+                    this.Ids != null &&
+                    this.Ids.SequenceEqual(input.Ids)
+                ) && 
+                (
                     this.All == input.All ||
                     (this.All != null &&
                     this.All.Equals(input.All))
@@ -120,6 +135,8 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.Emails != null)
                     hashCode = hashCode * 59 + this.Emails.GetHashCode();
+                if (this.Ids != null)
+                    hashCode = hashCode * 59 + this.Ids.GetHashCode();
                 if (this.All != null)
                     hashCode = hashCode * 59 + this.All.GetHashCode();
                 return hashCode;

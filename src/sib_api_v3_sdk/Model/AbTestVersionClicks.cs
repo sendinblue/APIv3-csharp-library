@@ -23,49 +23,19 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// CreateReseller
+    /// Information on clicked links for a particular version
     /// </summary>
     [DataContract]
-    public partial class CreateReseller :  IEquatable<CreateReseller>
+    public partial class AbTestVersionClicks : List<AbTestVersionClicksInner>,  IEquatable<AbTestVersionClicks>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateReseller" /> class.
+        /// Initializes a new instance of the <see cref="AbTestVersionClicks" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateReseller() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateReseller" /> class.
-        /// </summary>
-        /// <param name="authKey">AuthKey of Reseller child created (required).</param>
-        /// <param name="id">Id of Reseller child created.</param>
-        public CreateReseller(string authKey = default(string), long? id = default(long?))
+        public AbTestVersionClicks() : base()
         {
-            // to ensure "authKey" is required (not null)
-            if (authKey == null)
-            {
-                throw new InvalidDataException("authKey is a required property for CreateReseller and cannot be null");
-            }
-            else
-            {
-                this.AuthKey = authKey;
-            }
-            this.Id = id;
         }
         
-        /// <summary>
-        /// AuthKey of Reseller child created
-        /// </summary>
-        /// <value>AuthKey of Reseller child created</value>
-        [DataMember(Name="authKey", EmitDefaultValue=false)]
-        public string AuthKey { get; set; }
-
-        /// <summary>
-        /// Id of Reseller child created
-        /// </summary>
-        /// <value>Id of Reseller child created</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -73,9 +43,8 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateReseller {\n");
-            sb.Append("  AuthKey: ").Append(AuthKey).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("class AbTestVersionClicks {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,7 +53,7 @@ namespace sib_api_v3_sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -96,30 +65,20 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateReseller);
+            return this.Equals(input as AbTestVersionClicks);
         }
 
         /// <summary>
-        /// Returns true if CreateReseller instances are equal
+        /// Returns true if AbTestVersionClicks instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateReseller to be compared</param>
+        /// <param name="input">Instance of AbTestVersionClicks to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateReseller input)
+        public bool Equals(AbTestVersionClicks input)
         {
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.AuthKey == input.AuthKey ||
-                    (this.AuthKey != null &&
-                    this.AuthKey.Equals(input.AuthKey))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                );
+            return base.Equals(input);
         }
 
         /// <summary>
@@ -130,11 +89,7 @@ namespace sib_api_v3_sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
-                if (this.AuthKey != null)
-                    hashCode = hashCode * 59 + this.AuthKey.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                int hashCode = base.GetHashCode();
                 return hashCode;
             }
         }

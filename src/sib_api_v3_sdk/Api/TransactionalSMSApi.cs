@@ -114,7 +114,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of GetTransacSmsReport</returns>
         ApiResponse<GetTransacSmsReport> GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Send the SMS campaign to a mobile number
+        /// Send SMS message to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -125,7 +125,7 @@ namespace sib_api_v3_sdk.Api
         SendSms SendTransacSms (SendTransacSms sendTransacSms);
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number
+        /// Send SMS message to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -226,7 +226,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse (GetTransacSmsReport)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
         /// <summary>
-        /// Send the SMS campaign to a mobile number
+        /// Send SMS message to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -237,7 +237,7 @@ namespace sib_api_v3_sdk.Api
         System.Threading.Tasks.Task<SendSms> SendTransacSmsAsync (SendTransacSms sendTransacSms);
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number
+        /// Send SMS message to a mobile number
         /// </summary>
         /// <remarks>
         /// 
@@ -872,7 +872,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number 
+        /// Send SMS message to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -884,7 +884,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number 
+        /// Send SMS message to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -956,7 +956,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number 
+        /// Send SMS message to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>
@@ -969,7 +969,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Send the SMS campaign to a mobile number 
+        /// Send SMS message to a mobile number 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sendTransacSms">Values to send a transactional SMS</param>

@@ -40,8 +40,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="attributes">Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {&#39;FNAME&#39;:&#39;Elly&#39;, &#39;LNAME&#39;:&#39;Roger&#39;}.</param>
         /// <param name="includeListIds">Lists under user account where contact should be added (required).</param>
         /// <param name="excludeListIds">Lists under user account where contact should not be added.</param>
-        /// <param name="templateId">Id of the DOI template (required).</param>
-        /// <param name="redirectionUrl">URL of the web page that user will be redirected to after clicking on the double opt in URL..</param>
+        /// <param name="templateId">Id of the Double opt-in (DOI) template (required).</param>
+        /// <param name="redirectionUrl">URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag {{ params.DOIurl }}. (required).</param>
         public CreateDoiContact(string email = default(string), Object attributes = default(Object), List<long?> includeListIds = default(List<long?>), List<long?> excludeListIds = default(List<long?>), long? templateId = default(long?), string redirectionUrl = default(string))
         {
             // to ensure "email" is required (not null)
@@ -71,9 +71,17 @@ namespace sib_api_v3_sdk.Model
             {
                 this.TemplateId = templateId;
             }
+            // to ensure "redirectionUrl" is required (not null)
+            if (redirectionUrl == null)
+            {
+                throw new InvalidDataException("redirectionUrl is a required property for CreateDoiContact and cannot be null");
+            }
+            else
+            {
+                this.RedirectionUrl = redirectionUrl;
+            }
             this.Attributes = attributes;
             this.ExcludeListIds = excludeListIds;
-            this.RedirectionUrl = redirectionUrl;
         }
         
         /// <summary>
@@ -105,16 +113,16 @@ namespace sib_api_v3_sdk.Model
         public List<long?> ExcludeListIds { get; set; }
 
         /// <summary>
-        /// Id of the DOI template
+        /// Id of the Double opt-in (DOI) template
         /// </summary>
-        /// <value>Id of the DOI template</value>
+        /// <value>Id of the Double opt-in (DOI) template</value>
         [DataMember(Name="templateId", EmitDefaultValue=false)]
         public long? TemplateId { get; set; }
 
         /// <summary>
-        /// URL of the web page that user will be redirected to after clicking on the double opt in URL.
+        /// URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag {{ params.DOIurl }}.
         /// </summary>
-        /// <value>URL of the web page that user will be redirected to after clicking on the double opt in URL.</value>
+        /// <value>URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag {{ params.DOIurl }}.</value>
         [DataMember(Name="redirectionUrl", EmitDefaultValue=false)]
         public string RedirectionUrl { get; set; }
 

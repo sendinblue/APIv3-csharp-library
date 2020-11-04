@@ -109,7 +109,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="openRate">Open rate for current winning version.</param>
         /// <param name="clickRate">Click rate for current winning version.</param>
         /// <param name="winningVersionRate">Open/Click rate for the winner version.</param>
-        public AbTestCampaignResult(WinningVersionEnum? winningVersion = default(WinningVersionEnum?), WinningCriteriaEnum? winningCriteria = default(WinningCriteriaEnum?), string winningSubjectLine = default(string), string openRate = default(string), string clickRate = default(string), string winningVersionRate = default(string))
+        /// <param name="statistics">statistics.</param>
+        /// <param name="clickedLinks">clickedLinks.</param>
+        public AbTestCampaignResult(WinningVersionEnum? winningVersion = default(WinningVersionEnum?), WinningCriteriaEnum? winningCriteria = default(WinningCriteriaEnum?), string winningSubjectLine = default(string), string openRate = default(string), string clickRate = default(string), string winningVersionRate = default(string), AbTestCampaignResultStatistics statistics = default(AbTestCampaignResultStatistics), AbTestCampaignResultClickedLinks clickedLinks = default(AbTestCampaignResultClickedLinks))
         {
             this.WinningVersion = winningVersion;
             this.WinningCriteria = winningCriteria;
@@ -117,6 +119,8 @@ namespace sib_api_v3_sdk.Model
             this.OpenRate = openRate;
             this.ClickRate = clickRate;
             this.WinningVersionRate = winningVersionRate;
+            this.Statistics = statistics;
+            this.ClickedLinks = clickedLinks;
         }
         
 
@@ -150,6 +154,18 @@ namespace sib_api_v3_sdk.Model
         public string WinningVersionRate { get; set; }
 
         /// <summary>
+        /// Gets or Sets Statistics
+        /// </summary>
+        [DataMember(Name="statistics", EmitDefaultValue=false)]
+        public AbTestCampaignResultStatistics Statistics { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClickedLinks
+        /// </summary>
+        [DataMember(Name="clickedLinks", EmitDefaultValue=false)]
+        public AbTestCampaignResultClickedLinks ClickedLinks { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -163,6 +179,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  OpenRate: ").Append(OpenRate).Append("\n");
             sb.Append("  ClickRate: ").Append(ClickRate).Append("\n");
             sb.Append("  WinningVersionRate: ").Append(WinningVersionRate).Append("\n");
+            sb.Append("  Statistics: ").Append(Statistics).Append("\n");
+            sb.Append("  ClickedLinks: ").Append(ClickedLinks).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -226,6 +244,16 @@ namespace sib_api_v3_sdk.Model
                     this.WinningVersionRate == input.WinningVersionRate ||
                     (this.WinningVersionRate != null &&
                     this.WinningVersionRate.Equals(input.WinningVersionRate))
+                ) && 
+                (
+                    this.Statistics == input.Statistics ||
+                    (this.Statistics != null &&
+                    this.Statistics.Equals(input.Statistics))
+                ) && 
+                (
+                    this.ClickedLinks == input.ClickedLinks ||
+                    (this.ClickedLinks != null &&
+                    this.ClickedLinks.Equals(input.ClickedLinks))
                 );
         }
 
@@ -250,6 +278,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.ClickRate.GetHashCode();
                 if (this.WinningVersionRate != null)
                     hashCode = hashCode * 59 + this.WinningVersionRate.GetHashCode();
+                if (this.Statistics != null)
+                    hashCode = hashCode * 59 + this.Statistics.GetHashCode();
+                if (this.ClickedLinks != null)
+                    hashCode = hashCode * 59 + this.ClickedLinks.GetHashCode();
                 return hashCode;
             }
         }

@@ -48,7 +48,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="htmlContent">HTML content of the template (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">Last modification UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
-        public GetSmtpTemplateOverview(long? id = default(long?), string name = default(string), string subject = default(string), bool? isActive = default(bool?), bool? testSent = default(bool?), GetSmtpTemplateOverviewSender sender = default(GetSmtpTemplateOverviewSender), string replyTo = default(string), string toField = default(string), string tag = default(string), string htmlContent = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?))
+        /// <param name="doiTemplate">It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call..</param>
+        public GetSmtpTemplateOverview(long? id = default(long?), string name = default(string), string subject = default(string), bool? isActive = default(bool?), bool? testSent = default(bool?), GetSmtpTemplateOverviewSender sender = default(GetSmtpTemplateOverviewSender), string replyTo = default(string), string toField = default(string), string tag = default(string), string htmlContent = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), bool? doiTemplate = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -158,6 +159,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.ModifiedAt = modifiedAt;
             }
+            this.DoiTemplate = doiTemplate;
         }
         
         /// <summary>
@@ -244,6 +246,13 @@ namespace sib_api_v3_sdk.Model
         public DateTime? ModifiedAt { get; set; }
 
         /// <summary>
+        /// It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call.
+        /// </summary>
+        /// <value>It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call.</value>
+        [DataMember(Name="doiTemplate", EmitDefaultValue=false)]
+        public bool? DoiTemplate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -263,6 +272,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  HtmlContent: ").Append(HtmlContent).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  DoiTemplate: ").Append(DoiTemplate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -356,6 +366,11 @@ namespace sib_api_v3_sdk.Model
                     this.ModifiedAt == input.ModifiedAt ||
                     (this.ModifiedAt != null &&
                     this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
+                    this.DoiTemplate == input.DoiTemplate ||
+                    (this.DoiTemplate != null &&
+                    this.DoiTemplate.Equals(input.DoiTemplate))
                 );
         }
 
@@ -392,6 +407,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 if (this.ModifiedAt != null)
                     hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
+                if (this.DoiTemplate != null)
+                    hashCode = hashCode * 59 + this.DoiTemplate.GetHashCode();
                 return hashCode;
             }
         }

@@ -31,143 +31,34 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAggregatedReport" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetAggregatedReport() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetAggregatedReport" /> class.
-        /// </summary>
-        /// <param name="range">Time frame of the report (required).</param>
-        /// <param name="requests">Number of requests for the timeframe (required).</param>
-        /// <param name="delivered">Number of delivered emails for the timeframe (required).</param>
-        /// <param name="hardBounces">Number of hardbounces for the timeframe (required).</param>
-        /// <param name="softBounces">Number of softbounces for the timeframe (required).</param>
-        /// <param name="clicks">Number of clicks for the timeframe (required).</param>
-        /// <param name="uniqueClicks">Number of unique clicks for the timeframe (required).</param>
-        /// <param name="opens">Number of openings for the timeframe (required).</param>
-        /// <param name="uniqueOpens">Number of unique openings for the timeframe (required).</param>
-        /// <param name="spamReports">Number of complaint (spam report) for the timeframe (required).</param>
-        /// <param name="blocked">Number of blocked contact emails for the timeframe (required).</param>
-        /// <param name="invalid">Number of invalid emails for the timeframe (required).</param>
-        /// <param name="unsubscribed">Number of unsubscribed emails for the timeframe (required).</param>
+        /// <param name="range">Time frame of the report.</param>
+        /// <param name="requests">Number of requests for the timeframe.</param>
+        /// <param name="delivered">Number of delivered emails for the timeframe.</param>
+        /// <param name="hardBounces">Number of hardbounces for the timeframe.</param>
+        /// <param name="softBounces">Number of softbounces for the timeframe.</param>
+        /// <param name="clicks">Number of clicks for the timeframe.</param>
+        /// <param name="uniqueClicks">Number of unique clicks for the timeframe.</param>
+        /// <param name="opens">Number of openings for the timeframe.</param>
+        /// <param name="uniqueOpens">Number of unique openings for the timeframe.</param>
+        /// <param name="spamReports">Number of complaint (spam report) for the timeframe.</param>
+        /// <param name="blocked">Number of blocked contact emails for the timeframe.</param>
+        /// <param name="invalid">Number of invalid emails for the timeframe.</param>
+        /// <param name="unsubscribed">Number of unsubscribed emails for the timeframe.</param>
         public GetAggregatedReport(string range = default(string), long? requests = default(long?), long? delivered = default(long?), long? hardBounces = default(long?), long? softBounces = default(long?), long? clicks = default(long?), long? uniqueClicks = default(long?), long? opens = default(long?), long? uniqueOpens = default(long?), long? spamReports = default(long?), long? blocked = default(long?), long? invalid = default(long?), long? unsubscribed = default(long?))
         {
-            // to ensure "range" is required (not null)
-            if (range == null)
-            {
-                throw new InvalidDataException("range is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Range = range;
-            }
-            // to ensure "requests" is required (not null)
-            if (requests == null)
-            {
-                throw new InvalidDataException("requests is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Requests = requests;
-            }
-            // to ensure "delivered" is required (not null)
-            if (delivered == null)
-            {
-                throw new InvalidDataException("delivered is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Delivered = delivered;
-            }
-            // to ensure "hardBounces" is required (not null)
-            if (hardBounces == null)
-            {
-                throw new InvalidDataException("hardBounces is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.HardBounces = hardBounces;
-            }
-            // to ensure "softBounces" is required (not null)
-            if (softBounces == null)
-            {
-                throw new InvalidDataException("softBounces is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.SoftBounces = softBounces;
-            }
-            // to ensure "clicks" is required (not null)
-            if (clicks == null)
-            {
-                throw new InvalidDataException("clicks is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Clicks = clicks;
-            }
-            // to ensure "uniqueClicks" is required (not null)
-            if (uniqueClicks == null)
-            {
-                throw new InvalidDataException("uniqueClicks is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.UniqueClicks = uniqueClicks;
-            }
-            // to ensure "opens" is required (not null)
-            if (opens == null)
-            {
-                throw new InvalidDataException("opens is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Opens = opens;
-            }
-            // to ensure "uniqueOpens" is required (not null)
-            if (uniqueOpens == null)
-            {
-                throw new InvalidDataException("uniqueOpens is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.UniqueOpens = uniqueOpens;
-            }
-            // to ensure "spamReports" is required (not null)
-            if (spamReports == null)
-            {
-                throw new InvalidDataException("spamReports is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.SpamReports = spamReports;
-            }
-            // to ensure "blocked" is required (not null)
-            if (blocked == null)
-            {
-                throw new InvalidDataException("blocked is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Blocked = blocked;
-            }
-            // to ensure "invalid" is required (not null)
-            if (invalid == null)
-            {
-                throw new InvalidDataException("invalid is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Invalid = invalid;
-            }
-            // to ensure "unsubscribed" is required (not null)
-            if (unsubscribed == null)
-            {
-                throw new InvalidDataException("unsubscribed is a required property for GetAggregatedReport and cannot be null");
-            }
-            else
-            {
-                this.Unsubscribed = unsubscribed;
-            }
+            this.Range = range;
+            this.Requests = requests;
+            this.Delivered = delivered;
+            this.HardBounces = hardBounces;
+            this.SoftBounces = softBounces;
+            this.Clicks = clicks;
+            this.UniqueClicks = uniqueClicks;
+            this.Opens = opens;
+            this.UniqueOpens = uniqueOpens;
+            this.SpamReports = spamReports;
+            this.Blocked = blocked;
+            this.Invalid = invalid;
+            this.Unsubscribed = unsubscribed;
         }
         
         /// <summary>

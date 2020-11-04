@@ -36,101 +36,107 @@ namespace sib_api_v3_sdk.Model
         {
             
             /// <summary>
+            /// Enum Sent for value: sent
+            /// </summary>
+            [EnumMember(Value = "sent")]
+            Sent = 1,
+            
+            /// <summary>
             /// Enum HardBounce for value: hardBounce
             /// </summary>
             [EnumMember(Value = "hardBounce")]
-            HardBounce = 1,
+            HardBounce = 2,
             
             /// <summary>
             /// Enum SoftBounce for value: softBounce
             /// </summary>
             [EnumMember(Value = "softBounce")]
-            SoftBounce = 2,
+            SoftBounce = 3,
             
             /// <summary>
             /// Enum Blocked for value: blocked
             /// </summary>
             [EnumMember(Value = "blocked")]
-            Blocked = 3,
+            Blocked = 4,
             
             /// <summary>
             /// Enum Spam for value: spam
             /// </summary>
             [EnumMember(Value = "spam")]
-            Spam = 4,
+            Spam = 5,
             
             /// <summary>
             /// Enum Delivered for value: delivered
             /// </summary>
             [EnumMember(Value = "delivered")]
-            Delivered = 5,
+            Delivered = 6,
             
             /// <summary>
             /// Enum Request for value: request
             /// </summary>
             [EnumMember(Value = "request")]
-            Request = 6,
+            Request = 7,
             
             /// <summary>
             /// Enum Click for value: click
             /// </summary>
             [EnumMember(Value = "click")]
-            Click = 7,
+            Click = 8,
             
             /// <summary>
             /// Enum Invalid for value: invalid
             /// </summary>
             [EnumMember(Value = "invalid")]
-            Invalid = 8,
+            Invalid = 9,
             
             /// <summary>
             /// Enum Deferred for value: deferred
             /// </summary>
             [EnumMember(Value = "deferred")]
-            Deferred = 9,
+            Deferred = 10,
             
             /// <summary>
             /// Enum Opened for value: opened
             /// </summary>
             [EnumMember(Value = "opened")]
-            Opened = 10,
+            Opened = 11,
             
             /// <summary>
             /// Enum UniqueOpened for value: uniqueOpened
             /// </summary>
             [EnumMember(Value = "uniqueOpened")]
-            UniqueOpened = 11,
+            UniqueOpened = 12,
             
             /// <summary>
             /// Enum Unsubscribed for value: unsubscribed
             /// </summary>
             [EnumMember(Value = "unsubscribed")]
-            Unsubscribed = 12,
+            Unsubscribed = 13,
             
             /// <summary>
             /// Enum ListAddition for value: listAddition
             /// </summary>
             [EnumMember(Value = "listAddition")]
-            ListAddition = 13,
+            ListAddition = 14,
             
             /// <summary>
             /// Enum ContactUpdated for value: contactUpdated
             /// </summary>
             [EnumMember(Value = "contactUpdated")]
-            ContactUpdated = 14,
+            ContactUpdated = 15,
             
             /// <summary>
             /// Enum ContactDeleted for value: contactDeleted
             /// </summary>
             [EnumMember(Value = "contactDeleted")]
-            ContactDeleted = 15
+            ContactDeleted = 16
         }
 
 
         /// <summary>
-        /// Events triggering the webhook. Possible values for Transactional type webhook – request, delivered, hardBounce, softBounce, blocked, spam, invalid, deferred, click, opened, uniqueOpened and unsubscribed and possible values for Marketing type webhook – spam, opened, click, hardBounce, softBounce, unsubscribed, listAddition &amp; delivered
+        /// Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60;
         /// </summary>
-        /// <value>Events triggering the webhook. Possible values for Transactional type webhook – request, delivered, hardBounce, softBounce, blocked, spam, invalid, deferred, click, opened, uniqueOpened and unsubscribed and possible values for Marketing type webhook – spam, opened, click, hardBounce, softBounce, unsubscribed, listAddition &amp; delivered</value>
+        /// <value>Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60;</value>
         [DataMember(Name="events", EmitDefaultValue=false)]
         public List<EventsEnum> Events { get; set; }
         /// <summary>
@@ -170,7 +176,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="url">URL of the webhook (required).</param>
         /// <param name="description">Description of the webhook.</param>
-        /// <param name="events">Events triggering the webhook. Possible values for Transactional type webhook – request, delivered, hardBounce, softBounce, blocked, spam, invalid, deferred, click, opened, uniqueOpened and unsubscribed and possible values for Marketing type webhook – spam, opened, click, hardBounce, softBounce, unsubscribed, listAddition &amp; delivered (required).</param>
+        /// <param name="events">Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60; (required).</param>
         /// <param name="type">Type of the webhook (default to TypeEnum.Transactional).</param>
         public CreateWebhook(string url = default(string), string description = default(string), List<EventsEnum> events = default(List<EventsEnum>), TypeEnum? type = TypeEnum.Transactional)
         {

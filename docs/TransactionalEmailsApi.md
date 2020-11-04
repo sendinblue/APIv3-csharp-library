@@ -1,26 +1,26 @@
-# sib_api_v3_sdk.Api.SMTPApi
+# sib_api_v3_sdk.Api.TransactionalEmailsApi
 
 All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSmtpTemplate**](SMTPApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an email template
-[**DeleteHardbounces**](SMTPApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
-[**DeleteSmtpTemplate**](SMTPApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
-[**GetAggregatedSmtpReport**](SMTPApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
-[**GetEmailEventReport**](SMTPApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
-[**GetSmtpReport**](SMTPApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
-[**GetSmtpTemplate**](SMTPApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template information
-[**GetSmtpTemplates**](SMTPApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of email templates
-[**GetTransacBlockedContacts**](SMTPApi.md#gettransacblockedcontacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
-[**GetTransacEmailContent**](SMTPApi.md#gettransacemailcontent) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
-[**GetTransacEmailsList**](SMTPApi.md#gettransacemailslist) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
-[**SendTemplate**](SMTPApi.md#sendtemplate) | **POST** /smtp/templates/{templateId}/send | Send a template
-[**SendTestTemplate**](SMTPApi.md#sendtesttemplate) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
-[**SendTransacEmail**](SMTPApi.md#sendtransacemail) | **POST** /smtp/email | Send a transactional email
-[**SmtpBlockedContactsEmailDelete**](SMTPApi.md#smtpblockedcontactsemaildelete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
-[**SmtpLogMessageIdDelete**](SMTPApi.md#smtplogmessageiddelete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
-[**UpdateSmtpTemplate**](SMTPApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Update an email template
+[**CreateSmtpTemplate**](TransactionalEmailsApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an email template
+[**DeleteHardbounces**](TransactionalEmailsApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
+[**DeleteSmtpTemplate**](TransactionalEmailsApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
+[**GetAggregatedSmtpReport**](TransactionalEmailsApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
+[**GetEmailEventReport**](TransactionalEmailsApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
+[**GetSmtpReport**](TransactionalEmailsApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
+[**GetSmtpTemplate**](TransactionalEmailsApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template information
+[**GetSmtpTemplates**](TransactionalEmailsApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of email templates
+[**GetTransacBlockedContacts**](TransactionalEmailsApi.md#gettransacblockedcontacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
+[**GetTransacEmailContent**](TransactionalEmailsApi.md#gettransacemailcontent) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
+[**GetTransacEmailsList**](TransactionalEmailsApi.md#gettransacemailslist) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
+[**SendTemplate**](TransactionalEmailsApi.md#sendtemplate) | **POST** /smtp/templates/{templateId}/send | Send a template
+[**SendTestTemplate**](TransactionalEmailsApi.md#sendtesttemplate) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
+[**SendTransacEmail**](TransactionalEmailsApi.md#sendtransacemail) | **POST** /smtp/email | Send a transactional email
+[**SmtpBlockedContactsEmailDelete**](TransactionalEmailsApi.md#smtpblockedcontactsemaildelete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
+[**SmtpLogMessageIdDelete**](TransactionalEmailsApi.md#smtplogmessageiddelete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
+[**UpdateSmtpTemplate**](TransactionalEmailsApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Update an email template
 
 
 <a name="createsmtptemplate"></a>
@@ -52,7 +52,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var smtpTemplate = new CreateSmtpTemplate(); // CreateSmtpTemplate | values to update in transactional email template
 
             try
@@ -63,7 +63,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.CreateSmtpTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.CreateSmtpTemplate: " + e.Message );
             }
         }
     }
@@ -122,7 +122,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var deleteHardbounces = new DeleteHardbounces(); // DeleteHardbounces | values to delete hardbounces (optional) 
 
             try
@@ -132,7 +132,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.DeleteHardbounces: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.DeleteHardbounces: " + e.Message );
             }
         }
     }
@@ -189,7 +189,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateId = 789;  // long? | id of the template
 
             try
@@ -199,7 +199,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.DeleteSmtpTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.DeleteSmtpTemplate: " + e.Message );
             }
         }
     }
@@ -256,7 +256,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional) 
             var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
@@ -270,7 +270,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetAggregatedSmtpReport: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetAggregatedSmtpReport: " + e.Message );
             }
         }
     }
@@ -330,7 +330,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 50)
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional) 
@@ -350,7 +350,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetEmailEventReport: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetEmailEventReport: " + e.Message );
             }
         }
     }
@@ -416,7 +416,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional) 
@@ -432,7 +432,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetSmtpReport: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetSmtpReport: " + e.Message );
             }
         }
     }
@@ -494,7 +494,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateId = 789;  // long? | id of the template
 
             try
@@ -505,7 +505,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetSmtpTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetSmtpTemplate: " + e.Message );
             }
         }
     }
@@ -562,7 +562,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateStatus = true;  // bool? | Filter on the status of the template. Active = true, inactive = false (optional) 
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document in the page (optional)  (default to 0)
@@ -575,7 +575,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetSmtpTemplates: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetSmtpTemplates: " + e.Message );
             }
         }
     }
@@ -634,7 +634,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts (optional) 
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
@@ -649,7 +649,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetTransacBlockedContacts: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetTransacBlockedContacts: " + e.Message );
             }
         }
     }
@@ -710,7 +710,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var uuid = uuid_example;  // string | Unique id of the transactional email that has been sent to a particular contact
 
             try
@@ -721,7 +721,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetTransacEmailContent: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetTransacEmailContent: " + e.Message );
             }
         }
     }
@@ -780,7 +780,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var email = email_example;  // string | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional) 
             var templateId = 789;  // long? | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional) 
             var messageId = messageId_example;  // string | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional) 
@@ -795,7 +795,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.GetTransacEmailsList: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetTransacEmailsList: " + e.Message );
             }
         }
     }
@@ -858,7 +858,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateId = 789;  // long? | Id of the template
             var sendEmail = new SendEmail(); // SendEmail | 
 
@@ -870,7 +870,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.SendTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.SendTemplate: " + e.Message );
             }
         }
     }
@@ -928,7 +928,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateId = 789;  // long? | Id of the template
             var sendTestEmail = new SendTestEmail(); // SendTestEmail | 
 
@@ -939,7 +939,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.SendTestTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.SendTestTemplate: " + e.Message );
             }
         }
     }
@@ -997,7 +997,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var sendSmtpEmail = new SendSmtpEmail(); // SendSmtpEmail | Values to send a transactional email
 
             try
@@ -1008,7 +1008,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.SendTransacEmail: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.SendTransacEmail: " + e.Message );
             }
         }
     }
@@ -1065,7 +1065,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var email = email_example;  // string | contact email (urlencoded) to unblock.
 
             try
@@ -1075,7 +1075,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.SmtpBlockedContactsEmailDelete: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.SmtpBlockedContactsEmailDelete: " + e.Message );
             }
         }
     }
@@ -1132,7 +1132,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var messageId = messageId_example;  // string | MessageId of the transactional log to delete
 
             try
@@ -1142,7 +1142,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.SmtpLogMessageIdDelete: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.SmtpLogMessageIdDelete: " + e.Message );
             }
         }
     }
@@ -1199,7 +1199,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
-            var apiInstance = new SMTPApi();
+            var apiInstance = new TransactionalEmailsApi();
             var templateId = 789;  // long? | id of the template
             var smtpTemplate = new UpdateSmtpTemplate(); // UpdateSmtpTemplate | values to update in transactional email template
 
@@ -1210,7 +1210,7 @@ namespace Example
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SMTPApi.UpdateSmtpTemplate: " + e.Message );
+                Debug.Print("Exception when calling TransactionalEmailsApi.UpdateSmtpTemplate: " + e.Message );
             }
         }
     }

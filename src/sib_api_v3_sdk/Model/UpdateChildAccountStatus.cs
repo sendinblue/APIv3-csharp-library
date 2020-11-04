@@ -34,11 +34,13 @@ namespace sib_api_v3_sdk.Model
         /// <param name="transactionalEmail">Status of Transactional Email Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled).</param>
         /// <param name="transactionalSms">Status of Transactional SMS Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled).</param>
         /// <param name="marketingAutomation">Status of Marketing Automation Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled).</param>
-        public UpdateChildAccountStatus(bool? transactionalEmail = default(bool?), bool? transactionalSms = default(bool?), bool? marketingAutomation = default(bool?))
+        /// <param name="smsCampaign">Status of SMS Campaign Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled).</param>
+        public UpdateChildAccountStatus(bool? transactionalEmail = default(bool?), bool? transactionalSms = default(bool?), bool? marketingAutomation = default(bool?), bool? smsCampaign = default(bool?))
         {
             this.TransactionalEmail = transactionalEmail;
             this.TransactionalSms = transactionalSms;
             this.MarketingAutomation = marketingAutomation;
+            this.SmsCampaign = smsCampaign;
         }
         
         /// <summary>
@@ -63,6 +65,13 @@ namespace sib_api_v3_sdk.Model
         public bool? MarketingAutomation { get; set; }
 
         /// <summary>
+        /// Status of SMS Campaign Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled)
+        /// </summary>
+        /// <value>Status of SMS Campaign Platform activation for your account (true&#x3D;enabled, false&#x3D;disabled)</value>
+        [DataMember(Name="smsCampaign", EmitDefaultValue=false)]
+        public bool? SmsCampaign { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,6 +82,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  TransactionalEmail: ").Append(TransactionalEmail).Append("\n");
             sb.Append("  TransactionalSms: ").Append(TransactionalSms).Append("\n");
             sb.Append("  MarketingAutomation: ").Append(MarketingAutomation).Append("\n");
+            sb.Append("  SmsCampaign: ").Append(SmsCampaign).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,6 +131,11 @@ namespace sib_api_v3_sdk.Model
                     this.MarketingAutomation == input.MarketingAutomation ||
                     (this.MarketingAutomation != null &&
                     this.MarketingAutomation.Equals(input.MarketingAutomation))
+                ) && 
+                (
+                    this.SmsCampaign == input.SmsCampaign ||
+                    (this.SmsCampaign != null &&
+                    this.SmsCampaign.Equals(input.SmsCampaign))
                 );
         }
 
@@ -139,6 +154,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.TransactionalSms.GetHashCode();
                 if (this.MarketingAutomation != null)
                     hashCode = hashCode * 59 + this.MarketingAutomation.GetHashCode();
+                if (this.SmsCampaign != null)
+                    hashCode = hashCode * 59 + this.SmsCampaign.GetHashCode();
                 return hashCode;
             }
         }

@@ -48,7 +48,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="unsubscriptions">Number of unsubscription for the campaign (required).</param>
         /// <param name="viewed">Number of openings for the campaign (required).</param>
         /// <param name="deferred">Number of deferred emails for the campaign.</param>
-        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?))
+        /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
+        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?), long? returnBounce = default(long?))
         {
             // to ensure "uniqueClicks" is required (not null)
             if (uniqueClicks == null)
@@ -142,6 +143,7 @@ namespace sib_api_v3_sdk.Model
             }
             this.ListId = listId;
             this.Deferred = deferred;
+            this.ReturnBounce = returnBounce;
         }
         
         /// <summary>
@@ -229,6 +231,13 @@ namespace sib_api_v3_sdk.Model
         public long? Deferred { get; set; }
 
         /// <summary>
+        /// Total number of non-delivered campaigns for a particular campaign id.
+        /// </summary>
+        /// <value>Total number of non-delivered campaigns for a particular campaign id.</value>
+        [DataMember(Name="returnBounce", EmitDefaultValue=false)]
+        public long? ReturnBounce { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -248,6 +257,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Unsubscriptions: ").Append(Unsubscriptions).Append("\n");
             sb.Append("  Viewed: ").Append(Viewed).Append("\n");
             sb.Append("  Deferred: ").Append(Deferred).Append("\n");
+            sb.Append("  ReturnBounce: ").Append(ReturnBounce).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -341,6 +351,11 @@ namespace sib_api_v3_sdk.Model
                     this.Deferred == input.Deferred ||
                     (this.Deferred != null &&
                     this.Deferred.Equals(input.Deferred))
+                ) && 
+                (
+                    this.ReturnBounce == input.ReturnBounce ||
+                    (this.ReturnBounce != null &&
+                    this.ReturnBounce.Equals(input.ReturnBounce))
                 );
         }
 
@@ -377,6 +392,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Viewed.GetHashCode();
                 if (this.Deferred != null)
                     hashCode = hashCode * 59 + this.Deferred.GetHashCode();
+                if (this.ReturnBounce != null)
+                    hashCode = hashCode * 59 + this.ReturnBounce.GetHashCode();
                 return hashCode;
             }
         }

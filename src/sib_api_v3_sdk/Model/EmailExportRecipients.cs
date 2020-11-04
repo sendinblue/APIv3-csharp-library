@@ -99,7 +99,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailExportRecipients" /> class.
         /// </summary>
-        /// <param name="notifyURL">Webhook called once the export process is finished.</param>
+        /// <param name="notifyURL">Webhook called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479.</param>
         /// <param name="recipientsType">Type of recipients to export for a campaign (required).</param>
         public EmailExportRecipients(string notifyURL = default(string), RecipientsTypeEnum recipientsType = default(RecipientsTypeEnum))
         {
@@ -116,9 +116,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Webhook called once the export process is finished
+        /// Webhook called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479
         /// </summary>
-        /// <value>Webhook called once the export process is finished</value>
+        /// <value>Webhook called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479</value>
         [DataMember(Name="notifyURL", EmitDefaultValue=false)]
         public string NotifyURL { get; set; }
 
