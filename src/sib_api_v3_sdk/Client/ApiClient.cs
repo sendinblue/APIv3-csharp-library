@@ -177,7 +177,7 @@ namespace sib_api_v3_sdk.Client
             RestClient.Timeout = TimeSpan.FromMilliseconds(Configuration.Timeout);
             
             // set user agent
-            RestClient.UserAgent = Configuration.UserAgent;
+            RestClient.UserAgent = Configuration.UserAgent.Replace("v#", "v3.2.0");
 
             InterceptRequest(request);
             var response = RestClient.Execute(request).Result;

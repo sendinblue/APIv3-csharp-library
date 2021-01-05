@@ -96,60 +96,23 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Event which occurred</value>
         [DataMember(Name="event", EmitDefaultValue=false)]
-        public EventEnum Event { get; set; }
+        public EventEnum? Event { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSmsEventReportEvents" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetSmsEventReportEvents() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetSmsEventReportEvents" /> class.
-        /// </summary>
-        /// <param name="phoneNumber">Phone number which has generated the event (required).</param>
-        /// <param name="date">UTC date-time on which the event has been generated (required).</param>
-        /// <param name="messageId">Message ID which generated the event (required).</param>
-        /// <param name="_event">Event which occurred (required).</param>
+        /// <param name="phoneNumber">Phone number which has generated the event.</param>
+        /// <param name="date">UTC date-time on which the event has been generated.</param>
+        /// <param name="messageId">Message ID which generated the event.</param>
+        /// <param name="_event">Event which occurred.</param>
         /// <param name="reason">Reason of bounce (only available if the event is hardbounce or softbounce).</param>
         /// <param name="reply">reply.</param>
         /// <param name="tag">Tag of the SMS which generated the event.</param>
-        public GetSmsEventReportEvents(string phoneNumber = default(string), DateTime? date = default(DateTime?), string messageId = default(string), EventEnum _event = default(EventEnum), string reason = default(string), string reply = default(string), string tag = default(string))
+        public GetSmsEventReportEvents(string phoneNumber = default(string), DateTime? date = default(DateTime?), string messageId = default(string), EventEnum? _event = default(EventEnum?), string reason = default(string), string reply = default(string), string tag = default(string))
         {
-            // to ensure "phoneNumber" is required (not null)
-            if (phoneNumber == null)
-            {
-                throw new InvalidDataException("phoneNumber is a required property for GetSmsEventReportEvents and cannot be null");
-            }
-            else
-            {
-                this.PhoneNumber = phoneNumber;
-            }
-            // to ensure "date" is required (not null)
-            if (date == null)
-            {
-                throw new InvalidDataException("date is a required property for GetSmsEventReportEvents and cannot be null");
-            }
-            else
-            {
-                this.Date = date;
-            }
-            // to ensure "messageId" is required (not null)
-            if (messageId == null)
-            {
-                throw new InvalidDataException("messageId is a required property for GetSmsEventReportEvents and cannot be null");
-            }
-            else
-            {
-                this.MessageId = messageId;
-            }
-            // to ensure "_event" is required (not null)
-            if (_event == null)
-            {
-                throw new InvalidDataException("_event is a required property for GetSmsEventReportEvents and cannot be null");
-            }
-            else
-            {
-                this.Event = _event;
-            }
+            this.PhoneNumber = phoneNumber;
+            this.Date = date;
+            this.MessageId = messageId;
+            this.Event = _event;
             this.Reason = reason;
             this.Reply = reply;
             this.Tag = tag;

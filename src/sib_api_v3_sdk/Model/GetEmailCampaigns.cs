@@ -31,25 +31,12 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetEmailCampaigns" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetEmailCampaigns() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetEmailCampaigns" /> class.
-        /// </summary>
         /// <param name="campaigns">campaigns.</param>
-        /// <param name="count">Number of Email campaigns retrieved (required).</param>
+        /// <param name="count">Number of Email campaigns retrieved.</param>
         public GetEmailCampaigns(List<Object> campaigns = default(List<Object>), long? count = default(long?))
         {
-            // to ensure "count" is required (not null)
-            if (count == null)
-            {
-                throw new InvalidDataException("count is a required property for GetEmailCampaigns and cannot be null");
-            }
-            else
-            {
-                this.Count = count;
-            }
             this.Campaigns = campaigns;
+            this.Count = count;
         }
         
         /// <summary>

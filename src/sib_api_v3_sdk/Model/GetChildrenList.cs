@@ -31,25 +31,12 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetChildrenList" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetChildrenList() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetChildrenList" /> class.
-        /// </summary>
         /// <param name="children">Your children&#39;s account information.</param>
-        /// <param name="count">Number of child accounts (required).</param>
+        /// <param name="count">Number of child accounts.</param>
         public GetChildrenList(List<Object> children = default(List<Object>), long? count = default(long?))
         {
-            // to ensure "count" is required (not null)
-            if (count == null)
-            {
-                throw new InvalidDataException("count is a required property for GetChildrenList and cannot be null");
-            }
-            else
-            {
-                this.Count = count;
-            }
             this.Children = children;
+            this.Count = count;
         }
         
         /// <summary>

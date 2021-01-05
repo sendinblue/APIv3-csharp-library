@@ -36,7 +36,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -104,7 +104,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -171,7 +171,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -239,7 +239,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -307,7 +307,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 

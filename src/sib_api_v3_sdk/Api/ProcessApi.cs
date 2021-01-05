@@ -54,8 +54,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetProcesses</returns>
-        GetProcesses GetProcesses (long? limit = null, long? offset = null);
+        GetProcesses GetProcesses (long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all the processes for your account
@@ -66,8 +67,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetProcesses</returns>
-        ApiResponse<GetProcesses> GetProcessesWithHttpInfo (long? limit = null, long? offset = null);
+        ApiResponse<GetProcesses> GetProcessesWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -100,8 +102,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetProcesses</returns>
-        System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all the processes for your account
@@ -112,8 +115,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetProcesses)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         #endregion Asynchronous Operations
     }
 
@@ -375,10 +379,11 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetProcesses</returns>
-        public GetProcesses GetProcesses (long? limit = null, long? offset = null)
+        public GetProcesses GetProcesses (long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetProcesses> localVarResponse = GetProcessesWithHttpInfo(limit, offset);
+             ApiResponse<GetProcesses> localVarResponse = GetProcessesWithHttpInfo(limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -388,8 +393,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetProcesses</returns>
-        public ApiResponse< GetProcesses > GetProcessesWithHttpInfo (long? limit = null, long? offset = null)
+        public ApiResponse< GetProcesses > GetProcessesWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./processes";
@@ -416,6 +422,7 @@ namespace sib_api_v3_sdk.Api
 
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -452,10 +459,11 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetProcesses</returns>
-        public async System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetProcesses> localVarResponse = await GetProcessesAsyncWithHttpInfo(limit, offset);
+             ApiResponse<GetProcesses> localVarResponse = await GetProcessesAsyncWithHttpInfo(limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -466,8 +474,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetProcesses)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./processes";
@@ -494,6 +503,7 @@ namespace sib_api_v3_sdk.Api
 
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

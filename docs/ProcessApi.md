@@ -33,7 +33,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 <a name="getprocesses"></a>
 # **GetProcesses**
-> GetProcesses GetProcesses (long? limit = null, long? offset = null)
+> GetProcesses GetProcesses (long? limit = null, long? offset = null, string sort = null)
 
 Return all the processes for your account
 
@@ -101,18 +101,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ProcessApi();
             var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 10)
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Return all the processes for your account
-                GetProcesses result = apiInstance.GetProcesses(limit, offset);
+                GetProcesses result = apiInstance.GetProcesses(limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -130,6 +131,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number limitation for the result returned | [optional] [default to 10]
  **offset** | **long?**| Beginning point in the list to retrieve from. | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 

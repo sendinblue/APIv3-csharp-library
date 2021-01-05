@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Mandatory if &#x60;templateId&#x60; is not passed. Pass name (optional) and email or id of sender from which emails will be sent. &#x60;name&#x60; will be ignored if passed along with sender &#x60;id&#x60;. For example, {&quot;name&quot;:&quot;Mary from MyShop&quot;, &quot;email&quot;:&quot;no-reply@myshop.com&quot;} or {&quot;id&quot;:2}
+    /// Mandatory if &#x60;templateId&#x60; is not passed. Pass &#x60;name&#x60; (optional) and &#x60;email&#x60; OR &#x60;id&#x60; of sender from which emails will be sent. &#x60;name&#x60; will be ignored if passed along with sender &#x60;id&#x60;. For example, {&quot;name&quot;:&quot;Mary from MyShop&quot;, &quot;email&quot;:&quot;no-reply@myshop.com&quot;} or {&quot;id&quot;:2}
     /// </summary>
     [DataContract]
     public partial class SendSmtpEmailSender :  IEquatable<SendSmtpEmailSender>
@@ -31,47 +31,34 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SendSmtpEmailSender" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SendSmtpEmailSender() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SendSmtpEmailSender" /> class.
-        /// </summary>
-        /// <param name="name">Name of the sender from which the emails will be sent. Maximum allowed characters are 70..</param>
-        /// <param name="email">Email of the sender from which the emails will be sent (required).</param>
-        /// <param name="id">Id of the sender from which the emails will be sent.</param>
+        /// <param name="name">Name of the sender from which the emails will be sent. Maximum allowed characters are 70. Applicable only when email is passed..</param>
+        /// <param name="email">Email of the sender from which the emails will be sent. Mandatory if sender id is not passed..</param>
+        /// <param name="id">Id of the sender from which the emails will be sent. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email). Mandatory if email is not passed..</param>
         public SendSmtpEmailSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
-            // to ensure "email" is required (not null)
-            if (email == null)
-            {
-                throw new InvalidDataException("email is a required property for SendSmtpEmailSender and cannot be null");
-            }
-            else
-            {
-                this.Email = email;
-            }
             this.Name = name;
+            this.Email = email;
             this.Id = id;
         }
         
         /// <summary>
-        /// Name of the sender from which the emails will be sent. Maximum allowed characters are 70.
+        /// Name of the sender from which the emails will be sent. Maximum allowed characters are 70. Applicable only when email is passed.
         /// </summary>
-        /// <value>Name of the sender from which the emails will be sent. Maximum allowed characters are 70.</value>
+        /// <value>Name of the sender from which the emails will be sent. Maximum allowed characters are 70. Applicable only when email is passed.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Email of the sender from which the emails will be sent
+        /// Email of the sender from which the emails will be sent. Mandatory if sender id is not passed.
         /// </summary>
-        /// <value>Email of the sender from which the emails will be sent</value>
+        /// <value>Email of the sender from which the emails will be sent. Mandatory if sender id is not passed.</value>
         [DataMember(Name="email", EmitDefaultValue=false)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Id of the sender from which the emails will be sent
+        /// Id of the sender from which the emails will be sent. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email). Mandatory if email is not passed.
         /// </summary>
-        /// <value>Id of the sender from which the emails will be sent</value>
+        /// <value>Id of the sender from which the emails will be sent. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email). Mandatory if email is not passed.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 

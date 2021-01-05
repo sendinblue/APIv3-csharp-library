@@ -31,33 +31,12 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetFolderLists" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetFolderLists() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetFolderLists" /> class.
-        /// </summary>
-        /// <param name="lists">lists (required).</param>
-        /// <param name="count">Number of lists in the folder (required).</param>
+        /// <param name="lists">lists.</param>
+        /// <param name="count">Number of lists in the folder.</param>
         public GetFolderLists(List<Object> lists = default(List<Object>), long? count = default(long?))
         {
-            // to ensure "lists" is required (not null)
-            if (lists == null)
-            {
-                throw new InvalidDataException("lists is a required property for GetFolderLists and cannot be null");
-            }
-            else
-            {
-                this.Lists = lists;
-            }
-            // to ensure "count" is required (not null)
-            if (count == null)
-            {
-                throw new InvalidDataException("count is a required property for GetFolderLists and cannot be null");
-            }
-            else
-            {
-                this.Count = count;
-            }
+            this.Lists = lists;
+            this.Count = count;
         }
         
         /// <summary>

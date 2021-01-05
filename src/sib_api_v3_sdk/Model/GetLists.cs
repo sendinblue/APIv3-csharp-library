@@ -31,33 +31,12 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLists" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetLists() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetLists" /> class.
-        /// </summary>
-        /// <param name="lists">Listing of all the lists available in your account (required).</param>
-        /// <param name="count">Number of lists in your account (required).</param>
+        /// <param name="lists">Listing of all the lists available in your account.</param>
+        /// <param name="count">Number of lists in your account.</param>
         public GetLists(List<Object> lists = default(List<Object>), long? count = default(long?))
         {
-            // to ensure "lists" is required (not null)
-            if (lists == null)
-            {
-                throw new InvalidDataException("lists is a required property for GetLists and cannot be null");
-            }
-            else
-            {
-                this.Lists = lists;
-            }
-            // to ensure "count" is required (not null)
-            if (count == null)
-            {
-                throw new InvalidDataException("count is a required property for GetLists and cannot be null");
-            }
-            else
-            {
-                this.Count = count;
-            }
+            this.Lists = lists;
+            this.Count = count;
         }
         
         /// <summary>

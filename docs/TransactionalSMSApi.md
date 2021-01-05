@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getsmsevents"></a>
 # **GetSmsEvents**
-> GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
+> GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
 
 Get all your SMS activity (unaggregated events)
 
@@ -35,7 +35,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -48,11 +48,12 @@ namespace Example
             var phoneNumber = phoneNumber_example;  // string | Filter the report for a specific phone number (optional) 
             var _event = _event_example;  // string | Filter the report for specific events (optional) 
             var tags = tags_example;  // string | Filter the report for specific tags passed as a serialized urlencoded array (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get all your SMS activity (unaggregated events)
-                GetSmsEventReport result = apiInstance.GetSmsEvents(limit, startDate, endDate, offset, days, phoneNumber, _event, tags);
+                GetSmsEventReport result = apiInstance.GetSmsEvents(limit, startDate, endDate, offset, days, phoneNumber, _event, tags, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -76,6 +77,7 @@ Name | Type | Description  | Notes
  **phoneNumber** | **string**| Filter the report for a specific phone number | [optional] 
  **_event** | **string**| Filter the report for specific events | [optional] 
  **tags** | **string**| Filter the report for specific tags passed as a serialized urlencoded array | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -117,7 +119,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -168,7 +170,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacsmsreport"></a>
 # **GetTransacSmsReport**
-> GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
+> GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
 
 Get your SMS activity aggregated per day
 
@@ -191,7 +193,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -200,11 +202,12 @@ namespace Example
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional) 
             var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var tag = tag_example;  // string | Filter on a tag (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get your SMS activity aggregated per day
-                GetTransacSmsReport result = apiInstance.GetTransacSmsReport(startDate, endDate, days, tag);
+                GetTransacSmsReport result = apiInstance.GetTransacSmsReport(startDate, endDate, days, tag, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -224,6 +227,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report | [optional] 
  **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **tag** | **string**| Filter on a tag | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -265,7 +269,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 

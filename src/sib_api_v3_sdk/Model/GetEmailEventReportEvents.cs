@@ -106,7 +106,13 @@ namespace sib_api_v3_sdk.Model
             /// Enum Unsubscribed for value: unsubscribed
             /// </summary>
             [EnumMember(Value = "unsubscribed")]
-            Unsubscribed = 12
+            Unsubscribed = 12,
+            
+            /// <summary>
+            /// Enum Error for value: error
+            /// </summary>
+            [EnumMember(Value = "error")]
+            Error = 13
         }
 
         /// <summary>
@@ -133,7 +139,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="ip">IP from which the user has opened the email or clicked on the link (only available if the event is opened or clicks).</param>
         /// <param name="link">The link which is sent to the user (only available if the event is requests or opened or clicks).</param>
         /// <param name="from">Sender email from which the emails are sent.</param>
-        public GetEmailEventReportEvents(string email = default(string), DateTime? date = default(DateTime?), string subject = default(string), string messageId = default(string), EventEnum _event = default(EventEnum), string reason = default(string), string tag = default(string), string ip = default(string), string link = default(string), string from = default(string))
+        /// <param name="templateId">ID of the template (only available if the email is template based).</param>
+        public GetEmailEventReportEvents(string email = default(string), DateTime? date = default(DateTime?), string subject = default(string), string messageId = default(string), EventEnum _event = default(EventEnum), string reason = default(string), string tag = default(string), string ip = default(string), string link = default(string), string from = default(string), long? templateId = default(long?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -177,6 +184,7 @@ namespace sib_api_v3_sdk.Model
             this.Ip = ip;
             this.Link = link;
             this.From = from;
+            this.TemplateId = templateId;
         }
         
         /// <summary>
@@ -244,6 +252,13 @@ namespace sib_api_v3_sdk.Model
         public string From { get; set; }
 
         /// <summary>
+        /// ID of the template (only available if the email is template based)
+        /// </summary>
+        /// <value>ID of the template (only available if the email is template based)</value>
+        [DataMember(Name="templateId", EmitDefaultValue=false)]
+        public long? TemplateId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -261,6 +276,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Ip: ").Append(Ip).Append("\n");
             sb.Append("  Link: ").Append(Link).Append("\n");
             sb.Append("  From: ").Append(From).Append("\n");
+            sb.Append("  TemplateId: ").Append(TemplateId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -344,6 +360,11 @@ namespace sib_api_v3_sdk.Model
                     this.From == input.From ||
                     (this.From != null &&
                     this.From.Equals(input.From))
+                ) && 
+                (
+                    this.TemplateId == input.TemplateId ||
+                    (this.TemplateId != null &&
+                    this.TemplateId.Equals(input.TemplateId))
                 );
         }
 
@@ -376,6 +397,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Link.GetHashCode();
                 if (this.From != null)
                     hashCode = hashCode * 59 + this.From.GetHashCode();
+                if (this.TemplateId != null)
+                    hashCode = hashCode * 59 + this.TemplateId.GetHashCode();
                 return hashCode;
             }
         }

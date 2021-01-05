@@ -1,10 +1,9 @@
-# sib_api_v3_sdk.Model.GetChildDomain
+# sib_api_v3_sdk.Model.GetBlockedDomains
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Domain** | **string** | Sender domain | [optional] 
-**Active** | **bool?** | indicates whether a domain is verified or not | [optional] 
+**Domains** | **List&lt;string&gt;** | List of all blocked domains | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

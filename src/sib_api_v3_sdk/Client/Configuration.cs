@@ -29,7 +29,7 @@ namespace sib_api_v3_sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.0.0";
+        public const string Version = "3.1.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -110,7 +110,7 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "sendinblue_clientAPI/v3.0.0/c#";
+            UserAgent = "sendinblue_clientAPI/v#/c#";
             BasePath = "https://api.sendinblue.com/v3";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -183,7 +183,7 @@ namespace sib_api_v3_sdk.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "sendinblue_clientAPI/v3.0.0/c#"
+            string userAgent = "sendinblue_clientAPI/v#/c#"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -416,7 +416,7 @@ namespace sib_api_v3_sdk.Client
             String report = "C# SDK (sib_api_v3_sdk) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 3.0.0\n";
-            report += "    SDK Package Version: 3.0.0\n";
+            report += "    SDK Package Version: 3.1.0\n";
 
             return report;
         }

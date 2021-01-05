@@ -144,8 +144,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
-        GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all your created email campaigns
@@ -160,8 +161,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
-        ApiResponse<GetEmailCampaigns> GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        ApiResponse<GetEmailCampaigns> GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get a shared template url
         /// </summary>
@@ -439,8 +441,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
-        System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all your created email campaigns
@@ -455,8 +458,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get a shared template url
         /// </summary>
@@ -1529,10 +1533,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
-        public GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetEmailCampaigns> localVarResponse = GetEmailCampaignsWithHttpInfo(type, status, startDate, endDate, limit, offset);
+             ApiResponse<GetEmailCampaigns> localVarResponse = GetEmailCampaignsWithHttpInfo(type, status, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -1546,8 +1551,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
-        public ApiResponse< GetEmailCampaigns > GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public ApiResponse< GetEmailCampaigns > GetEmailCampaignsWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./emailCampaigns";
@@ -1578,6 +1584,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1618,10 +1625,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
-        public async System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetEmailCampaigns> localVarResponse = await GetEmailCampaignsAsyncWithHttpInfo(type, status, startDate, endDate, limit, offset);
+             ApiResponse<GetEmailCampaigns> localVarResponse = await GetEmailCampaignsAsyncWithHttpInfo(type, status, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -1636,8 +1644,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 500)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./emailCampaigns";
@@ -1668,6 +1677,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

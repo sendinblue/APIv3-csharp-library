@@ -4,10 +4,13 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**BlockNewDomain**](TransactionalEmailsApi.md#blocknewdomain) | **POST** /smtp/blockedDomains | Add a new domain to the list of blocked domains
 [**CreateSmtpTemplate**](TransactionalEmailsApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an email template
+[**DeleteBlockedDomain**](TransactionalEmailsApi.md#deleteblockeddomain) | **DELETE** /smtp/blockedDomains/{domain} | Unblock an existing domain from the list of blocked domains
 [**DeleteHardbounces**](TransactionalEmailsApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
 [**DeleteSmtpTemplate**](TransactionalEmailsApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
 [**GetAggregatedSmtpReport**](TransactionalEmailsApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
+[**GetBlockedDomains**](TransactionalEmailsApi.md#getblockeddomains) | **GET** /smtp/blockedDomains | Get the list of blocked domains
 [**GetEmailEventReport**](TransactionalEmailsApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
 [**GetSmtpReport**](TransactionalEmailsApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
 [**GetSmtpTemplate**](TransactionalEmailsApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template information
@@ -22,6 +25,75 @@ Method | HTTP request | Description
 [**SmtpLogMessageIdDelete**](TransactionalEmailsApi.md#smtplogmessageiddelete) | **DELETE** /smtp/log/{messageId} | Delete an SMTP transactional log
 [**UpdateSmtpTemplate**](TransactionalEmailsApi.md#updatesmtptemplate) | **PUT** /smtp/templates/{templateId} | Update an email template
 
+
+<a name="blocknewdomain"></a>
+# **BlockNewDomain**
+> void BlockNewDomain (BlockDomain blockDomain)
+
+Add a new domain to the list of blocked domains
+
+Blocks a new domain in order to avoid messages being sent to the same
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class BlockNewDomainExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+            var blockDomain = new BlockDomain(); // BlockDomain | 
+
+            try
+            {
+                // Add a new domain to the list of blocked domains
+                apiInstance.BlockNewDomain(blockDomain);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.BlockNewDomain: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **blockDomain** | [**BlockDomain**](BlockDomain.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="createsmtptemplate"></a>
 # **CreateSmtpTemplate**
@@ -48,7 +120,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -91,6 +163,75 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deleteblockeddomain"></a>
+# **DeleteBlockedDomain**
+> void DeleteBlockedDomain (string domain)
+
+Unblock an existing domain from the list of blocked domains
+
+Unblocks an existing domain from the list of blocked domains
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class DeleteBlockedDomainExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+            var domain = domain_example;  // string | The name of the domain to be deleted
+
+            try
+            {
+                // Unblock an existing domain from the list of blocked domains
+                apiInstance.DeleteBlockedDomain(domain);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.DeleteBlockedDomain: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **string**| The name of the domain to be deleted | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletehardbounces"></a>
 # **DeleteHardbounces**
 > void DeleteHardbounces (DeleteHardbounces deleteHardbounces = null)
@@ -118,7 +259,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -185,7 +326,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -252,7 +393,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -301,9 +442,75 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getblockeddomains"></a>
+# **GetBlockedDomains**
+> GetBlockedDomains GetBlockedDomains ()
+
+Get the list of blocked domains
+
+Get the list of blocked domains
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetBlockedDomainsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+
+            try
+            {
+                // Get the list of blocked domains
+                GetBlockedDomains result = apiInstance.GetBlockedDomains();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetBlockedDomains: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetBlockedDomains**](GetBlockedDomains.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getemaileventreport"></a>
 # **GetEmailEventReport**
-> GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null)
+> GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
 
 Get all your transactional email activity (unaggregated events)
 
@@ -326,7 +533,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -341,11 +548,12 @@ namespace Example
             var tags = tags_example;  // string | Filter the report for tags (serialized and urlencoded array) (optional) 
             var messageId = messageId_example;  // string | Filter on a specific message id (optional) 
             var templateId = 789;  // long? | Filter on a specific template id (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get all your transactional email activity (unaggregated events)
-                GetEmailEventReport result = apiInstance.GetEmailEventReport(limit, offset, startDate, endDate, days, email, _event, tags, messageId, templateId);
+                GetEmailEventReport result = apiInstance.GetEmailEventReport(limit, offset, startDate, endDate, days, email, _event, tags, messageId, templateId, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -371,6 +579,7 @@ Name | Type | Description  | Notes
  **tags** | **string**| Filter the report for tags (serialized and urlencoded array) | [optional] 
  **messageId** | **string**| Filter on a specific message id | [optional] 
  **templateId** | **long?**| Filter on a specific template id | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -389,7 +598,7 @@ Name | Type | Description  | Notes
 
 <a name="getsmtpreport"></a>
 # **GetSmtpReport**
-> GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null)
+> GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
 
 Get your transactional email activity aggregated per day
 
@@ -412,7 +621,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -423,11 +632,12 @@ namespace Example
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional) 
             var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var tag = tag_example;  // string | Tag of the emails (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get your transactional email activity aggregated per day
-                GetReports result = apiInstance.GetSmtpReport(limit, offset, startDate, endDate, days, tag);
+                GetReports result = apiInstance.GetSmtpReport(limit, offset, startDate, endDate, days, tag, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -449,6 +659,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) | [optional] 
  **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **tag** | **string**| Tag of the emails | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -490,7 +701,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -535,7 +746,7 @@ Name | Type | Description  | Notes
 
 <a name="getsmtptemplates"></a>
 # **GetSmtpTemplates**
-> GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null)
+> GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null)
 
 Get the list of email templates
 
@@ -558,7 +769,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -566,11 +777,12 @@ namespace Example
             var templateStatus = true;  // bool? | Filter on the status of the template. Active = true, inactive = false (optional) 
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document in the page (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get the list of email templates
-                GetSmtpTemplates result = apiInstance.GetSmtpTemplates(templateStatus, limit, offset);
+                GetSmtpTemplates result = apiInstance.GetSmtpTemplates(templateStatus, limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -589,6 +801,7 @@ Name | Type | Description  | Notes
  **templateStatus** | **bool?**| Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false | [optional] 
  **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document in the page | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -607,7 +820,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacblockedcontacts"></a>
 # **GetTransacBlockedContacts**
-> GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null)
+> GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null)
 
 Get the list of blocked or unsubscribed transactional contacts
 
@@ -630,7 +843,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -640,11 +853,12 @@ namespace Example
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
             var senders = new List<string>(); // List<string> | Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get the list of blocked or unsubscribed transactional contacts
-                GetTransacBlockedContacts result = apiInstance.GetTransacBlockedContacts(startDate, endDate, limit, offset, senders);
+                GetTransacBlockedContacts result = apiInstance.GetTransacBlockedContacts(startDate, endDate, limit, offset, senders, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -665,6 +879,7 @@ Name | Type | Description  | Notes
  **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
  **senders** | [**List&lt;string&gt;**](string.md)| Comma separated list of emails of the senders from which contacts are blocked or unsubscribed | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -706,7 +921,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -751,7 +966,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacemailslist"></a>
 # **GetTransacEmailsList**
-> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null)
+> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null, string sort = null)
 
 Get the list of transactional emails on the basis of allowed filters
 
@@ -776,7 +991,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -786,11 +1001,12 @@ namespace Example
             var messageId = messageId_example;  // string | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional) 
             var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
             var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get the list of transactional emails on the basis of allowed filters
-                GetTransacEmailsList result = apiInstance.GetTransacEmailsList(email, templateId, messageId, startDate, endDate);
+                GetTransacEmailsList result = apiInstance.GetTransacEmailsList(email, templateId, messageId, startDate, endDate, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -811,6 +1027,7 @@ Name | Type | Description  | Notes
  **messageId** | **string**| Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. | [optional] 
  **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
  **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -854,7 +1071,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -924,7 +1141,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -993,7 +1210,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -1061,7 +1278,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -1128,7 +1345,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -1195,7 +1412,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
