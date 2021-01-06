@@ -97,8 +97,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetFolderLists</returns>
-        GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null);
+        GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Get lists in a folder
@@ -110,8 +111,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolderLists</returns>
-        ApiResponse<GetFolderLists> GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
+        ApiResponse<GetFolderLists> GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get all folders
         /// </summary>
@@ -121,8 +123,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetFolders</returns>
-        GetFolders GetFolders (long? limit, long? offset);
+        GetFolders GetFolders (long? limit, long? offset, string sort = null);
 
         /// <summary>
         /// Get all folders
@@ -133,8 +136,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolders</returns>
-        ApiResponse<GetFolders> GetFoldersWithHttpInfo (long? limit, long? offset);
+        ApiResponse<GetFolders> GetFoldersWithHttpInfo (long? limit, long? offset, string sort = null);
         /// <summary>
         /// Update a folder
         /// </summary>
@@ -233,8 +237,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetFolderLists</returns>
-        System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Get lists in a folder
@@ -246,8 +251,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get all folders
         /// </summary>
@@ -257,8 +263,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetFolders</returns>
-        System.Threading.Tasks.Task<GetFolders> GetFoldersAsync (long? limit, long? offset);
+        System.Threading.Tasks.Task<GetFolders> GetFoldersAsync (long? limit, long? offset, string sort = null);
 
         /// <summary>
         /// Get all folders
@@ -269,8 +276,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolders)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetFolders>> GetFoldersAsyncWithHttpInfo (long? limit, long? offset);
+        System.Threading.Tasks.Task<ApiResponse<GetFolders>> GetFoldersAsyncWithHttpInfo (long? limit, long? offset, string sort = null);
         /// <summary>
         /// Update a folder
         /// </summary>
@@ -878,10 +886,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetFolderLists</returns>
-        public GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null)
+        public GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetFolderLists> localVarResponse = GetFolderListsWithHttpInfo(folderId, limit, offset);
+             ApiResponse<GetFolderLists> localVarResponse = GetFolderListsWithHttpInfo(folderId, limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -892,8 +901,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolderLists</returns>
-        public ApiResponse< GetFolderLists > GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null)
+        public ApiResponse< GetFolderLists > GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
             // verify the required parameter 'folderId' is set
             if (folderId == null)
@@ -924,6 +934,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId != null) localVarPathParams.Add("folderId", this.Configuration.ApiClient.ParameterToString(folderId)); // path parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -961,10 +972,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetFolderLists</returns>
-        public async System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetFolderLists> localVarResponse = await GetFolderListsAsyncWithHttpInfo(folderId, limit, offset);
+             ApiResponse<GetFolderLists> localVarResponse = await GetFolderListsAsyncWithHttpInfo(folderId, limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -976,8 +988,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
             // verify the required parameter 'folderId' is set
             if (folderId == null)
@@ -1008,6 +1021,7 @@ namespace sib_api_v3_sdk.Api
             if (folderId != null) localVarPathParams.Add("folderId", this.Configuration.ApiClient.ParameterToString(folderId)); // path parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1044,10 +1058,11 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetFolders</returns>
-        public GetFolders GetFolders (long? limit, long? offset)
+        public GetFolders GetFolders (long? limit, long? offset, string sort = null)
         {
-             ApiResponse<GetFolders> localVarResponse = GetFoldersWithHttpInfo(limit, offset);
+             ApiResponse<GetFolders> localVarResponse = GetFoldersWithHttpInfo(limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -1057,8 +1072,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolders</returns>
-        public ApiResponse< GetFolders > GetFoldersWithHttpInfo (long? limit, long? offset)
+        public ApiResponse< GetFolders > GetFoldersWithHttpInfo (long? limit, long? offset, string sort = null)
         {
             // verify the required parameter 'limit' is set
             if (limit == null)
@@ -1091,6 +1107,7 @@ namespace sib_api_v3_sdk.Api
 
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1127,10 +1144,11 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetFolders</returns>
-        public async System.Threading.Tasks.Task<GetFolders> GetFoldersAsync (long? limit, long? offset)
+        public async System.Threading.Tasks.Task<GetFolders> GetFoldersAsync (long? limit, long? offset, string sort = null)
         {
-             ApiResponse<GetFolders> localVarResponse = await GetFoldersAsyncWithHttpInfo(limit, offset);
+             ApiResponse<GetFolders> localVarResponse = await GetFoldersAsyncWithHttpInfo(limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -1141,8 +1159,9 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page</param>
         /// <param name="offset">Index of the first document of the page</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolders)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetFolders>> GetFoldersAsyncWithHttpInfo (long? limit, long? offset)
+        public async System.Threading.Tasks.Task<ApiResponse<GetFolders>> GetFoldersAsyncWithHttpInfo (long? limit, long? offset, string sort = null)
         {
             // verify the required parameter 'limit' is set
             if (limit == null)
@@ -1175,6 +1194,7 @@ namespace sib_api_v3_sdk.Api
 
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

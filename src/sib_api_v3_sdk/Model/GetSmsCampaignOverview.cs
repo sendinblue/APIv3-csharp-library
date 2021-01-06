@@ -91,7 +91,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="name">Name of the SMS Campaign (required).</param>
         /// <param name="status">Status of the SMS Campaign (required).</param>
         /// <param name="content">Content of the SMS Campaign (required).</param>
-        /// <param name="scheduledAt">UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format (required).</param>
+        /// <param name="scheduledAt">UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format.</param>
         /// <param name="sender">Sender of the SMS Campaign (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
@@ -133,15 +133,6 @@ namespace sib_api_v3_sdk.Model
             {
                 this.Content = content;
             }
-            // to ensure "scheduledAt" is required (not null)
-            if (scheduledAt == null)
-            {
-                throw new InvalidDataException("scheduledAt is a required property for GetSmsCampaignOverview and cannot be null");
-            }
-            else
-            {
-                this.ScheduledAt = scheduledAt;
-            }
             // to ensure "sender" is required (not null)
             if (sender == null)
             {
@@ -169,6 +160,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.ModifiedAt = modifiedAt;
             }
+            this.ScheduledAt = scheduledAt;
         }
         
         /// <summary>

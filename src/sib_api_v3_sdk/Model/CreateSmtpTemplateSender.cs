@@ -31,26 +31,13 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSmtpTemplateSender" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateSmtpTemplateSender() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateSmtpTemplateSender" /> class.
-        /// </summary>
         /// <param name="name">Name of the sender. If not passed, will be set to default.</param>
-        /// <param name="email">Email of the sender (required).</param>
+        /// <param name="email">Email of the sender.</param>
         /// <param name="id">Select the sender for the template on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)..</param>
         public CreateSmtpTemplateSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
-            // to ensure "email" is required (not null)
-            if (email == null)
-            {
-                throw new InvalidDataException("email is a required property for CreateSmtpTemplateSender and cannot be null");
-            }
-            else
-            {
-                this.Email = email;
-            }
             this.Name = name;
+            this.Email = email;
             this.Id = id;
         }
         

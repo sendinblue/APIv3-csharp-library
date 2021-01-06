@@ -31,113 +31,28 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTransacSmsReportReports" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetTransacSmsReportReports() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetTransacSmsReportReports" /> class.
-        /// </summary>
-        /// <param name="date">Date for which statistics are retrieved (required).</param>
-        /// <param name="requests">Number of requests for the date (required).</param>
-        /// <param name="delivered">Number of delivered SMS for the date (required).</param>
-        /// <param name="hardBounces">Number of hardbounces for the date (required).</param>
-        /// <param name="softBounces">Number of softbounces for the date (required).</param>
-        /// <param name="blocked">Number of blocked contact for the date (required).</param>
-        /// <param name="unsubscribed">Number of unsubscription for the date (required).</param>
-        /// <param name="replied">Number of answered SMS for the date (required).</param>
-        /// <param name="accepted">Number of accepted for the date (required).</param>
-        /// <param name="rejected">Number of rejected for the date (required).</param>
+        /// <param name="date">Date for which statistics are retrieved.</param>
+        /// <param name="requests">Number of requests for the date.</param>
+        /// <param name="delivered">Number of delivered SMS for the date.</param>
+        /// <param name="hardBounces">Number of hardbounces for the date.</param>
+        /// <param name="softBounces">Number of softbounces for the date.</param>
+        /// <param name="blocked">Number of blocked contact for the date.</param>
+        /// <param name="unsubscribed">Number of unsubscription for the date.</param>
+        /// <param name="replied">Number of answered SMS for the date.</param>
+        /// <param name="accepted">Number of accepted for the date.</param>
+        /// <param name="rejected">Number of rejected for the date.</param>
         public GetTransacSmsReportReports(DateTime? date = default(DateTime?), long? requests = default(long?), long? delivered = default(long?), long? hardBounces = default(long?), long? softBounces = default(long?), long? blocked = default(long?), long? unsubscribed = default(long?), long? replied = default(long?), long? accepted = default(long?), long? rejected = default(long?))
         {
-            // to ensure "date" is required (not null)
-            if (date == null)
-            {
-                throw new InvalidDataException("date is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Date = date;
-            }
-            // to ensure "requests" is required (not null)
-            if (requests == null)
-            {
-                throw new InvalidDataException("requests is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Requests = requests;
-            }
-            // to ensure "delivered" is required (not null)
-            if (delivered == null)
-            {
-                throw new InvalidDataException("delivered is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Delivered = delivered;
-            }
-            // to ensure "hardBounces" is required (not null)
-            if (hardBounces == null)
-            {
-                throw new InvalidDataException("hardBounces is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.HardBounces = hardBounces;
-            }
-            // to ensure "softBounces" is required (not null)
-            if (softBounces == null)
-            {
-                throw new InvalidDataException("softBounces is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.SoftBounces = softBounces;
-            }
-            // to ensure "blocked" is required (not null)
-            if (blocked == null)
-            {
-                throw new InvalidDataException("blocked is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Blocked = blocked;
-            }
-            // to ensure "unsubscribed" is required (not null)
-            if (unsubscribed == null)
-            {
-                throw new InvalidDataException("unsubscribed is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Unsubscribed = unsubscribed;
-            }
-            // to ensure "replied" is required (not null)
-            if (replied == null)
-            {
-                throw new InvalidDataException("replied is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Replied = replied;
-            }
-            // to ensure "accepted" is required (not null)
-            if (accepted == null)
-            {
-                throw new InvalidDataException("accepted is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Accepted = accepted;
-            }
-            // to ensure "rejected" is required (not null)
-            if (rejected == null)
-            {
-                throw new InvalidDataException("rejected is a required property for GetTransacSmsReportReports and cannot be null");
-            }
-            else
-            {
-                this.Rejected = rejected;
-            }
+            this.Date = date;
+            this.Requests = requests;
+            this.Delivered = delivered;
+            this.HardBounces = hardBounces;
+            this.SoftBounces = softBounces;
+            this.Blocked = blocked;
+            this.Unsubscribed = unsubscribed;
+            this.Replied = replied;
+            this.Accepted = accepted;
+            this.Rejected = rejected;
         }
         
         /// <summary>

@@ -40,7 +40,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -110,7 +110,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -178,7 +178,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -222,7 +222,7 @@ void (empty response body)
 
 <a name="getcontactsfromlist"></a>
 # **GetContactsFromList**
-> GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null)
+> GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
 
 Get contacts in a list
 
@@ -245,7 +245,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -254,11 +254,12 @@ namespace Example
             var modifiedSince = 2013-10-20T19:20:30+01:00;  // DateTime? | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional) 
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get contacts in a list
-                GetContacts result = apiInstance.GetContactsFromList(listId, modifiedSince, limit, offset);
+                GetContacts result = apiInstance.GetContactsFromList(listId, modifiedSince, limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -278,6 +279,7 @@ Name | Type | Description  | Notes
  **modifiedSince** | **DateTime?**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
  **limit** | **long?**| Number of documents per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -296,7 +298,7 @@ Name | Type | Description  | Notes
 
 <a name="getfolderlists"></a>
 # **GetFolderLists**
-> GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null)
+> GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null, string sort = null)
 
 Get lists in a folder
 
@@ -319,7 +321,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -327,11 +329,12 @@ namespace Example
             var folderId = 789;  // long? | Id of the folder
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get lists in a folder
-                GetFolderLists result = apiInstance.GetFolderLists(folderId, limit, offset);
+                GetFolderLists result = apiInstance.GetFolderLists(folderId, limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -350,6 +353,7 @@ Name | Type | Description  | Notes
  **folderId** | **long?**| Id of the folder | 
  **limit** | **long?**| Number of documents per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -391,7 +395,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -436,7 +440,7 @@ Name | Type | Description  | Notes
 
 <a name="getlists"></a>
 # **GetLists**
-> GetLists GetLists (long? limit = null, long? offset = null)
+> GetLists GetLists (long? limit = null, long? offset = null, string sort = null)
 
 Get all the lists
 
@@ -459,18 +463,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new ListsApi();
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Get all the lists
-                GetLists result = apiInstance.GetLists(limit, offset);
+                GetLists result = apiInstance.GetLists(limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -488,6 +493,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number of documents per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -529,7 +535,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -599,7 +605,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 

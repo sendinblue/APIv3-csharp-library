@@ -77,7 +77,7 @@ namespace sib_api_v3_sdk.Client
         /// <param name="basePath">The base path.</param>
         public ApiClient(String basePath = "https://api.sendinblue.com/v3")
         {
-           if (String.IsNullOrEmpty(basePath))
+            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
             RestClient = new RestClient(basePath);
@@ -121,23 +121,23 @@ namespace sib_api_v3_sdk.Client
             request.Serializer = null;
 
             // add path parameter, if any
-            foreach(var param in pathParams)
+            foreach (var param in pathParams)
                 request.AddParameter(param.Key, param.Value, ParameterType.UrlSegment);
 
             // add header parameter, if any
-            foreach(var param in headerParams)
+            foreach (var param in headerParams)
                 request.AddHeader(param.Key, param.Value);
 
             // add query parameter, if any
-            foreach(var param in queryParams)
+            foreach (var param in queryParams)
                 request.AddQueryParameter(param.Key, param.Value);
 
             // add form parameter, if any
-            foreach(var param in formParams)
+            foreach (var param in formParams)
                 request.AddParameter(param.Key, param.Value);
 
             // add file parameter, if any
-            foreach(var param in fileParams)
+            foreach (var param in fileParams)
             {
                 request.AddFile(param.Value);
             }
@@ -175,15 +175,18 @@ namespace sib_api_v3_sdk.Client
 
             // set timeout
             RestClient.Timeout = TimeSpan.FromMilliseconds(Configuration.Timeout);
-            
+
             // set user agent
+            if (!Configuration.UserAgent.ToLower().StartsWith("sendinblue_"))
+                Configuration.UserAgent = "sendinblue_clientAPI/v3.1.0/c#";
+
             RestClient.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
             var response = RestClient.Execute(request).Result;
             InterceptResponse(request, response);
 
-            return (Object) response;
+            return (Object)response;
         }
         /// <summary>
         /// Makes the asynchronous HTTP request.
@@ -251,13 +254,13 @@ namespace sib_api_v3_sdk.Client
                 // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTime)obj).ToString (Configuration.DateTimeFormat);
+                return ((DateTime)obj).ToString(Configuration.DateTimeFormat);
             else if (obj is DateTimeOffset)
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
                 // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTimeOffset)obj).ToString (Configuration.DateTimeFormat);
+                return ((DateTimeOffset)obj).ToString(Configuration.DateTimeFormat);
             else if (obj is IList)
             {
                 var flattenedString = new StringBuilder();
@@ -272,7 +275,7 @@ namespace sib_api_v3_sdk.Client
             else if (obj is bool)
                 return ((bool)obj).ToString().ToLower();
             else
-                return Convert.ToString (obj);
+                return Convert.ToString(obj);
         }
 
         /// <summary>
@@ -315,7 +318,7 @@ namespace sib_api_v3_sdk.Client
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content,  null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
             if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
@@ -434,7 +437,7 @@ namespace sib_api_v3_sdk.Client
         /// <returns>Byte array</returns>
         public static byte[] ReadAsBytes(Stream inputStream)
         {
-            byte[] buf = new byte[16*1024];
+            byte[] buf = new byte[16 * 1024];
             using (MemoryStream ms = new MemoryStream())
             {
                 int count;

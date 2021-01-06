@@ -99,8 +99,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetSmsCampaigns</returns>
-        GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Returns the information for all your created SMS campaigns
@@ -114,8 +115,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmsCampaigns</returns>
-        ApiResponse<GetSmsCampaigns> GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        ApiResponse<GetSmsCampaigns> GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Export an SMS campaign&#39;s recipients
         /// </summary>
@@ -329,8 +331,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetSmsCampaigns</returns>
-        System.Threading.Tasks.Task<GetSmsCampaigns> GetSmsCampaignsAsync (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<GetSmsCampaigns> GetSmsCampaignsAsync (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Returns the information for all your created SMS campaigns
@@ -344,8 +347,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmsCampaigns)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null);
+        System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Export an SMS campaign&#39;s recipients
         /// </summary>
@@ -1068,10 +1072,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetSmsCampaigns</returns>
-        public GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetSmsCampaigns> localVarResponse = GetSmsCampaignsWithHttpInfo(status, startDate, endDate, limit, offset);
+             ApiResponse<GetSmsCampaigns> localVarResponse = GetSmsCampaignsWithHttpInfo(status, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -1084,8 +1089,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmsCampaigns</returns>
-        public ApiResponse< GetSmsCampaigns > GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public ApiResponse< GetSmsCampaigns > GetSmsCampaignsWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./smsCampaigns";
@@ -1115,6 +1121,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1154,10 +1161,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetSmsCampaigns</returns>
-        public async System.Threading.Tasks.Task<GetSmsCampaigns> GetSmsCampaignsAsync (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<GetSmsCampaigns> GetSmsCampaignsAsync (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetSmsCampaigns> localVarResponse = await GetSmsCampaignsAsyncWithHttpInfo(status, startDate, endDate, limit, offset);
+             ApiResponse<GetSmsCampaigns> localVarResponse = await GetSmsCampaignsAsyncWithHttpInfo(status, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -1171,8 +1179,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="limit">Number limitation for the result returned (optional, default to 500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmsCampaigns)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetSmsCampaigns>> GetSmsCampaignsAsyncWithHttpInfo (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./smsCampaigns";
@@ -1202,6 +1211,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
             if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

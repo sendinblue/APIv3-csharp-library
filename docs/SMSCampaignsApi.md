@@ -41,7 +41,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -109,7 +109,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -176,7 +176,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 <a name="getsmscampaigns"></a>
 # **GetSmsCampaigns**
-> GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null)
+> GetSmsCampaigns GetSmsCampaigns (string status = null, DateTime? startDate = null, DateTime? endDate = null, long? limit = null, long? offset = null, string sort = null)
 
 Returns the information for all your created SMS campaigns
 
@@ -244,7 +244,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -254,11 +254,12 @@ namespace Example
             var endDate = 2013-10-20T19:20:30+01:00;  // DateTime? | Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either 'status' not passed and if passed is set to 'sent' ) (optional) 
             var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 500)
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
 
             try
             {
                 // Returns the information for all your created SMS campaigns
-                GetSmsCampaigns result = apiInstance.GetSmsCampaigns(status, startDate, endDate, limit, offset);
+                GetSmsCampaigns result = apiInstance.GetSmsCampaigns(status, startDate, endDate, limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -279,6 +280,7 @@ Name | Type | Description  | Notes
  **endDate** | **DateTime?**| Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent sms campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) | [optional] 
  **limit** | **long?**| Number limitation for the result returned | [optional] [default to 500]
  **offset** | **long?**| Beginning point in the list to retrieve from. | [optional] [default to 0]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
 
 ### Return type
 
@@ -322,7 +324,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -392,7 +394,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -461,7 +463,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -530,7 +532,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -599,7 +601,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
@@ -668,7 +670,7 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
             // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 

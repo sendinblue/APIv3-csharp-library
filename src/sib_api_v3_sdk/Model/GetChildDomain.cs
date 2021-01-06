@@ -31,33 +31,12 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetChildDomain" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetChildDomain() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetChildDomain" /> class.
-        /// </summary>
-        /// <param name="domain">Sender domain (required).</param>
-        /// <param name="active">indicates whether a domain is verified or not (required).</param>
+        /// <param name="domain">Sender domain.</param>
+        /// <param name="active">indicates whether a domain is verified or not.</param>
         public GetChildDomain(string domain = default(string), bool? active = default(bool?))
         {
-            // to ensure "domain" is required (not null)
-            if (domain == null)
-            {
-                throw new InvalidDataException("domain is a required property for GetChildDomain and cannot be null");
-            }
-            else
-            {
-                this.Domain = domain;
-            }
-            // to ensure "active" is required (not null)
-            if (active == null)
-            {
-                throw new InvalidDataException("active is a required property for GetChildDomain and cannot be null");
-            }
-            else
-            {
-                this.Active = active;
-            }
+            this.Domain = domain;
+            this.Active = active;
         }
         
         /// <summary>

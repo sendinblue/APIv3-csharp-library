@@ -39,8 +39,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetSmsEventReport</returns>
-        GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
+        GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null);
 
         /// <summary>
         /// Get all your SMS activity (unaggregated events)
@@ -57,8 +58,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmsEventReport</returns>
-        ApiResponse<GetSmsEventReport> GetSmsEventsWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
+        ApiResponse<GetSmsEventReport> GetSmsEventsWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null);
         /// <summary>
         /// Get your SMS activity aggregated over a period of time
         /// </summary>
@@ -97,8 +99,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetTransacSmsReport</returns>
-        GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
 
         /// <summary>
         /// Get your SMS activity aggregated per day
@@ -111,8 +114,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacSmsReport</returns>
-        ApiResponse<GetTransacSmsReport> GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        ApiResponse<GetTransacSmsReport> GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
         /// <summary>
         /// Send SMS message to a mobile number
         /// </summary>
@@ -151,8 +155,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetSmsEventReport</returns>
-        System.Threading.Tasks.Task<GetSmsEventReport> GetSmsEventsAsync (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
+        System.Threading.Tasks.Task<GetSmsEventReport> GetSmsEventsAsync (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null);
 
         /// <summary>
         /// Get all your SMS activity (unaggregated events)
@@ -169,8 +174,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmsEventReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSmsEventReport>> GetSmsEventsAsyncWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null);
+        System.Threading.Tasks.Task<ApiResponse<GetSmsEventReport>> GetSmsEventsAsyncWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null);
         /// <summary>
         /// Get your SMS activity aggregated over a period of time
         /// </summary>
@@ -209,8 +215,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetTransacSmsReport</returns>
-        System.Threading.Tasks.Task<GetTransacSmsReport> GetTransacSmsReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        System.Threading.Tasks.Task<GetTransacSmsReport> GetTransacSmsReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
 
         /// <summary>
         /// Get your SMS activity aggregated per day
@@ -223,8 +230,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacSmsReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
         /// <summary>
         /// Send SMS message to a mobile number
         /// </summary>
@@ -358,10 +366,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetSmsEventReport</returns>
-        public GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
+        public GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
         {
-             ApiResponse<GetSmsEventReport> localVarResponse = GetSmsEventsWithHttpInfo(limit, startDate, endDate, offset, days, phoneNumber, _event, tags);
+             ApiResponse<GetSmsEventReport> localVarResponse = GetSmsEventsWithHttpInfo(limit, startDate, endDate, offset, days, phoneNumber, _event, tags, sort);
              return localVarResponse.Data;
         }
 
@@ -377,8 +386,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmsEventReport</returns>
-        public ApiResponse< GetSmsEventReport > GetSmsEventsWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
+        public ApiResponse< GetSmsEventReport > GetSmsEventsWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
         {
 
             var localVarPath = "./transactionalSMS/statistics/events";
@@ -411,6 +421,7 @@ namespace sib_api_v3_sdk.Api
             if (phoneNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "phoneNumber", phoneNumber)); // query parameter
             if (_event != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event", _event)); // query parameter
             if (tags != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tags", tags)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -453,10 +464,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetSmsEventReport</returns>
-        public async System.Threading.Tasks.Task<GetSmsEventReport> GetSmsEventsAsync (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
+        public async System.Threading.Tasks.Task<GetSmsEventReport> GetSmsEventsAsync (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
         {
-             ApiResponse<GetSmsEventReport> localVarResponse = await GetSmsEventsAsyncWithHttpInfo(limit, startDate, endDate, offset, days, phoneNumber, _event, tags);
+             ApiResponse<GetSmsEventReport> localVarResponse = await GetSmsEventsAsyncWithHttpInfo(limit, startDate, endDate, offset, days, phoneNumber, _event, tags, sort);
              return localVarResponse.Data;
 
         }
@@ -473,8 +485,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="phoneNumber">Filter the report for a specific phone number (optional)</param>
         /// <param name="_event">Filter the report for specific events (optional)</param>
         /// <param name="tags">Filter the report for specific tags passed as a serialized urlencoded array (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmsEventReport)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetSmsEventReport>> GetSmsEventsAsyncWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetSmsEventReport>> GetSmsEventsAsyncWithHttpInfo (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
         {
 
             var localVarPath = "./transactionalSMS/statistics/events";
@@ -507,6 +520,7 @@ namespace sib_api_v3_sdk.Api
             if (phoneNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "phoneNumber", phoneNumber)); // query parameter
             if (_event != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event", _event)); // query parameter
             if (tags != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tags", tags)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -712,10 +726,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>GetTransacSmsReport</returns>
-        public GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
         {
-             ApiResponse<GetTransacSmsReport> localVarResponse = GetTransacSmsReportWithHttpInfo(startDate, endDate, days, tag);
+             ApiResponse<GetTransacSmsReport> localVarResponse = GetTransacSmsReportWithHttpInfo(startDate, endDate, days, tag, sort);
              return localVarResponse.Data;
         }
 
@@ -727,8 +742,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacSmsReport</returns>
-        public ApiResponse< GetTransacSmsReport > GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public ApiResponse< GetTransacSmsReport > GetTransacSmsReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
         {
 
             var localVarPath = "./transactionalSMS/statistics/reports";
@@ -757,6 +773,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (days != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "days", days)); // query parameter
             if (tag != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tag", tag)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -795,10 +812,11 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of GetTransacSmsReport</returns>
-        public async System.Threading.Tasks.Task<GetTransacSmsReport> GetTransacSmsReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public async System.Threading.Tasks.Task<GetTransacSmsReport> GetTransacSmsReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
         {
-             ApiResponse<GetTransacSmsReport> localVarResponse = await GetTransacSmsReportAsyncWithHttpInfo(startDate, endDate, days, tag);
+             ApiResponse<GetTransacSmsReport> localVarResponse = await GetTransacSmsReportAsyncWithHttpInfo(startDate, endDate, days, tag, sort);
              return localVarResponse.Data;
 
         }
@@ -811,8 +829,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Filter on a tag (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacSmsReport)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacSmsReport>> GetTransacSmsReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
         {
 
             var localVarPath = "./transactionalSMS/statistics/reports";
@@ -841,6 +860,7 @@ namespace sib_api_v3_sdk.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (days != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "days", days)); // query parameter
             if (tag != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tag", tag)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

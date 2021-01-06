@@ -132,10 +132,10 @@ namespace sib_api_v3_sdk.Model
         /// <param name="footer">Footer of the campaign (required).</param>
         /// <param name="sender">sender (required).</param>
         /// <param name="replyTo">Email defined as the &quot;Reply to&quot; of the campaign (required).</param>
-        /// <param name="toField">Customisation of the &quot;to&quot; field of the campaign (required).</param>
+        /// <param name="toField">Customisation of the &quot;to&quot; field of the campaign.</param>
         /// <param name="htmlContent">HTML content of the campaign (required).</param>
         /// <param name="shareLink">Link to share the campaign on social medias.</param>
-        /// <param name="tag">Tag of the campaign (required).</param>
+        /// <param name="tag">Tag of the campaign.</param>
         /// <param name="createdAt">Creation UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">UTC date-time of last modification of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="inlineImageActivation">Status of inline image. inlineImageActivation &#x3D; false means image can’t be embedded, &amp; inlineImageActivation &#x3D; true means image can be embedded, in the email..</param>
@@ -226,15 +226,6 @@ namespace sib_api_v3_sdk.Model
             {
                 this.ReplyTo = replyTo;
             }
-            // to ensure "toField" is required (not null)
-            if (toField == null)
-            {
-                throw new InvalidDataException("toField is a required property for GetExtendedCampaignOverview and cannot be null");
-            }
-            else
-            {
-                this.ToField = toField;
-            }
             // to ensure "htmlContent" is required (not null)
             if (htmlContent == null)
             {
@@ -243,15 +234,6 @@ namespace sib_api_v3_sdk.Model
             else
             {
                 this.HtmlContent = htmlContent;
-            }
-            // to ensure "tag" is required (not null)
-            if (tag == null)
-            {
-                throw new InvalidDataException("tag is a required property for GetExtendedCampaignOverview and cannot be null");
-            }
-            else
-            {
-                this.Tag = tag;
             }
             // to ensure "createdAt" is required (not null)
             if (createdAt == null)
@@ -280,7 +262,9 @@ namespace sib_api_v3_sdk.Model
             this.WinnerCriteria = winnerCriteria;
             this.WinnerDelay = winnerDelay;
             this.SendAtBestTime = sendAtBestTime;
+            this.ToField = toField;
             this.ShareLink = shareLink;
+            this.Tag = tag;
             this.InlineImageActivation = inlineImageActivation;
             this.MirrorActive = mirrorActive;
             this.Recurring = recurring;

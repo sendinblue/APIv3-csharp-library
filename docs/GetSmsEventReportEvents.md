@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PhoneNumber** | **string** | Phone number which has generated the event | 
-**Date** | **DateTime?** | UTC date-time on which the event has been generated | 
-**MessageId** | **string** | Message ID which generated the event | 
-**Event** | **string** | Event which occurred | 
+**PhoneNumber** | **string** | Phone number which has generated the event | [optional] 
+**Date** | **DateTime?** | UTC date-time on which the event has been generated | [optional] 
+**MessageId** | **string** | Message ID which generated the event | [optional] 
+**Event** | **string** | Event which occurred | [optional] 
 **Reason** | **string** | Reason of bounce (only available if the event is hardbounce or softbounce) | [optional] 
 **Reply** | **string** |  | [optional] 
 **Tag** | **string** | Tag of the SMS which generated the event | [optional] 

@@ -23,35 +23,39 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// GetProcesses
+    /// BlockDomain
     /// </summary>
     [DataContract]
-    public partial class GetProcesses :  IEquatable<GetProcesses>
+    public partial class BlockDomain :  IEquatable<BlockDomain>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetProcesses" /> class.
+        /// Initializes a new instance of the <see cref="BlockDomain" /> class.
         /// </summary>
-        /// <param name="processes">List of processes available on your account.</param>
-        /// <param name="count">Number of processes available on your account.</param>
-        public GetProcesses(List<GetProcess> processes = default(List<GetProcess>), long? count = default(long?))
+        [JsonConstructorAttribute]
+        protected BlockDomain() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BlockDomain" /> class.
+        /// </summary>
+        /// <param name="domain">name of the domain to be blocked (required).</param>
+        public BlockDomain(string domain = default(string))
         {
-            this.Processes = processes;
-            this.Count = count;
+            // to ensure "domain" is required (not null)
+            if (domain == null)
+            {
+                throw new InvalidDataException("domain is a required property for BlockDomain and cannot be null");
+            }
+            else
+            {
+                this.Domain = domain;
+            }
         }
         
         /// <summary>
-        /// List of processes available on your account
+        /// name of the domain to be blocked
         /// </summary>
-        /// <value>List of processes available on your account</value>
-        [DataMember(Name="processes", EmitDefaultValue=false)]
-        public List<GetProcess> Processes { get; set; }
-
-        /// <summary>
-        /// Number of processes available on your account
-        /// </summary>
-        /// <value>Number of processes available on your account</value>
-        [DataMember(Name="count", EmitDefaultValue=false)]
-        public long? Count { get; set; }
+        /// <value>name of the domain to be blocked</value>
+        [DataMember(Name="domain", EmitDefaultValue=false)]
+        public string Domain { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +64,8 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetProcesses {\n");
-            sb.Append("  Processes: ").Append(Processes).Append("\n");
-            sb.Append("  Count: ").Append(Count).Append("\n");
+            sb.Append("class BlockDomain {\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +86,24 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetProcesses);
+            return this.Equals(input as BlockDomain);
         }
 
         /// <summary>
-        /// Returns true if GetProcesses instances are equal
+        /// Returns true if BlockDomain instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetProcesses to be compared</param>
+        /// <param name="input">Instance of BlockDomain to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetProcesses input)
+        public bool Equals(BlockDomain input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Processes == input.Processes ||
-                    this.Processes != null &&
-                    this.Processes.SequenceEqual(input.Processes)
-                ) && 
-                (
-                    this.Count == input.Count ||
-                    (this.Count != null &&
-                    this.Count.Equals(input.Count))
+                    this.Domain == input.Domain ||
+                    (this.Domain != null &&
+                    this.Domain.Equals(input.Domain))
                 );
         }
 
@@ -118,10 +116,8 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Processes != null)
-                    hashCode = hashCode * 59 + this.Processes.GetHashCode();
-                if (this.Count != null)
-                    hashCode = hashCode * 59 + this.Count.GetHashCode();
+                if (this.Domain != null)
+                    hashCode = hashCode * 59 + this.Domain.GetHashCode();
                 return hashCode;
             }
         }
