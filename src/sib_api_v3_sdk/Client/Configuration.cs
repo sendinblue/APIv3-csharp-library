@@ -57,7 +57,7 @@ namespace sib_api_v3_sdk.Client
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
                     response.Content);
             }
-            
+
             return null;
         };
 
@@ -110,7 +110,7 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "sendinblue_clientAPI/v#/c#";
+            UserAgent = "sendinblue_clientAPI/v" + Version + "/c#";
             BasePath = "https://api.sendinblue.com/v3";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -183,7 +183,7 @@ namespace sib_api_v3_sdk.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "sendinblue_clientAPI/v#/c#"
+            string userAgent = "sendinblue_clientAPI/v" + Version + "/c#"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -223,12 +223,15 @@ namespace sib_api_v3_sdk.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath {
+        public virtual string BasePath
+        {
             get { return _basePath; }
-            set {
+            set
+            {
                 _basePath = value;
                 // pass-through to ApiClient if it's set.
-                if(_apiClient != null) {
+                if (_apiClient != null)
+                {
                     _apiClient.RestClient.BaseUrl = new Uri(_basePath);
                 }
             }
@@ -274,9 +277,9 @@ namespace sib_api_v3_sdk.Client
         public string GetApiKeyWithPrefix(string apiKeyIdentifier)
         {
             var apiKeyValue = "";
-            ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
+            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
             var apiKeyPrefix = "";
-            if (ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix))
+            if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
                 return apiKeyPrefix + " " + apiKeyValue;
             else
                 return apiKeyValue;
@@ -416,7 +419,7 @@ namespace sib_api_v3_sdk.Client
             String report = "C# SDK (sib_api_v3_sdk) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 3.0.0\n";
-            report += "    SDK Package Version: 3.1.0\n";
+            report += "    SDK Package Version: " + Version + "\n";
 
             return report;
         }

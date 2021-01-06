@@ -70,7 +70,7 @@ namespace sib_api_v3_sdk.Client
         /// Gets the user agent.
         /// </summary>
         /// <value>User agent.</value>
-        string UserAgent { get; }
+        string UserAgent { get; set; }
 
         /// <summary>
         /// Gets the username.
