@@ -40,7 +40,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="count">Number of openings of the campaign (required).</param>
         /// <param name="eventTime">UTC date-time of the event (required).</param>
         /// <param name="ip">IP from which the user has opened the campaign (required).</param>
-        public GetContactCampaignStatsOpened(long? campaignId = default(long?), long? count = default(long?), DateTime? eventTime = default(DateTime?), string ip = default(string))
+        public GetContactCampaignStatsOpened(long? campaignId = default(long?), long? count = default(long?), string eventTime = default(string), string ip = default(string))
         {
             // to ensure "campaignId" is required (not null)
             if (campaignId == null)
@@ -99,7 +99,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time of the event</value>
         [DataMember(Name="eventTime", EmitDefaultValue=false)]
-        public DateTime? EventTime { get; set; }
+        public string EventTime { get; set; }
 
         /// <summary>
         /// IP from which the user has opened the campaign

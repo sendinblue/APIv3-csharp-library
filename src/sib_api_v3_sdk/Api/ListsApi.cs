@@ -100,9 +100,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetContacts</returns>
-        GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
+        GetContacts GetContactsFromList (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Get contacts in a list
@@ -115,9 +115,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetContacts</returns>
-        ApiResponse<GetContacts> GetContactsFromListWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
+        ApiResponse<GetContacts> GetContactsFromListWithHttpInfo (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get lists in a folder
         /// </summary>
@@ -128,7 +128,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetFolderLists</returns>
         GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null, string sort = null);
 
@@ -142,7 +142,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolderLists</returns>
         ApiResponse<GetFolderLists> GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -175,7 +175,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetLists</returns>
         GetLists GetLists (long? limit = null, long? offset = null, string sort = null);
 
@@ -188,7 +188,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetLists</returns>
         ApiResponse<GetLists> GetListsWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -315,9 +315,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetContacts</returns>
-        System.Threading.Tasks.Task<GetContacts> GetContactsFromListAsync (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
+        System.Threading.Tasks.Task<GetContacts> GetContactsFromListAsync (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Get contacts in a list
@@ -330,9 +330,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetContacts)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsFromListAsyncWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
+        System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsFromListAsyncWithHttpInfo (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get lists in a folder
         /// </summary>
@@ -343,7 +343,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetFolderLists</returns>
         System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null, string sort = null);
 
@@ -357,7 +357,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -390,7 +390,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetLists</returns>
         System.Threading.Tasks.Task<GetLists> GetListsAsync (long? limit = null, long? offset = null, string sort = null);
 
@@ -403,7 +403,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetLists)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetLists>> GetListsAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -1063,9 +1063,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetContacts</returns>
-        public GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
+        public GetContacts GetContactsFromList (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
         {
              ApiResponse<GetContacts> localVarResponse = GetContactsFromListWithHttpInfo(listId, modifiedSince, limit, offset, sort);
              return localVarResponse.Data;
@@ -1079,9 +1079,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetContacts</returns>
-        public ApiResponse< GetContacts > GetContactsFromListWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
+        public ApiResponse< GetContacts > GetContactsFromListWithHttpInfo (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
         {
             // verify the required parameter 'listId' is set
             if (listId == null)
@@ -1152,9 +1152,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetContacts</returns>
-        public async System.Threading.Tasks.Task<GetContacts> GetContactsFromListAsync (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
+        public async System.Threading.Tasks.Task<GetContacts> GetContactsFromListAsync (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
         {
              ApiResponse<GetContacts> localVarResponse = await GetContactsFromListAsyncWithHttpInfo(listId, modifiedSince, limit, offset, sort);
              return localVarResponse.Data;
@@ -1169,9 +1169,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="modifiedSince">Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional)</param>
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetContacts)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsFromListAsyncWithHttpInfo (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetContacts>> GetContactsFromListAsyncWithHttpInfo (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
         {
             // verify the required parameter 'listId' is set
             if (listId == null)
@@ -1241,7 +1241,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetFolderLists</returns>
         public GetFolderLists GetFolderLists (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
@@ -1256,7 +1256,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetFolderLists</returns>
         public ApiResponse< GetFolderLists > GetFolderListsWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
@@ -1327,7 +1327,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetFolderLists</returns>
         public async System.Threading.Tasks.Task<GetFolderLists> GetFolderListsAsync (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
@@ -1343,7 +1343,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="folderId">Id of the folder</param>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetFolderLists)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetFolderLists>> GetFolderListsAsyncWithHttpInfo (long? folderId, long? limit = null, long? offset = null, string sort = null)
         {
@@ -1568,7 +1568,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetLists</returns>
         public GetLists GetLists (long? limit = null, long? offset = null, string sort = null)
         {
@@ -1582,7 +1582,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetLists</returns>
         public ApiResponse< GetLists > GetListsWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {
@@ -1648,7 +1648,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetLists</returns>
         public async System.Threading.Tasks.Task<GetLists> GetListsAsync (long? limit = null, long? offset = null, string sort = null)
         {
@@ -1663,7 +1663,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number of documents per page (optional, default to 10)</param>
         /// <param name="offset">Index of the first document of the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetLists)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetLists>> GetListsAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {

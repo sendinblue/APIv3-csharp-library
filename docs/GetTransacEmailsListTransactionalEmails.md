@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **TemplateId** | **long?** | Id of the template | [optional] 
 **MessageId** | **string** | Message Id of the sent email | 
 **Uuid** | **string** | Unique id of the email sent to a particular contact | 
-**Date** | **DateTime?** | Date on which transactional email was sent | 
+**Date** | **string** | Date on which transactional email was sent | 
 **From** | **string** | Email address of the sender from which the email was sent | [optional] 
 **Tags** | **List&lt;string&gt;** | Tags used for your email | [optional] 
 

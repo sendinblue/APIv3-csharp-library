@@ -248,7 +248,7 @@ namespace Example
             var folderId = 789;  // long? | Id of the folder
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
  **folderId** | **long?**| Id of the folder | 
  **limit** | **long?**| Number of documents per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -321,7 +321,7 @@ namespace Example
             var apiInstance = new FoldersApi();
             var limit = 789;  // long? | Number of documents per page (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number of documents per page | [default to 10]
  **offset** | **long?**| Index of the first document of the page | [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 

@@ -49,7 +49,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="createdAt">Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">Last modification UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="doiTemplate">It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call..</param>
-        public GetSmtpTemplateOverview(long? id = default(long?), string name = default(string), string subject = default(string), bool? isActive = default(bool?), bool? testSent = default(bool?), GetSmtpTemplateOverviewSender sender = default(GetSmtpTemplateOverviewSender), string replyTo = default(string), string toField = default(string), string tag = default(string), string htmlContent = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), bool? doiTemplate = default(bool?))
+        public GetSmtpTemplateOverview(long? id = default(long?), string name = default(string), string subject = default(string), bool? isActive = default(bool?), bool? testSent = default(bool?), GetSmtpTemplateOverviewSender sender = default(GetSmtpTemplateOverviewSender), string replyTo = default(string), string toField = default(string), string tag = default(string), string htmlContent = default(string), string createdAt = default(string), string modifiedAt = default(string), bool? doiTemplate = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -236,14 +236,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Last modification UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ)
         /// </summary>
         /// <value>Last modification UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="modifiedAt", EmitDefaultValue=false)]
-        public DateTime? ModifiedAt { get; set; }
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call.

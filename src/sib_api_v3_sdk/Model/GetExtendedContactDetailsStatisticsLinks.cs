@@ -40,7 +40,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="eventTime">UTC date-time of the event (required).</param>
         /// <param name="ip">IP from which the user has clicked on the link (required).</param>
         /// <param name="url">URL of the clicked link (required).</param>
-        public GetExtendedContactDetailsStatisticsLinks(long? count = default(long?), DateTime? eventTime = default(DateTime?), string ip = default(string), string url = default(string))
+        public GetExtendedContactDetailsStatisticsLinks(long? count = default(long?), string eventTime = default(string), string ip = default(string), string url = default(string))
         {
             // to ensure "count" is required (not null)
             if (count == null)
@@ -92,7 +92,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time of the event</value>
         [DataMember(Name="eventTime", EmitDefaultValue=false)]
-        public DateTime? EventTime { get; set; }
+        public string EventTime { get; set; }
 
         /// <summary>
         /// IP from which the user has clicked on the link

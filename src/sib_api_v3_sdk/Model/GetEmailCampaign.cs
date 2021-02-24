@@ -145,7 +145,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
         /// <param name="recipients">recipients (required).</param>
         /// <param name="statistics">statistics (required).</param>
-        public GetEmailCampaign(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), DateTime? scheduledAt = default(DateTime?), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), DateTime? sentDate = default(DateTime?), long? returnBounce = default(long?), Object recipients = default(Object), Object statistics = default(Object))
+        public GetEmailCampaign(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), string scheduledAt = default(string), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?), bool? testSent = default(bool?), string header = default(string), string footer = default(string), GetExtendedCampaignOverviewSender sender = default(GetExtendedCampaignOverviewSender), string replyTo = default(string), string toField = default(string), string htmlContent = default(string), string shareLink = default(string), string tag = default(string), string createdAt = default(string), string modifiedAt = default(string), bool? inlineImageActivation = default(bool?), bool? mirrorActive = default(bool?), bool? recurring = default(bool?), string sentDate = default(string), long? returnBounce = default(long?), Object recipients = default(Object), Object statistics = default(Object))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -320,7 +320,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="scheduledAt", EmitDefaultValue=false)]
-        public DateTime? ScheduledAt { get; set; }
+        public string ScheduledAt { get; set; }
 
         /// <summary>
         /// Status of A/B Test for the campaign. abTesting &#x3D; false means it is disabled, &amp; abTesting &#x3D; true means it is enabled.
@@ -438,14 +438,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// UTC date-time of last modification of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
         /// </summary>
         /// <value>UTC date-time of last modification of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="modifiedAt", EmitDefaultValue=false)]
-        public DateTime? ModifiedAt { get; set; }
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// Status of inline image. inlineImageActivation &#x3D; false means image can’t be embedded, &amp; inlineImageActivation &#x3D; true means image can be embedded, in the email.
@@ -473,7 +473,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Sent UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if &#39;status&#39; of the campaign is &#39;sent&#39;</value>
         [DataMember(Name="sentDate", EmitDefaultValue=false)]
-        public DateTime? SentDate { get; set; }
+        public string SentDate { get; set; }
 
         /// <summary>
         /// Total number of non-delivered campaigns for a particular campaign id.

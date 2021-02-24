@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the campaign | [optional] 
 **HtmlContent** | **string** | Body of the message (HTML version). REQUIRED if htmlUrl is empty | [optional] 
 **HtmlUrl** | **string** | Url which contents the body of the email message. REQUIRED if htmlContent is empty | [optional] 
-**ScheduledAt** | **DateTime?** | UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part). | [optional] 
+**ScheduledAt** | **string** | UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part). | [optional] 
 **Subject** | **string** | Subject of the campaign | [optional] 
 **ReplyTo** | **string** | Email on which campaign recipients will be able to reply to | [optional] 
 **ToField** | **string** | To personalize the «To» Field. If you want to include the first name and last name of your recipient, add {FNAME} {LNAME}. These contact attributes must already exist in your SendinBlue account. If input parameter &#39;params&#39; used please use {{contact.FNAME}} {{contact.LNAME}} for personalization | [optional] 

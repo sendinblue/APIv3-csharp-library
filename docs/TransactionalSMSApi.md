@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getsmsevents"></a>
 # **GetSmsEvents**
-> GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, int? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
+> GetSmsEventReport GetSmsEvents (long? limit = null, string startDate = null, string endDate = null, long? offset = null, long? days = null, string phoneNumber = null, string _event = null, string tags = null, string sort = null)
 
 Get all your SMS activity (unaggregated events)
 
@@ -44,11 +44,11 @@ namespace Example
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional) 
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var phoneNumber = phoneNumber_example;  // string | Filter the report for a specific phone number (optional) 
             var _event = _event_example;  // string | Filter the report for specific events (optional) 
             var tags = tags_example;  // string | Filter the report for specific tags passed as a serialized urlencoded array (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -73,11 +73,11 @@ Name | Type | Description  | Notes
  **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report | [optional] 
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **phoneNumber** | **string**| Filter the report for a specific phone number | [optional] 
  **_event** | **string**| Filter the report for specific events | [optional] 
  **tags** | **string**| Filter the report for specific tags passed as a serialized urlencoded array | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacaggregatedsmsreport"></a>
 # **GetTransacAggregatedSmsReport**
-> GetTransacAggregatedSmsReport GetTransacAggregatedSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
+> GetTransacAggregatedSmsReport GetTransacAggregatedSmsReport (string startDate = null, string endDate = null, long? days = null, string tag = null)
 
 Get your SMS activity aggregated over a period of time
 
@@ -126,7 +126,7 @@ namespace Example
             var apiInstance = new TransactionalSMSApi();
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional) 
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with startDate and endDate (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with startDate and endDate (optional) 
             var tag = tag_example;  // string | Filter on a tag (optional) 
 
             try
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report | [optional] 
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with startDate and endDate | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with startDate and endDate | [optional] 
  **tag** | **string**| Filter on a tag | [optional] 
 
 ### Return type
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacsmsreport"></a>
 # **GetTransacSmsReport**
-> GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+> GetTransacSmsReport GetTransacSmsReport (string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
 
 Get your SMS activity aggregated per day
 
@@ -200,9 +200,9 @@ namespace Example
             var apiInstance = new TransactionalSMSApi();
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report (optional) 
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var tag = tag_example;  // string | Filter on a tag (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -225,9 +225,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the report | [optional] 
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **tag** | **string**| Filter on a tag | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 

@@ -39,7 +39,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="campaignId">ID of the campaign which generated the event (required).</param>
         /// <param name="eventTime">UTC date-time of the event (required).</param>
         /// <param name="ip">IP from which the user has unsubscribed.</param>
-        public GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription(long? campaignId = default(long?), DateTime? eventTime = default(DateTime?), string ip = default(string))
+        public GetExtendedContactDetailsStatisticsUnsubscriptionsUserUnsubscription(long? campaignId = default(long?), string eventTime = default(string), string ip = default(string))
         {
             // to ensure "campaignId" is required (not null)
             if (campaignId == null)
@@ -74,7 +74,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time of the event</value>
         [DataMember(Name="eventTime", EmitDefaultValue=false)]
-        public DateTime? EventTime { get; set; }
+        public string EventTime { get; set; }
 
         /// <summary>
         /// IP from which the user has unsubscribed

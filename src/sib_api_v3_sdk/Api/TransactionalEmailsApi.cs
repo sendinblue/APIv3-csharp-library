@@ -141,7 +141,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>GetAggregatedReport</returns>
-        GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, long? days = null, string tag = null);
 
         /// <summary>
         /// Get your transactional email activity aggregated over a period of time
@@ -155,7 +155,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>ApiResponse of GetAggregatedReport</returns>
-        ApiResponse<GetAggregatedReport> GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        ApiResponse<GetAggregatedReport> GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, long? days = null, string tag = null);
         /// <summary>
         /// Get the list of blocked domains
         /// </summary>
@@ -192,9 +192,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailEventReport</returns>
-        GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
 
         /// <summary>
         /// Get all your transactional email activity (unaggregated events)
@@ -213,9 +213,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailEventReport</returns>
-        ApiResponse<GetEmailEventReport> GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        ApiResponse<GetEmailEventReport> GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
         /// <summary>
         /// Get your transactional email activity aggregated per day
         /// </summary>
@@ -229,9 +229,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetReports</returns>
-        GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
+        GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null);
 
         /// <summary>
         /// Get your transactional email activity aggregated per day
@@ -246,9 +246,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetReports</returns>
-        ApiResponse<GetReports> GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
+        ApiResponse<GetReports> GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null);
         /// <summary>
         /// Returns the template information
         /// </summary>
@@ -280,7 +280,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetSmtpTemplates</returns>
         GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null);
 
@@ -294,7 +294,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmtpTemplates</returns>
         ApiResponse<GetSmtpTemplates> GetSmtpTemplatesWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -309,7 +309,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetTransacBlockedContacts</returns>
         GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null);
 
@@ -325,7 +325,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacBlockedContacts</returns>
         ApiResponse<GetTransacBlockedContacts> GetTransacBlockedContactsWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null);
         /// <summary>
@@ -361,7 +361,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetTransacEmailsList</returns>
         GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
 
@@ -377,7 +377,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
         ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
         /// <summary>
@@ -631,7 +631,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>Task of GetAggregatedReport</returns>
-        System.Threading.Tasks.Task<GetAggregatedReport> GetAggregatedSmtpReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        System.Threading.Tasks.Task<GetAggregatedReport> GetAggregatedSmtpReportAsync (string startDate = null, string endDate = null, long? days = null, string tag = null);
 
         /// <summary>
         /// Get your transactional email activity aggregated over a period of time
@@ -645,7 +645,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>Task of ApiResponse (GetAggregatedReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null);
+        System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, long? days = null, string tag = null);
         /// <summary>
         /// Get the list of blocked domains
         /// </summary>
@@ -682,9 +682,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailEventReport</returns>
-        System.Threading.Tasks.Task<GetEmailEventReport> GetEmailEventReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        System.Threading.Tasks.Task<GetEmailEventReport> GetEmailEventReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
 
         /// <summary>
         /// Get all your transactional email activity (unaggregated events)
@@ -703,9 +703,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailEventReport)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
         /// <summary>
         /// Get your transactional email activity aggregated per day
         /// </summary>
@@ -719,9 +719,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetReports</returns>
-        System.Threading.Tasks.Task<GetReports> GetSmtpReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
+        System.Threading.Tasks.Task<GetReports> GetSmtpReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null);
 
         /// <summary>
         /// Get your transactional email activity aggregated per day
@@ -736,9 +736,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetReports)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null);
+        System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null);
         /// <summary>
         /// Returns the template information
         /// </summary>
@@ -770,7 +770,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetSmtpTemplates</returns>
         System.Threading.Tasks.Task<GetSmtpTemplates> GetSmtpTemplatesAsync (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null);
 
@@ -784,7 +784,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmtpTemplates)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplates>> GetSmtpTemplatesAsyncWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
@@ -799,7 +799,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetTransacBlockedContacts</returns>
         System.Threading.Tasks.Task<GetTransacBlockedContacts> GetTransacBlockedContactsAsync (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null);
 
@@ -815,7 +815,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacBlockedContacts)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTransacBlockedContacts>> GetTransacBlockedContactsAsyncWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null);
         /// <summary>
@@ -851,7 +851,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
         System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
 
@@ -867,7 +867,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
         /// <summary>
@@ -1914,7 +1914,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>GetAggregatedReport</returns>
-        public GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, long? days = null, string tag = null)
         {
              ApiResponse<GetAggregatedReport> localVarResponse = GetAggregatedSmtpReportWithHttpInfo(startDate, endDate, days, tag);
              return localVarResponse.Data;
@@ -1929,7 +1929,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>ApiResponse of GetAggregatedReport</returns>
-        public ApiResponse< GetAggregatedReport > GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public ApiResponse< GetAggregatedReport > GetAggregatedSmtpReportWithHttpInfo (string startDate = null, string endDate = null, long? days = null, string tag = null)
         {
 
             var localVarPath = "./smtp/statistics/aggregatedReport";
@@ -1997,7 +1997,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>Task of GetAggregatedReport</returns>
-        public async System.Threading.Tasks.Task<GetAggregatedReport> GetAggregatedSmtpReportAsync (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public async System.Threading.Tasks.Task<GetAggregatedReport> GetAggregatedSmtpReportAsync (string startDate = null, string endDate = null, long? days = null, string tag = null)
         {
              ApiResponse<GetAggregatedReport> localVarResponse = await GetAggregatedSmtpReportAsyncWithHttpInfo(startDate, endDate, days, tag);
              return localVarResponse.Data;
@@ -2013,7 +2013,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
         /// <returns>Task of ApiResponse (GetAggregatedReport)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, int? days = null, string tag = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetAggregatedReport>> GetAggregatedSmtpReportAsyncWithHttpInfo (string startDate = null, string endDate = null, long? days = null, string tag = null)
         {
 
             var localVarPath = "./smtp/statistics/aggregatedReport";
@@ -2229,9 +2229,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailEventReport</returns>
-        public GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
+        public GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
         {
              ApiResponse<GetEmailEventReport> localVarResponse = GetEmailEventReportWithHttpInfo(limit, offset, startDate, endDate, days, email, _event, tags, messageId, templateId, sort);
              return localVarResponse.Data;
@@ -2251,9 +2251,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailEventReport</returns>
-        public ApiResponse< GetEmailEventReport > GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
+        public ApiResponse< GetEmailEventReport > GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
         {
 
             var localVarPath = "./smtp/statistics/events";
@@ -2333,9 +2333,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailEventReport</returns>
-        public async System.Threading.Tasks.Task<GetEmailEventReport> GetEmailEventReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
+        public async System.Threading.Tasks.Task<GetEmailEventReport> GetEmailEventReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
         {
              ApiResponse<GetEmailEventReport> localVarResponse = await GetEmailEventReportAsyncWithHttpInfo(limit, offset, startDate, endDate, days, email, _event, tags, messageId, templateId, sort);
              return localVarResponse.Data;
@@ -2356,9 +2356,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="tags">Filter the report for tags (serialized and urlencoded array) (optional)</param>
         /// <param name="messageId">Filter on a specific message id (optional)</param>
         /// <param name="templateId">Filter on a specific template id (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailEventReport)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
         {
 
             var localVarPath = "./smtp/statistics/events";
@@ -2434,9 +2434,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetReports</returns>
-        public GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+        public GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
         {
              ApiResponse<GetReports> localVarResponse = GetSmtpReportWithHttpInfo(limit, offset, startDate, endDate, days, tag, sort);
              return localVarResponse.Data;
@@ -2452,9 +2452,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetReports</returns>
-        public ApiResponse< GetReports > GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+        public ApiResponse< GetReports > GetSmtpReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
         {
 
             var localVarPath = "./smtp/statistics/reports";
@@ -2526,9 +2526,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetReports</returns>
-        public async System.Threading.Tasks.Task<GetReports> GetSmtpReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+        public async System.Threading.Tasks.Task<GetReports> GetSmtpReportAsync (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
         {
              ApiResponse<GetReports> localVarResponse = await GetSmtpReportAsyncWithHttpInfo(limit, offset, startDate, endDate, days, tag, sort);
              return localVarResponse.Data;
@@ -2545,9 +2545,9 @@ namespace sib_api_v3_sdk.Api
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional)</param>
         /// <param name="days">Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; (optional)</param>
         /// <param name="tag">Tag of the emails (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetReports)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetReports>> GetSmtpReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
         {
 
             var localVarPath = "./smtp/statistics/reports";
@@ -2771,7 +2771,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetSmtpTemplates</returns>
         public GetSmtpTemplates GetSmtpTemplates (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null)
         {
@@ -2786,7 +2786,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetSmtpTemplates</returns>
         public ApiResponse< GetSmtpTemplates > GetSmtpTemplatesWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null)
         {
@@ -2854,7 +2854,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetSmtpTemplates</returns>
         public async System.Threading.Tasks.Task<GetSmtpTemplates> GetSmtpTemplatesAsync (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null)
         {
@@ -2870,7 +2870,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="templateStatus">Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false (optional)</param>
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetSmtpTemplates)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetSmtpTemplates>> GetSmtpTemplatesAsyncWithHttpInfo (bool? templateStatus = null, long? limit = null, long? offset = null, string sort = null)
         {
@@ -2940,7 +2940,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetTransacBlockedContacts</returns>
         public GetTransacBlockedContacts GetTransacBlockedContacts (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null)
         {
@@ -2957,7 +2957,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacBlockedContacts</returns>
         public ApiResponse< GetTransacBlockedContacts > GetTransacBlockedContactsWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null)
         {
@@ -3029,7 +3029,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetTransacBlockedContacts</returns>
         public async System.Threading.Tasks.Task<GetTransacBlockedContacts> GetTransacBlockedContactsAsync (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null)
         {
@@ -3047,7 +3047,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents returned per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
         /// <param name="senders">Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacBlockedContacts)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetTransacBlockedContacts>> GetTransacBlockedContactsAsyncWithHttpInfo (string startDate = null, string endDate = null, long? limit = null, long? offset = null, List<string> senders = null, string sort = null)
         {
@@ -3274,7 +3274,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetTransacEmailsList</returns>
         public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
         {
@@ -3291,7 +3291,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
         public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
         {
@@ -3363,7 +3363,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
         public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
         {
@@ -3381,7 +3381,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="messageId">Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
         {

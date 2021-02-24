@@ -97,7 +97,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="modifiedAt">UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="recipients">recipients (required).</param>
         /// <param name="statistics">statistics (required).</param>
-        public GetSmsCampaign(long? id = default(long?), string name = default(string), StatusEnum status = default(StatusEnum), string content = default(string), DateTime? scheduledAt = default(DateTime?), string sender = default(string), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), Object recipients = default(Object), Object statistics = default(Object))
+        public GetSmsCampaign(long? id = default(long?), string name = default(string), StatusEnum status = default(StatusEnum), string content = default(string), string scheduledAt = default(string), string sender = default(string), string createdAt = default(string), string modifiedAt = default(string), Object recipients = default(Object), Object statistics = default(Object))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -210,7 +210,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format</value>
         [DataMember(Name="scheduledAt", EmitDefaultValue=false)]
-        public DateTime? ScheduledAt { get; set; }
+        public string ScheduledAt { get; set; }
 
         /// <summary>
         /// Sender of the SMS Campaign
@@ -224,14 +224,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
         /// </summary>
         /// <value>UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="modifiedAt", EmitDefaultValue=false)]
-        public DateTime? ModifiedAt { get; set; }
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Recipients

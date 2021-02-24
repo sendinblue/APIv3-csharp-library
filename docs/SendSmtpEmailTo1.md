@@ -1,10 +1,10 @@
-# sib_api_v3_sdk.Model.CreateSmtpEmail
+# sib_api_v3_sdk.Model.SendSmtpEmailTo1
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MessageId** | **string** | Message ID of the transactional email sent | [optional] 
-**MessageIds** | **List&lt;string&gt;** |  | [optional] 
+**Email** | **string** | Email address of the recipient | 
+**Name** | **string** | Name of the recipient. **Maximum allowed characters are 70**. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

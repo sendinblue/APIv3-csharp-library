@@ -29,7 +29,7 @@ namespace sib_api_v3_sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.1.0";
+        public const string Version = "3.2.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -57,7 +57,7 @@ namespace sib_api_v3_sdk.Client
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
                     response.Content);
             }
-
+            
             return null;
         };
 
@@ -223,15 +223,12 @@ namespace sib_api_v3_sdk.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath
-        {
+        public virtual string BasePath {
             get { return _basePath; }
-            set
-            {
+            set {
                 _basePath = value;
                 // pass-through to ApiClient if it's set.
-                if (_apiClient != null)
-                {
+                if(_apiClient != null) {
                     _apiClient.RestClient.BaseUrl = new Uri(_basePath);
                 }
             }
@@ -277,9 +274,9 @@ namespace sib_api_v3_sdk.Client
         public string GetApiKeyWithPrefix(string apiKeyIdentifier)
         {
             var apiKeyValue = "";
-            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
+            ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
             var apiKeyPrefix = "";
-            if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
+            if (ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix))
                 return apiKeyPrefix + " " + apiKeyValue;
             else
                 return apiKeyValue;

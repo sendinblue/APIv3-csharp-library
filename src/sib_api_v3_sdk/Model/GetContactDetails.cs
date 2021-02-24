@@ -45,7 +45,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="listIds">listIds (required).</param>
         /// <param name="listUnsubscribed">listUnsubscribed.</param>
         /// <param name="attributes">Set of attributes of the contact (required).</param>
-        public GetContactDetails(string email = default(string), long? id = default(long?), bool? emailBlacklisted = default(bool?), bool? smsBlacklisted = default(bool?), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?), List<long?> listIds = default(List<long?>), List<long?> listUnsubscribed = default(List<long?>), Object attributes = default(Object))
+        public GetContactDetails(string email = default(string), long? id = default(long?), bool? emailBlacklisted = default(bool?), bool? smsBlacklisted = default(bool?), string createdAt = default(string), string modifiedAt = default(string), List<long?> listIds = default(List<long?>), List<long?> listUnsubscribed = default(List<long?>), Object attributes = default(Object))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -155,14 +155,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the contact (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Last modification UTC date-time of the contact (YYYY-MM-DDTHH:mm:ss.SSSZ)
         /// </summary>
         /// <value>Last modification UTC date-time of the contact (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="modifiedAt", EmitDefaultValue=false)]
-        public DateTime? ModifiedAt { get; set; }
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ListIds

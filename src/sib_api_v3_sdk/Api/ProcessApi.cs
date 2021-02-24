@@ -54,7 +54,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetProcesses</returns>
         GetProcesses GetProcesses (long? limit = null, long? offset = null, string sort = null);
 
@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetProcesses</returns>
         ApiResponse<GetProcesses> GetProcessesWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         #endregion Synchronous Operations
@@ -102,7 +102,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetProcesses</returns>
         System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null, string sort = null);
 
@@ -115,7 +115,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetProcesses)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null);
         #endregion Asynchronous Operations
@@ -379,7 +379,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetProcesses</returns>
         public GetProcesses GetProcesses (long? limit = null, long? offset = null, string sort = null)
         {
@@ -393,7 +393,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetProcesses</returns>
         public ApiResponse< GetProcesses > GetProcessesWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {
@@ -459,7 +459,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetProcesses</returns>
         public async System.Threading.Tasks.Task<GetProcesses> GetProcessesAsync (long? limit = null, long? offset = null, string sort = null)
         {
@@ -474,7 +474,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 10)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
-        /// <param name="sort">Sort the results in the ascending/descending order of record creation (optional, default to desc)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetProcesses)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetProcesses>> GetProcessesAsyncWithHttpInfo (long? limit = null, long? offset = null, string sort = null)
         {
