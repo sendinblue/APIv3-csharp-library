@@ -370,7 +370,7 @@ void (empty response body)
 
 <a name="getaggregatedsmtpreport"></a>
 # **GetAggregatedSmtpReport**
-> GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, int? days = null, string tag = null)
+> GetAggregatedReport GetAggregatedSmtpReport (string startDate = null, string endDate = null, long? days = null, string tag = null)
 
 Get your transactional email activity aggregated over a period of time
 
@@ -400,7 +400,7 @@ namespace Example
             var apiInstance = new TransactionalEmailsApi();
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional) 
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var tag = tag_example;  // string | Tag of the emails (optional) 
 
             try
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate | [optional] 
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **tag** | **string**| Tag of the emails | [optional] 
 
 ### Return type
@@ -510,7 +510,7 @@ This endpoint does not need any parameter.
 
 <a name="getemaileventreport"></a>
 # **GetEmailEventReport**
-> GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
+> GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
 
 Get all your transactional email activity (unaggregated events)
 
@@ -542,13 +542,13 @@ namespace Example
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional) 
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var email = email_example;  // string | Filter the report for a specific email addresses (optional) 
             var _event = _event_example;  // string | Filter the report for a specific event type (optional) 
             var tags = tags_example;  // string | Filter the report for tags (serialized and urlencoded array) (optional) 
             var messageId = messageId_example;  // string | Filter on a specific message id (optional) 
             var templateId = 789;  // long? | Filter on a specific template id (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -573,13 +573,13 @@ Name | Type | Description  | Notes
  **offset** | **long?**| Beginning point in the list to retrieve from. | [optional] [default to 0]
  **startDate** | **string**| Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate | [optional] 
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **email** | **string**| Filter the report for a specific email addresses | [optional] 
  **_event** | **string**| Filter the report for a specific event type | [optional] 
  **tags** | **string**| Filter the report for tags (serialized and urlencoded array) | [optional] 
  **messageId** | **string**| Filter on a specific message id | [optional] 
  **templateId** | **long?**| Filter on a specific template id | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 <a name="getsmtpreport"></a>
 # **GetSmtpReport**
-> GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, int? days = null, string tag = null, string sort = null)
+> GetReports GetSmtpReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string tag = null, string sort = null)
 
 Get your transactional email activity aggregated per day
 
@@ -630,9 +630,9 @@ namespace Example
             var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) (optional) 
-            var days = 56;  // int? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
+            var days = 789;  // long? | Number of days in the past including today (positive integer). Not compatible with 'startDate' and 'endDate' (optional) 
             var tag = tag_example;  // string | Tag of the emails (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -657,9 +657,9 @@ Name | Type | Description  | Notes
  **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
  **startDate** | **string**| Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD) | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD) | [optional] 
- **days** | **int?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
+ **days** | **long?**| Number of days in the past including today (positive integer). Not compatible with &#39;startDate&#39; and &#39;endDate&#39; | [optional] 
  **tag** | **string**| Tag of the emails | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -777,7 +777,7 @@ namespace Example
             var templateStatus = true;  // bool? | Filter on the status of the template. Active = true, inactive = false (optional) 
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document in the page (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -801,7 +801,7 @@ Name | Type | Description  | Notes
  **templateStatus** | **bool?**| Filter on the status of the template. Active &#x3D; true, inactive &#x3D; false | [optional] 
  **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document in the page | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -853,7 +853,7 @@ namespace Example
             var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
             var senders = new List<string>(); // List<string> | Comma separated list of emails of the senders from which contacts are blocked or unsubscribed (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -879,7 +879,7 @@ Name | Type | Description  | Notes
  **limit** | **long?**| Number of documents returned per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
  **senders** | [**List&lt;string&gt;**](string.md)| Comma separated list of emails of the senders from which contacts are blocked or unsubscribed | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -966,7 +966,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacemailslist"></a>
 # **GetTransacEmailsList**
-> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, DateTime? startDate = null, DateTime? endDate = null, string sort = null)
+> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
 
 Get the list of transactional emails on the basis of allowed filters
 
@@ -999,9 +999,9 @@ namespace Example
             var email = email_example;  // string | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. (optional) 
             var templateId = 789;  // long? | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. (optional) 
             var messageId = messageId_example;  // string | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. (optional) 
-            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
-            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -1025,9 +1025,9 @@ Name | Type | Description  | Notes
  **email** | **string**| Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent. | [optional] 
  **templateId** | **long?**| Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email. | [optional] 
  **messageId** | **string**| Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent. | [optional] 
- **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
- **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 

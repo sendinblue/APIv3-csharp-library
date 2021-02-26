@@ -107,7 +107,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="reason">Reason of bounce (only available if the event is hardbounce or softbounce).</param>
         /// <param name="reply">reply.</param>
         /// <param name="tag">Tag of the SMS which generated the event.</param>
-        public GetSmsEventReportEvents(string phoneNumber = default(string), DateTime? date = default(DateTime?), string messageId = default(string), EventEnum? _event = default(EventEnum?), string reason = default(string), string reply = default(string), string tag = default(string))
+        public GetSmsEventReportEvents(string phoneNumber = default(string), string date = default(string), string messageId = default(string), EventEnum? _event = default(EventEnum?), string reason = default(string), string reply = default(string), string tag = default(string))
         {
             this.PhoneNumber = phoneNumber;
             this.Date = date;
@@ -130,7 +130,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which the event has been generated</value>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// Message ID which generated the event

@@ -23,34 +23,48 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// CreateSmtpEmail
+    /// Email (required), along with name (optional), on which transactional mail recipients will be able to reply back. For example, {&quot;email&quot;:&quot;ann6533@example.com&quot;, &quot;name&quot;:&quot;Ann&quot;}
     /// </summary>
     [DataContract]
-    public partial class CreateSmtpEmail :  IEquatable<CreateSmtpEmail>
+    public partial class SendSmtpEmailReplyTo1 :  IEquatable<SendSmtpEmailReplyTo1>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateSmtpEmail" /> class.
+        /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo1" /> class.
         /// </summary>
-        /// <param name="messageId">Message ID of the transactional email sent.</param>
-        /// <param name="messageIds">messageIds.</param>
-        public CreateSmtpEmail(string messageId = default(string), List<string> messageIds = default(List<string>))
+        [JsonConstructorAttribute]
+        protected SendSmtpEmailReplyTo1() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SendSmtpEmailReplyTo1" /> class.
+        /// </summary>
+        /// <param name="email">Email address in reply to (required).</param>
+        /// <param name="name">Name in reply to. Maximum allowed characters are 70..</param>
+        public SendSmtpEmailReplyTo1(string email = default(string), string name = default(string))
         {
-            this.MessageId = messageId;
-            this.MessageIds = messageIds;
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new InvalidDataException("email is a required property for SendSmtpEmailReplyTo1 and cannot be null");
+            }
+            else
+            {
+                this.Email = email;
+            }
+            this.Name = name;
         }
         
         /// <summary>
-        /// Message ID of the transactional email sent
+        /// Email address in reply to
         /// </summary>
-        /// <value>Message ID of the transactional email sent</value>
-        [DataMember(Name="messageId", EmitDefaultValue=false)]
-        public string MessageId { get; set; }
+        /// <value>Email address in reply to</value>
+        [DataMember(Name="email", EmitDefaultValue=false)]
+        public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets MessageIds
+        /// Name in reply to. Maximum allowed characters are 70.
         /// </summary>
-        [DataMember(Name="messageIds", EmitDefaultValue=false)]
-        public List<string> MessageIds { get; set; }
+        /// <value>Name in reply to. Maximum allowed characters are 70.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -59,9 +73,9 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateSmtpEmail {\n");
-            sb.Append("  MessageId: ").Append(MessageId).Append("\n");
-            sb.Append("  MessageIds: ").Append(MessageIds).Append("\n");
+            sb.Append("class SendSmtpEmailReplyTo1 {\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -82,29 +96,29 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateSmtpEmail);
+            return this.Equals(input as SendSmtpEmailReplyTo1);
         }
 
         /// <summary>
-        /// Returns true if CreateSmtpEmail instances are equal
+        /// Returns true if SendSmtpEmailReplyTo1 instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateSmtpEmail to be compared</param>
+        /// <param name="input">Instance of SendSmtpEmailReplyTo1 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateSmtpEmail input)
+        public bool Equals(SendSmtpEmailReplyTo1 input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.MessageId == input.MessageId ||
-                    (this.MessageId != null &&
-                    this.MessageId.Equals(input.MessageId))
+                    this.Email == input.Email ||
+                    (this.Email != null &&
+                    this.Email.Equals(input.Email))
                 ) && 
                 (
-                    this.MessageIds == input.MessageIds ||
-                    this.MessageIds != null &&
-                    this.MessageIds.SequenceEqual(input.MessageIds)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -117,10 +131,10 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MessageId != null)
-                    hashCode = hashCode * 59 + this.MessageId.GetHashCode();
-                if (this.MessageIds != null)
-                    hashCode = hashCode * 59 + this.MessageIds.GetHashCode();
+                if (this.Email != null)
+                    hashCode = hashCode * 59 + this.Email.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
             }
         }

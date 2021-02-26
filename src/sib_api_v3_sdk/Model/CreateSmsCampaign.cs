@@ -41,7 +41,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="content">Content of the message. The maximum characters used per SMS is 160, if used more than that, it will be counted as more than one SMS (required).</param>
         /// <param name="recipients">recipients.</param>
         /// <param name="scheduledAt">UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result..</param>
-        public CreateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), DateTime? scheduledAt = default(DateTime?))
+        public CreateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), string scheduledAt = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -106,7 +106,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.</value>
         [DataMember(Name="scheduledAt", EmitDefaultValue=false)]
-        public DateTime? ScheduledAt { get; set; }
+        public string ScheduledAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

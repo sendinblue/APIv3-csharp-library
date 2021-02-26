@@ -140,7 +140,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="link">The link which is sent to the user (only available if the event is requests or opened or clicks).</param>
         /// <param name="from">Sender email from which the emails are sent.</param>
         /// <param name="templateId">ID of the template (only available if the email is template based).</param>
-        public GetEmailEventReportEvents(string email = default(string), DateTime? date = default(DateTime?), string subject = default(string), string messageId = default(string), EventEnum _event = default(EventEnum), string reason = default(string), string tag = default(string), string ip = default(string), string link = default(string), string from = default(string), long? templateId = default(long?))
+        public GetEmailEventReportEvents(string email = default(string), string date = default(string), string subject = default(string), string messageId = default(string), EventEnum _event = default(EventEnum), string reason = default(string), string tag = default(string), string ip = default(string), string link = default(string), string from = default(string), long? templateId = default(long?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -199,7 +199,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which the event has been generated</value>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// Subject of the event

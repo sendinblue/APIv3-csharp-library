@@ -86,7 +86,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="ipWarmupEnable">Available for dedicated ip clients. Set this to true if you wish to warm up your ip. (default to false).</param>
         /// <param name="initialQuota">Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000..</param>
         /// <param name="increaseRate">Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%..</param>
-        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), DateTime? scheduledAt = default(DateTime?), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?))
+        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), string scheduledAt = default(string), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?))
         {
             this.Tag = tag;
             this.Sender = sender;
@@ -189,7 +189,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part).</value>
         [DataMember(Name="scheduledAt", EmitDefaultValue=false)]
-        public DateTime? ScheduledAt { get; set; }
+        public string ScheduledAt { get; set; }
 
         /// <summary>
         /// Subject of the campaign

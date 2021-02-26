@@ -38,7 +38,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="name">Name of the event that occurred on the sent email (required).</param>
         /// <param name="time">Time at which the event occurred (required).</param>
-        public GetTransacEmailContentEvents(string name = default(string), DateTime? time = default(DateTime?))
+        public GetTransacEmailContentEvents(string name = default(string), string time = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,7 +72,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Time at which the event occurred</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
-        public DateTime? Time { get; set; }
+        public string Time { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

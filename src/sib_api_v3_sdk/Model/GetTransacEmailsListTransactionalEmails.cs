@@ -44,7 +44,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="date">Date on which transactional email was sent (required).</param>
         /// <param name="from">Email address of the sender from which the email was sent.</param>
         /// <param name="tags">Tags used for your email.</param>
-        public GetTransacEmailsListTransactionalEmails(string email = default(string), string subject = default(string), long? templateId = default(long?), string messageId = default(string), string uuid = default(string), DateTime? date = default(DateTime?), string from = default(string), List<string> tags = default(List<string>))
+        public GetTransacEmailsListTransactionalEmails(string email = default(string), string subject = default(string), long? templateId = default(long?), string messageId = default(string), string uuid = default(string), string date = default(string), string from = default(string), List<string> tags = default(List<string>))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -136,7 +136,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Date on which transactional email was sent</value>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// Email address of the sender from which the email was sent

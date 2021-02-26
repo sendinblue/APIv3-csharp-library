@@ -40,7 +40,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="senderEmail">Sender email address of the blocked or unsubscribed contact (required).</param>
         /// <param name="reason">reason (required).</param>
         /// <param name="blockedAt">Date when the contact was blocked or unsubscribed on (required).</param>
-        public GetTransacBlockedContactsContacts(string email = default(string), string senderEmail = default(string), GetTransacBlockedContactsReason reason = default(GetTransacBlockedContactsReason), DateTime? blockedAt = default(DateTime?))
+        public GetTransacBlockedContactsContacts(string email = default(string), string senderEmail = default(string), GetTransacBlockedContactsReason reason = default(GetTransacBlockedContactsReason), string blockedAt = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -105,7 +105,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Date when the contact was blocked or unsubscribed on</value>
         [DataMember(Name="blockedAt", EmitDefaultValue=false)]
-        public DateTime? BlockedAt { get; set; }
+        public string BlockedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

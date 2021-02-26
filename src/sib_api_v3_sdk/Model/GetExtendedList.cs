@@ -44,7 +44,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="createdAt">Creation UTC date-time of the list (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="campaignStats">campaignStats.</param>
         /// <param name="dynamicList">Status telling if the list is dynamic or not (true&#x3D;dynamic, false&#x3D;not dynamic).</param>
-        public GetExtendedList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?), long? folderId = default(long?), DateTime? createdAt = default(DateTime?), List<GetExtendedListCampaignStats> campaignStats = default(List<GetExtendedListCampaignStats>), bool? dynamicList = default(bool?))
+        public GetExtendedList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?), long? folderId = default(long?), string createdAt = default(string), List<GetExtendedListCampaignStats> campaignStats = default(List<GetExtendedListCampaignStats>), bool? dynamicList = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -144,7 +144,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the list (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets CampaignStats

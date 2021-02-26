@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 
 <a name="getcontactstats"></a>
 # **GetContactStats**
-> GetContactCampaignStats GetContactStats (string identifier, DateTime? startDate = null, DateTime? endDate = null)
+> GetContactCampaignStats GetContactStats (string identifier, string startDate = null, string endDate = null)
 
 Get email campaigns' statistics for a contact
 
@@ -878,8 +878,8 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact
-            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
-            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
+            var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
+            var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
 
             try
             {
@@ -901,8 +901,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string**| Email (urlencoded) OR ID of the contact | 
- **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
- **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
+ **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
+ **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
 
 ### Return type
 
@@ -921,7 +921,7 @@ Name | Type | Description  | Notes
 
 <a name="getcontacts"></a>
 # **GetContacts**
-> GetContacts GetContacts (long? limit = null, long? offset = null, DateTime? modifiedSince = null, string sort = null)
+> GetContacts GetContacts (long? limit = null, long? offset = null, string modifiedSince = null, string sort = null)
 
 Get all the contacts
 
@@ -951,8 +951,8 @@ namespace Example
             var apiInstance = new ContactsApi();
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var modifiedSince = 2013-10-20T19:20:30+01:00;  // DateTime? | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional) 
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var modifiedSince = modifiedSince_example;  // string | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -975,8 +975,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number of documents per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **modifiedSince** | **DateTime?**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **modifiedSince** | **string**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -995,7 +995,7 @@ Name | Type | Description  | Notes
 
 <a name="getcontactsfromlist"></a>
 # **GetContactsFromList**
-> GetContacts GetContactsFromList (long? listId, DateTime? modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
+> GetContacts GetContactsFromList (long? listId, string modifiedSince = null, long? limit = null, long? offset = null, string sort = null)
 
 Get contacts in a list
 
@@ -1024,10 +1024,10 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var listId = 789;  // long? | Id of the list
-            var modifiedSince = 2013-10-20T19:20:30+01:00;  // DateTime? | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional) 
+            var modifiedSince = modifiedSince_example;  // string | Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. (optional) 
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -1049,10 +1049,10 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **long?**| Id of the list | 
- **modifiedSince** | **DateTime?**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
+ **modifiedSince** | **string**| Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. | [optional] 
  **limit** | **long?**| Number of documents per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -1170,7 +1170,7 @@ namespace Example
             var folderId = 789;  // long? | Id of the folder
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -1194,7 +1194,7 @@ Name | Type | Description  | Notes
  **folderId** | **long?**| Id of the folder | 
  **limit** | **long?**| Number of documents per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -1243,7 +1243,7 @@ namespace Example
             var apiInstance = new ContactsApi();
             var limit = 789;  // long? | Number of documents per page (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -1266,7 +1266,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number of documents per page | [default to 10]
  **offset** | **long?**| Index of the first document of the page | [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 
@@ -1383,7 +1383,7 @@ namespace Example
             var apiInstance = new ContactsApi();
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 10)
             var offset = 789;  // long? | Index of the first document of the page (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -1406,7 +1406,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number of documents per page | [optional] [default to 10]
  **offset** | **long?**| Index of the first document of the page | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 

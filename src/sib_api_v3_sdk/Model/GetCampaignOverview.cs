@@ -127,7 +127,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="winnerCriteria">Criteria for the winning version. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60;.</param>
         /// <param name="winnerDelay">The duration of the test in hours at the end of which the winning version will be sent. Only available if &#x60;abTesting&#x60; flag of the campaign is &#x60;true&#x60;.</param>
         /// <param name="sendAtBestTime">It is true if you have chosen to send your campaign at best time, otherwise it is false.</param>
-        public GetCampaignOverview(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), DateTime? scheduledAt = default(DateTime?), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?))
+        public GetCampaignOverview(long? id = default(long?), string name = default(string), string subject = default(string), TypeEnum type = default(TypeEnum), StatusEnum status = default(StatusEnum), string scheduledAt = default(string), bool? abTesting = default(bool?), string subjectA = default(string), string subjectB = default(string), int? splitRule = default(int?), string winnerCriteria = default(string), int? winnerDelay = default(int?), bool? sendAtBestTime = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -204,7 +204,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="scheduledAt", EmitDefaultValue=false)]
-        public DateTime? ScheduledAt { get; set; }
+        public string ScheduledAt { get; set; }
 
         /// <summary>
         /// Status of A/B Test for the campaign. abTesting &#x3D; false means it is disabled, &amp; abTesting &#x3D; true means it is enabled.

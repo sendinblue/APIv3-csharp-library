@@ -108,7 +108,7 @@ namespace Example
             var apiInstance = new ProcessApi();
             var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 10)
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
-            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation (optional)  (default to desc)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
             try
             {
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **long?**| Number limitation for the result returned | [optional] [default to 10]
  **offset** | **long?**| Beginning point in the list to retrieve from. | [optional] [default to 0]
- **sort** | **string**| Sort the results in the ascending/descending order of record creation | [optional] [default to desc]
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
 ### Return type
 

@@ -70,7 +70,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="type">Type of webhook (marketing or transac) (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
-        public GetWebhook(string url = default(string), long? id = default(long?), string description = default(string), List<string> events = default(List<string>), TypeEnum type = default(TypeEnum), DateTime? createdAt = default(DateTime?), DateTime? modifiedAt = default(DateTime?))
+        public GetWebhook(string url = default(string), long? id = default(long?), string description = default(string), List<string> events = default(List<string>), TypeEnum type = default(TypeEnum), string createdAt = default(string), string modifiedAt = default(string))
         {
             // to ensure "url" is required (not null)
             if (url == null)
@@ -170,14 +170,14 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)
         /// </summary>
         /// <value>Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)</value>
         [DataMember(Name="modifiedAt", EmitDefaultValue=false)]
-        public DateTime? ModifiedAt { get; set; }
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

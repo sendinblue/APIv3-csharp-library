@@ -43,7 +43,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="events">Series of events which occurred on the transactional email (required).</param>
         /// <param name="body">Actual content of the transactional email that has been sent (required).</param>
         /// <param name="attachmentCount">Count of the attachments that were sent in the email (required).</param>
-        public GetTransacEmailContent(string email = default(string), string subject = default(string), long? templateId = default(long?), DateTime? date = default(DateTime?), List<GetTransacEmailContentEvents> events = default(List<GetTransacEmailContentEvents>), string body = default(string), long? attachmentCount = default(long?))
+        public GetTransacEmailContent(string email = default(string), string subject = default(string), long? templateId = default(long?), string date = default(string), List<GetTransacEmailContentEvents> events = default(List<GetTransacEmailContentEvents>), string body = default(string), long? attachmentCount = default(long?))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -128,7 +128,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <value>Date on which transactional email was sent</value>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// Series of events which occurred on the transactional email
