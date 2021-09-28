@@ -33,20 +33,31 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         [JsonConstructorAttribute]
         protected CreateEmailCampaignSender() { }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateEmailCampaignSender" /> class.
+        /// Initializes a new instance of the <see cref="CreateEmailCampaignSender" /> class on the basis of sender id
+        /// </summary>
+        /// <param name="id">Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id instead of email (required if email is not specified).</param>
+        public CreateEmailCampaignSender(long id = default(long?))
+        {
+            if (id == null)
+                throw new InvalidDataException("id must be specified. Use alternative constructor if you want to specify the sender by email and optionally, name");
+
+            this.Id = id;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateEmailCampaignSender" /> class by specifying email and name (optional)
         /// </summary>
         /// <param name="name">Sender Name.</param>
-        /// <param name="email">Sender email (required if id is not specified).</param>
-        /// <param name="id">Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id instead of email (required if email is not specified).</param>
-        public CreateEmailCampaignSender(string name = default(string), string email = default(string), long? id = default(long?))
+        /// <param name="email">Sender email (required).</param>
+        public CreateEmailCampaignSender(string name = default(string), string email = default(string))
         {
-            if ((id == null && email == null) || (id != null && email != null))
-                throw new InvalidDataException("Either id or email must be specified for CreateEmailCampaignSender, but not both");
+            if (email == null)
+                throw new InvalidDataException("email must be specified. Use alternative constructor if you want to specify the sender by sender id.");
 
             this.Email = email;
             this.Name = name;
-            this.Id = id;
         }
         
         /// <summary>
