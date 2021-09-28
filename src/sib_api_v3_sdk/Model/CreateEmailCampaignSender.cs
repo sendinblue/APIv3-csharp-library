@@ -41,15 +41,10 @@ namespace sib_api_v3_sdk.Model
         /// <param name="id">Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)..</param>
         public CreateEmailCampaignSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
-            // to ensure "email" is required (not null)
-            if (email == null)
-            {
-                throw new InvalidDataException("email is a required property for CreateEmailCampaignSender and cannot be null");
-            }
-            else
-            {
-                this.Email = email;
-            }
+            if ((id == null && email == null) || (id != null && email != null))
+                throw new InvalidDataException("Either id or email must be specified for CreateEmailCampaignSender, but not both");
+
+            this.Email = email;
             this.Name = name;
             this.Id = id;
         }
