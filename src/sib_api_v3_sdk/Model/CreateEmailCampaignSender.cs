@@ -37,8 +37,8 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="CreateEmailCampaignSender" /> class.
         /// </summary>
         /// <param name="name">Sender Name.</param>
-        /// <param name="email">Sender email (required).</param>
-        /// <param name="id">Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)..</param>
+        /// <param name="email">Sender email (required if id is not specified).</param>
+        /// <param name="id">Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id instead of email (required if email is not specified).</param>
         public CreateEmailCampaignSender(string name = default(string), string email = default(string), long? id = default(long?))
         {
             if ((id == null && email == null) || (id != null && email != null))
