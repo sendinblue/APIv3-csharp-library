@@ -112,7 +112,13 @@ namespace sib_api_v3_sdk.Model
             /// Enum Error for value: error
             /// </summary>
             [EnumMember(Value = "error")]
-            Error = 13
+            Error = 13,
+            
+            /// <summary>
+            /// Enum LoadedByProxy for value: loadedByProxy
+            /// </summary>
+            [EnumMember(Value = "loadedByProxy")]
+            LoadedByProxy = 14
         }
 
         /// <summary>

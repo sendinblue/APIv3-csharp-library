@@ -39,7 +39,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="opened">opened.</param>
         /// <param name="clicked">clicked.</param>
         /// <param name="transacAttributes">transacAttributes.</param>
-        public GetContactCampaignStats(List<GetExtendedContactDetailsStatisticsMessagesSent> messagesSent = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> hardBounces = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> softBounces = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> complaints = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), GetContactCampaignStatsUnsubscriptions unsubscriptions = default(GetContactCampaignStatsUnsubscriptions), List<GetContactCampaignStatsOpened> opened = default(List<GetContactCampaignStatsOpened>), List<GetContactCampaignStatsClicked> clicked = default(List<GetContactCampaignStatsClicked>), List<GetContactCampaignStatsTransacAttributes> transacAttributes = default(List<GetContactCampaignStatsTransacAttributes>))
+        /// <param name="delivered">delivered.</param>
+        public GetContactCampaignStats(List<GetExtendedContactDetailsStatisticsMessagesSent> messagesSent = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> hardBounces = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> softBounces = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), List<GetExtendedContactDetailsStatisticsMessagesSent> complaints = default(List<GetExtendedContactDetailsStatisticsMessagesSent>), GetContactCampaignStatsUnsubscriptions unsubscriptions = default(GetContactCampaignStatsUnsubscriptions), List<GetContactCampaignStatsOpened> opened = default(List<GetContactCampaignStatsOpened>), List<GetContactCampaignStatsClicked> clicked = default(List<GetContactCampaignStatsClicked>), List<GetContactCampaignStatsTransacAttributes> transacAttributes = default(List<GetContactCampaignStatsTransacAttributes>), List<GetExtendedContactDetailsStatisticsMessagesSent> delivered = default(List<GetExtendedContactDetailsStatisticsMessagesSent>))
         {
             this.MessagesSent = messagesSent;
             this.HardBounces = hardBounces;
@@ -49,6 +50,7 @@ namespace sib_api_v3_sdk.Model
             this.Opened = opened;
             this.Clicked = clicked;
             this.TransacAttributes = transacAttributes;
+            this.Delivered = delivered;
         }
         
         /// <summary>
@@ -100,6 +102,12 @@ namespace sib_api_v3_sdk.Model
         public List<GetContactCampaignStatsTransacAttributes> TransacAttributes { get; set; }
 
         /// <summary>
+        /// Gets or Sets Delivered
+        /// </summary>
+        [DataMember(Name="delivered", EmitDefaultValue=false)]
+        public List<GetExtendedContactDetailsStatisticsMessagesSent> Delivered { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -115,6 +123,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Opened: ").Append(Opened).Append("\n");
             sb.Append("  Clicked: ").Append(Clicked).Append("\n");
             sb.Append("  TransacAttributes: ").Append(TransacAttributes).Append("\n");
+            sb.Append("  Delivered: ").Append(Delivered).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -188,6 +197,11 @@ namespace sib_api_v3_sdk.Model
                     this.TransacAttributes == input.TransacAttributes ||
                     this.TransacAttributes != null &&
                     this.TransacAttributes.SequenceEqual(input.TransacAttributes)
+                ) && 
+                (
+                    this.Delivered == input.Delivered ||
+                    this.Delivered != null &&
+                    this.Delivered.SequenceEqual(input.Delivered)
                 );
         }
 
@@ -216,6 +230,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Clicked.GetHashCode();
                 if (this.TransacAttributes != null)
                     hashCode = hashCode * 59 + this.TransacAttributes.GetHashCode();
+                if (this.Delivered != null)
+                    hashCode = hashCode * 59 + this.Delivered.GetHashCode();
                 return hashCode;
             }
         }

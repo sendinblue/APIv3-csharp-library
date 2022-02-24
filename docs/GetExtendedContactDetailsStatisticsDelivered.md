@@ -1,9 +1,10 @@
-# sib_api_v3_sdk.Model.SendTemplateEmail
+# sib_api_v3_sdk.Model.GetExtendedContactDetailsStatisticsDelivered
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MessageId** | **string** | Message ID of the template Email sent | 
+**CampaignId** | **long?** | ID of the campaign which generated the event | 
+**EventTime** | **string** | UTC date-time of the event | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

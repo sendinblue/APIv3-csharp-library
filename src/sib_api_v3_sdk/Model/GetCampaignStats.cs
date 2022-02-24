@@ -45,11 +45,12 @@ namespace sib_api_v3_sdk.Model
         /// <param name="softBounces">Number of softbounce for the campaign (required).</param>
         /// <param name="hardBounces">Number of harbounce for the campaign (required).</param>
         /// <param name="uniqueViews">Number of unique openings for the campaign (required).</param>
+        /// <param name="trackableViews">Recipients without any privacy protection option enabled in their email client (required).</param>
         /// <param name="unsubscriptions">Number of unsubscription for the campaign (required).</param>
         /// <param name="viewed">Number of openings for the campaign (required).</param>
         /// <param name="deferred">Number of deferred emails for the campaign.</param>
         /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
-        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?), long? returnBounce = default(long?))
+        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? trackableViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?), long? returnBounce = default(long?))
         {
             // to ensure "uniqueClicks" is required (not null)
             if (uniqueClicks == null)
@@ -122,6 +123,15 @@ namespace sib_api_v3_sdk.Model
             else
             {
                 this.UniqueViews = uniqueViews;
+            }
+            // to ensure "trackableViews" is required (not null)
+            if (trackableViews == null)
+            {
+                throw new InvalidDataException("trackableViews is a required property for GetCampaignStats and cannot be null");
+            }
+            else
+            {
+                this.TrackableViews = trackableViews;
             }
             // to ensure "unsubscriptions" is required (not null)
             if (unsubscriptions == null)
@@ -210,6 +220,13 @@ namespace sib_api_v3_sdk.Model
         public long? UniqueViews { get; set; }
 
         /// <summary>
+        /// Recipients without any privacy protection option enabled in their email client
+        /// </summary>
+        /// <value>Recipients without any privacy protection option enabled in their email client</value>
+        [DataMember(Name="trackableViews", EmitDefaultValue=false)]
+        public long? TrackableViews { get; set; }
+
+        /// <summary>
         /// Number of unsubscription for the campaign
         /// </summary>
         /// <value>Number of unsubscription for the campaign</value>
@@ -254,6 +271,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  SoftBounces: ").Append(SoftBounces).Append("\n");
             sb.Append("  HardBounces: ").Append(HardBounces).Append("\n");
             sb.Append("  UniqueViews: ").Append(UniqueViews).Append("\n");
+            sb.Append("  TrackableViews: ").Append(TrackableViews).Append("\n");
             sb.Append("  Unsubscriptions: ").Append(Unsubscriptions).Append("\n");
             sb.Append("  Viewed: ").Append(Viewed).Append("\n");
             sb.Append("  Deferred: ").Append(Deferred).Append("\n");
@@ -338,6 +356,11 @@ namespace sib_api_v3_sdk.Model
                     this.UniqueViews.Equals(input.UniqueViews))
                 ) && 
                 (
+                    this.TrackableViews == input.TrackableViews ||
+                    (this.TrackableViews != null &&
+                    this.TrackableViews.Equals(input.TrackableViews))
+                ) && 
+                (
                     this.Unsubscriptions == input.Unsubscriptions ||
                     (this.Unsubscriptions != null &&
                     this.Unsubscriptions.Equals(input.Unsubscriptions))
@@ -386,6 +409,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.HardBounces.GetHashCode();
                 if (this.UniqueViews != null)
                     hashCode = hashCode * 59 + this.UniqueViews.GetHashCode();
+                if (this.TrackableViews != null)
+                    hashCode = hashCode * 59 + this.TrackableViews.GetHashCode();
                 if (this.Unsubscriptions != null)
                     hashCode = hashCode * 59 + this.Unsubscriptions.GetHashCode();
                 if (this.Viewed != null)

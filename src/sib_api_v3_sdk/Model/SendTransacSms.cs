@@ -69,7 +69,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="type">Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc. (default to TypeEnum.Transactional).</param>
         /// <param name="tag">Tag of the message.</param>
         /// <param name="webUrl">Webhook to call for each event triggered by the message (delivered etc.).</param>
-        public SendTransacSms(string sender = default(string), string recipient = default(string), string content = default(string), TypeEnum? type = TypeEnum.Transactional, string tag = default(string), string webUrl = default(string))
+        /// <param name="unicodeEnabled">Format of the message. It indicates whether the content should be treated as unicode or not. (default to false).</param>
+        public SendTransacSms(string sender = default(string), string recipient = default(string), string content = default(string), TypeEnum? type = TypeEnum.Transactional, string tag = default(string), string webUrl = default(string), bool? unicodeEnabled = false)
         {
             // to ensure "sender" is required (not null)
             if (sender == null)
@@ -109,6 +110,15 @@ namespace sib_api_v3_sdk.Model
             }
             this.Tag = tag;
             this.WebUrl = webUrl;
+            // use default value if no "unicodeEnabled" provided
+            if (unicodeEnabled == null)
+            {
+                this.UnicodeEnabled = false;
+            }
+            else
+            {
+                this.UnicodeEnabled = unicodeEnabled;
+            }
         }
         
         /// <summary>
@@ -148,6 +158,13 @@ namespace sib_api_v3_sdk.Model
         public string WebUrl { get; set; }
 
         /// <summary>
+        /// Format of the message. It indicates whether the content should be treated as unicode or not.
+        /// </summary>
+        /// <value>Format of the message. It indicates whether the content should be treated as unicode or not.</value>
+        [DataMember(Name="unicodeEnabled", EmitDefaultValue=false)]
+        public bool? UnicodeEnabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +178,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  WebUrl: ").Append(WebUrl).Append("\n");
+            sb.Append("  UnicodeEnabled: ").Append(UnicodeEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -224,6 +242,11 @@ namespace sib_api_v3_sdk.Model
                     this.WebUrl == input.WebUrl ||
                     (this.WebUrl != null &&
                     this.WebUrl.Equals(input.WebUrl))
+                ) && 
+                (
+                    this.UnicodeEnabled == input.UnicodeEnabled ||
+                    (this.UnicodeEnabled != null &&
+                    this.UnicodeEnabled.Equals(input.UnicodeEnabled))
                 );
         }
 
@@ -248,6 +271,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.WebUrl != null)
                     hashCode = hashCode * 59 + this.WebUrl.GetHashCode();
+                if (this.UnicodeEnabled != null)
+                    hashCode = hashCode * 59 + this.UnicodeEnabled.GetHashCode();
                 return hashCode;
             }
         }

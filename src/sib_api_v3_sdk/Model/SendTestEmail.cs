@@ -31,16 +31,16 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SendTestEmail" /> class.
         /// </summary>
-        /// <param name="emailTo">List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list..</param>
+        /// <param name="emailTo">List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list. You can not send more than 50 test emails per day..</param>
         public SendTestEmail(List<string> emailTo = default(List<string>))
         {
             this.EmailTo = emailTo;
         }
         
         /// <summary>
-        /// List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list.
+        /// List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list. You can not send more than 50 test emails per day.
         /// </summary>
-        /// <value>List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list.</value>
+        /// <value>List of the email addresses of the recipients whom you wish to send the test mail. If left empty, the test mail will be sent to your entire test list. You can not send more than 50 test emails per day.</value>
         [DataMember(Name="emailTo", EmitDefaultValue=false)]
         public List<string> EmailTo { get; set; }
 

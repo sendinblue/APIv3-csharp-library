@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the list | 
 **TotalBlacklisted** | **long?** | Number of blacklisted contacts in the list | 
 **TotalSubscribers** | **long?** | Number of contacts in the list | 
+**UniqueSubscribers** | **long?** | Number of unique contacts in the list | 
 **FolderId** | **long?** | ID of the folder | 
 **CreatedAt** | **string** | Creation UTC date-time of the list (YYYY-MM-DDTHH:mm:ss.SSSZ) | 
 **CampaignStats** | [**List&lt;GetExtendedListCampaignStats&gt;**](GetExtendedListCampaignStats.md) |  | [optional] 

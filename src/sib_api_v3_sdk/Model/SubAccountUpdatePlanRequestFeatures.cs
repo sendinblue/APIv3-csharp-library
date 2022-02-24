@@ -23,39 +23,44 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// SendTemplateEmail
+    /// Features details to update
     /// </summary>
     [DataContract]
-    public partial class SendTemplateEmail :  IEquatable<SendTemplateEmail>
+    public partial class SubAccountUpdatePlanRequestFeatures :  IEquatable<SubAccountUpdatePlanRequestFeatures>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendTemplateEmail" /> class.
+        /// Initializes a new instance of the <see cref="SubAccountUpdatePlanRequestFeatures" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SendTemplateEmail() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SendTemplateEmail" /> class.
-        /// </summary>
-        /// <param name="messageId">Message ID of the template Email sent (required).</param>
-        public SendTemplateEmail(string messageId = default(string))
+        /// <param name="users">Number of multi-users.</param>
+        /// <param name="landingPage">Number of landing pages.</param>
+        /// <param name="inbox">Number of inboxes.</param>
+        public SubAccountUpdatePlanRequestFeatures(long? users = default(long?), long? landingPage = default(long?), long? inbox = default(long?))
         {
-            // to ensure "messageId" is required (not null)
-            if (messageId == null)
-            {
-                throw new InvalidDataException("messageId is a required property for SendTemplateEmail and cannot be null");
-            }
-            else
-            {
-                this.MessageId = messageId;
-            }
+            this.Users = users;
+            this.LandingPage = landingPage;
+            this.Inbox = inbox;
         }
         
         /// <summary>
-        /// Message ID of the template Email sent
+        /// Number of multi-users
         /// </summary>
-        /// <value>Message ID of the template Email sent</value>
-        [DataMember(Name="messageId", EmitDefaultValue=false)]
-        public string MessageId { get; set; }
+        /// <value>Number of multi-users</value>
+        [DataMember(Name="users", EmitDefaultValue=false)]
+        public long? Users { get; set; }
+
+        /// <summary>
+        /// Number of landing pages
+        /// </summary>
+        /// <value>Number of landing pages</value>
+        [DataMember(Name="landingPage", EmitDefaultValue=false)]
+        public long? LandingPage { get; set; }
+
+        /// <summary>
+        /// Number of inboxes
+        /// </summary>
+        /// <value>Number of inboxes</value>
+        [DataMember(Name="inbox", EmitDefaultValue=false)]
+        public long? Inbox { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,8 +69,10 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SendTemplateEmail {\n");
-            sb.Append("  MessageId: ").Append(MessageId).Append("\n");
+            sb.Append("class SubAccountUpdatePlanRequestFeatures {\n");
+            sb.Append("  Users: ").Append(Users).Append("\n");
+            sb.Append("  LandingPage: ").Append(LandingPage).Append("\n");
+            sb.Append("  Inbox: ").Append(Inbox).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,24 +93,34 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendTemplateEmail);
+            return this.Equals(input as SubAccountUpdatePlanRequestFeatures);
         }
 
         /// <summary>
-        /// Returns true if SendTemplateEmail instances are equal
+        /// Returns true if SubAccountUpdatePlanRequestFeatures instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendTemplateEmail to be compared</param>
+        /// <param name="input">Instance of SubAccountUpdatePlanRequestFeatures to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendTemplateEmail input)
+        public bool Equals(SubAccountUpdatePlanRequestFeatures input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.MessageId == input.MessageId ||
-                    (this.MessageId != null &&
-                    this.MessageId.Equals(input.MessageId))
+                    this.Users == input.Users ||
+                    (this.Users != null &&
+                    this.Users.Equals(input.Users))
+                ) && 
+                (
+                    this.LandingPage == input.LandingPage ||
+                    (this.LandingPage != null &&
+                    this.LandingPage.Equals(input.LandingPage))
+                ) && 
+                (
+                    this.Inbox == input.Inbox ||
+                    (this.Inbox != null &&
+                    this.Inbox.Equals(input.Inbox))
                 );
         }
 
@@ -116,8 +133,12 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MessageId != null)
-                    hashCode = hashCode * 59 + this.MessageId.GetHashCode();
+                if (this.Users != null)
+                    hashCode = hashCode * 59 + this.Users.GetHashCode();
+                if (this.LandingPage != null)
+                    hashCode = hashCode * 59 + this.LandingPage.GetHashCode();
+                if (this.Inbox != null)
+                    hashCode = hashCode * 59 + this.Inbox.GetHashCode();
                 return hashCode;
             }
         }

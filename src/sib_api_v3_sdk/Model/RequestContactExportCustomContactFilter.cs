@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Only one of the two filter options (contactFilter or customContactFilter) can be passed in the request. Set the filter for the contacts to be exported.
+    /// Set the filter for the contacts to be exported.
     /// </summary>
     [DataContract]
     public partial class RequestContactExportCustomContactFilter :  IEquatable<RequestContactExportCustomContactFilter>

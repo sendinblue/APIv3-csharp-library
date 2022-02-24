@@ -31,8 +31,9 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestContactImport" /> class.
         /// </summary>
-        /// <param name="fileUrl">Mandatory if fileBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv.</param>
-        /// <param name="fileBody">Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files..</param>
+        /// <param name="fileUrl">Mandatory if fileBody or jsonBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv, .json.</param>
+        /// <param name="fileBody">Mandatory if fileUrl and jsonBody is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files..</param>
+        /// <param name="jsonBody">**Mandatory if fileUrl and fileBody is not defined.** JSON content to be imported. **Maximum allowed json body size is 10MB** . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of json body size while parsing. Please use fileUrl instead to import bigger files. .</param>
         /// <param name="listIds">Mandatory if newList is not defined. Ids of the lists in which the contacts shall be imported. For example, [2, 4, 7]..</param>
         /// <param name="notifyUrl">URL that will be called once the import process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479.</param>
         /// <param name="newList">newList.</param>
@@ -40,10 +41,11 @@ namespace sib_api_v3_sdk.Model
         /// <param name="smsBlacklist">To blacklist all the contacts for sms (default to false).</param>
         /// <param name="updateExistingContacts">To facilitate the choice to update the existing contacts (default to true).</param>
         /// <param name="emptyContactsAttributes">To facilitate the choice to erase any attribute of the existing contacts with empty value. emptyContactsAttributes &#x3D; true means the empty fields in your import will erase any attribute that currently contain data in SendinBlue, &amp; emptyContactsAttributes &#x3D; false means the empty fields will not affect your existing data ( only available if &#x60;updateExistingContacts&#x60; set to true ) (default to false).</param>
-        public RequestContactImport(string fileUrl = default(string), string fileBody = default(string), List<long?> listIds = default(List<long?>), string notifyUrl = default(string), RequestContactImportNewList newList = default(RequestContactImportNewList), bool? emailBlacklist = false, bool? smsBlacklist = false, bool? updateExistingContacts = true, bool? emptyContactsAttributes = false)
+        public RequestContactImport(string fileUrl = default(string), string fileBody = default(string), List<Dictionary<string, Object>> jsonBody = default(List<Dictionary<string, Object>>), List<long?> listIds = default(List<long?>), string notifyUrl = default(string), RequestContactImportNewList newList = default(RequestContactImportNewList), bool? emailBlacklist = false, bool? smsBlacklist = false, bool? updateExistingContacts = true, bool? emptyContactsAttributes = false)
         {
             this.FileUrl = fileUrl;
             this.FileBody = fileBody;
+            this.JsonBody = jsonBody;
             this.ListIds = listIds;
             this.NotifyUrl = notifyUrl;
             this.NewList = newList;
@@ -86,18 +88,25 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Mandatory if fileBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv
+        /// Mandatory if fileBody or jsonBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv, .json
         /// </summary>
-        /// <value>Mandatory if fileBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv</value>
+        /// <value>Mandatory if fileBody or jsonBody is not defined. URL of the file to be imported (no local file). Possible file formats: .txt, .csv, .json</value>
         [DataMember(Name="fileUrl", EmitDefaultValue=false)]
         public string FileUrl { get; set; }
 
         /// <summary>
-        /// Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.
+        /// Mandatory if fileUrl and jsonBody is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.
         /// </summary>
-        /// <value>Mandatory if fileUrl is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.</value>
+        /// <value>Mandatory if fileUrl and jsonBody is not defined. CSV content to be imported. Use semicolon to separate multiple attributes. Maximum allowed file body size is 10MB . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of file body size while parsing. Please use fileUrl instead to import bigger files.</value>
         [DataMember(Name="fileBody", EmitDefaultValue=false)]
         public string FileBody { get; set; }
+
+        /// <summary>
+        /// **Mandatory if fileUrl and fileBody is not defined.** JSON content to be imported. **Maximum allowed json body size is 10MB** . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of json body size while parsing. Please use fileUrl instead to import bigger files. 
+        /// </summary>
+        /// <value>**Mandatory if fileUrl and fileBody is not defined.** JSON content to be imported. **Maximum allowed json body size is 10MB** . However we recommend a safe limit of around 8 MB to avoid the issues caused due to increase of json body size while parsing. Please use fileUrl instead to import bigger files. </value>
+        [DataMember(Name="jsonBody", EmitDefaultValue=false)]
+        public List<Dictionary<string, Object>> JsonBody { get; set; }
 
         /// <summary>
         /// Mandatory if newList is not defined. Ids of the lists in which the contacts shall be imported. For example, [2, 4, 7].
@@ -157,6 +166,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class RequestContactImport {\n");
             sb.Append("  FileUrl: ").Append(FileUrl).Append("\n");
             sb.Append("  FileBody: ").Append(FileBody).Append("\n");
+            sb.Append("  JsonBody: ").Append(JsonBody).Append("\n");
             sb.Append("  ListIds: ").Append(ListIds).Append("\n");
             sb.Append("  NotifyUrl: ").Append(NotifyUrl).Append("\n");
             sb.Append("  NewList: ").Append(NewList).Append("\n");
@@ -209,6 +219,11 @@ namespace sib_api_v3_sdk.Model
                     this.FileBody.Equals(input.FileBody))
                 ) && 
                 (
+                    this.JsonBody == input.JsonBody ||
+                    this.JsonBody != null &&
+                    this.JsonBody.SequenceEqual(input.JsonBody)
+                ) && 
+                (
                     this.ListIds == input.ListIds ||
                     this.ListIds != null &&
                     this.ListIds.SequenceEqual(input.ListIds)
@@ -258,6 +273,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.FileUrl.GetHashCode();
                 if (this.FileBody != null)
                     hashCode = hashCode * 59 + this.FileBody.GetHashCode();
+                if (this.JsonBody != null)
+                    hashCode = hashCode * 59 + this.JsonBody.GetHashCode();
                 if (this.ListIds != null)
                     hashCode = hashCode * 59 + this.ListIds.GetHashCode();
                 if (this.NotifyUrl != null)

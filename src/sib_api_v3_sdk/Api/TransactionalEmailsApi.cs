@@ -133,7 +133,7 @@ namespace sib_api_v3_sdk.Api
         /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -147,7 +147,7 @@ namespace sib_api_v3_sdk.Api
         /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -179,7 +179,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -200,7 +200,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -362,8 +362,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>GetTransacEmailsList</returns>
-        GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
+        GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null);
 
         /// <summary>
         /// Get the list of transactional emails on the basis of allowed filters
@@ -378,31 +380,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
-        ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
-        /// <summary>
-        /// Send a template
-        /// </summary>
-        /// <remarks>
-        /// This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </remarks>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>SendTemplateEmail</returns>
-        SendTemplateEmail SendTemplate (long? templateId, SendEmail sendEmail);
-
-        /// <summary>
-        /// Send a template
-        /// </summary>
-        /// <remarks>
-        /// This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </remarks>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>ApiResponse of SendTemplateEmail</returns>
-        ApiResponse<SendTemplateEmail> SendTemplateWithHttpInfo (long? templateId, SendEmail sendEmail);
+        ApiResponse<GetTransacEmailsList> GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null);
         /// <summary>
         /// Send a template to your test list
         /// </summary>
@@ -623,7 +604,7 @@ namespace sib_api_v3_sdk.Api
         /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -637,7 +618,7 @@ namespace sib_api_v3_sdk.Api
         /// Get your transactional email activity aggregated over a period of time
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -669,7 +650,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -690,7 +671,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events)
         /// </summary>
         /// <remarks>
-        /// 
+        /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -852,8 +833,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
-        System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
+        System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null);
 
         /// <summary>
         /// Get the list of transactional emails on the basis of allowed filters
@@ -868,31 +851,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null);
-        /// <summary>
-        /// Send a template
-        /// </summary>
-        /// <remarks>
-        /// This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </remarks>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>Task of SendTemplateEmail</returns>
-        System.Threading.Tasks.Task<SendTemplateEmail> SendTemplateAsync (long? templateId, SendEmail sendEmail);
-
-        /// <summary>
-        /// Send a template
-        /// </summary>
-        /// <remarks>
-        /// This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </remarks>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>Task of ApiResponse (SendTemplateEmail)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SendTemplateEmail>> SendTemplateAsyncWithHttpInfo (long? templateId, SendEmail sendEmail);
+        System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null);
         /// <summary>
         /// Send a template to your test list
         /// </summary>
@@ -1906,7 +1868,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your transactional email activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1921,7 +1883,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your transactional email activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -1989,7 +1951,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your transactional email activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -2005,7 +1967,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get your transactional email activity aggregated over a period of time 
+        /// Get your transactional email activity aggregated over a period of time This endpoint will show the aggregated stats for past 90 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
@@ -2216,7 +2178,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your transactional email activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -2238,7 +2200,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your transactional email activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -2320,7 +2282,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your transactional email activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -2343,7 +2305,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get all your transactional email activity (unaggregated events) 
+        /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
@@ -3275,10 +3237,12 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>GetTransacEmailsList</returns>
-        public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
+        public GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null)
         {
-             ApiResponse<GetTransacEmailsList> localVarResponse = GetTransacEmailsListWithHttpInfo(email, templateId, messageId, startDate, endDate, sort);
+             ApiResponse<GetTransacEmailsList> localVarResponse = GetTransacEmailsListWithHttpInfo(email, templateId, messageId, startDate, endDate, sort, limit, offset);
              return localVarResponse.Data;
         }
 
@@ -3292,8 +3256,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>ApiResponse of GetTransacEmailsList</returns>
-        public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
+        public ApiResponse< GetTransacEmailsList > GetTransacEmailsListWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null)
         {
 
             var localVarPath = "./smtp/emails";
@@ -3324,6 +3290,8 @@ namespace sib_api_v3_sdk.Api
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3364,10 +3332,12 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of GetTransacEmailsList</returns>
-        public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
+        public async System.Threading.Tasks.Task<GetTransacEmailsList> GetTransacEmailsListAsync (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null)
         {
-             ApiResponse<GetTransacEmailsList> localVarResponse = await GetTransacEmailsListAsyncWithHttpInfo(email, templateId, messageId, startDate, endDate, sort);
+             ApiResponse<GetTransacEmailsList> localVarResponse = await GetTransacEmailsListAsyncWithHttpInfo(email, templateId, messageId, startDate, endDate, sort, limit, offset);
              return localVarResponse.Data;
 
         }
@@ -3382,8 +3352,10 @@ namespace sib_api_v3_sdk.Api
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 500)</param>
+        /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <returns>Task of ApiResponse (GetTransacEmailsList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetTransacEmailsList>> GetTransacEmailsListAsyncWithHttpInfo (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null)
         {
 
             var localVarPath = "./smtp/emails";
@@ -3414,6 +3386,8 @@ namespace sib_api_v3_sdk.Api
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3442,187 +3416,6 @@ namespace sib_api_v3_sdk.Api
             return new ApiResponse<GetTransacEmailsList>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetTransacEmailsList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetTransacEmailsList)));
-        }
-
-        /// <summary>
-        /// Send a template This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </summary>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>SendTemplateEmail</returns>
-        public SendTemplateEmail SendTemplate (long? templateId, SendEmail sendEmail)
-        {
-             ApiResponse<SendTemplateEmail> localVarResponse = SendTemplateWithHttpInfo(templateId, sendEmail);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Send a template This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </summary>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>ApiResponse of SendTemplateEmail</returns>
-        public ApiResponse< SendTemplateEmail > SendTemplateWithHttpInfo (long? templateId, SendEmail sendEmail)
-        {
-            // verify the required parameter 'templateId' is set
-            if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTemplate");
-            // verify the required parameter 'sendEmail' is set
-            if (sendEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling TransactionalEmailsApi->SendTemplate");
-
-            var localVarPath = "./smtp/templates/{templateId}/send";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (templateId != null) localVarPathParams.Add("templateId", this.Configuration.ApiClient.ParameterToString(templateId)); // path parameter
-            if (sendEmail != null && sendEmail.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(sendEmail); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = sendEmail; // byte array
-            }
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SendTemplate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<SendTemplateEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (SendTemplateEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendTemplateEmail)));
-        }
-
-        /// <summary>
-        /// Send a template This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </summary>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>Task of SendTemplateEmail</returns>
-        public async System.Threading.Tasks.Task<SendTemplateEmail> SendTemplateAsync (long? templateId, SendEmail sendEmail)
-        {
-             ApiResponse<SendTemplateEmail> localVarResponse = await SendTemplateAsyncWithHttpInfo(templateId, sendEmail);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Send a template This endpoint is deprecated. Prefer v3/smtp/email instead.
-        /// </summary>
-        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId">Id of the template</param>
-        /// <param name="sendEmail"></param>
-        /// <returns>Task of ApiResponse (SendTemplateEmail)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SendTemplateEmail>> SendTemplateAsyncWithHttpInfo (long? templateId, SendEmail sendEmail)
-        {
-            // verify the required parameter 'templateId' is set
-            if (templateId == null)
-                throw new ApiException(400, "Missing required parameter 'templateId' when calling TransactionalEmailsApi->SendTemplate");
-            // verify the required parameter 'sendEmail' is set
-            if (sendEmail == null)
-                throw new ApiException(400, "Missing required parameter 'sendEmail' when calling TransactionalEmailsApi->SendTemplate");
-
-            var localVarPath = "./smtp/templates/{templateId}/send";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (templateId != null) localVarPathParams.Add("templateId", this.Configuration.ApiClient.ParameterToString(templateId)); // path parameter
-            if (sendEmail != null && sendEmail.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(sendEmail); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = sendEmail; // byte array
-            }
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SendTemplate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<SendTemplateEmail>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (SendTemplateEmail) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SendTemplateEmail)));
         }
 
         /// <summary>

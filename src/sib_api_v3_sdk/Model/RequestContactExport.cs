@@ -31,15 +31,26 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestContactExport" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected RequestContactExport() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestContactExport" /> class.
+        /// </summary>
         /// <param name="exportAttributes">List of all the attributes that you want to export. These attributes must be present in your contact database. For example, [&#39;fname&#39;, &#39;lname&#39;, &#39;email&#39;]..</param>
-        /// <param name="contactFilter">This attribute has been deprecated and will be removed by January 1st, 2021. Only one of the two filter options (contactFilter or customContactFilter) can be passed in the request. Set the filter for the contacts to be exported. For example, {&quot;blacklisted&quot;:true} will export all the blacklisted contacts. .</param>
-        /// <param name="customContactFilter">customContactFilter.</param>
+        /// <param name="customContactFilter">customContactFilter (required).</param>
         /// <param name="notifyUrl">Webhook that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479.</param>
-        public RequestContactExport(List<string> exportAttributes = default(List<string>), Object contactFilter = default(Object), RequestContactExportCustomContactFilter customContactFilter = default(RequestContactExportCustomContactFilter), string notifyUrl = default(string))
+        public RequestContactExport(List<string> exportAttributes = default(List<string>), RequestContactExportCustomContactFilter customContactFilter = default(RequestContactExportCustomContactFilter), string notifyUrl = default(string))
         {
+            // to ensure "customContactFilter" is required (not null)
+            if (customContactFilter == null)
+            {
+                throw new InvalidDataException("customContactFilter is a required property for RequestContactExport and cannot be null");
+            }
+            else
+            {
+                this.CustomContactFilter = customContactFilter;
+            }
             this.ExportAttributes = exportAttributes;
-            this.ContactFilter = contactFilter;
-            this.CustomContactFilter = customContactFilter;
             this.NotifyUrl = notifyUrl;
         }
         
@@ -49,13 +60,6 @@ namespace sib_api_v3_sdk.Model
         /// <value>List of all the attributes that you want to export. These attributes must be present in your contact database. For example, [&#39;fname&#39;, &#39;lname&#39;, &#39;email&#39;].</value>
         [DataMember(Name="exportAttributes", EmitDefaultValue=false)]
         public List<string> ExportAttributes { get; set; }
-
-        /// <summary>
-        /// This attribute has been deprecated and will be removed by January 1st, 2021. Only one of the two filter options (contactFilter or customContactFilter) can be passed in the request. Set the filter for the contacts to be exported. For example, {&quot;blacklisted&quot;:true} will export all the blacklisted contacts. 
-        /// </summary>
-        /// <value>This attribute has been deprecated and will be removed by January 1st, 2021. Only one of the two filter options (contactFilter or customContactFilter) can be passed in the request. Set the filter for the contacts to be exported. For example, {&quot;blacklisted&quot;:true} will export all the blacklisted contacts. </value>
-        [DataMember(Name="contactFilter", EmitDefaultValue=false)]
-        public Object ContactFilter { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomContactFilter
@@ -79,7 +83,6 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class RequestContactExport {\n");
             sb.Append("  ExportAttributes: ").Append(ExportAttributes).Append("\n");
-            sb.Append("  ContactFilter: ").Append(ContactFilter).Append("\n");
             sb.Append("  CustomContactFilter: ").Append(CustomContactFilter).Append("\n");
             sb.Append("  NotifyUrl: ").Append(NotifyUrl).Append("\n");
             sb.Append("}\n");
@@ -122,11 +125,6 @@ namespace sib_api_v3_sdk.Model
                     this.ExportAttributes.SequenceEqual(input.ExportAttributes)
                 ) && 
                 (
-                    this.ContactFilter == input.ContactFilter ||
-                    (this.ContactFilter != null &&
-                    this.ContactFilter.Equals(input.ContactFilter))
-                ) && 
-                (
                     this.CustomContactFilter == input.CustomContactFilter ||
                     (this.CustomContactFilter != null &&
                     this.CustomContactFilter.Equals(input.CustomContactFilter))
@@ -149,8 +147,6 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.ExportAttributes != null)
                     hashCode = hashCode * 59 + this.ExportAttributes.GetHashCode();
-                if (this.ContactFilter != null)
-                    hashCode = hashCode * 59 + this.ContactFilter.GetHashCode();
                 if (this.CustomContactFilter != null)
                     hashCode = hashCode * 59 + this.CustomContactFilter.GetHashCode();
                 if (this.NotifyUrl != null)

@@ -129,14 +129,20 @@ namespace sib_api_v3_sdk.Model
             /// Enum ContactDeleted for value: contactDeleted
             /// </summary>
             [EnumMember(Value = "contactDeleted")]
-            ContactDeleted = 16
+            ContactDeleted = 16,
+            
+            /// <summary>
+            /// Enum InboundEmailProcessed for value: inboundEmailProcessed
+            /// </summary>
+            [EnumMember(Value = "inboundEmailProcessed")]
+            InboundEmailProcessed = 17
         }
 
 
         /// <summary>
-        /// Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60;
+        /// - Events triggering the webhook. Possible values for **Transactional** type webhook: #### &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; - Possible values for **Marketing** type webhook: #### &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60; - Possible values for **Inbound** type webhook: #### &#x60;inboundEmailProcessed&#x60; 
         /// </summary>
-        /// <value>Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60;</value>
+        /// <value>- Events triggering the webhook. Possible values for **Transactional** type webhook: #### &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; - Possible values for **Marketing** type webhook: #### &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60; - Possible values for **Inbound** type webhook: #### &#x60;inboundEmailProcessed&#x60; </value>
         [DataMember(Name="events", EmitDefaultValue=false)]
         public List<EventsEnum> Events { get; set; }
         /// <summary>
@@ -157,7 +163,13 @@ namespace sib_api_v3_sdk.Model
             /// Enum Marketing for value: marketing
             /// </summary>
             [EnumMember(Value = "marketing")]
-            Marketing = 2
+            Marketing = 2,
+            
+            /// <summary>
+            /// Enum Inbound for value: inbound
+            /// </summary>
+            [EnumMember(Value = "inbound")]
+            Inbound = 3
         }
 
         /// <summary>
@@ -176,9 +188,10 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="url">URL of the webhook (required).</param>
         /// <param name="description">Description of the webhook.</param>
-        /// <param name="events">Events triggering the webhook. Possible values for Transactional type webhook – &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; and possible values for Marketing type webhook – &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60; (required).</param>
+        /// <param name="events">- Events triggering the webhook. Possible values for **Transactional** type webhook: #### &#x60;sent&#x60; OR &#x60;request&#x60;, &#x60;delivered&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;blocked&#x60;, &#x60;spam&#x60;, &#x60;invalid&#x60;, &#x60;deferred&#x60;, &#x60;click&#x60;, &#x60;opened&#x60;, &#x60;uniqueOpened&#x60; and &#x60;unsubscribed&#x60; - Possible values for **Marketing** type webhook: #### &#x60;spam&#x60;, &#x60;opened&#x60;, &#x60;click&#x60;, &#x60;hardBounce&#x60;, &#x60;softBounce&#x60;, &#x60;unsubscribed&#x60;, &#x60;listAddition&#x60; &amp; &#x60;delivered&#x60; - Possible values for **Inbound** type webhook: #### &#x60;inboundEmailProcessed&#x60;  (required).</param>
         /// <param name="type">Type of the webhook (default to TypeEnum.Transactional).</param>
-        public CreateWebhook(string url = default(string), string description = default(string), List<EventsEnum> events = default(List<EventsEnum>), TypeEnum? type = TypeEnum.Transactional)
+        /// <param name="domain">Inbound domain of webhook, required in case of event type &#x60;inbound&#x60;.</param>
+        public CreateWebhook(string url = default(string), string description = default(string), List<EventsEnum> events = default(List<EventsEnum>), TypeEnum? type = TypeEnum.Transactional, string domain = default(string))
         {
             // to ensure "url" is required (not null)
             if (url == null)
@@ -208,6 +221,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.Type = type;
             }
+            this.Domain = domain;
         }
         
         /// <summary>
@@ -227,6 +241,13 @@ namespace sib_api_v3_sdk.Model
 
 
         /// <summary>
+        /// Inbound domain of webhook, required in case of event type &#x60;inbound&#x60;
+        /// </summary>
+        /// <value>Inbound domain of webhook, required in case of event type &#x60;inbound&#x60;</value>
+        [DataMember(Name="domain", EmitDefaultValue=false)]
+        public string Domain { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -238,6 +259,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Events: ").Append(Events).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -291,6 +313,11 @@ namespace sib_api_v3_sdk.Model
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this.Domain == input.Domain ||
+                    (this.Domain != null &&
+                    this.Domain.Equals(input.Domain))
                 );
         }
 
@@ -311,6 +338,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Events.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Domain != null)
+                    hashCode = hashCode * 59 + this.Domain.GetHashCode();
                 return hashCode;
             }
         }

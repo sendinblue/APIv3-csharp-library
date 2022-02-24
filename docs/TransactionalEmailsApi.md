@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**GetTransacBlockedContacts**](TransactionalEmailsApi.md#gettransacblockedcontacts) | **GET** /smtp/blockedContacts | Get the list of blocked or unsubscribed transactional contacts
 [**GetTransacEmailContent**](TransactionalEmailsApi.md#gettransacemailcontent) | **GET** /smtp/emails/{uuid} | Get the personalized content of a sent transactional email
 [**GetTransacEmailsList**](TransactionalEmailsApi.md#gettransacemailslist) | **GET** /smtp/emails | Get the list of transactional emails on the basis of allowed filters
-[**SendTemplate**](TransactionalEmailsApi.md#sendtemplate) | **POST** /smtp/templates/{templateId}/send | Send a template
 [**SendTestTemplate**](TransactionalEmailsApi.md#sendtesttemplate) | **POST** /smtp/templates/{templateId}/sendTest | Send a template to your test list
 [**SendTransacEmail**](TransactionalEmailsApi.md#sendtransacemail) | **POST** /smtp/email | Send a transactional email
 [**SmtpBlockedContactsEmailDelete**](TransactionalEmailsApi.md#smtpblockedcontactsemaildelete) | **DELETE** /smtp/blockedContacts/{email} | Unblock or resubscribe a transactional contact
@@ -374,6 +373,8 @@ void (empty response body)
 
 Get your transactional email activity aggregated over a period of time
 
+This endpoint will show the aggregated stats for past 90 days by default if `startDate` and `endDate` OR `days` is not passed. The date range can not exceed 90 days
+
 ### Example
 ```csharp
 using System;
@@ -513,6 +514,8 @@ This endpoint does not need any parameter.
 > GetEmailEventReport GetEmailEventReport (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null)
 
 Get all your transactional email activity (unaggregated events)
+
+This endpoint will show the aggregated stats for past 30 days by default if `startDate` and `endDate` OR `days` is not passed. The date range can not exceed 90 days
 
 ### Example
 ```csharp
@@ -966,7 +969,7 @@ Name | Type | Description  | Notes
 
 <a name="gettransacemailslist"></a>
 # **GetTransacEmailsList**
-> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null)
+> GetTransacEmailsList GetTransacEmailsList (string email = null, long? templateId = null, string messageId = null, string startDate = null, string endDate = null, string sort = null, long? limit = null, long? offset = null)
 
 Get the list of transactional emails on the basis of allowed filters
 
@@ -1002,11 +1005,13 @@ namespace Example
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
             var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
+            var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 500)
+            var offset = 789;  // long? | Index of the first document in the page (optional)  (default to 0)
 
             try
             {
                 // Get the list of transactional emails on the basis of allowed filters
-                GetTransacEmailsList result = apiInstance.GetTransacEmailsList(email, templateId, messageId, startDate, endDate, sort);
+                GetTransacEmailsList result = apiInstance.GetTransacEmailsList(email, templateId, messageId, startDate, endDate, sort, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1028,82 +1033,12 @@ Name | Type | Description  | Notes
  **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
  **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
+ **limit** | **long?**| Number of documents returned per page | [optional] [default to 500]
+ **offset** | **long?**| Index of the first document in the page | [optional] [default to 0]
 
 ### Return type
 
 [**GetTransacEmailsList**](GetTransacEmailsList.md)
-
-### Authorization
-
-[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="sendtemplate"></a>
-# **SendTemplate**
-> SendTemplateEmail SendTemplate (long? templateId, SendEmail sendEmail)
-
-Send a template
-
-This endpoint is deprecated. Prefer v3/smtp/email instead.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using sib_api_v3_sdk.Api;
-using sib_api_v3_sdk.Client;
-using sib_api_v3_sdk.Model;
-
-namespace Example
-{
-    public class SendTemplateExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api-key
-            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
-            // Configure API key authorization: partner-key
-            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
-
-            var apiInstance = new TransactionalEmailsApi();
-            var templateId = 789;  // long? | Id of the template
-            var sendEmail = new SendEmail(); // SendEmail | 
-
-            try
-            {
-                // Send a template
-                SendTemplateEmail result = apiInstance.SendTemplate(templateId, sendEmail);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling TransactionalEmailsApi.SendTemplate: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **templateId** | **long?**| Id of the template | 
- **sendEmail** | [**SendEmail**](SendEmail.md)|  | 
-
-### Return type
-
-[**SendTemplateEmail**](SendTemplateEmail.md)
 
 ### Authorization
 

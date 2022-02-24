@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 <a name="getwebhooks"></a>
 # **GetWebhooks**
-> GetWebhooks GetWebhooks (string type = null)
+> GetWebhooks GetWebhooks (string type = null, string sort = null)
 
 Get all webhooks
 
@@ -245,11 +245,12 @@ namespace Example
 
             var apiInstance = new WebhooksApi();
             var type = type_example;  // string | Filter on webhook type (optional)  (default to transactional)
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of webhook creation (optional)  (default to desc)
 
             try
             {
                 // Get all webhooks
-                GetWebhooks result = apiInstance.GetWebhooks(type);
+                GetWebhooks result = apiInstance.GetWebhooks(type, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -266,6 +267,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **string**| Filter on webhook type | [optional] [default to transactional]
+ **sort** | **string**| Sort the results in the ascending/descending order of webhook creation | [optional] [default to desc]
 
 ### Return type
 

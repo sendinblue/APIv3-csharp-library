@@ -40,11 +40,12 @@ namespace sib_api_v3_sdk.Model
         /// <param name="name">Name of the list (required).</param>
         /// <param name="totalBlacklisted">Number of blacklisted contacts in the list (required).</param>
         /// <param name="totalSubscribers">Number of contacts in the list (required).</param>
+        /// <param name="uniqueSubscribers">Number of unique contacts in the list (required).</param>
         /// <param name="folderId">ID of the folder (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the list (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="campaignStats">campaignStats.</param>
         /// <param name="dynamicList">Status telling if the list is dynamic or not (true&#x3D;dynamic, false&#x3D;not dynamic).</param>
-        public GetExtendedList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?), long? folderId = default(long?), string createdAt = default(string), List<GetExtendedListCampaignStats> campaignStats = default(List<GetExtendedListCampaignStats>), bool? dynamicList = default(bool?))
+        public GetExtendedList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?), long? uniqueSubscribers = default(long?), long? folderId = default(long?), string createdAt = default(string), List<GetExtendedListCampaignStats> campaignStats = default(List<GetExtendedListCampaignStats>), bool? dynamicList = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -81,6 +82,15 @@ namespace sib_api_v3_sdk.Model
             else
             {
                 this.TotalSubscribers = totalSubscribers;
+            }
+            // to ensure "uniqueSubscribers" is required (not null)
+            if (uniqueSubscribers == null)
+            {
+                throw new InvalidDataException("uniqueSubscribers is a required property for GetExtendedList and cannot be null");
+            }
+            else
+            {
+                this.UniqueSubscribers = uniqueSubscribers;
             }
             // to ensure "folderId" is required (not null)
             if (folderId == null)
@@ -133,6 +143,13 @@ namespace sib_api_v3_sdk.Model
         public long? TotalSubscribers { get; set; }
 
         /// <summary>
+        /// Number of unique contacts in the list
+        /// </summary>
+        /// <value>Number of unique contacts in the list</value>
+        [DataMember(Name="uniqueSubscribers", EmitDefaultValue=false)]
+        public long? UniqueSubscribers { get; set; }
+
+        /// <summary>
         /// ID of the folder
         /// </summary>
         /// <value>ID of the folder</value>
@@ -171,6 +188,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TotalBlacklisted: ").Append(TotalBlacklisted).Append("\n");
             sb.Append("  TotalSubscribers: ").Append(TotalSubscribers).Append("\n");
+            sb.Append("  UniqueSubscribers: ").Append(UniqueSubscribers).Append("\n");
             sb.Append("  FolderId: ").Append(FolderId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  CampaignStats: ").Append(CampaignStats).Append("\n");
@@ -230,6 +248,11 @@ namespace sib_api_v3_sdk.Model
                     this.TotalSubscribers.Equals(input.TotalSubscribers))
                 ) && 
                 (
+                    this.UniqueSubscribers == input.UniqueSubscribers ||
+                    (this.UniqueSubscribers != null &&
+                    this.UniqueSubscribers.Equals(input.UniqueSubscribers))
+                ) && 
+                (
                     this.FolderId == input.FolderId ||
                     (this.FolderId != null &&
                     this.FolderId.Equals(input.FolderId))
@@ -268,6 +291,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.TotalBlacklisted.GetHashCode();
                 if (this.TotalSubscribers != null)
                     hashCode = hashCode * 59 + this.TotalSubscribers.GetHashCode();
+                if (this.UniqueSubscribers != null)
+                    hashCode = hashCode * 59 + this.UniqueSubscribers.GetHashCode();
                 if (this.FolderId != null)
                     hashCode = hashCode * 59 + this.FolderId.GetHashCode();
                 if (this.CreatedAt != null)

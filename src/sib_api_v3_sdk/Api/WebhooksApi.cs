@@ -95,8 +95,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>GetWebhooks</returns>
-        GetWebhooks GetWebhooks (string type = null);
+        GetWebhooks GetWebhooks (string type = null, string sort = null);
 
         /// <summary>
         /// Get all webhooks
@@ -106,8 +107,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetWebhooks</returns>
-        ApiResponse<GetWebhooks> GetWebhooksWithHttpInfo (string type = null);
+        ApiResponse<GetWebhooks> GetWebhooksWithHttpInfo (string type = null, string sort = null);
         /// <summary>
         /// Update a webhook
         /// </summary>
@@ -204,8 +206,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>Task of GetWebhooks</returns>
-        System.Threading.Tasks.Task<GetWebhooks> GetWebhooksAsync (string type = null);
+        System.Threading.Tasks.Task<GetWebhooks> GetWebhooksAsync (string type = null, string sort = null);
 
         /// <summary>
         /// Get all webhooks
@@ -215,8 +218,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetWebhooks)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWebhooks>> GetWebhooksAsyncWithHttpInfo (string type = null);
+        System.Threading.Tasks.Task<ApiResponse<GetWebhooks>> GetWebhooksAsyncWithHttpInfo (string type = null, string sort = null);
         /// <summary>
         /// Update a webhook
         /// </summary>
@@ -822,10 +826,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>GetWebhooks</returns>
-        public GetWebhooks GetWebhooks (string type = null)
+        public GetWebhooks GetWebhooks (string type = null, string sort = null)
         {
-             ApiResponse<GetWebhooks> localVarResponse = GetWebhooksWithHttpInfo(type);
+             ApiResponse<GetWebhooks> localVarResponse = GetWebhooksWithHttpInfo(type, sort);
              return localVarResponse.Data;
         }
 
@@ -834,8 +839,9 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>ApiResponse of GetWebhooks</returns>
-        public ApiResponse< GetWebhooks > GetWebhooksWithHttpInfo (string type = null)
+        public ApiResponse< GetWebhooks > GetWebhooksWithHttpInfo (string type = null, string sort = null)
         {
 
             var localVarPath = "./webhooks";
@@ -861,6 +867,7 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -896,10 +903,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>Task of GetWebhooks</returns>
-        public async System.Threading.Tasks.Task<GetWebhooks> GetWebhooksAsync (string type = null)
+        public async System.Threading.Tasks.Task<GetWebhooks> GetWebhooksAsync (string type = null, string sort = null)
         {
-             ApiResponse<GetWebhooks> localVarResponse = await GetWebhooksAsyncWithHttpInfo(type);
+             ApiResponse<GetWebhooks> localVarResponse = await GetWebhooksAsyncWithHttpInfo(type, sort);
              return localVarResponse.Data;
 
         }
@@ -909,8 +917,9 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on webhook type (optional, default to transactional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of webhook creation (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetWebhooks)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetWebhooks>> GetWebhooksAsyncWithHttpInfo (string type = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetWebhooks>> GetWebhooksAsyncWithHttpInfo (string type = null, string sort = null)
         {
 
             var localVarPath = "./webhooks";
@@ -936,6 +945,7 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

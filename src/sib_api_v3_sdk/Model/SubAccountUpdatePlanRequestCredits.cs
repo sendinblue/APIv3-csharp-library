@@ -23,56 +23,26 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// SendEmailAttachment
+    /// Credit details to update
     /// </summary>
     [DataContract]
-    public partial class SendEmailAttachment :  IEquatable<SendEmailAttachment>
+    public partial class SubAccountUpdatePlanRequestCredits :  IEquatable<SubAccountUpdatePlanRequestCredits>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SendEmailAttachment" /> class.
+        /// Initializes a new instance of the <see cref="SubAccountUpdatePlanRequestCredits" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SendEmailAttachment() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SendEmailAttachment" /> class.
-        /// </summary>
-        /// <param name="content">Base64 encoded chunk data of the attachment generated on the fly (required).</param>
-        /// <param name="name">Required for content. Name of the attachment (required).</param>
-        public SendEmailAttachment(byte[] content = default(byte[]), string name = default(string))
+        /// <param name="email">Number of email credits.</param>
+        public SubAccountUpdatePlanRequestCredits(long? email = default(long?))
         {
-            // to ensure "content" is required (not null)
-            if (content == null)
-            {
-                throw new InvalidDataException("content is a required property for SendEmailAttachment and cannot be null");
-            }
-            else
-            {
-                this.Content = content;
-            }
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for SendEmailAttachment and cannot be null");
-            }
-            else
-            {
-                this.Name = name;
-            }
+            this.Email = email;
         }
         
         /// <summary>
-        /// Base64 encoded chunk data of the attachment generated on the fly
+        /// Number of email credits
         /// </summary>
-        /// <value>Base64 encoded chunk data of the attachment generated on the fly</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
-
-        /// <summary>
-        /// Required for content. Name of the attachment
-        /// </summary>
-        /// <value>Required for content. Name of the attachment</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        /// <value>Number of email credits</value>
+        [DataMember(Name="email", EmitDefaultValue=false)]
+        public long? Email { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,9 +51,8 @@ namespace sib_api_v3_sdk.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SendEmailAttachment {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("class SubAccountUpdatePlanRequestCredits {\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,29 +73,24 @@ namespace sib_api_v3_sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SendEmailAttachment);
+            return this.Equals(input as SubAccountUpdatePlanRequestCredits);
         }
 
         /// <summary>
-        /// Returns true if SendEmailAttachment instances are equal
+        /// Returns true if SubAccountUpdatePlanRequestCredits instances are equal
         /// </summary>
-        /// <param name="input">Instance of SendEmailAttachment to be compared</param>
+        /// <param name="input">Instance of SubAccountUpdatePlanRequestCredits to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SendEmailAttachment input)
+        public bool Equals(SubAccountUpdatePlanRequestCredits input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Email == input.Email ||
+                    (this.Email != null &&
+                    this.Email.Equals(input.Email))
                 );
         }
 
@@ -139,10 +103,8 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Email != null)
+                    hashCode = hashCode * 59 + this.Email.GetHashCode();
                 return hashCode;
             }
         }

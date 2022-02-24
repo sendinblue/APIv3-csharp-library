@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **SoftBounces** | **long?** | Number of softbounce for the campaign | 
 **HardBounces** | **long?** | Number of harbounce for the campaign | 
 **UniqueViews** | **long?** | Number of unique openings for the campaign | 
+**TrackableViews** | **long?** | Recipients without any privacy protection option enabled in their email client | 
 **Unsubscriptions** | **long?** | Number of unsubscription for the campaign | 
 **Viewed** | **long?** | Number of openings for the campaign | 
 **Deferred** | **long?** | Number of deferred emails for the campaign | [optional] 

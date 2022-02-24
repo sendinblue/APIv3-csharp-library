@@ -40,7 +40,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="name">Name of the list (required).</param>
         /// <param name="totalBlacklisted">Number of blacklisted contacts in the list (required).</param>
         /// <param name="totalSubscribers">Number of contacts in the list (required).</param>
-        public GetList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?))
+        /// <param name="uniqueSubscribers">Number of unique contacts in the list (required).</param>
+        public GetList(long? id = default(long?), string name = default(string), long? totalBlacklisted = default(long?), long? totalSubscribers = default(long?), long? uniqueSubscribers = default(long?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -78,6 +79,15 @@ namespace sib_api_v3_sdk.Model
             {
                 this.TotalSubscribers = totalSubscribers;
             }
+            // to ensure "uniqueSubscribers" is required (not null)
+            if (uniqueSubscribers == null)
+            {
+                throw new InvalidDataException("uniqueSubscribers is a required property for GetList and cannot be null");
+            }
+            else
+            {
+                this.UniqueSubscribers = uniqueSubscribers;
+            }
         }
         
         /// <summary>
@@ -109,6 +119,13 @@ namespace sib_api_v3_sdk.Model
         public long? TotalSubscribers { get; set; }
 
         /// <summary>
+        /// Number of unique contacts in the list
+        /// </summary>
+        /// <value>Number of unique contacts in the list</value>
+        [DataMember(Name="uniqueSubscribers", EmitDefaultValue=false)]
+        public long? UniqueSubscribers { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -120,6 +137,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TotalBlacklisted: ").Append(TotalBlacklisted).Append("\n");
             sb.Append("  TotalSubscribers: ").Append(TotalSubscribers).Append("\n");
+            sb.Append("  UniqueSubscribers: ").Append(UniqueSubscribers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -173,6 +191,11 @@ namespace sib_api_v3_sdk.Model
                     this.TotalSubscribers == input.TotalSubscribers ||
                     (this.TotalSubscribers != null &&
                     this.TotalSubscribers.Equals(input.TotalSubscribers))
+                ) && 
+                (
+                    this.UniqueSubscribers == input.UniqueSubscribers ||
+                    (this.UniqueSubscribers != null &&
+                    this.UniqueSubscribers.Equals(input.UniqueSubscribers))
                 );
         }
 
@@ -193,6 +216,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.TotalBlacklisted.GetHashCode();
                 if (this.TotalSubscribers != null)
                     hashCode = hashCode * 59 + this.TotalSubscribers.GetHashCode();
+                if (this.UniqueSubscribers != null)
+                    hashCode = hashCode * 59 + this.UniqueSubscribers.GetHashCode();
                 return hashCode;
             }
         }
