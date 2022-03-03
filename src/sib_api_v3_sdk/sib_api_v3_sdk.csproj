@@ -9,12 +9,12 @@
     <Company>Sendinblue</Company>
     <AssemblyTitle>Swagger Library</AssemblyTitle>
     <Description>Official SendinBlue provided RESTFul API V3 C# Library</Description>
-    <Copyright>Copyright (c) 2021 SendinBlue</Copyright>
+    <Copyright>Copyright (c) 2022 SendinBlue</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>sib_api_v3_sdk</RootNamespace>
-    <Version>3.2.0</Version>
+    <Version>3.3.0</Version>
     <PackageLicenseUrl>https://github.com/sendinblue/APIv3-csharp-library/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sendinblue/APIv3-csharp-library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sendinblue/APIv3-csharp-library</RepositoryUrl>

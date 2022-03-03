@@ -36,13 +36,23 @@ namespace sib_api_v3_sdk.Model
         /// <param name="content">Content of the message. The maximum characters used per SMS is 160, if used more than that, it will be counted as more than one SMS.</param>
         /// <param name="recipients">recipients.</param>
         /// <param name="scheduledAt">UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result..</param>
-        public UpdateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), string scheduledAt = default(string))
+        /// <param name="unicodeEnabled">Format of the message. It indicates whether the content should be treated as unicode or not. (default to false).</param>
+        public UpdateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), string scheduledAt = default(string), bool? unicodeEnabled = false)
         {
             this.Name = name;
             this.Sender = sender;
             this.Content = content;
             this.Recipients = recipients;
             this.ScheduledAt = scheduledAt;
+            // use default value if no "unicodeEnabled" provided
+            if (unicodeEnabled == null)
+            {
+                this.UnicodeEnabled = false;
+            }
+            else
+            {
+                this.UnicodeEnabled = unicodeEnabled;
+            }
         }
         
         /// <summary>
@@ -80,6 +90,13 @@ namespace sib_api_v3_sdk.Model
         public string ScheduledAt { get; set; }
 
         /// <summary>
+        /// Format of the message. It indicates whether the content should be treated as unicode or not.
+        /// </summary>
+        /// <value>Format of the message. It indicates whether the content should be treated as unicode or not.</value>
+        [DataMember(Name="unicodeEnabled", EmitDefaultValue=false)]
+        public bool? UnicodeEnabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -92,6 +109,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Recipients: ").Append(Recipients).Append("\n");
             sb.Append("  ScheduledAt: ").Append(ScheduledAt).Append("\n");
+            sb.Append("  UnicodeEnabled: ").Append(UnicodeEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,6 +168,11 @@ namespace sib_api_v3_sdk.Model
                     this.ScheduledAt == input.ScheduledAt ||
                     (this.ScheduledAt != null &&
                     this.ScheduledAt.Equals(input.ScheduledAt))
+                ) && 
+                (
+                    this.UnicodeEnabled == input.UnicodeEnabled ||
+                    (this.UnicodeEnabled != null &&
+                    this.UnicodeEnabled.Equals(input.UnicodeEnabled))
                 );
         }
 
@@ -172,6 +195,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Recipients.GetHashCode();
                 if (this.ScheduledAt != null)
                     hashCode = hashCode * 59 + this.ScheduledAt.GetHashCode();
+                if (this.UnicodeEnabled != null)
+                    hashCode = hashCode * 59 + this.UnicodeEnabled.GetHashCode();
                 return hashCode;
             }
         }

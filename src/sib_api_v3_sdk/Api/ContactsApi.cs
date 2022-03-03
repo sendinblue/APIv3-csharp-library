@@ -265,7 +265,7 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details
         /// </summary>
         /// <remarks>
-        /// 
+        /// Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -276,7 +276,7 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details
         /// </summary>
         /// <remarks>
-        /// 
+        /// Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -291,7 +291,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
         GetContactCampaignStats GetContactStats (string identifier, string startDate = null, string endDate = null);
 
@@ -304,7 +304,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
         ApiResponse<GetContactCampaignStats> GetContactStatsWithHttpInfo (string identifier, string startDate = null, string endDate = null);
         /// <summary>
@@ -572,6 +572,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="updateAttribute">Values to update an attribute</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateAttributeWithHttpInfo (string attributeCategory, string attributeName, UpdateAttribute updateAttribute);
+        /// <summary>
+        /// Update multiple contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns></returns>
+        void UpdateBatchContacts (UpdateBatchContacts updateBatchContacts);
+
+        /// <summary>
+        /// Update multiple contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateBatchContactsWithHttpInfo (UpdateBatchContacts updateBatchContacts);
         /// <summary>
         /// Update a contact
         /// </summary>
@@ -884,7 +905,7 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details
         /// </summary>
         /// <remarks>
-        /// 
+        /// Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -895,7 +916,7 @@ namespace sib_api_v3_sdk.Api
         /// Get a contact&#39;s details
         /// </summary>
         /// <remarks>
-        /// 
+        /// Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -910,7 +931,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
         System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string identifier, string startDate = null, string endDate = null);
 
@@ -923,7 +944,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string identifier, string startDate = null, string endDate = null);
         /// <summary>
@@ -1191,6 +1212,27 @@ namespace sib_api_v3_sdk.Api
         /// <param name="updateAttribute">Values to update an attribute</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAttributeAsyncWithHttpInfo (string attributeCategory, string attributeName, UpdateAttribute updateAttribute);
+        /// <summary>
+        /// Update multiple contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateBatchContactsAsync (UpdateBatchContacts updateBatchContacts);
+
+        /// <summary>
+        /// Update multiple contacts
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateBatchContactsAsyncWithHttpInfo (UpdateBatchContacts updateBatchContacts);
         /// <summary>
         /// Update a contact
         /// </summary>
@@ -3174,7 +3216,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get a contact&#39;s details 
+        /// Get a contact&#39;s details Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -3186,7 +3228,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get a contact&#39;s details 
+        /// Get a contact&#39;s details Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -3251,7 +3293,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get a contact&#39;s details 
+        /// Get a contact&#39;s details Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -3264,7 +3306,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get a contact&#39;s details 
+        /// Get a contact&#39;s details Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
@@ -3334,7 +3376,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>GetContactCampaignStats</returns>
         public GetContactCampaignStats GetContactStats (string identifier, string startDate = null, string endDate = null)
         {
@@ -3348,7 +3390,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>ApiResponse of GetContactCampaignStats</returns>
         public ApiResponse< GetContactCampaignStats > GetContactStatsWithHttpInfo (string identifier, string startDate = null, string endDate = null)
         {
@@ -3417,7 +3459,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>Task of GetContactCampaignStats</returns>
         public async System.Threading.Tasks.Task<GetContactCampaignStats> GetContactStatsAsync (string identifier, string startDate = null, string endDate = null)
         {
@@ -3432,7 +3474,7 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional)</param>
-        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional)</param>
         /// <returns>Task of ApiResponse (GetContactCampaignStats)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetContactCampaignStats>> GetContactStatsAsyncWithHttpInfo (string identifier, string startDate = null, string endDate = null)
         {
@@ -5360,6 +5402,173 @@ namespace sib_api_v3_sdk.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("UpdateAttribute", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Update multiple contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns></returns>
+        public void UpdateBatchContacts (UpdateBatchContacts updateBatchContacts)
+        {
+             UpdateBatchContactsWithHttpInfo(updateBatchContacts);
+        }
+
+        /// <summary>
+        /// Update multiple contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdateBatchContactsWithHttpInfo (UpdateBatchContacts updateBatchContacts)
+        {
+            // verify the required parameter 'updateBatchContacts' is set
+            if (updateBatchContacts == null)
+                throw new ApiException(400, "Missing required parameter 'updateBatchContacts' when calling ContactsApi->UpdateBatchContacts");
+
+            var localVarPath = "./contacts/batch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateBatchContacts != null && updateBatchContacts.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateBatchContacts); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateBatchContacts; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateBatchContacts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Update multiple contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateBatchContactsAsync (UpdateBatchContacts updateBatchContacts)
+        {
+             await UpdateBatchContactsAsyncWithHttpInfo(updateBatchContacts);
+
+        }
+
+        /// <summary>
+        /// Update multiple contacts 
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBatchContacts">Values to update multiple contacts</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateBatchContactsAsyncWithHttpInfo (UpdateBatchContacts updateBatchContacts)
+        {
+            // verify the required parameter 'updateBatchContacts' is set
+            if (updateBatchContacts == null)
+                throw new ApiException(400, "Missing required parameter 'updateBatchContacts' when calling ContactsApi->UpdateBatchContacts");
+
+            var localVarPath = "./contacts/batch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateBatchContacts != null && updateBatchContacts.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateBatchContacts); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateBatchContacts; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateBatchContacts", localVarResponse);
                 if (exception != null) throw exception;
             }
 

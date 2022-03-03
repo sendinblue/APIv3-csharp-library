@@ -31,12 +31,21 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTransacEmailsList" /> class.
         /// </summary>
+        /// <param name="count">Total number of transactional emails available on your account according to the passed filter.</param>
         /// <param name="transactionalEmails">transactionalEmails.</param>
-        public GetTransacEmailsList(List<GetTransacEmailsListTransactionalEmails> transactionalEmails = default(List<GetTransacEmailsListTransactionalEmails>))
+        public GetTransacEmailsList(long? count = default(long?), List<GetTransacEmailsListTransactionalEmails> transactionalEmails = default(List<GetTransacEmailsListTransactionalEmails>))
         {
+            this.Count = count;
             this.TransactionalEmails = transactionalEmails;
         }
         
+        /// <summary>
+        /// Total number of transactional emails available on your account according to the passed filter
+        /// </summary>
+        /// <value>Total number of transactional emails available on your account according to the passed filter</value>
+        [DataMember(Name="count", EmitDefaultValue=false)]
+        public long? Count { get; set; }
+
         /// <summary>
         /// Gets or Sets TransactionalEmails
         /// </summary>
@@ -51,6 +60,7 @@ namespace sib_api_v3_sdk.Model
         {
             var sb = new StringBuilder();
             sb.Append("class GetTransacEmailsList {\n");
+            sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  TransactionalEmails: ").Append(TransactionalEmails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -87,6 +97,11 @@ namespace sib_api_v3_sdk.Model
 
             return 
                 (
+                    this.Count == input.Count ||
+                    (this.Count != null &&
+                    this.Count.Equals(input.Count))
+                ) && 
+                (
                     this.TransactionalEmails == input.TransactionalEmails ||
                     this.TransactionalEmails != null &&
                     this.TransactionalEmails.SequenceEqual(input.TransactionalEmails)
@@ -102,6 +117,8 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Count != null)
+                    hashCode = hashCode * 59 + this.Count.GetHashCode();
                 if (this.TransactionalEmails != null)
                     hashCode = hashCode * 59 + this.TransactionalEmails.GetHashCode();
                 return hashCode;

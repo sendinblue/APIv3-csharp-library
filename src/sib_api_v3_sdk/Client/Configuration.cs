@@ -29,7 +29,7 @@ namespace sib_api_v3_sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.2.0";
+        public const string Version = "3.3.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format

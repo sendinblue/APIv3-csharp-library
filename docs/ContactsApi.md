@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**RemoveContactFromList**](ContactsApi.md#removecontactfromlist) | **POST** /contacts/lists/{listId}/contacts/remove | Delete a contact from a list
 [**RequestContactExport**](ContactsApi.md#requestcontactexport) | **POST** /contacts/export | Export contacts
 [**UpdateAttribute**](ContactsApi.md#updateattribute) | **PUT** /contacts/attributes/{attributeCategory}/{attributeName} | Update contact attribute
+[**UpdateBatchContacts**](ContactsApi.md#updatebatchcontacts) | **POST** /contacts/batch | Update multiple contacts
 [**UpdateContact**](ContactsApi.md#updatecontact) | **PUT** /contacts/{identifier} | Update a contact
 [**UpdateFolder**](ContactsApi.md#updatefolder) | **PUT** /contacts/folders/{folderId} | Update a folder
 [**UpdateList**](ContactsApi.md#updatelist) | **PUT** /contacts/lists/{listId} | Update a list
@@ -785,6 +786,8 @@ This endpoint does not need any parameter.
 
 Get a contact's details
 
+Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.sendinblue.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
+
 ### Example
 ```csharp
 using System;
@@ -879,7 +882,7 @@ namespace Example
             var apiInstance = new ContactsApi();
             var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate (optional) 
-            var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate (optional) 
+            var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days (optional) 
 
             try
             {
@@ -902,7 +905,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string**| Email (urlencoded) OR ID of the contact | 
  **startDate** | **string**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate | [optional] 
- **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate | [optional] 
+ **endDate** | **string**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days | [optional] 
 
 ### Return type
 
@@ -1688,6 +1691,73 @@ Name | Type | Description  | Notes
  **attributeCategory** | **string**| Category of the attribute | 
  **attributeName** | **string**| Name of the existing attribute | 
  **updateAttribute** | [**UpdateAttribute**](UpdateAttribute.md)| Values to update an attribute | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatebatchcontacts"></a>
+# **UpdateBatchContacts**
+> void UpdateBatchContacts (UpdateBatchContacts updateBatchContacts)
+
+Update multiple contacts
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class UpdateBatchContactsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new ContactsApi();
+            var updateBatchContacts = new UpdateBatchContacts(); // UpdateBatchContacts | Values to update multiple contacts
+
+            try
+            {
+                // Update multiple contacts
+                apiInstance.UpdateBatchContacts(updateBatchContacts);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContactsApi.UpdateBatchContacts: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBatchContacts** | [**UpdateBatchContacts**](UpdateBatchContacts.md)| Values to update multiple contacts | 
 
 ### Return type
 
