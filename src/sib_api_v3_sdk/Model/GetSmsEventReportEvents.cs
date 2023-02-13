@@ -88,7 +88,13 @@ namespace sib_api_v3_sdk.Model
             /// Enum Blocked for value: blocked
             /// </summary>
             [EnumMember(Value = "blocked")]
-            Blocked = 9
+            Blocked = 9,
+            
+            /// <summary>
+            /// Enum Rejected for value: rejected
+            /// </summary>
+            [EnumMember(Value = "rejected")]
+            Rejected = 10
         }
 
         /// <summary>

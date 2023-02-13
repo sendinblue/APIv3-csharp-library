@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 <a name="getemailcampaign"></a>
 # **GetEmailCampaign**
-> GetEmailCampaign GetEmailCampaign (long? campaignId)
+> GetEmailCampaign GetEmailCampaign (long? campaignId, string statistics = null)
 
 Get an email campaign report
 
@@ -325,11 +325,12 @@ namespace Example
 
             var apiInstance = new EmailCampaignsApi();
             var campaignId = 789;  // long? | Id of the campaign
+            var statistics = statistics_example;  // string | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional) 
 
             try
             {
                 // Get an email campaign report
-                GetEmailCampaign result = apiInstance.GetEmailCampaign(campaignId);
+                GetEmailCampaign result = apiInstance.GetEmailCampaign(campaignId, statistics);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -346,6 +347,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaignId** | **long?**| Id of the campaign | 
+ **statistics** | **string**| Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. | [optional] 
 
 ### Return type
 
@@ -364,7 +366,7 @@ Name | Type | Description  | Notes
 
 <a name="getemailcampaigns"></a>
 # **GetEmailCampaigns**
-> GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
+> GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
 
 Return all your created email campaigns
 
@@ -394,6 +396,7 @@ namespace Example
             var apiInstance = new EmailCampaignsApi();
             var type = type_example;  // string | Filter on the type of the campaigns (optional) 
             var status = status_example;  // string | Filter on the status of the campaign (optional) 
+            var statistics = statistics_example;  // string | Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional) 
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either 'status' not passed and if passed is set to 'sent' ) (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either 'status' not passed and if passed is set to 'sent' ) (optional) 
             var limit = 789;  // long? | Number of documents per page (optional)  (default to 50)
@@ -403,7 +406,7 @@ namespace Example
             try
             {
                 // Return all your created email campaigns
-                GetEmailCampaigns result = apiInstance.GetEmailCampaigns(type, status, startDate, endDate, limit, offset, sort);
+                GetEmailCampaigns result = apiInstance.GetEmailCampaigns(type, status, statistics, startDate, endDate, limit, offset, sort);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -421,6 +424,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **string**| Filter on the type of the campaigns | [optional] 
  **status** | **string**| Filter on the status of the campaign | [optional] 
+ **statistics** | **string**| Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. | [optional] 
  **startDate** | **string**| Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) | [optional] 
  **limit** | **long?**| Number of documents per page | [optional] [default to 50]
