@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **long?** | ID of the webhook | 
 **Description** | **string** | Description of the webhook | 
 **Events** | **List&lt;string&gt;** |  | 
-**Type** | **string** | Type of webhook (marketing or transac) | 
+**Type** | **string** | Type of webhook (marketing or transactional) | 
 **CreatedAt** | **string** | Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) | 
 **ModifiedAt** | **string** | Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) | 
 

@@ -61,7 +61,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="tag">Tag of the campaign.</param>
         /// <param name="sender">sender.</param>
         /// <param name="name">Name of the campaign.</param>
-        /// <param name="htmlContent">Body of the message (HTML version). REQUIRED if htmlUrl is empty.</param>
+        /// <param name="htmlContent">Body of the message (HTML version). If the campaign is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that campaign. REQUIRED if htmlUrl is empty.</param>
         /// <param name="htmlUrl">Url which contents the body of the email message. REQUIRED if htmlContent is empty.</param>
         /// <param name="scheduledAt">UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part)..</param>
         /// <param name="subject">Subject of the campaign.</param>
@@ -86,7 +86,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="ipWarmupEnable">Available for dedicated ip clients. Set this to true if you wish to warm up your ip. (default to false).</param>
         /// <param name="initialQuota">Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000..</param>
         /// <param name="increaseRate">Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%..</param>
-        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), string scheduledAt = default(string), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?))
+        /// <param name="unsubscriptionPageId">Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page..</param>
+        /// <param name="updateFormId">Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form..</param>
+        public UpdateEmailCampaign(string tag = default(string), UpdateEmailCampaignSender sender = default(UpdateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), string scheduledAt = default(string), string subject = default(string), string replyTo = default(string), string toField = default(string), UpdateEmailCampaignRecipients recipients = default(UpdateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), bool? recurring = false, string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = default(bool?), bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?), string unsubscriptionPageId = default(string), string updateFormId = default(string))
         {
             this.Tag = tag;
             this.Sender = sender;
@@ -148,6 +150,8 @@ namespace sib_api_v3_sdk.Model
             }
             this.InitialQuota = initialQuota;
             this.IncreaseRate = increaseRate;
+            this.UnsubscriptionPageId = unsubscriptionPageId;
+            this.UpdateFormId = updateFormId;
         }
         
         /// <summary>
@@ -171,9 +175,9 @@ namespace sib_api_v3_sdk.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Body of the message (HTML version). REQUIRED if htmlUrl is empty
+        /// Body of the message (HTML version). If the campaign is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that campaign. REQUIRED if htmlUrl is empty
         /// </summary>
-        /// <value>Body of the message (HTML version). REQUIRED if htmlUrl is empty</value>
+        /// <value>Body of the message (HTML version). If the campaign is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that campaign. REQUIRED if htmlUrl is empty</value>
         [DataMember(Name="htmlContent", EmitDefaultValue=false)]
         public string HtmlContent { get; set; }
 
@@ -339,6 +343,20 @@ namespace sib_api_v3_sdk.Model
         public long? IncreaseRate { get; set; }
 
         /// <summary>
+        /// Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page.
+        /// </summary>
+        /// <value>Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page.</value>
+        [DataMember(Name="unsubscriptionPageId", EmitDefaultValue=false)]
+        public string UnsubscriptionPageId { get; set; }
+
+        /// <summary>
+        /// Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form.
+        /// </summary>
+        /// <value>Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form.</value>
+        [DataMember(Name="updateFormId", EmitDefaultValue=false)]
+        public string UpdateFormId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -374,6 +392,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  IpWarmupEnable: ").Append(IpWarmupEnable).Append("\n");
             sb.Append("  InitialQuota: ").Append(InitialQuota).Append("\n");
             sb.Append("  IncreaseRate: ").Append(IncreaseRate).Append("\n");
+            sb.Append("  UnsubscriptionPageId: ").Append(UnsubscriptionPageId).Append("\n");
+            sb.Append("  UpdateFormId: ").Append(UpdateFormId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -547,6 +567,16 @@ namespace sib_api_v3_sdk.Model
                     this.IncreaseRate == input.IncreaseRate ||
                     (this.IncreaseRate != null &&
                     this.IncreaseRate.Equals(input.IncreaseRate))
+                ) && 
+                (
+                    this.UnsubscriptionPageId == input.UnsubscriptionPageId ||
+                    (this.UnsubscriptionPageId != null &&
+                    this.UnsubscriptionPageId.Equals(input.UnsubscriptionPageId))
+                ) && 
+                (
+                    this.UpdateFormId == input.UpdateFormId ||
+                    (this.UpdateFormId != null &&
+                    this.UpdateFormId.Equals(input.UpdateFormId))
                 );
         }
 
@@ -615,6 +645,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.InitialQuota.GetHashCode();
                 if (this.IncreaseRate != null)
                     hashCode = hashCode * 59 + this.IncreaseRate.GetHashCode();
+                if (this.UnsubscriptionPageId != null)
+                    hashCode = hashCode * 59 + this.UnsubscriptionPageId.GetHashCode();
+                if (this.UpdateFormId != null)
+                    hashCode = hashCode * 59 + this.UpdateFormId.GetHashCode();
                 return hashCode;
             }
         }

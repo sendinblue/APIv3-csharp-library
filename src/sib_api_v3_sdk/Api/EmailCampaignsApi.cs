@@ -142,7 +142,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
@@ -159,7 +159,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
@@ -306,8 +306,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns></returns>
-        void UploadImageToGallery (UploadImageToGallery uploadImage);
+        /// <returns>UploadImageModel</returns>
+        UploadImageModel UploadImageToGallery (UploadImageToGallery uploadImage);
 
         /// <summary>
         /// Upload an image to your account&#39;s image gallery
@@ -317,8 +317,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
+        /// <returns>ApiResponse of UploadImageModel</returns>
+        ApiResponse<UploadImageModel> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -439,7 +439,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
@@ -456,7 +456,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
@@ -603,8 +603,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
+        /// <returns>Task of UploadImageModel</returns>
+        System.Threading.Tasks.Task<UploadImageModel> UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
 
         /// <summary>
         /// Upload an image to your account&#39;s image gallery
@@ -614,8 +614,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
+        /// <returns>Task of ApiResponse (UploadImageModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UploadImageModel>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Asynchronous Operations
     }
 
@@ -1531,7 +1531,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
@@ -1549,7 +1549,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
@@ -1623,7 +1623,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
@@ -1642,7 +1642,7 @@ namespace sib_api_v3_sdk.Api
         /// <param name="status">Filter on the status of the campaign (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
@@ -2737,10 +2737,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns></returns>
-        public void UploadImageToGallery (UploadImageToGallery uploadImage)
+        /// <returns>UploadImageModel</returns>
+        public UploadImageModel UploadImageToGallery (UploadImageToGallery uploadImage)
         {
-             UploadImageToGalleryWithHttpInfo(uploadImage);
+             ApiResponse<UploadImageModel> localVarResponse = UploadImageToGalleryWithHttpInfo(uploadImage);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2748,8 +2749,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
+        /// <returns>ApiResponse of UploadImageModel</returns>
+        public ApiResponse< UploadImageModel > UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
         {
             // verify the required parameter 'uploadImage' is set
             if (uploadImage == null)
@@ -2810,9 +2811,9 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UploadImageModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                null);
+                (UploadImageModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UploadImageModel)));
         }
 
         /// <summary>
@@ -2820,10 +2821,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
+        /// <returns>Task of UploadImageModel</returns>
+        public async System.Threading.Tasks.Task<UploadImageModel> UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
         {
-             await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+             ApiResponse<UploadImageModel> localVarResponse = await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+             return localVarResponse.Data;
 
         }
 
@@ -2832,8 +2834,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
+        /// <returns>Task of ApiResponse (UploadImageModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UploadImageModel>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
         {
             // verify the required parameter 'uploadImage' is set
             if (uploadImage == null)
@@ -2894,9 +2896,9 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UploadImageModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                null);
+                (UploadImageModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UploadImageModel)));
         }
 
     }

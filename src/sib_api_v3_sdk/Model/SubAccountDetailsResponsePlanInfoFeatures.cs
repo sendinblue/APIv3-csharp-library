@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Sub-account features and addons quota details
+    /// Features available on the sub-account
     /// </summary>
     [DataContract]
     public partial class SubAccountDetailsResponsePlanInfoFeatures :  IEquatable<SubAccountDetailsResponsePlanInfoFeatures>

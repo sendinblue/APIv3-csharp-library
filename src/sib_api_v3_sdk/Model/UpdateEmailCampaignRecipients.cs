@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// List ids to include/exclude from campaign
+    /// Segment ids and List ids to include/exclude from campaign
     /// </summary>
     [DataContract]
     public partial class UpdateEmailCampaignRecipients :  IEquatable<UpdateEmailCampaignRecipients>
@@ -32,11 +32,13 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="UpdateEmailCampaignRecipients" /> class.
         /// </summary>
         /// <param name="exclusionListIds">List ids which have to be excluded from a campaign.</param>
-        /// <param name="listIds">Lists Ids to send the campaign to. REQUIRED if already not present in campaign and scheduledAt is not empty.</param>
-        public UpdateEmailCampaignRecipients(List<long?> exclusionListIds = default(List<long?>), List<long?> listIds = default(List<long?>))
+        /// <param name="listIds">Lists Ids to send the campaign to. Campaign should only be updated with listIds if listIds were used to create it. REQUIRED if already not present in campaign and scheduledAt is not empty.</param>
+        /// <param name="segmentIds">Mandatory if listIds are not used. Campaign should only be updated with segmentIds if segmentIds were used to create it. Segment ids to send the campaign to..</param>
+        public UpdateEmailCampaignRecipients(List<long?> exclusionListIds = default(List<long?>), List<long?> listIds = default(List<long?>), List<long?> segmentIds = default(List<long?>))
         {
             this.ExclusionListIds = exclusionListIds;
             this.ListIds = listIds;
+            this.SegmentIds = segmentIds;
         }
         
         /// <summary>
@@ -47,11 +49,18 @@ namespace sib_api_v3_sdk.Model
         public List<long?> ExclusionListIds { get; set; }
 
         /// <summary>
-        /// Lists Ids to send the campaign to. REQUIRED if already not present in campaign and scheduledAt is not empty
+        /// Lists Ids to send the campaign to. Campaign should only be updated with listIds if listIds were used to create it. REQUIRED if already not present in campaign and scheduledAt is not empty
         /// </summary>
-        /// <value>Lists Ids to send the campaign to. REQUIRED if already not present in campaign and scheduledAt is not empty</value>
+        /// <value>Lists Ids to send the campaign to. Campaign should only be updated with listIds if listIds were used to create it. REQUIRED if already not present in campaign and scheduledAt is not empty</value>
         [DataMember(Name="listIds", EmitDefaultValue=false)]
         public List<long?> ListIds { get; set; }
+
+        /// <summary>
+        /// Mandatory if listIds are not used. Campaign should only be updated with segmentIds if segmentIds were used to create it. Segment ids to send the campaign to.
+        /// </summary>
+        /// <value>Mandatory if listIds are not used. Campaign should only be updated with segmentIds if segmentIds were used to create it. Segment ids to send the campaign to.</value>
+        [DataMember(Name="segmentIds", EmitDefaultValue=false)]
+        public List<long?> SegmentIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,6 +72,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class UpdateEmailCampaignRecipients {\n");
             sb.Append("  ExclusionListIds: ").Append(ExclusionListIds).Append("\n");
             sb.Append("  ListIds: ").Append(ListIds).Append("\n");
+            sb.Append("  SegmentIds: ").Append(SegmentIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,6 +116,11 @@ namespace sib_api_v3_sdk.Model
                     this.ListIds == input.ListIds ||
                     this.ListIds != null &&
                     this.ListIds.SequenceEqual(input.ListIds)
+                ) && 
+                (
+                    this.SegmentIds == input.SegmentIds ||
+                    this.SegmentIds != null &&
+                    this.SegmentIds.SequenceEqual(input.SegmentIds)
                 );
         }
 
@@ -122,6 +137,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.ExclusionListIds.GetHashCode();
                 if (this.ListIds != null)
                     hashCode = hashCode * 59 + this.ListIds.GetHashCode();
+                if (this.SegmentIds != null)
+                    hashCode = hashCode * 59 + this.SegmentIds.GetHashCode();
                 return hashCode;
             }
         }

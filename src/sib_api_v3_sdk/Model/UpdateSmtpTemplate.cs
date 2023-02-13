@@ -34,7 +34,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="tag">Tag of the template.</param>
         /// <param name="sender">sender.</param>
         /// <param name="templateName">Name of the template.</param>
-        /// <param name="htmlContent">Required if htmlUrl is empty. Body of the message (HTML must have more than 10 characters).</param>
+        /// <param name="htmlContent">Required if htmlUrl is empty. If the template is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that template. Body of the message (HTML must have more than 10 characters).</param>
         /// <param name="htmlUrl">Required if htmlContent is empty. URL to the body of the email (HTML).</param>
         /// <param name="subject">Subject of the email.</param>
         /// <param name="replyTo">Email on which campaign recipients will be able to reply to.</param>
@@ -76,9 +76,9 @@ namespace sib_api_v3_sdk.Model
         public string TemplateName { get; set; }
 
         /// <summary>
-        /// Required if htmlUrl is empty. Body of the message (HTML must have more than 10 characters)
+        /// Required if htmlUrl is empty. If the template is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that template. Body of the message (HTML must have more than 10 characters)
         /// </summary>
-        /// <value>Required if htmlUrl is empty. Body of the message (HTML must have more than 10 characters)</value>
+        /// <value>Required if htmlUrl is empty. If the template is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that template. Body of the message (HTML must have more than 10 characters)</value>
         [DataMember(Name="htmlContent", EmitDefaultValue=false)]
         public string HtmlContent { get; set; }
 

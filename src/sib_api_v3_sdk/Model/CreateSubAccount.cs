@@ -29,9 +29,9 @@ namespace sib_api_v3_sdk.Model
     public partial class CreateSubAccount :  IEquatable<CreateSubAccount>
     {
         /// <summary>
-        /// Language for identifying localization information
+        /// Set the language of the sub-account
         /// </summary>
-        /// <value>Language for identifying localization information</value>
+        /// <value>Set the language of the sub-account</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum LanguageEnum
         {
@@ -74,9 +74,9 @@ namespace sib_api_v3_sdk.Model
         }
 
         /// <summary>
-        /// Language for identifying localization information
+        /// Set the language of the sub-account
         /// </summary>
-        /// <value>Language for identifying localization information</value>
+        /// <value>Set the language of the sub-account</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public LanguageEnum? Language { get; set; }
         /// <summary>
@@ -87,10 +87,10 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSubAccount" /> class.
         /// </summary>
-        /// <param name="companyName">Name of the organization (required).</param>
+        /// <param name="companyName">Set the name of the sub-account company (required).</param>
         /// <param name="email">Email address for the organization (required).</param>
-        /// <param name="language">Language for identifying localization information.</param>
-        /// <param name="timezone">Request timezone of the client.</param>
+        /// <param name="language">Set the language of the sub-account.</param>
+        /// <param name="timezone">Set the timezone of the sub-account.</param>
         public CreateSubAccount(string companyName = default(string), string email = default(string), LanguageEnum? language = default(LanguageEnum?), string timezone = default(string))
         {
             // to ensure "companyName" is required (not null)
@@ -116,9 +116,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Name of the organization
+        /// Set the name of the sub-account company
         /// </summary>
-        /// <value>Name of the organization</value>
+        /// <value>Set the name of the sub-account company</value>
         [DataMember(Name="companyName", EmitDefaultValue=false)]
         public string CompanyName { get; set; }
 
@@ -131,9 +131,9 @@ namespace sib_api_v3_sdk.Model
 
 
         /// <summary>
-        /// Request timezone of the client
+        /// Set the timezone of the sub-account
         /// </summary>
-        /// <value>Request timezone of the client</value>
+        /// <value>Set the timezone of the sub-account</value>
         [DataMember(Name="timezone", EmitDefaultValue=false)]
         public string Timezone { get; set; }
 

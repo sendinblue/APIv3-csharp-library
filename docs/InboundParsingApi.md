@@ -4,9 +4,80 @@ All URIs are relative to *https://api.sendinblue.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetInboundEmailAttachment**](InboundParsingApi.md#getinboundemailattachment) | **GET** /inbound/attachments/{downloadToken} | Retrieve inbound attachment with download token.
 [**GetInboundEmailEvents**](InboundParsingApi.md#getinboundemailevents) | **GET** /inbound/events | Get the list of all the events for the received emails.
 [**GetInboundEmailEventsByUuid**](InboundParsingApi.md#getinboundemaileventsbyuuid) | **GET** /inbound/events/{uuid} | Fetch all events history for one particular received email.
 
+
+<a name="getinboundemailattachment"></a>
+# **GetInboundEmailAttachment**
+> System.IO.Stream GetInboundEmailAttachment (string downloadToken)
+
+Retrieve inbound attachment with download token.
+
+This endpoint will retrieve inbound attachment with download token.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetInboundEmailAttachmentExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new InboundParsingApi();
+            var downloadToken = downloadToken_example;  // string | Token to fetch a particular attachment
+
+            try
+            {
+                // Retrieve inbound attachment with download token.
+                System.IO.Stream result = apiInstance.GetInboundEmailAttachment(downloadToken);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling InboundParsingApi.GetInboundEmailAttachment: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **downloadToken** | **string**| Token to fetch a particular attachment | 
+
+### Return type
+
+**System.IO.Stream**
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getinboundemailevents"></a>
 # **GetInboundEmailEvents**

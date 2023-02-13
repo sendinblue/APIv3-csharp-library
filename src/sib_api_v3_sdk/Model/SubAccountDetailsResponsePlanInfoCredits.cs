@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// Sub-account messaging quota details
+    /// Credits quota and remaining credits on the sub-account
     /// </summary>
     [DataContract]
     public partial class SubAccountDetailsResponsePlanInfoCredits :  IEquatable<SubAccountDetailsResponsePlanInfoCredits>
@@ -31,7 +31,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubAccountDetailsResponsePlanInfoCredits" /> class.
         /// </summary>
-        /// <param name="sms">Sms quota of the sub-account.</param>
+        /// <param name="sms">SMS credits remaining on the sub-account.</param>
         /// <param name="emails">emails.</param>
         public SubAccountDetailsResponsePlanInfoCredits(long? sms = default(long?), SubAccountDetailsResponsePlanInfoCreditsEmails emails = default(SubAccountDetailsResponsePlanInfoCreditsEmails))
         {
@@ -40,9 +40,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Sms quota of the sub-account
+        /// SMS credits remaining on the sub-account
         /// </summary>
-        /// <value>Sms quota of the sub-account</value>
+        /// <value>SMS credits remaining on the sub-account</value>
         [DataMember(Name="sms", EmitDefaultValue=false)]
         public long? Sms { get; set; }
 

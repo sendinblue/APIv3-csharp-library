@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **long?** | client id of sub-account organization | 
-**CompanyName** | **string** | Name of sub-account organization | 
-**Active** | **bool?** | Whether organization is active or not | 
-**CreatedAt** | **long?** | timestamp when the organization was created | 
+**Id** | **long?** | id of the sub-account | 
+**CompanyName** | **string** | Name of the sub-account company | 
+**Active** | **bool?** | Whether the sub-account is active or not | 
+**CreatedAt** | **long?** | Timestamp when the sub-account was created | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

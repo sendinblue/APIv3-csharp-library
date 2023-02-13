@@ -32,7 +32,7 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="CreateContact" /> class.
         /// </summary>
         /// <param name="email">Email address of the user. Mandatory if &quot;SMS&quot; field is not passed in &quot;attributes&quot; parameter. Mobile Number in &quot;SMS&quot; field should be passed with proper country code. For example {&quot;SMS&quot;:&quot;+91xxxxxxxxxx&quot;} or {&quot;SMS&quot;:&quot;0091xxxxxxxxxx&quot;}.</param>
-        /// <param name="attributes">Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}.</param>
+        /// <param name="attributes">Pass the set of attributes and their values. The attribute&#39;s parameter should be passed in capital letter while creating a contact. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}.</param>
         /// <param name="emailBlacklisted">Set this field to blacklist the contact for emails (emailBlacklisted &#x3D; true).</param>
         /// <param name="smsBlacklisted">Set this field to blacklist the contact for SMS (smsBlacklisted &#x3D; true).</param>
         /// <param name="listIds">Ids of the lists to add the contact to.</param>
@@ -65,9 +65,9 @@ namespace sib_api_v3_sdk.Model
         public string Email { get; set; }
 
         /// <summary>
-        /// Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}
+        /// Pass the set of attributes and their values. The attribute&#39;s parameter should be passed in capital letter while creating a contact. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}
         /// </summary>
-        /// <value>Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}</value>
+        /// <value>Pass the set of attributes and their values. The attribute&#39;s parameter should be passed in capital letter while creating a contact. These attributes must be present in your SendinBlue account. For eg. {&quot;FNAME&quot;:&quot;Elly&quot;, &quot;LNAME&quot;:&quot;Roger&quot;}</value>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
         public Object Attributes { get; set; }
 

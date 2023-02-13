@@ -396,7 +396,7 @@ namespace Example
             var status = status_example;  // string | Filter on the status of the campaign (optional) 
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either 'status' not passed and if passed is set to 'sent' ) (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either 'status' not passed and if passed is set to 'sent' ) (optional) 
-            var limit = 789;  // long? | Number of documents per page (optional)  (default to 500)
+            var limit = 789;  // long? | Number of documents per page (optional)  (default to 50)
             var offset = 789;  // long? | Index of the first document in the page (optional)  (default to 0)
             var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
  **status** | **string**| Filter on the status of the campaign | [optional] 
  **startDate** | **string**| Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) | [optional] 
- **limit** | **long?**| Number of documents per page | [optional] [default to 500]
+ **limit** | **long?**| Number of documents per page | [optional] [default to 50]
  **offset** | **long?**| Index of the first document in the page | [optional] [default to 0]
  **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
 
@@ -859,7 +859,7 @@ void (empty response body)
 
 <a name="uploadimagetogallery"></a>
 # **UploadImageToGallery**
-> void UploadImageToGallery (UploadImageToGallery uploadImage)
+> UploadImageModel UploadImageToGallery (UploadImageToGallery uploadImage)
 
 Upload an image to your account's image gallery
 
@@ -892,7 +892,8 @@ namespace Example
             try
             {
                 // Upload an image to your account's image gallery
-                apiInstance.UploadImageToGallery(uploadImage);
+                UploadImageModel result = apiInstance.UploadImageToGallery(uploadImage);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -911,7 +912,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UploadImageModel**](UploadImageModel.md)
 
 ### Authorization
 

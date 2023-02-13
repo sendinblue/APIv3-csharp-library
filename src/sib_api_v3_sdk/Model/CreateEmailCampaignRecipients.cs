@@ -23,7 +23,7 @@ using SwaggerDateConverter = sib_api_v3_sdk.Client.SwaggerDateConverter;
 namespace sib_api_v3_sdk.Model
 {
     /// <summary>
-    /// List ids to include/exclude from campaign
+    /// Segment ids and List ids to include/exclude from campaign
     /// </summary>
     [DataContract]
     public partial class CreateEmailCampaignRecipients :  IEquatable<CreateEmailCampaignRecipients>
@@ -33,10 +33,12 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="exclusionListIds">List ids to exclude from the campaign.</param>
         /// <param name="listIds">Mandatory if scheduledAt is not empty. List Ids to send the campaign to.</param>
-        public CreateEmailCampaignRecipients(List<long?> exclusionListIds = default(List<long?>), List<long?> listIds = default(List<long?>))
+        /// <param name="segmentIds">Mandatory if listIds are not used. Segment ids to send the campaign to..</param>
+        public CreateEmailCampaignRecipients(List<long?> exclusionListIds = default(List<long?>), List<long?> listIds = default(List<long?>), List<long?> segmentIds = default(List<long?>))
         {
             this.ExclusionListIds = exclusionListIds;
             this.ListIds = listIds;
+            this.SegmentIds = segmentIds;
         }
         
         /// <summary>
@@ -54,6 +56,13 @@ namespace sib_api_v3_sdk.Model
         public List<long?> ListIds { get; set; }
 
         /// <summary>
+        /// Mandatory if listIds are not used. Segment ids to send the campaign to.
+        /// </summary>
+        /// <value>Mandatory if listIds are not used. Segment ids to send the campaign to.</value>
+        [DataMember(Name="segmentIds", EmitDefaultValue=false)]
+        public List<long?> SegmentIds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -63,6 +72,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("class CreateEmailCampaignRecipients {\n");
             sb.Append("  ExclusionListIds: ").Append(ExclusionListIds).Append("\n");
             sb.Append("  ListIds: ").Append(ListIds).Append("\n");
+            sb.Append("  SegmentIds: ").Append(SegmentIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,6 +116,11 @@ namespace sib_api_v3_sdk.Model
                     this.ListIds == input.ListIds ||
                     this.ListIds != null &&
                     this.ListIds.SequenceEqual(input.ListIds)
+                ) && 
+                (
+                    this.SegmentIds == input.SegmentIds ||
+                    this.SegmentIds != null &&
+                    this.SegmentIds.SequenceEqual(input.SegmentIds)
                 );
         }
 
@@ -122,6 +137,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.ExclusionListIds.GetHashCode();
                 if (this.ListIds != null)
                     hashCode = hashCode * 59 + this.ListIds.GetHashCode();
+                if (this.SegmentIds != null)
+                    hashCode = hashCode * 59 + this.SegmentIds.GetHashCode();
                 return hashCode;
             }
         }

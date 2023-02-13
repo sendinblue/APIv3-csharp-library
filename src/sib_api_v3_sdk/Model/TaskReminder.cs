@@ -77,7 +77,7 @@ namespace sib_api_v3_sdk.Model
         /// </summary>
         /// <param name="value">Value of time unit before reminder is to be sent (required).</param>
         /// <param name="unit">Unit of time before reminder is to be sent (required).</param>
-        /// <param name="types">Type of task reminder (required).</param>
+        /// <param name="types">Type of task reminder e.g email, push (required).</param>
         public TaskReminder(int? value = default(int?), UnitEnum unit = default(UnitEnum), List<string> types = default(List<string>))
         {
             // to ensure "value" is required (not null)
@@ -118,9 +118,9 @@ namespace sib_api_v3_sdk.Model
 
 
         /// <summary>
-        /// Type of task reminder
+        /// Type of task reminder e.g email, push
         /// </summary>
-        /// <value>Type of task reminder</value>
+        /// <value>Type of task reminder e.g email, push</value>
         [DataMember(Name="types", EmitDefaultValue=false)]
         public List<string> Types { get; set; }
 

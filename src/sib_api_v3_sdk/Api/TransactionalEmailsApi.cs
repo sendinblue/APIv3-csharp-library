@@ -109,6 +109,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHardbouncesWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
+        /// Delete scheduled emails by batchId or messageId
+        /// </summary>
+        /// <remarks>
+        /// Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns></returns>
+        void DeleteScheduledEmailById (string identifier);
+
+        /// <summary>
+        /// Delete scheduled emails by batchId or messageId
+        /// </summary>
+        /// <remarks>
+        /// Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteScheduledEmailByIdWithHttpInfo (string identifier);
+        /// <summary>
         /// Delete an inactive email template
         /// </summary>
         /// <remarks>
@@ -182,7 +203,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -203,7 +224,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -216,6 +237,64 @@ namespace sib_api_v3_sdk.Api
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailEventReport</returns>
         ApiResponse<GetEmailEventReport> GetEmailEventReportWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        /// <summary>
+        /// Fetch scheduled emails by batchId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>GetScheduledEmailByBatchId</returns>
+        GetScheduledEmailByBatchId GetScheduledEmailByBatchId (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null);
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>ApiResponse of GetScheduledEmailByBatchId</returns>
+        ApiResponse<GetScheduledEmailByBatchId> GetScheduledEmailByBatchIdWithHttpInfo (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null);
+        /// <summary>
+        /// Fetch scheduled email by messageId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>GetScheduledEmailByMessageId</returns>
+        GetScheduledEmailByMessageId GetScheduledEmailByMessageId (string messageId, DateTime? startDate = null, DateTime? endDate = null);
+
+        /// <summary>
+        /// Fetch scheduled email by messageId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>ApiResponse of GetScheduledEmailByMessageId</returns>
+        ApiResponse<GetScheduledEmailByMessageId> GetScheduledEmailByMessageIdWithHttpInfo (string messageId, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get your transactional email activity aggregated per day
         /// </summary>
@@ -580,6 +659,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteHardbouncesAsyncWithHttpInfo (DeleteHardbounces deleteHardbounces = null);
         /// <summary>
+        /// Delete scheduled emails by batchId or messageId
+        /// </summary>
+        /// <remarks>
+        /// Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteScheduledEmailByIdAsync (string identifier);
+
+        /// <summary>
+        /// Delete scheduled emails by batchId or messageId
+        /// </summary>
+        /// <remarks>
+        /// Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduledEmailByIdAsyncWithHttpInfo (string identifier);
+        /// <summary>
         /// Delete an inactive email template
         /// </summary>
         /// <remarks>
@@ -653,7 +753,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -674,7 +774,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -687,6 +787,64 @@ namespace sib_api_v3_sdk.Api
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailEventReport)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetEmailEventReport>> GetEmailEventReportAsyncWithHttpInfo (long? limit = null, long? offset = null, string startDate = null, string endDate = null, long? days = null, string email = null, string _event = null, string tags = null, string messageId = null, long? templateId = null, string sort = null);
+        /// <summary>
+        /// Fetch scheduled emails by batchId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>Task of GetScheduledEmailByBatchId</returns>
+        System.Threading.Tasks.Task<GetScheduledEmailByBatchId> GetScheduledEmailByBatchIdAsync (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null);
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>Task of ApiResponse (GetScheduledEmailByBatchId)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetScheduledEmailByBatchId>> GetScheduledEmailByBatchIdAsyncWithHttpInfo (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null);
+        /// <summary>
+        /// Fetch scheduled email by messageId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of GetScheduledEmailByMessageId</returns>
+        System.Threading.Tasks.Task<GetScheduledEmailByMessageId> GetScheduledEmailByMessageIdAsync (string messageId, DateTime? startDate = null, DateTime? endDate = null);
+
+        /// <summary>
+        /// Fetch scheduled email by messageId
+        /// </summary>
+        /// <remarks>
+        /// Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of ApiResponse (GetScheduledEmailByMessageId)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetScheduledEmailByMessageId>> GetScheduledEmailByMessageIdAsyncWithHttpInfo (string messageId, DateTime? startDate = null, DateTime? endDate = null);
         /// <summary>
         /// Get your transactional email activity aggregated per day
         /// </summary>
@@ -1715,6 +1873,159 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
+        /// Delete scheduled emails by batchId or messageId Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns></returns>
+        public void DeleteScheduledEmailById (string identifier)
+        {
+             DeleteScheduledEmailByIdWithHttpInfo(identifier);
+        }
+
+        /// <summary>
+        /// Delete scheduled emails by batchId or messageId Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteScheduledEmailByIdWithHttpInfo (string identifier)
+        {
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling TransactionalEmailsApi->DeleteScheduledEmailById");
+
+            var localVarPath = "./smtp/email/{identifier}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteScheduledEmailById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Delete scheduled emails by batchId or messageId Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteScheduledEmailByIdAsync (string identifier)
+        {
+             await DeleteScheduledEmailByIdAsyncWithHttpInfo(identifier);
+
+        }
+
+        /// <summary>
+        /// Delete scheduled emails by batchId or messageId Delete scheduled batch of emails by batchId or single scheduled email by messageId
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteScheduledEmailByIdAsyncWithHttpInfo (string identifier)
+        {
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+                throw new ApiException(400, "Missing required parameter 'identifier' when calling TransactionalEmailsApi->DeleteScheduledEmailById");
+
+            var localVarPath = "./smtp/email/{identifier}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteScheduledEmailById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Delete an inactive email template 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2181,7 +2492,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -2203,7 +2514,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -2285,7 +2596,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -2308,7 +2619,7 @@ namespace sib_api_v3_sdk.Api
         /// Get all your transactional email activity (unaggregated events) This endpoint will show the aggregated stats for past 30 days by default if &#x60;startDate&#x60; and &#x60;endDate&#x60; OR &#x60;days&#x60; is not passed. The date range can not exceed 90 days
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="limit">Number limitation for the result returned (optional, default to 50)</param>
+        /// <param name="limit">Number limitation for the result returned (optional, default to 2500)</param>
         /// <param name="offset">Beginning point in the list to retrieve from. (optional, default to 0)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional)</param>
@@ -2384,6 +2695,364 @@ namespace sib_api_v3_sdk.Api
             return new ApiResponse<GetEmailEventReport>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (GetEmailEventReport) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetEmailEventReport)));
+        }
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>GetScheduledEmailByBatchId</returns>
+        public GetScheduledEmailByBatchId GetScheduledEmailByBatchId (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null)
+        {
+             ApiResponse<GetScheduledEmailByBatchId> localVarResponse = GetScheduledEmailByBatchIdWithHttpInfo(batchId, startDate, endDate, sort, status, limit, offset);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>ApiResponse of GetScheduledEmailByBatchId</returns>
+        public ApiResponse< GetScheduledEmailByBatchId > GetScheduledEmailByBatchIdWithHttpInfo (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null)
+        {
+            // verify the required parameter 'batchId' is set
+            if (batchId == null)
+                throw new ApiException(400, "Missing required parameter 'batchId' when calling TransactionalEmailsApi->GetScheduledEmailByBatchId");
+
+            var localVarPath = "./smtp/emailStatus/{batchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (batchId != null) localVarPathParams.Add("batchId", this.Configuration.ApiClient.ParameterToString(batchId)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetScheduledEmailByBatchId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetScheduledEmailByBatchId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetScheduledEmailByBatchId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetScheduledEmailByBatchId)));
+        }
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>Task of GetScheduledEmailByBatchId</returns>
+        public async System.Threading.Tasks.Task<GetScheduledEmailByBatchId> GetScheduledEmailByBatchIdAsync (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null)
+        {
+             ApiResponse<GetScheduledEmailByBatchId> localVarResponse = await GetScheduledEmailByBatchIdAsyncWithHttpInfo(batchId, startDate, endDate, sort, status, limit, offset);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Fetch scheduled emails by batchId Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="batchId">The batchId of scheduled emails batch (Should be a valid UUIDv4)</param>
+        /// <param name="startDate">Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
+        /// <param name="status">Filter the records by &#x60;status&#x60; of the scheduled email batch or message. (optional)</param>
+        /// <param name="limit">Number of documents returned per page (optional, default to 100)</param>
+        /// <param name="offset">Index of the first document on the page (optional, default to 0)</param>
+        /// <returns>Task of ApiResponse (GetScheduledEmailByBatchId)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetScheduledEmailByBatchId>> GetScheduledEmailByBatchIdAsyncWithHttpInfo (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null)
+        {
+            // verify the required parameter 'batchId' is set
+            if (batchId == null)
+                throw new ApiException(400, "Missing required parameter 'batchId' when calling TransactionalEmailsApi->GetScheduledEmailByBatchId");
+
+            var localVarPath = "./smtp/emailStatus/{batchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (batchId != null) localVarPathParams.Add("batchId", this.Configuration.ApiClient.ParameterToString(batchId)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetScheduledEmailByBatchId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetScheduledEmailByBatchId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetScheduledEmailByBatchId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetScheduledEmailByBatchId)));
+        }
+
+        /// <summary>
+        /// Fetch scheduled email by messageId Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>GetScheduledEmailByMessageId</returns>
+        public GetScheduledEmailByMessageId GetScheduledEmailByMessageId (string messageId, DateTime? startDate = null, DateTime? endDate = null)
+        {
+             ApiResponse<GetScheduledEmailByMessageId> localVarResponse = GetScheduledEmailByMessageIdWithHttpInfo(messageId, startDate, endDate);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch scheduled email by messageId Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>ApiResponse of GetScheduledEmailByMessageId</returns>
+        public ApiResponse< GetScheduledEmailByMessageId > GetScheduledEmailByMessageIdWithHttpInfo (string messageId, DateTime? startDate = null, DateTime? endDate = null)
+        {
+            // verify the required parameter 'messageId' is set
+            if (messageId == null)
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling TransactionalEmailsApi->GetScheduledEmailByMessageId");
+
+            var localVarPath = "./smtp/emailStatus/{messageId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (messageId != null) localVarPathParams.Add("messageId", this.Configuration.ApiClient.ParameterToString(messageId)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetScheduledEmailByMessageId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetScheduledEmailByMessageId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetScheduledEmailByMessageId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetScheduledEmailByMessageId)));
+        }
+
+        /// <summary>
+        /// Fetch scheduled email by messageId Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of GetScheduledEmailByMessageId</returns>
+        public async System.Threading.Tasks.Task<GetScheduledEmailByMessageId> GetScheduledEmailByMessageIdAsync (string messageId, DateTime? startDate = null, DateTime? endDate = null)
+        {
+             ApiResponse<GetScheduledEmailByMessageId> localVarResponse = await GetScheduledEmailByMessageIdAsyncWithHttpInfo(messageId, startDate, endDate);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Fetch scheduled email by messageId Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="messageId">The messageId of scheduled email</param>
+        /// <param name="startDate">Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional)</param>
+        /// <param name="endDate">Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional)</param>
+        /// <returns>Task of ApiResponse (GetScheduledEmailByMessageId)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetScheduledEmailByMessageId>> GetScheduledEmailByMessageIdAsyncWithHttpInfo (string messageId, DateTime? startDate = null, DateTime? endDate = null)
+        {
+            // verify the required parameter 'messageId' is set
+            if (messageId == null)
+                throw new ApiException(400, "Missing required parameter 'messageId' when calling TransactionalEmailsApi->GetScheduledEmailByMessageId");
+
+            var localVarPath = "./smtp/emailStatus/{messageId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (messageId != null) localVarPathParams.Add("messageId", this.Configuration.ApiClient.ParameterToString(messageId)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetScheduledEmailByMessageId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetScheduledEmailByMessageId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetScheduledEmailByMessageId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetScheduledEmailByMessageId)));
         }
 
         /// <summary>

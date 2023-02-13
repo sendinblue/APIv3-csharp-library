@@ -36,24 +36,13 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Task" /> class.
         /// </summary>
-        /// <param name="firstContact">firstContact.</param>
         /// <param name="id">Unique task id.</param>
         /// <param name="taskTypeId">Id for type of task e.g Call / Email / Meeting etc. (required).</param>
         /// <param name="name">Name of task (required).</param>
         /// <param name="contactsIds">Contact ids for contacts linked to this task.</param>
-        /// <param name="contacts">Contact details for contacts linked to this task.</param>
         /// <param name="dealsIds">Deal ids for deals a task is linked to.</param>
         /// <param name="companiesIds">Companies ids for companies a task is linked to.</param>
-        /// <param name="assignToId">User id to whom task is assigned.</param>
-        /// <param name="date">Task date/time (required).</param>
-        /// <param name="duration">Duration of task.</param>
-        /// <param name="notes">Notes added to a task.</param>
-        /// <param name="done">Task marked as done.</param>
-        /// <param name="reminder">Task reminder date/time for a task.</param>
-        /// <param name="createdAt">Task created date/time.</param>
-        /// <param name="updatedAt">Task update date/time.</param>
-        /// <param name="refs">refs.</param>
-        public Task(Contact firstContact = default(Contact), string id = default(string), string taskTypeId = default(string), string name = default(string), List<int?> contactsIds = default(List<int?>), List<Contact> contacts = default(List<Contact>), List<string> dealsIds = default(List<string>), List<string> companiesIds = default(List<string>), string assignToId = default(string), DateTime? date = default(DateTime?), int? duration = default(int?), string notes = default(string), bool? done = default(bool?), TaskReminder reminder = default(TaskReminder), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), Object refs = default(Object))
+        public Task(string id = default(string), string taskTypeId = default(string), string name = default(string), List<int?> contactsIds = default(List<int?>), List<string> dealsIds = default(List<string>), List<string> companiesIds = default(List<string>))
         {
             // to ensure "taskTypeId" is required (not null)
             if (taskTypeId == null)
@@ -73,37 +62,12 @@ namespace sib_api_v3_sdk.Model
             {
                 this.Name = name;
             }
-            // to ensure "date" is required (not null)
-            if (date == null)
-            {
-                throw new InvalidDataException("date is a required property for Task and cannot be null");
-            }
-            else
-            {
-                this.Date = date;
-            }
-            this.FirstContact = firstContact;
             this.Id = id;
             this.ContactsIds = contactsIds;
-            this.Contacts = contacts;
             this.DealsIds = dealsIds;
             this.CompaniesIds = companiesIds;
-            this.AssignToId = assignToId;
-            this.Duration = duration;
-            this.Notes = notes;
-            this.Done = done;
-            this.Reminder = reminder;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
-            this.Refs = refs;
         }
         
-        /// <summary>
-        /// Gets or Sets FirstContact
-        /// </summary>
-        [DataMember(Name="firstContact", EmitDefaultValue=false)]
-        public Contact FirstContact { get; set; }
-
         /// <summary>
         /// Unique task id
         /// </summary>
@@ -133,13 +97,6 @@ namespace sib_api_v3_sdk.Model
         public List<int?> ContactsIds { get; set; }
 
         /// <summary>
-        /// Contact details for contacts linked to this task
-        /// </summary>
-        /// <value>Contact details for contacts linked to this task</value>
-        [DataMember(Name="contacts", EmitDefaultValue=false)]
-        public List<Contact> Contacts { get; set; }
-
-        /// <summary>
         /// Deal ids for deals a task is linked to
         /// </summary>
         /// <value>Deal ids for deals a task is linked to</value>
@@ -154,68 +111,6 @@ namespace sib_api_v3_sdk.Model
         public List<string> CompaniesIds { get; set; }
 
         /// <summary>
-        /// User id to whom task is assigned
-        /// </summary>
-        /// <value>User id to whom task is assigned</value>
-        [DataMember(Name="assignToId", EmitDefaultValue=false)]
-        public string AssignToId { get; set; }
-
-        /// <summary>
-        /// Task date/time
-        /// </summary>
-        /// <value>Task date/time</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
-
-        /// <summary>
-        /// Duration of task
-        /// </summary>
-        /// <value>Duration of task</value>
-        [DataMember(Name="duration", EmitDefaultValue=false)]
-        public int? Duration { get; set; }
-
-        /// <summary>
-        /// Notes added to a task
-        /// </summary>
-        /// <value>Notes added to a task</value>
-        [DataMember(Name="notes", EmitDefaultValue=false)]
-        public string Notes { get; set; }
-
-        /// <summary>
-        /// Task marked as done
-        /// </summary>
-        /// <value>Task marked as done</value>
-        [DataMember(Name="done", EmitDefaultValue=false)]
-        public bool? Done { get; set; }
-
-        /// <summary>
-        /// Task reminder date/time for a task
-        /// </summary>
-        /// <value>Task reminder date/time for a task</value>
-        [DataMember(Name="reminder", EmitDefaultValue=false)]
-        public TaskReminder Reminder { get; set; }
-
-        /// <summary>
-        /// Task created date/time
-        /// </summary>
-        /// <value>Task created date/time</value>
-        [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Task update date/time
-        /// </summary>
-        /// <value>Task update date/time</value>
-        [DataMember(Name="updatedAt", EmitDefaultValue=false)]
-        public DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Refs
-        /// </summary>
-        [DataMember(Name="refs", EmitDefaultValue=false)]
-        public Object Refs { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -223,23 +118,12 @@ namespace sib_api_v3_sdk.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Task {\n");
-            sb.Append("  FirstContact: ").Append(FirstContact).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TaskTypeId: ").Append(TaskTypeId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ContactsIds: ").Append(ContactsIds).Append("\n");
-            sb.Append("  Contacts: ").Append(Contacts).Append("\n");
             sb.Append("  DealsIds: ").Append(DealsIds).Append("\n");
             sb.Append("  CompaniesIds: ").Append(CompaniesIds).Append("\n");
-            sb.Append("  AssignToId: ").Append(AssignToId).Append("\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
-            sb.Append("  Done: ").Append(Done).Append("\n");
-            sb.Append("  Reminder: ").Append(Reminder).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Refs: ").Append(Refs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -275,11 +159,6 @@ namespace sib_api_v3_sdk.Model
 
             return 
                 (
-                    this.FirstContact == input.FirstContact ||
-                    (this.FirstContact != null &&
-                    this.FirstContact.Equals(input.FirstContact))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -300,11 +179,6 @@ namespace sib_api_v3_sdk.Model
                     this.ContactsIds.SequenceEqual(input.ContactsIds)
                 ) && 
                 (
-                    this.Contacts == input.Contacts ||
-                    this.Contacts != null &&
-                    this.Contacts.SequenceEqual(input.Contacts)
-                ) && 
-                (
                     this.DealsIds == input.DealsIds ||
                     this.DealsIds != null &&
                     this.DealsIds.SequenceEqual(input.DealsIds)
@@ -313,51 +187,6 @@ namespace sib_api_v3_sdk.Model
                     this.CompaniesIds == input.CompaniesIds ||
                     this.CompaniesIds != null &&
                     this.CompaniesIds.SequenceEqual(input.CompaniesIds)
-                ) && 
-                (
-                    this.AssignToId == input.AssignToId ||
-                    (this.AssignToId != null &&
-                    this.AssignToId.Equals(input.AssignToId))
-                ) && 
-                (
-                    this.Date == input.Date ||
-                    (this.Date != null &&
-                    this.Date.Equals(input.Date))
-                ) && 
-                (
-                    this.Duration == input.Duration ||
-                    (this.Duration != null &&
-                    this.Duration.Equals(input.Duration))
-                ) && 
-                (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
-                ) && 
-                (
-                    this.Done == input.Done ||
-                    (this.Done != null &&
-                    this.Done.Equals(input.Done))
-                ) && 
-                (
-                    this.Reminder == input.Reminder ||
-                    (this.Reminder != null &&
-                    this.Reminder.Equals(input.Reminder))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.Refs == input.Refs ||
-                    (this.Refs != null &&
-                    this.Refs.Equals(input.Refs))
                 );
         }
 
@@ -370,8 +199,6 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FirstContact != null)
-                    hashCode = hashCode * 59 + this.FirstContact.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.TaskTypeId != null)
@@ -380,30 +207,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ContactsIds != null)
                     hashCode = hashCode * 59 + this.ContactsIds.GetHashCode();
-                if (this.Contacts != null)
-                    hashCode = hashCode * 59 + this.Contacts.GetHashCode();
                 if (this.DealsIds != null)
                     hashCode = hashCode * 59 + this.DealsIds.GetHashCode();
                 if (this.CompaniesIds != null)
                     hashCode = hashCode * 59 + this.CompaniesIds.GetHashCode();
-                if (this.AssignToId != null)
-                    hashCode = hashCode * 59 + this.AssignToId.GetHashCode();
-                if (this.Date != null)
-                    hashCode = hashCode * 59 + this.Date.GetHashCode();
-                if (this.Duration != null)
-                    hashCode = hashCode * 59 + this.Duration.GetHashCode();
-                if (this.Notes != null)
-                    hashCode = hashCode * 59 + this.Notes.GetHashCode();
-                if (this.Done != null)
-                    hashCode = hashCode * 59 + this.Done.GetHashCode();
-                if (this.Reminder != null)
-                    hashCode = hashCode * 59 + this.Reminder.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
-                if (this.UpdatedAt != null)
-                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
-                if (this.Refs != null)
-                    hashCode = hashCode * 59 + this.Refs.GetHashCode();
                 return hashCode;
             }
         }

@@ -39,7 +39,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="text">Text content of a note (required).</param>
         /// <param name="contactIds">Contact Ids linked to a note.</param>
         /// <param name="dealIds">Deal Ids linked to a note.</param>
-        public NoteData(string text = default(string), List<int?> contactIds = default(List<int?>), List<string> dealIds = default(List<string>))
+        /// <param name="companyIds">Company Ids linked to a note.</param>
+        public NoteData(string text = default(string), List<int?> contactIds = default(List<int?>), List<string> dealIds = default(List<string>), List<string> companyIds = default(List<string>))
         {
             // to ensure "text" is required (not null)
             if (text == null)
@@ -52,6 +53,7 @@ namespace sib_api_v3_sdk.Model
             }
             this.ContactIds = contactIds;
             this.DealIds = dealIds;
+            this.CompanyIds = companyIds;
         }
         
         /// <summary>
@@ -76,6 +78,13 @@ namespace sib_api_v3_sdk.Model
         public List<string> DealIds { get; set; }
 
         /// <summary>
+        /// Company Ids linked to a note
+        /// </summary>
+        /// <value>Company Ids linked to a note</value>
+        [DataMember(Name="companyIds", EmitDefaultValue=false)]
+        public List<string> CompanyIds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,6 +95,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Text: ").Append(Text).Append("\n");
             sb.Append("  ContactIds: ").Append(ContactIds).Append("\n");
             sb.Append("  DealIds: ").Append(DealIds).Append("\n");
+            sb.Append("  CompanyIds: ").Append(CompanyIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,6 +144,11 @@ namespace sib_api_v3_sdk.Model
                     this.DealIds == input.DealIds ||
                     this.DealIds != null &&
                     this.DealIds.SequenceEqual(input.DealIds)
+                ) && 
+                (
+                    this.CompanyIds == input.CompanyIds ||
+                    this.CompanyIds != null &&
+                    this.CompanyIds.SequenceEqual(input.CompanyIds)
                 );
         }
 
@@ -152,6 +167,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.ContactIds.GetHashCode();
                 if (this.DealIds != null)
                     hashCode = hashCode * 59 + this.DealIds.GetHashCode();
+                if (this.CompanyIds != null)
+                    hashCode = hashCode * 59 + this.CompanyIds.GetHashCode();
                 return hashCode;
             }
         }
