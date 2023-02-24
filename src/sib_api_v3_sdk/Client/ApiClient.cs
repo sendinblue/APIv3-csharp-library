@@ -178,7 +178,7 @@ namespace sib_api_v3_sdk.Client
             
             // set user agent
             if (!Configuration.UserAgent.ToLower().StartsWith("sendinblue_"))
-                Configuration.UserAgent = "sendinblue_clientAPI/v4.0.0/c#";
+                Configuration.UserAgent = "sendinblue_clientAPI/v4.0.2/c#";
 
             RestClient.UserAgent = Configuration.UserAgent;
 
