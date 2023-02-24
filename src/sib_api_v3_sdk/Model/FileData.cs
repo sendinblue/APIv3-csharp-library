@@ -31,44 +31,24 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FileData" /> class.
         /// </summary>
-        /// <param name="url">Url of uploaded file.</param>
-        /// <param name="id">Id of uploaded file.</param>
         /// <param name="name">Name of uploaded file.</param>
         /// <param name="authorId">Account id of user which created the file.</param>
-        /// <param name="author">Account details of user which created the file.</param>
         /// <param name="contactId">Contact id of contact on which file is uploaded.</param>
-        /// <param name="dealIds">Deal ids linked to a file.</param>
-        /// <param name="size">Size of file uploaded.</param>
+        /// <param name="dealId">Deal id linked to a file.</param>
+        /// <param name="companyId">Company id linked to a file.</param>
+        /// <param name="size">Size of file in bytes.</param>
         /// <param name="createdAt">File created date/time.</param>
-        /// <param name="updatedAt">File updated date/time.</param>
-        public FileData(string url = default(string), string id = default(string), string name = default(string), string authorId = default(string), Object author = default(Object), long? contactId = default(long?), List<string> dealIds = default(List<string>), long? size = default(long?), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
+        public FileData(string name = default(string), string authorId = default(string), long? contactId = default(long?), string dealId = default(string), string companyId = default(string), long? size = default(long?), DateTime? createdAt = default(DateTime?))
         {
-            this.Url = url;
-            this.Id = id;
             this.Name = name;
             this.AuthorId = authorId;
-            this.Author = author;
             this.ContactId = contactId;
-            this.DealIds = dealIds;
+            this.DealId = dealId;
+            this.CompanyId = companyId;
             this.Size = size;
             this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
         }
         
-        /// <summary>
-        /// Url of uploaded file
-        /// </summary>
-        /// <value>Url of uploaded file</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Id of uploaded file
-        /// </summary>
-        /// <value>Id of uploaded file</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
-
         /// <summary>
         /// Name of uploaded file
         /// </summary>
@@ -84,13 +64,6 @@ namespace sib_api_v3_sdk.Model
         public string AuthorId { get; set; }
 
         /// <summary>
-        /// Account details of user which created the file
-        /// </summary>
-        /// <value>Account details of user which created the file</value>
-        [DataMember(Name="author", EmitDefaultValue=false)]
-        public Object Author { get; set; }
-
-        /// <summary>
         /// Contact id of contact on which file is uploaded
         /// </summary>
         /// <value>Contact id of contact on which file is uploaded</value>
@@ -98,16 +71,23 @@ namespace sib_api_v3_sdk.Model
         public long? ContactId { get; set; }
 
         /// <summary>
-        /// Deal ids linked to a file
+        /// Deal id linked to a file
         /// </summary>
-        /// <value>Deal ids linked to a file</value>
-        [DataMember(Name="dealIds", EmitDefaultValue=false)]
-        public List<string> DealIds { get; set; }
+        /// <value>Deal id linked to a file</value>
+        [DataMember(Name="dealId", EmitDefaultValue=false)]
+        public string DealId { get; set; }
 
         /// <summary>
-        /// Size of file uploaded
+        /// Company id linked to a file
         /// </summary>
-        /// <value>Size of file uploaded</value>
+        /// <value>Company id linked to a file</value>
+        [DataMember(Name="companyId", EmitDefaultValue=false)]
+        public string CompanyId { get; set; }
+
+        /// <summary>
+        /// Size of file in bytes
+        /// </summary>
+        /// <value>Size of file in bytes</value>
         [DataMember(Name="size", EmitDefaultValue=false)]
         public long? Size { get; set; }
 
@@ -119,13 +99,6 @@ namespace sib_api_v3_sdk.Model
         public DateTime? CreatedAt { get; set; }
 
         /// <summary>
-        /// File updated date/time
-        /// </summary>
-        /// <value>File updated date/time</value>
-        [DataMember(Name="updatedAt", EmitDefaultValue=false)]
-        public DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -133,16 +106,13 @@ namespace sib_api_v3_sdk.Model
         {
             var sb = new StringBuilder();
             sb.Append("class FileData {\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  AuthorId: ").Append(AuthorId).Append("\n");
-            sb.Append("  Author: ").Append(Author).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
-            sb.Append("  DealIds: ").Append(DealIds).Append("\n");
+            sb.Append("  DealId: ").Append(DealId).Append("\n");
+            sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -178,16 +148,6 @@ namespace sib_api_v3_sdk.Model
 
             return 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -198,19 +158,19 @@ namespace sib_api_v3_sdk.Model
                     this.AuthorId.Equals(input.AuthorId))
                 ) && 
                 (
-                    this.Author == input.Author ||
-                    (this.Author != null &&
-                    this.Author.Equals(input.Author))
-                ) && 
-                (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
                 ) && 
                 (
-                    this.DealIds == input.DealIds ||
-                    this.DealIds != null &&
-                    this.DealIds.SequenceEqual(input.DealIds)
+                    this.DealId == input.DealId ||
+                    (this.DealId != null &&
+                    this.DealId.Equals(input.DealId))
+                ) && 
+                (
+                    this.CompanyId == input.CompanyId ||
+                    (this.CompanyId != null &&
+                    this.CompanyId.Equals(input.CompanyId))
                 ) && 
                 (
                     this.Size == input.Size ||
@@ -221,11 +181,6 @@ namespace sib_api_v3_sdk.Model
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
                 );
         }
 
@@ -238,26 +193,20 @@ namespace sib_api_v3_sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.AuthorId != null)
                     hashCode = hashCode * 59 + this.AuthorId.GetHashCode();
-                if (this.Author != null)
-                    hashCode = hashCode * 59 + this.Author.GetHashCode();
                 if (this.ContactId != null)
                     hashCode = hashCode * 59 + this.ContactId.GetHashCode();
-                if (this.DealIds != null)
-                    hashCode = hashCode * 59 + this.DealIds.GetHashCode();
+                if (this.DealId != null)
+                    hashCode = hashCode * 59 + this.DealId.GetHashCode();
+                if (this.CompanyId != null)
+                    hashCode = hashCode * 59 + this.CompanyId.GetHashCode();
                 if (this.Size != null)
                     hashCode = hashCode * 59 + this.Size.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
-                if (this.UpdatedAt != null)
-                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
                 return hashCode;
             }
         }

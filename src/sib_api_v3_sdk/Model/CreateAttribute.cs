@@ -83,11 +83,13 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="CreateAttribute" /> class.
         /// </summary>
         /// <param name="value">Value of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;.</param>
+        /// <param name="isRecurring">Type of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;.</param>
         /// <param name="enumeration">List of values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}].</param>
         /// <param name="type">Type of the attribute. Use only if the attribute&#39;s category is &#39;normal&#39;, &#39;category&#39; or &#39;transactional&#39; ( type &#39;boolean&#39; is only available if the category is &#39;normal&#39; attribute, type &#39;id&#39; is only available if the category is &#39;transactional&#39; attribute &amp; type &#39;category&#39; is only available if the category is &#39;category&#39; attribute ).</param>
-        public CreateAttribute(string value = default(string), List<CreateAttributeEnumeration> enumeration = default(List<CreateAttributeEnumeration>), TypeEnum? type = default(TypeEnum?))
+        public CreateAttribute(string value = default(string), bool? isRecurring = default(bool?), List<CreateAttributeEnumeration> enumeration = default(List<CreateAttributeEnumeration>), TypeEnum? type = default(TypeEnum?))
         {
             this.Value = value;
+            this.IsRecurring = isRecurring;
             this.Enumeration = enumeration;
             this.Type = type;
         }
@@ -98,6 +100,13 @@ namespace sib_api_v3_sdk.Model
         /// <value>Value of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; set; }
+
+        /// <summary>
+        /// Type of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;
+        /// </summary>
+        /// <value>Type of the attribute. Use only if the attribute&#39;s category is &#39;calculated&#39; or &#39;global&#39;</value>
+        [DataMember(Name="isRecurring", EmitDefaultValue=false)]
+        public bool? IsRecurring { get; set; }
 
         /// <summary>
         /// List of values and labels that the attribute can take. Use only if the attribute&#39;s category is &quot;category&quot;. For example, [{&quot;value&quot;:1, &quot;label&quot;:&quot;male&quot;}, {&quot;value&quot;:2, &quot;label&quot;:&quot;female&quot;}]
@@ -116,6 +125,7 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class CreateAttribute {\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  IsRecurring: ").Append(IsRecurring).Append("\n");
             sb.Append("  Enumeration: ").Append(Enumeration).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -158,6 +168,11 @@ namespace sib_api_v3_sdk.Model
                     this.Value.Equals(input.Value))
                 ) && 
                 (
+                    this.IsRecurring == input.IsRecurring ||
+                    (this.IsRecurring != null &&
+                    this.IsRecurring.Equals(input.IsRecurring))
+                ) && 
+                (
                     this.Enumeration == input.Enumeration ||
                     this.Enumeration != null &&
                     this.Enumeration.SequenceEqual(input.Enumeration)
@@ -180,6 +195,8 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if (this.IsRecurring != null)
+                    hashCode = hashCode * 59 + this.IsRecurring.GetHashCode();
                 if (this.Enumeration != null)
                     hashCode = hashCode * 59 + this.Enumeration.GetHashCode();
                 if (this.Type != null)

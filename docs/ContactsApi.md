@@ -782,7 +782,7 @@ This endpoint does not need any parameter.
 
 <a name="getcontactinfo"></a>
 # **GetContactInfo**
-> GetExtendedContactDetails GetContactInfo (string identifier)
+> GetExtendedContactDetails GetContactInfo (string identifier, Object startDate = null, Object endDate = null)
 
 Get a contact's details
 
@@ -813,11 +813,13 @@ namespace Example
 
             var apiInstance = new ContactsApi();
             var identifier = identifier_example;  // string | Email (urlencoded) OR ID of the contact OR its SMS attribute value
+            var startDate = new Object(); // Object | **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional) 
+            var endDate = new Object(); // Object | **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional) 
 
             try
             {
                 // Get a contact's details
-                GetExtendedContactDetails result = apiInstance.GetContactInfo(identifier);
+                GetExtendedContactDetails result = apiInstance.GetContactInfo(identifier, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -834,6 +836,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string**| Email (urlencoded) OR ID of the contact OR its SMS attribute value | 
+ **startDate** | [**Object**](Object.md)| **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  | [optional] 
+ **endDate** | [**Object**](Object.md)| **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  | [optional] 
 
 ### Return type
 

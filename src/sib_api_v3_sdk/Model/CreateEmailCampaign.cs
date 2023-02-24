@@ -91,7 +91,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="ipWarmupEnable">Available for dedicated ip clients. Set this to true if you wish to warm up your ip. (default to false).</param>
         /// <param name="initialQuota">Mandatory if ipWarmupEnable is set to true. Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000..</param>
         /// <param name="increaseRate">Mandatory if ipWarmupEnable is set to true. Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%..</param>
-        public CreateEmailCampaign(string tag = default(string), CreateEmailCampaignSender sender = default(CreateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), long? templateId = default(long?), string scheduledAt = default(string), string subject = default(string), string replyTo = default(string), string toField = default(string), CreateEmailCampaignRecipients recipients = default(CreateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = false, bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?))
+        /// <param name="unsubscriptionPageId">Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. If not entered, then the default unsubscription page will be used..</param>
+        /// <param name="updateFormId">Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used..</param>
+        public CreateEmailCampaign(string tag = default(string), CreateEmailCampaignSender sender = default(CreateEmailCampaignSender), string name = default(string), string htmlContent = default(string), string htmlUrl = default(string), long? templateId = default(long?), string scheduledAt = default(string), string subject = default(string), string replyTo = default(string), string toField = default(string), CreateEmailCampaignRecipients recipients = default(CreateEmailCampaignRecipients), string attachmentUrl = default(string), bool? inlineImageActivation = false, bool? mirrorActive = default(bool?), string footer = default(string), string header = default(string), string utmCampaign = default(string), Object _params = default(Object), bool? sendAtBestTime = false, bool? abTesting = false, string subjectA = default(string), string subjectB = default(string), long? splitRule = default(long?), WinnerCriteriaEnum? winnerCriteria = default(WinnerCriteriaEnum?), long? winnerDelay = default(long?), bool? ipWarmupEnable = false, long? initialQuota = default(long?), long? increaseRate = default(long?), string unsubscriptionPageId = default(string), string updateFormId = default(string))
         {
             // to ensure "sender" is required (not null)
             if (sender == null)
@@ -169,6 +171,8 @@ namespace sib_api_v3_sdk.Model
             }
             this.InitialQuota = initialQuota;
             this.IncreaseRate = increaseRate;
+            this.UnsubscriptionPageId = unsubscriptionPageId;
+            this.UpdateFormId = updateFormId;
         }
         
         /// <summary>
@@ -360,6 +364,20 @@ namespace sib_api_v3_sdk.Model
         public long? IncreaseRate { get; set; }
 
         /// <summary>
+        /// Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. If not entered, then the default unsubscription page will be used.
+        /// </summary>
+        /// <value>Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. If not entered, then the default unsubscription page will be used.</value>
+        [DataMember(Name="unsubscriptionPageId", EmitDefaultValue=false)]
+        public string UnsubscriptionPageId { get; set; }
+
+        /// <summary>
+        /// Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used.
+        /// </summary>
+        /// <value>Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used.</value>
+        [DataMember(Name="updateFormId", EmitDefaultValue=false)]
+        public string UpdateFormId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -395,6 +413,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  IpWarmupEnable: ").Append(IpWarmupEnable).Append("\n");
             sb.Append("  InitialQuota: ").Append(InitialQuota).Append("\n");
             sb.Append("  IncreaseRate: ").Append(IncreaseRate).Append("\n");
+            sb.Append("  UnsubscriptionPageId: ").Append(UnsubscriptionPageId).Append("\n");
+            sb.Append("  UpdateFormId: ").Append(UpdateFormId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -568,6 +588,16 @@ namespace sib_api_v3_sdk.Model
                     this.IncreaseRate == input.IncreaseRate ||
                     (this.IncreaseRate != null &&
                     this.IncreaseRate.Equals(input.IncreaseRate))
+                ) && 
+                (
+                    this.UnsubscriptionPageId == input.UnsubscriptionPageId ||
+                    (this.UnsubscriptionPageId != null &&
+                    this.UnsubscriptionPageId.Equals(input.UnsubscriptionPageId))
+                ) && 
+                (
+                    this.UpdateFormId == input.UpdateFormId ||
+                    (this.UpdateFormId != null &&
+                    this.UpdateFormId.Equals(input.UpdateFormId))
                 );
         }
 
@@ -636,6 +666,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.InitialQuota.GetHashCode();
                 if (this.IncreaseRate != null)
                     hashCode = hashCode * 59 + this.IncreaseRate.GetHashCode();
+                if (this.UnsubscriptionPageId != null)
+                    hashCode = hashCode * 59 + this.UnsubscriptionPageId.GetHashCode();
+                if (this.UpdateFormId != null)
+                    hashCode = hashCode * 59 + this.UpdateFormId.GetHashCode();
                 return hashCode;
             }
         }

@@ -8,10 +8,13 @@ Method | HTTP request | Description
 [**CreateSmtpTemplate**](TransactionalEmailsApi.md#createsmtptemplate) | **POST** /smtp/templates | Create an email template
 [**DeleteBlockedDomain**](TransactionalEmailsApi.md#deleteblockeddomain) | **DELETE** /smtp/blockedDomains/{domain} | Unblock an existing domain from the list of blocked domains
 [**DeleteHardbounces**](TransactionalEmailsApi.md#deletehardbounces) | **POST** /smtp/deleteHardbounces | Delete hardbounces
+[**DeleteScheduledEmailById**](TransactionalEmailsApi.md#deletescheduledemailbyid) | **DELETE** /smtp/email/{identifier} | Delete scheduled emails by batchId or messageId
 [**DeleteSmtpTemplate**](TransactionalEmailsApi.md#deletesmtptemplate) | **DELETE** /smtp/templates/{templateId} | Delete an inactive email template
 [**GetAggregatedSmtpReport**](TransactionalEmailsApi.md#getaggregatedsmtpreport) | **GET** /smtp/statistics/aggregatedReport | Get your transactional email activity aggregated over a period of time
 [**GetBlockedDomains**](TransactionalEmailsApi.md#getblockeddomains) | **GET** /smtp/blockedDomains | Get the list of blocked domains
 [**GetEmailEventReport**](TransactionalEmailsApi.md#getemaileventreport) | **GET** /smtp/statistics/events | Get all your transactional email activity (unaggregated events)
+[**GetScheduledEmailByBatchId**](TransactionalEmailsApi.md#getscheduledemailbybatchid) | **GET** /smtp/emailStatus/{batchId} | Fetch scheduled emails by batchId
+[**GetScheduledEmailByMessageId**](TransactionalEmailsApi.md#getscheduledemailbymessageid) | **GET** /smtp/emailStatus/{messageId} | Fetch scheduled email by messageId
 [**GetSmtpReport**](TransactionalEmailsApi.md#getsmtpreport) | **GET** /smtp/statistics/reports | Get your transactional email activity aggregated per day
 [**GetSmtpTemplate**](TransactionalEmailsApi.md#getsmtptemplate) | **GET** /smtp/templates/{templateId} | Returns the template information
 [**GetSmtpTemplates**](TransactionalEmailsApi.md#getsmtptemplates) | **GET** /smtp/templates | Get the list of email templates
@@ -300,6 +303,75 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deletescheduledemailbyid"></a>
+# **DeleteScheduledEmailById**
+> void DeleteScheduledEmailById (string identifier)
+
+Delete scheduled emails by batchId or messageId
+
+Delete scheduled batch of emails by batchId or single scheduled email by messageId
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class DeleteScheduledEmailByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+            var identifier = identifier_example;  // string | The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email.
+
+            try
+            {
+                // Delete scheduled emails by batchId or messageId
+                apiInstance.DeleteScheduledEmailById(identifier);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.DeleteScheduledEmailById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **string**| The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletesmtptemplate"></a>
 # **DeleteSmtpTemplate**
 > void DeleteSmtpTemplate (long? templateId)
@@ -541,7 +613,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new TransactionalEmailsApi();
-            var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 50)
+            var limit = 789;  // long? | Number limitation for the result returned (optional)  (default to 2500)
             var offset = 789;  // long? | Beginning point in the list to retrieve from. (optional)  (default to 0)
             var startDate = startDate_example;  // string | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate (optional) 
             var endDate = endDate_example;  // string | Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate (optional) 
@@ -572,7 +644,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **long?**| Number limitation for the result returned | [optional] [default to 50]
+ **limit** | **long?**| Number limitation for the result returned | [optional] [default to 2500]
  **offset** | **long?**| Beginning point in the list to retrieve from. | [optional] [default to 0]
  **startDate** | **string**| Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate | [optional] 
  **endDate** | **string**| Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate | [optional] 
@@ -587,6 +659,162 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetEmailEventReport**](GetEmailEventReport.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getscheduledemailbybatchid"></a>
+# **GetScheduledEmailByBatchId**
+> GetScheduledEmailByBatchId GetScheduledEmailByBatchId (string batchId, DateTime? startDate = null, DateTime? endDate = null, string sort = null, string status = null, long? limit = null, long? offset = null)
+
+Fetch scheduled emails by batchId
+
+Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetScheduledEmailByBatchIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+            var batchId = batchId_example;  // string | The batchId of scheduled emails batch (Should be a valid UUIDv4)
+            var startDate = 2013-10-20;  // DateTime? | Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional) 
+            var endDate = 2013-10-20;  // DateTime? | Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+            var sort = sort_example;  // string | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed (optional)  (default to desc)
+            var status = status_example;  // string | Filter the records by `status` of the scheduled email batch or message. (optional) 
+            var limit = 789;  // long? | Number of documents returned per page (optional)  (default to 100)
+            var offset = 789;  // long? | Index of the first document on the page (optional)  (default to 0)
+
+            try
+            {
+                // Fetch scheduled emails by batchId
+                GetScheduledEmailByBatchId result = apiInstance.GetScheduledEmailByBatchId(batchId, startDate, endDate, sort, status, limit, offset);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetScheduledEmailByBatchId: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchId** | **string**| The batchId of scheduled emails batch (Should be a valid UUIDv4) | 
+ **startDate** | **DateTime?**| Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. | [optional] 
+ **endDate** | **DateTime?**| Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+ **sort** | **string**| Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed | [optional] [default to desc]
+ **status** | **string**| Filter the records by &#x60;status&#x60; of the scheduled email batch or message. | [optional] 
+ **limit** | **long?**| Number of documents returned per page | [optional] [default to 100]
+ **offset** | **long?**| Index of the first document on the page | [optional] [default to 0]
+
+### Return type
+
+[**GetScheduledEmailByBatchId**](GetScheduledEmailByBatchId.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getscheduledemailbymessageid"></a>
+# **GetScheduledEmailByMessageId**
+> GetScheduledEmailByMessageId GetScheduledEmailByMessageId (string messageId, DateTime? startDate = null, DateTime? endDate = null)
+
+Fetch scheduled email by messageId
+
+Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class GetScheduledEmailByMessageIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new TransactionalEmailsApi();
+            var messageId = messageId_example;  // string | The messageId of scheduled email
+            var startDate = 2013-10-20;  // DateTime? | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. (optional) 
+            var endDate = 2013-10-20;  // DateTime? | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. (optional) 
+
+            try
+            {
+                // Fetch scheduled email by messageId
+                GetScheduledEmailByMessageId result = apiInstance.GetScheduledEmailByMessageId(messageId, startDate, endDate);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransactionalEmailsApi.GetScheduledEmailByMessageId: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **messageId** | **string**| The messageId of scheduled email | 
+ **startDate** | **DateTime?**| Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. | [optional] 
+ **endDate** | **DateTime?**| Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. | [optional] 
+
+### Return type
+
+[**GetScheduledEmailByMessageId**](GetScheduledEmailByMessageId.md)
 
 ### Authorization
 

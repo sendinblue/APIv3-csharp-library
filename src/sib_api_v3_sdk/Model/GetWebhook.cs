@@ -29,9 +29,9 @@ namespace sib_api_v3_sdk.Model
     public partial class GetWebhook :  IEquatable<GetWebhook>
     {
         /// <summary>
-        /// Type of webhook (marketing or transac)
+        /// Type of webhook (marketing or transactional)
         /// </summary>
-        /// <value>Type of webhook (marketing or transac)</value>
+        /// <value>Type of webhook (marketing or transactional)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -43,16 +43,16 @@ namespace sib_api_v3_sdk.Model
             Marketing = 1,
             
             /// <summary>
-            /// Enum Transac for value: transac
+            /// Enum Transactional for value: transactional
             /// </summary>
-            [EnumMember(Value = "transac")]
-            Transac = 2
+            [EnumMember(Value = "transactional")]
+            Transactional = 2
         }
 
         /// <summary>
-        /// Type of webhook (marketing or transac)
+        /// Type of webhook (marketing or transactional)
         /// </summary>
-        /// <value>Type of webhook (marketing or transac)</value>
+        /// <value>Type of webhook (marketing or transactional)</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         /// <summary>
@@ -67,7 +67,7 @@ namespace sib_api_v3_sdk.Model
         /// <param name="id">ID of the webhook (required).</param>
         /// <param name="description">Description of the webhook (required).</param>
         /// <param name="events">events (required).</param>
-        /// <param name="type">Type of webhook (marketing or transac) (required).</param>
+        /// <param name="type">Type of webhook (marketing or transactional) (required).</param>
         /// <param name="createdAt">Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         /// <param name="modifiedAt">Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) (required).</param>
         public GetWebhook(string url = default(string), long? id = default(long?), string description = default(string), List<string> events = default(List<string>), TypeEnum type = default(TypeEnum), string createdAt = default(string), string modifiedAt = default(string))

@@ -37,7 +37,9 @@ namespace sib_api_v3_sdk.Model
         /// <param name="recipients">recipients.</param>
         /// <param name="scheduledAt">UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result..</param>
         /// <param name="unicodeEnabled">Format of the message. It indicates whether the content should be treated as unicode or not. (default to false).</param>
-        public UpdateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), string scheduledAt = default(string), bool? unicodeEnabled = false)
+        /// <param name="organisationPrefix">A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**.</param>
+        /// <param name="unsubscribeInstruction">Instructions to unsubscribe from future communications. Recommended by U.S. carriers. Must include **STOP** keyword. This will be added as instructions after the end of message content. **Prefer verifying maximum length of 160 characters including this instructions in message content to avoid multiple sending of same sms.**.</param>
+        public UpdateSmsCampaign(string name = default(string), string sender = default(string), string content = default(string), CreateSmsCampaignRecipients recipients = default(CreateSmsCampaignRecipients), string scheduledAt = default(string), bool? unicodeEnabled = false, string organisationPrefix = default(string), string unsubscribeInstruction = default(string))
         {
             this.Name = name;
             this.Sender = sender;
@@ -53,6 +55,8 @@ namespace sib_api_v3_sdk.Model
             {
                 this.UnicodeEnabled = unicodeEnabled;
             }
+            this.OrganisationPrefix = organisationPrefix;
+            this.UnsubscribeInstruction = unsubscribeInstruction;
         }
         
         /// <summary>
@@ -97,6 +101,20 @@ namespace sib_api_v3_sdk.Model
         public bool? UnicodeEnabled { get; set; }
 
         /// <summary>
+        /// A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**
+        /// </summary>
+        /// <value>A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**</value>
+        [DataMember(Name="organisationPrefix", EmitDefaultValue=false)]
+        public string OrganisationPrefix { get; set; }
+
+        /// <summary>
+        /// Instructions to unsubscribe from future communications. Recommended by U.S. carriers. Must include **STOP** keyword. This will be added as instructions after the end of message content. **Prefer verifying maximum length of 160 characters including this instructions in message content to avoid multiple sending of same sms.**
+        /// </summary>
+        /// <value>Instructions to unsubscribe from future communications. Recommended by U.S. carriers. Must include **STOP** keyword. This will be added as instructions after the end of message content. **Prefer verifying maximum length of 160 characters including this instructions in message content to avoid multiple sending of same sms.**</value>
+        [DataMember(Name="unsubscribeInstruction", EmitDefaultValue=false)]
+        public string UnsubscribeInstruction { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +128,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Recipients: ").Append(Recipients).Append("\n");
             sb.Append("  ScheduledAt: ").Append(ScheduledAt).Append("\n");
             sb.Append("  UnicodeEnabled: ").Append(UnicodeEnabled).Append("\n");
+            sb.Append("  OrganisationPrefix: ").Append(OrganisationPrefix).Append("\n");
+            sb.Append("  UnsubscribeInstruction: ").Append(UnsubscribeInstruction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -173,6 +193,16 @@ namespace sib_api_v3_sdk.Model
                     this.UnicodeEnabled == input.UnicodeEnabled ||
                     (this.UnicodeEnabled != null &&
                     this.UnicodeEnabled.Equals(input.UnicodeEnabled))
+                ) && 
+                (
+                    this.OrganisationPrefix == input.OrganisationPrefix ||
+                    (this.OrganisationPrefix != null &&
+                    this.OrganisationPrefix.Equals(input.OrganisationPrefix))
+                ) && 
+                (
+                    this.UnsubscribeInstruction == input.UnsubscribeInstruction ||
+                    (this.UnsubscribeInstruction != null &&
+                    this.UnsubscribeInstruction.Equals(input.UnsubscribeInstruction))
                 );
         }
 
@@ -197,6 +227,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.ScheduledAt.GetHashCode();
                 if (this.UnicodeEnabled != null)
                     hashCode = hashCode * 59 + this.UnicodeEnabled.GetHashCode();
+                if (this.OrganisationPrefix != null)
+                    hashCode = hashCode * 59 + this.OrganisationPrefix.GetHashCode();
+                if (this.UnsubscribeInstruction != null)
+                    hashCode = hashCode * 59 + this.UnsubscribeInstruction.GetHashCode();
                 return hashCode;
             }
         }

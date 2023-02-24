@@ -36,7 +36,7 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSsoToken" /> class.
         /// </summary>
-        /// <param name="token">Session token. It will remain valid for a short period of time only. (required).</param>
+        /// <param name="token">Session token, it will remain valid for 15 days. (required).</param>
         public GetSsoToken(string token = default(string))
         {
             // to ensure "token" is required (not null)
@@ -51,9 +51,9 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// Session token. It will remain valid for a short period of time only.
+        /// Session token, it will remain valid for 15 days.
         /// </summary>
-        /// <value>Session token. It will remain valid for a short period of time only.</value>
+        /// <value>Session token, it will remain valid for 15 days.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
 

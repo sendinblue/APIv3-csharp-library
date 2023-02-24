@@ -25,6 +25,27 @@ namespace sib_api_v3_sdk.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Retrieve inbound attachment with download token.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will retrieve inbound attachment with download token.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>System.IO.Stream</returns>
+        System.IO.Stream GetInboundEmailAttachment (string downloadToken);
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will retrieve inbound attachment with download token.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse<System.IO.Stream> GetInboundEmailAttachmentWithHttpInfo (string downloadToken);
+        /// <summary>
         /// Get the list of all the events for the received emails.
         /// </summary>
         /// <remarks>
@@ -78,6 +99,27 @@ namespace sib_api_v3_sdk.Api
         ApiResponse<GetInboundEmailEventsByUuid> GetInboundEmailEventsByUuidWithHttpInfo (string uuid);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Retrieve inbound attachment with download token.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will retrieve inbound attachment with download token.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetInboundEmailAttachmentAsync (string downloadToken);
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will retrieve inbound attachment with download token.
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetInboundEmailAttachmentAsyncWithHttpInfo (string downloadToken);
         /// <summary>
         /// Get the list of all the events for the received emails.
         /// </summary>
@@ -228,6 +270,161 @@ namespace sib_api_v3_sdk.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token. This endpoint will retrieve inbound attachment with download token.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>System.IO.Stream</returns>
+        public System.IO.Stream GetInboundEmailAttachment (string downloadToken)
+        {
+             ApiResponse<System.IO.Stream> localVarResponse = GetInboundEmailAttachmentWithHttpInfo(downloadToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token. This endpoint will retrieve inbound attachment with download token.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public ApiResponse< System.IO.Stream > GetInboundEmailAttachmentWithHttpInfo (string downloadToken)
+        {
+            // verify the required parameter 'downloadToken' is set
+            if (downloadToken == null)
+                throw new ApiException(400, "Missing required parameter 'downloadToken' when calling InboundParsingApi->GetInboundEmailAttachment");
+
+            var localVarPath = "./inbound/attachments/{downloadToken}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (downloadToken != null) localVarPathParams.Add("downloadToken", this.Configuration.ApiClient.ParameterToString(downloadToken)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetInboundEmailAttachment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (System.IO.Stream) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
+        }
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token. This endpoint will retrieve inbound attachment with download token.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetInboundEmailAttachmentAsync (string downloadToken)
+        {
+             ApiResponse<System.IO.Stream> localVarResponse = await GetInboundEmailAttachmentAsyncWithHttpInfo(downloadToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieve inbound attachment with download token. This endpoint will retrieve inbound attachment with download token.
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="downloadToken">Token to fetch a particular attachment</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetInboundEmailAttachmentAsyncWithHttpInfo (string downloadToken)
+        {
+            // verify the required parameter 'downloadToken' is set
+            if (downloadToken == null)
+                throw new ApiException(400, "Missing required parameter 'downloadToken' when calling InboundParsingApi->GetInboundEmailAttachment");
+
+            var localVarPath = "./inbound/attachments/{downloadToken}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (downloadToken != null) localVarPathParams.Add("downloadToken", this.Configuration.ApiClient.ParameterToString(downloadToken)); // path parameter
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetInboundEmailAttachment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<System.IO.Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (System.IO.Stream) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
         }
 
         /// <summary>

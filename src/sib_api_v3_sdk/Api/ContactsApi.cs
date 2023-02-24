@@ -269,8 +269,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>GetExtendedContactDetails</returns>
-        GetExtendedContactDetails GetContactInfo (string identifier);
+        GetExtendedContactDetails GetContactInfo (string identifier, Object startDate = null, Object endDate = null);
 
         /// <summary>
         /// Get a contact&#39;s details
@@ -280,8 +282,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
-        ApiResponse<GetExtendedContactDetails> GetContactInfoWithHttpInfo (string identifier);
+        ApiResponse<GetExtendedContactDetails> GetContactInfoWithHttpInfo (string identifier, Object startDate = null, Object endDate = null);
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
         /// </summary>
@@ -909,8 +913,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
-        System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier);
+        System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier, Object startDate = null, Object endDate = null);
 
         /// <summary>
         /// Get a contact&#39;s details
@@ -920,8 +926,10 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier);
+        System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier, Object startDate = null, Object endDate = null);
         /// <summary>
         /// Get email campaigns&#39; statistics for a contact
         /// </summary>
@@ -3220,10 +3228,12 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>GetExtendedContactDetails</returns>
-        public GetExtendedContactDetails GetContactInfo (string identifier)
+        public GetExtendedContactDetails GetContactInfo (string identifier, Object startDate = null, Object endDate = null)
         {
-             ApiResponse<GetExtendedContactDetails> localVarResponse = GetContactInfoWithHttpInfo(identifier);
+             ApiResponse<GetExtendedContactDetails> localVarResponse = GetContactInfoWithHttpInfo(identifier, startDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -3232,8 +3242,10 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>ApiResponse of GetExtendedContactDetails</returns>
-        public ApiResponse< GetExtendedContactDetails > GetContactInfoWithHttpInfo (string identifier)
+        public ApiResponse< GetExtendedContactDetails > GetContactInfoWithHttpInfo (string identifier, Object startDate = null, Object endDate = null)
         {
             // verify the required parameter 'identifier' is set
             if (identifier == null)
@@ -3262,6 +3274,8 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -3297,10 +3311,12 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>Task of GetExtendedContactDetails</returns>
-        public async System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier)
+        public async System.Threading.Tasks.Task<GetExtendedContactDetails> GetContactInfoAsync (string identifier, Object startDate = null, Object endDate = null)
         {
-             ApiResponse<GetExtendedContactDetails> localVarResponse = await GetContactInfoAsyncWithHttpInfo(identifier);
+             ApiResponse<GetExtendedContactDetails> localVarResponse = await GetContactInfoAsyncWithHttpInfo(identifier, startDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -3310,8 +3326,10 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identifier">Email (urlencoded) OR ID of the contact OR its SMS attribute value</param>
+        /// <param name="startDate">**Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate  (optional)</param>
+        /// <param name="endDate">**Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate.  (optional)</param>
         /// <returns>Task of ApiResponse (GetExtendedContactDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier)
+        public async System.Threading.Tasks.Task<ApiResponse<GetExtendedContactDetails>> GetContactInfoAsyncWithHttpInfo (string identifier, Object startDate = null, Object endDate = null)
         {
             // verify the required parameter 'identifier' is set
             if (identifier == null)
@@ -3340,6 +3358,8 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))

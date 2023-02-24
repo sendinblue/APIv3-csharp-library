@@ -46,11 +46,13 @@ namespace sib_api_v3_sdk.Model
         /// <param name="hardBounces">Number of harbounce for the campaign (required).</param>
         /// <param name="uniqueViews">Number of unique openings for the campaign (required).</param>
         /// <param name="trackableViews">Recipients without any privacy protection option enabled in their email client (required).</param>
+        /// <param name="trackableViewsRate">Rate of recipients without any privacy protection option enabled in their email client.</param>
+        /// <param name="estimatedViews">Rate of recipients without any privacy protection option enabled in their email client, applied to all delivered emails.</param>
         /// <param name="unsubscriptions">Number of unsubscription for the campaign (required).</param>
         /// <param name="viewed">Number of openings for the campaign (required).</param>
         /// <param name="deferred">Number of deferred emails for the campaign.</param>
         /// <param name="returnBounce">Total number of non-delivered campaigns for a particular campaign id..</param>
-        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? trackableViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?), long? returnBounce = default(long?))
+        public GetCampaignStats(long? listId = default(long?), long? uniqueClicks = default(long?), long? clickers = default(long?), long? complaints = default(long?), long? delivered = default(long?), long? sent = default(long?), long? softBounces = default(long?), long? hardBounces = default(long?), long? uniqueViews = default(long?), long? trackableViews = default(long?), float? trackableViewsRate = default(float?), long? estimatedViews = default(long?), long? unsubscriptions = default(long?), long? viewed = default(long?), long? deferred = default(long?), long? returnBounce = default(long?))
         {
             // to ensure "uniqueClicks" is required (not null)
             if (uniqueClicks == null)
@@ -152,6 +154,8 @@ namespace sib_api_v3_sdk.Model
                 this.Viewed = viewed;
             }
             this.ListId = listId;
+            this.TrackableViewsRate = trackableViewsRate;
+            this.EstimatedViews = estimatedViews;
             this.Deferred = deferred;
             this.ReturnBounce = returnBounce;
         }
@@ -227,6 +231,20 @@ namespace sib_api_v3_sdk.Model
         public long? TrackableViews { get; set; }
 
         /// <summary>
+        /// Rate of recipients without any privacy protection option enabled in their email client
+        /// </summary>
+        /// <value>Rate of recipients without any privacy protection option enabled in their email client</value>
+        [DataMember(Name="trackableViewsRate", EmitDefaultValue=false)]
+        public float? TrackableViewsRate { get; set; }
+
+        /// <summary>
+        /// Rate of recipients without any privacy protection option enabled in their email client, applied to all delivered emails
+        /// </summary>
+        /// <value>Rate of recipients without any privacy protection option enabled in their email client, applied to all delivered emails</value>
+        [DataMember(Name="estimatedViews", EmitDefaultValue=false)]
+        public long? EstimatedViews { get; set; }
+
+        /// <summary>
         /// Number of unsubscription for the campaign
         /// </summary>
         /// <value>Number of unsubscription for the campaign</value>
@@ -272,6 +290,8 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  HardBounces: ").Append(HardBounces).Append("\n");
             sb.Append("  UniqueViews: ").Append(UniqueViews).Append("\n");
             sb.Append("  TrackableViews: ").Append(TrackableViews).Append("\n");
+            sb.Append("  TrackableViewsRate: ").Append(TrackableViewsRate).Append("\n");
+            sb.Append("  EstimatedViews: ").Append(EstimatedViews).Append("\n");
             sb.Append("  Unsubscriptions: ").Append(Unsubscriptions).Append("\n");
             sb.Append("  Viewed: ").Append(Viewed).Append("\n");
             sb.Append("  Deferred: ").Append(Deferred).Append("\n");
@@ -361,6 +381,16 @@ namespace sib_api_v3_sdk.Model
                     this.TrackableViews.Equals(input.TrackableViews))
                 ) && 
                 (
+                    this.TrackableViewsRate == input.TrackableViewsRate ||
+                    (this.TrackableViewsRate != null &&
+                    this.TrackableViewsRate.Equals(input.TrackableViewsRate))
+                ) && 
+                (
+                    this.EstimatedViews == input.EstimatedViews ||
+                    (this.EstimatedViews != null &&
+                    this.EstimatedViews.Equals(input.EstimatedViews))
+                ) && 
+                (
                     this.Unsubscriptions == input.Unsubscriptions ||
                     (this.Unsubscriptions != null &&
                     this.Unsubscriptions.Equals(input.Unsubscriptions))
@@ -411,6 +441,10 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.UniqueViews.GetHashCode();
                 if (this.TrackableViews != null)
                     hashCode = hashCode * 59 + this.TrackableViews.GetHashCode();
+                if (this.TrackableViewsRate != null)
+                    hashCode = hashCode * 59 + this.TrackableViewsRate.GetHashCode();
+                if (this.EstimatedViews != null)
+                    hashCode = hashCode * 59 + this.EstimatedViews.GetHashCode();
                 if (this.Unsubscriptions != null)
                     hashCode = hashCode * 59 + this.Unsubscriptions.GetHashCode();
                 if (this.Viewed != null)

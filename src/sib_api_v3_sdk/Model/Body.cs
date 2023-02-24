@@ -36,18 +36,10 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Body" /> class.
         /// </summary>
-        /// <param name="name">Name of task (required).</param>
-        /// <param name="duration">Duration of task.</param>
-        /// <param name="taskTypeId">Id for type of task e.g Call / Email / Meeting etc. (required).</param>
-        /// <param name="date">Task date/time (required).</param>
-        /// <param name="notes">Notes added to a task.</param>
-        /// <param name="done">Task marked as done.</param>
-        /// <param name="assignToId">User id to whom task is assigned.</param>
-        /// <param name="contactsIds">Contact ids for contacts linked to this task.</param>
-        /// <param name="dealsIds">Deal ids for deals a task is linked to.</param>
-        /// <param name="companiesIds">Companies ids for companies a task is linked to.</param>
-        /// <param name="reminder">reminder.</param>
-        public Body(string name = default(string), long? duration = default(long?), string taskTypeId = default(string), DateTime? date = default(DateTime?), string notes = default(string), bool? done = default(bool?), string assignToId = default(string), List<int?> contactsIds = default(List<int?>), List<string> dealsIds = default(List<string>), List<string> companiesIds = default(List<string>), TaskReminder reminder = default(TaskReminder))
+        /// <param name="name">Name of company (required).</param>
+        /// <param name="attributes">Attributes for company creation.</param>
+        /// <param name="countryCode">Country code if phone_number is passed in attributes..</param>
+        public Body(string name = default(string), Object attributes = default(Object), long? countryCode = default(long?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,109 +50,30 @@ namespace sib_api_v3_sdk.Model
             {
                 this.Name = name;
             }
-            // to ensure "taskTypeId" is required (not null)
-            if (taskTypeId == null)
-            {
-                throw new InvalidDataException("taskTypeId is a required property for Body and cannot be null");
-            }
-            else
-            {
-                this.TaskTypeId = taskTypeId;
-            }
-            // to ensure "date" is required (not null)
-            if (date == null)
-            {
-                throw new InvalidDataException("date is a required property for Body and cannot be null");
-            }
-            else
-            {
-                this.Date = date;
-            }
-            this.Duration = duration;
-            this.Notes = notes;
-            this.Done = done;
-            this.AssignToId = assignToId;
-            this.ContactsIds = contactsIds;
-            this.DealsIds = dealsIds;
-            this.CompaniesIds = companiesIds;
-            this.Reminder = reminder;
+            this.Attributes = attributes;
+            this.CountryCode = countryCode;
         }
         
         /// <summary>
-        /// Name of task
+        /// Name of company
         /// </summary>
-        /// <value>Name of task</value>
+        /// <value>Name of company</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Duration of task
+        /// Attributes for company creation
         /// </summary>
-        /// <value>Duration of task</value>
-        [DataMember(Name="duration", EmitDefaultValue=false)]
-        public long? Duration { get; set; }
+        /// <value>Attributes for company creation</value>
+        [DataMember(Name="attributes", EmitDefaultValue=false)]
+        public Object Attributes { get; set; }
 
         /// <summary>
-        /// Id for type of task e.g Call / Email / Meeting etc.
+        /// Country code if phone_number is passed in attributes.
         /// </summary>
-        /// <value>Id for type of task e.g Call / Email / Meeting etc.</value>
-        [DataMember(Name="taskTypeId", EmitDefaultValue=false)]
-        public string TaskTypeId { get; set; }
-
-        /// <summary>
-        /// Task date/time
-        /// </summary>
-        /// <value>Task date/time</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
-        public DateTime? Date { get; set; }
-
-        /// <summary>
-        /// Notes added to a task
-        /// </summary>
-        /// <value>Notes added to a task</value>
-        [DataMember(Name="notes", EmitDefaultValue=false)]
-        public string Notes { get; set; }
-
-        /// <summary>
-        /// Task marked as done
-        /// </summary>
-        /// <value>Task marked as done</value>
-        [DataMember(Name="done", EmitDefaultValue=false)]
-        public bool? Done { get; set; }
-
-        /// <summary>
-        /// User id to whom task is assigned
-        /// </summary>
-        /// <value>User id to whom task is assigned</value>
-        [DataMember(Name="assignToId", EmitDefaultValue=false)]
-        public string AssignToId { get; set; }
-
-        /// <summary>
-        /// Contact ids for contacts linked to this task
-        /// </summary>
-        /// <value>Contact ids for contacts linked to this task</value>
-        [DataMember(Name="contactsIds", EmitDefaultValue=false)]
-        public List<int?> ContactsIds { get; set; }
-
-        /// <summary>
-        /// Deal ids for deals a task is linked to
-        /// </summary>
-        /// <value>Deal ids for deals a task is linked to</value>
-        [DataMember(Name="dealsIds", EmitDefaultValue=false)]
-        public List<string> DealsIds { get; set; }
-
-        /// <summary>
-        /// Companies ids for companies a task is linked to
-        /// </summary>
-        /// <value>Companies ids for companies a task is linked to</value>
-        [DataMember(Name="companiesIds", EmitDefaultValue=false)]
-        public List<string> CompaniesIds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Reminder
-        /// </summary>
-        [DataMember(Name="reminder", EmitDefaultValue=false)]
-        public TaskReminder Reminder { get; set; }
+        /// <value>Country code if phone_number is passed in attributes.</value>
+        [DataMember(Name="countryCode", EmitDefaultValue=false)]
+        public long? CountryCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,16 +84,8 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class Body {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  TaskTypeId: ").Append(TaskTypeId).Append("\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
-            sb.Append("  Done: ").Append(Done).Append("\n");
-            sb.Append("  AssignToId: ").Append(AssignToId).Append("\n");
-            sb.Append("  ContactsIds: ").Append(ContactsIds).Append("\n");
-            sb.Append("  DealsIds: ").Append(DealsIds).Append("\n");
-            sb.Append("  CompaniesIds: ").Append(CompaniesIds).Append("\n");
-            sb.Append("  Reminder: ").Append(Reminder).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,54 +126,14 @@ namespace sib_api_v3_sdk.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Duration == input.Duration ||
-                    (this.Duration != null &&
-                    this.Duration.Equals(input.Duration))
+                    this.Attributes == input.Attributes ||
+                    (this.Attributes != null &&
+                    this.Attributes.Equals(input.Attributes))
                 ) && 
                 (
-                    this.TaskTypeId == input.TaskTypeId ||
-                    (this.TaskTypeId != null &&
-                    this.TaskTypeId.Equals(input.TaskTypeId))
-                ) && 
-                (
-                    this.Date == input.Date ||
-                    (this.Date != null &&
-                    this.Date.Equals(input.Date))
-                ) && 
-                (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
-                ) && 
-                (
-                    this.Done == input.Done ||
-                    (this.Done != null &&
-                    this.Done.Equals(input.Done))
-                ) && 
-                (
-                    this.AssignToId == input.AssignToId ||
-                    (this.AssignToId != null &&
-                    this.AssignToId.Equals(input.AssignToId))
-                ) && 
-                (
-                    this.ContactsIds == input.ContactsIds ||
-                    this.ContactsIds != null &&
-                    this.ContactsIds.SequenceEqual(input.ContactsIds)
-                ) && 
-                (
-                    this.DealsIds == input.DealsIds ||
-                    this.DealsIds != null &&
-                    this.DealsIds.SequenceEqual(input.DealsIds)
-                ) && 
-                (
-                    this.CompaniesIds == input.CompaniesIds ||
-                    this.CompaniesIds != null &&
-                    this.CompaniesIds.SequenceEqual(input.CompaniesIds)
-                ) && 
-                (
-                    this.Reminder == input.Reminder ||
-                    (this.Reminder != null &&
-                    this.Reminder.Equals(input.Reminder))
+                    this.CountryCode == input.CountryCode ||
+                    (this.CountryCode != null &&
+                    this.CountryCode.Equals(input.CountryCode))
                 );
         }
 
@@ -283,26 +148,10 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Duration != null)
-                    hashCode = hashCode * 59 + this.Duration.GetHashCode();
-                if (this.TaskTypeId != null)
-                    hashCode = hashCode * 59 + this.TaskTypeId.GetHashCode();
-                if (this.Date != null)
-                    hashCode = hashCode * 59 + this.Date.GetHashCode();
-                if (this.Notes != null)
-                    hashCode = hashCode * 59 + this.Notes.GetHashCode();
-                if (this.Done != null)
-                    hashCode = hashCode * 59 + this.Done.GetHashCode();
-                if (this.AssignToId != null)
-                    hashCode = hashCode * 59 + this.AssignToId.GetHashCode();
-                if (this.ContactsIds != null)
-                    hashCode = hashCode * 59 + this.ContactsIds.GetHashCode();
-                if (this.DealsIds != null)
-                    hashCode = hashCode * 59 + this.DealsIds.GetHashCode();
-                if (this.CompaniesIds != null)
-                    hashCode = hashCode * 59 + this.CompaniesIds.GetHashCode();
-                if (this.Reminder != null)
-                    hashCode = hashCode * 59 + this.Reminder.GetHashCode();
+                if (this.Attributes != null)
+                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.CountryCode != null)
+                    hashCode = hashCode * 59 + this.CountryCode.GetHashCode();
                 return hashCode;
             }
         }

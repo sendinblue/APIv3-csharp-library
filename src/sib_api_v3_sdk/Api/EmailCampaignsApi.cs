@@ -118,8 +118,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>GetEmailCampaign</returns>
-        GetEmailCampaign GetEmailCampaign (long? campaignId);
+        GetEmailCampaign GetEmailCampaign (long? campaignId, string statistics = null);
 
         /// <summary>
         /// Get an email campaign report
@@ -129,8 +130,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>ApiResponse of GetEmailCampaign</returns>
-        ApiResponse<GetEmailCampaign> GetEmailCampaignWithHttpInfo (long? campaignId);
+        ApiResponse<GetEmailCampaign> GetEmailCampaignWithHttpInfo (long? campaignId, string statistics = null);
         /// <summary>
         /// Return all your created email campaigns
         /// </summary>
@@ -140,13 +142,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
-        GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
+        GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all your created email campaigns
@@ -157,13 +160,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
-        ApiResponse<GetEmailCampaigns> GetEmailCampaignsWithHttpInfo (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
+        ApiResponse<GetEmailCampaigns> GetEmailCampaignsWithHttpInfo (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get a shared template url
         /// </summary>
@@ -306,8 +310,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns></returns>
-        void UploadImageToGallery (UploadImageToGallery uploadImage);
+        /// <returns>UploadImageModel</returns>
+        UploadImageModel UploadImageToGallery (UploadImageToGallery uploadImage);
 
         /// <summary>
         /// Upload an image to your account&#39;s image gallery
@@ -317,8 +321,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
+        /// <returns>ApiResponse of UploadImageModel</returns>
+        ApiResponse<UploadImageModel> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -415,8 +419,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>Task of GetEmailCampaign</returns>
-        System.Threading.Tasks.Task<GetEmailCampaign> GetEmailCampaignAsync (long? campaignId);
+        System.Threading.Tasks.Task<GetEmailCampaign> GetEmailCampaignAsync (long? campaignId, string statistics = null);
 
         /// <summary>
         /// Get an email campaign report
@@ -426,8 +431,9 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaign)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaign>> GetEmailCampaignAsyncWithHttpInfo (long? campaignId);
+        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaign>> GetEmailCampaignAsyncWithHttpInfo (long? campaignId, string statistics = null);
         /// <summary>
         /// Return all your created email campaigns
         /// </summary>
@@ -437,13 +443,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
-        System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
+        System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
 
         /// <summary>
         /// Return all your created email campaigns
@@ -454,13 +461,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
+        System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null);
         /// <summary>
         /// Get a shared template url
         /// </summary>
@@ -603,8 +611,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
+        /// <returns>Task of UploadImageModel</returns>
+        System.Threading.Tasks.Task<UploadImageModel> UploadImageToGalleryAsync (UploadImageToGallery uploadImage);
 
         /// <summary>
         /// Upload an image to your account&#39;s image gallery
@@ -614,8 +622,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
+        /// <returns>Task of ApiResponse (UploadImageModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UploadImageModel>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage);
         #endregion Asynchronous Operations
     }
 
@@ -1373,10 +1381,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>GetEmailCampaign</returns>
-        public GetEmailCampaign GetEmailCampaign (long? campaignId)
+        public GetEmailCampaign GetEmailCampaign (long? campaignId, string statistics = null)
         {
-             ApiResponse<GetEmailCampaign> localVarResponse = GetEmailCampaignWithHttpInfo(campaignId);
+             ApiResponse<GetEmailCampaign> localVarResponse = GetEmailCampaignWithHttpInfo(campaignId, statistics);
              return localVarResponse.Data;
         }
 
@@ -1385,8 +1394,9 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>ApiResponse of GetEmailCampaign</returns>
-        public ApiResponse< GetEmailCampaign > GetEmailCampaignWithHttpInfo (long? campaignId)
+        public ApiResponse< GetEmailCampaign > GetEmailCampaignWithHttpInfo (long? campaignId, string statistics = null)
         {
             // verify the required parameter 'campaignId' is set
             if (campaignId == null)
@@ -1415,6 +1425,7 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+            if (statistics != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statistics", statistics)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1450,10 +1461,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>Task of GetEmailCampaign</returns>
-        public async System.Threading.Tasks.Task<GetEmailCampaign> GetEmailCampaignAsync (long? campaignId)
+        public async System.Threading.Tasks.Task<GetEmailCampaign> GetEmailCampaignAsync (long? campaignId, string statistics = null)
         {
-             ApiResponse<GetEmailCampaign> localVarResponse = await GetEmailCampaignAsyncWithHttpInfo(campaignId);
+             ApiResponse<GetEmailCampaign> localVarResponse = await GetEmailCampaignAsyncWithHttpInfo(campaignId, statistics);
              return localVarResponse.Data;
 
         }
@@ -1463,8 +1475,9 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId">Id of the campaign</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaign)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaign>> GetEmailCampaignAsyncWithHttpInfo (long? campaignId)
+        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaign>> GetEmailCampaignAsyncWithHttpInfo (long? campaignId, string statistics = null)
         {
             // verify the required parameter 'campaignId' is set
             if (campaignId == null)
@@ -1493,6 +1506,7 @@ namespace sib_api_v3_sdk.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (campaignId != null) localVarPathParams.Add("campaignId", this.Configuration.ApiClient.ParameterToString(campaignId)); // path parameter
+            if (statistics != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statistics", statistics)); // query parameter
 
             // authentication (api-key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
@@ -1529,15 +1543,16 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>GetEmailCampaigns</returns>
-        public GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
+        public GetEmailCampaigns GetEmailCampaigns (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetEmailCampaigns> localVarResponse = GetEmailCampaignsWithHttpInfo(type, status, startDate, endDate, limit, offset, sort);
+             ApiResponse<GetEmailCampaigns> localVarResponse = GetEmailCampaignsWithHttpInfo(type, status, statistics, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
         }
 
@@ -1547,13 +1562,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>ApiResponse of GetEmailCampaigns</returns>
-        public ApiResponse< GetEmailCampaigns > GetEmailCampaignsWithHttpInfo (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
+        public ApiResponse< GetEmailCampaigns > GetEmailCampaignsWithHttpInfo (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./emailCampaigns";
@@ -1580,6 +1596,7 @@ namespace sib_api_v3_sdk.Api
 
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (statistics != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statistics", statistics)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
@@ -1621,15 +1638,16 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of GetEmailCampaigns</returns>
-        public async System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
+        public async System.Threading.Tasks.Task<GetEmailCampaigns> GetEmailCampaignsAsync (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
-             ApiResponse<GetEmailCampaigns> localVarResponse = await GetEmailCampaignsAsyncWithHttpInfo(type, status, startDate, endDate, limit, offset, sort);
+             ApiResponse<GetEmailCampaigns> localVarResponse = await GetEmailCampaignsAsyncWithHttpInfo(type, status, statistics, startDate, endDate, limit, offset, sort);
              return localVarResponse.Data;
 
         }
@@ -1640,13 +1658,14 @@ namespace sib_api_v3_sdk.Api
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="type">Filter on the type of the campaigns (optional)</param>
         /// <param name="status">Filter on the status of the campaign (optional)</param>
+        /// <param name="statistics">Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. (optional)</param>
         /// <param name="startDate">Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
         /// <param name="endDate">Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either &#39;status&#39; not passed and if passed is set to &#39;sent&#39; ) (optional)</param>
-        /// <param name="limit">Number of documents per page (optional, default to 500)</param>
+        /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="offset">Index of the first document in the page (optional, default to 0)</param>
         /// <param name="sort">Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed (optional, default to desc)</param>
         /// <returns>Task of ApiResponse (GetEmailCampaigns)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetEmailCampaigns>> GetEmailCampaignsAsyncWithHttpInfo (string type = null, string status = null, string statistics = null, string startDate = null, string endDate = null, long? limit = null, long? offset = null, string sort = null)
         {
 
             var localVarPath = "./emailCampaigns";
@@ -1673,6 +1692,7 @@ namespace sib_api_v3_sdk.Api
 
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (statistics != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "statistics", statistics)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
@@ -2737,10 +2757,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns></returns>
-        public void UploadImageToGallery (UploadImageToGallery uploadImage)
+        /// <returns>UploadImageModel</returns>
+        public UploadImageModel UploadImageToGallery (UploadImageToGallery uploadImage)
         {
-             UploadImageToGalleryWithHttpInfo(uploadImage);
+             ApiResponse<UploadImageModel> localVarResponse = UploadImageToGalleryWithHttpInfo(uploadImage);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2748,8 +2769,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
+        /// <returns>ApiResponse of UploadImageModel</returns>
+        public ApiResponse< UploadImageModel > UploadImageToGalleryWithHttpInfo (UploadImageToGallery uploadImage)
         {
             // verify the required parameter 'uploadImage' is set
             if (uploadImage == null)
@@ -2810,9 +2831,9 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UploadImageModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                null);
+                (UploadImageModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UploadImageModel)));
         }
 
         /// <summary>
@@ -2820,10 +2841,11 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
+        /// <returns>Task of UploadImageModel</returns>
+        public async System.Threading.Tasks.Task<UploadImageModel> UploadImageToGalleryAsync (UploadImageToGallery uploadImage)
         {
-             await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+             ApiResponse<UploadImageModel> localVarResponse = await UploadImageToGalleryAsyncWithHttpInfo(uploadImage);
+             return localVarResponse.Data;
 
         }
 
@@ -2832,8 +2854,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadImage">Parameters to upload an image</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
+        /// <returns>Task of ApiResponse (UploadImageModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UploadImageModel>> UploadImageToGalleryAsyncWithHttpInfo (UploadImageToGallery uploadImage)
         {
             // verify the required parameter 'uploadImage' is set
             if (uploadImage == null)
@@ -2894,9 +2916,9 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UploadImageModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                null);
+                (UploadImageModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UploadImageModel)));
         }
 
     }

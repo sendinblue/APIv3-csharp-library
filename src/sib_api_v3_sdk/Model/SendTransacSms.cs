@@ -70,7 +70,8 @@ namespace sib_api_v3_sdk.Model
         /// <param name="tag">Tag of the message.</param>
         /// <param name="webUrl">Webhook to call for each event triggered by the message (delivered etc.).</param>
         /// <param name="unicodeEnabled">Format of the message. It indicates whether the content should be treated as unicode or not. (default to false).</param>
-        public SendTransacSms(string sender = default(string), string recipient = default(string), string content = default(string), TypeEnum? type = TypeEnum.Transactional, string tag = default(string), string webUrl = default(string), bool? unicodeEnabled = false)
+        /// <param name="organisationPrefix">A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**.</param>
+        public SendTransacSms(string sender = default(string), string recipient = default(string), string content = default(string), TypeEnum? type = TypeEnum.Transactional, string tag = default(string), string webUrl = default(string), bool? unicodeEnabled = false, string organisationPrefix = default(string))
         {
             // to ensure "sender" is required (not null)
             if (sender == null)
@@ -119,6 +120,7 @@ namespace sib_api_v3_sdk.Model
             {
                 this.UnicodeEnabled = unicodeEnabled;
             }
+            this.OrganisationPrefix = organisationPrefix;
         }
         
         /// <summary>
@@ -165,6 +167,13 @@ namespace sib_api_v3_sdk.Model
         public bool? UnicodeEnabled { get; set; }
 
         /// <summary>
+        /// A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**
+        /// </summary>
+        /// <value>A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.**</value>
+        [DataMember(Name="organisationPrefix", EmitDefaultValue=false)]
+        public string OrganisationPrefix { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -179,6 +188,7 @@ namespace sib_api_v3_sdk.Model
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  WebUrl: ").Append(WebUrl).Append("\n");
             sb.Append("  UnicodeEnabled: ").Append(UnicodeEnabled).Append("\n");
+            sb.Append("  OrganisationPrefix: ").Append(OrganisationPrefix).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -247,6 +257,11 @@ namespace sib_api_v3_sdk.Model
                     this.UnicodeEnabled == input.UnicodeEnabled ||
                     (this.UnicodeEnabled != null &&
                     this.UnicodeEnabled.Equals(input.UnicodeEnabled))
+                ) && 
+                (
+                    this.OrganisationPrefix == input.OrganisationPrefix ||
+                    (this.OrganisationPrefix != null &&
+                    this.OrganisationPrefix.Equals(input.OrganisationPrefix))
                 );
         }
 
@@ -273,6 +288,8 @@ namespace sib_api_v3_sdk.Model
                     hashCode = hashCode * 59 + this.WebUrl.GetHashCode();
                 if (this.UnicodeEnabled != null)
                     hashCode = hashCode * 59 + this.UnicodeEnabled.GetHashCode();
+                if (this.OrganisationPrefix != null)
+                    hashCode = hashCode * 59 + this.OrganisationPrefix.GetHashCode();
                 return hashCode;
             }
         }

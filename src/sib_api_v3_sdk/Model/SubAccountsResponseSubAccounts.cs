@@ -36,10 +36,10 @@ namespace sib_api_v3_sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubAccountsResponseSubAccounts" /> class.
         /// </summary>
-        /// <param name="id">client id of sub-account organization (required).</param>
-        /// <param name="companyName">Name of sub-account organization (required).</param>
-        /// <param name="active">Whether organization is active or not (required).</param>
-        /// <param name="createdAt">timestamp when the organization was created (required).</param>
+        /// <param name="id">id of the sub-account (required).</param>
+        /// <param name="companyName">Name of the sub-account company (required).</param>
+        /// <param name="active">Whether the sub-account is active or not (required).</param>
+        /// <param name="createdAt">Timestamp when the sub-account was created (required).</param>
         public SubAccountsResponseSubAccounts(long? id = default(long?), string companyName = default(string), bool? active = default(bool?), long? createdAt = default(long?))
         {
             // to ensure "id" is required (not null)
@@ -81,30 +81,30 @@ namespace sib_api_v3_sdk.Model
         }
         
         /// <summary>
-        /// client id of sub-account organization
+        /// id of the sub-account
         /// </summary>
-        /// <value>client id of sub-account organization</value>
+        /// <value>id of the sub-account</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
-        /// Name of sub-account organization
+        /// Name of the sub-account company
         /// </summary>
-        /// <value>Name of sub-account organization</value>
+        /// <value>Name of the sub-account company</value>
         [DataMember(Name="companyName", EmitDefaultValue=false)]
         public string CompanyName { get; set; }
 
         /// <summary>
-        /// Whether organization is active or not
+        /// Whether the sub-account is active or not
         /// </summary>
-        /// <value>Whether organization is active or not</value>
+        /// <value>Whether the sub-account is active or not</value>
         [DataMember(Name="active", EmitDefaultValue=false)]
         public bool? Active { get; set; }
 
         /// <summary>
-        /// timestamp when the organization was created
+        /// Timestamp when the sub-account was created
         /// </summary>
-        /// <value>timestamp when the organization was created</value>
+        /// <value>Timestamp when the sub-account was created</value>
         [DataMember(Name="createdAt", EmitDefaultValue=false)]
         public long? CreatedAt { get; set; }
 

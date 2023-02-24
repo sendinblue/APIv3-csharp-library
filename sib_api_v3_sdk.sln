@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1321
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sib_api_v3_sdk", "src\sib_api_v3_sdk\sib_api_v3_sdk.csproj", "{5B3201DF-4DF3-4378-A1C0-0CC17F4E8E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sib_api_v3_sdk", "src\sib_api_v3_sdk\sib_api_v3_sdk.csproj", "{17020F04-B575-4F49-BF16-B65AF0D68A2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5B3201DF-4DF3-4378-A1C0-0CC17F4E8E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B3201DF-4DF3-4378-A1C0-0CC17F4E8E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B3201DF-4DF3-4378-A1C0-0CC17F4E8E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B3201DF-4DF3-4378-A1C0-0CC17F4E8E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17020F04-B575-4F49-BF16-B65AF0D68A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17020F04-B575-4F49-BF16-B65AF0D68A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17020F04-B575-4F49-BF16-B65AF0D68A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17020F04-B575-4F49-BF16-B65AF0D68A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D2D4C59F-E9B8-405D-B967-F135732D56ED}
+		SolutionGuid = {E91C86A9-4587-4D4D-95EC-95771A196F08}
 	EndGlobalSection
 EndGlobal

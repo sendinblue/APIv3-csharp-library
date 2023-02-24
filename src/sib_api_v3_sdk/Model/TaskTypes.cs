@@ -32,12 +32,10 @@ namespace sib_api_v3_sdk.Model
         /// Initializes a new instance of the <see cref="TaskTypes" /> class.
         /// </summary>
         /// <param name="id">Id of task type.</param>
-        /// <param name="icon">Icon of task type.</param>
         /// <param name="title">Title of task type.</param>
-        public TaskTypes(string id = default(string), string icon = default(string), string title = default(string))
+        public TaskTypes(string id = default(string), string title = default(string))
         {
             this.Id = id;
-            this.Icon = icon;
             this.Title = title;
         }
         
@@ -47,13 +45,6 @@ namespace sib_api_v3_sdk.Model
         /// <value>Id of task type</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Icon of task type
-        /// </summary>
-        /// <value>Icon of task type</value>
-        [DataMember(Name="icon", EmitDefaultValue=false)]
-        public string Icon { get; set; }
 
         /// <summary>
         /// Title of task type
@@ -71,7 +62,6 @@ namespace sib_api_v3_sdk.Model
             var sb = new StringBuilder();
             sb.Append("class TaskTypes {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Icon: ").Append(Icon).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -113,11 +103,6 @@ namespace sib_api_v3_sdk.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Icon == input.Icon ||
-                    (this.Icon != null &&
-                    this.Icon.Equals(input.Icon))
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -135,8 +120,6 @@ namespace sib_api_v3_sdk.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Icon != null)
-                    hashCode = hashCode * 59 + this.Icon.GetHashCode();
                 if (this.Title != null)
                     hashCode = hashCode * 59 + this.Title.GetHashCode();
                 return hashCode;

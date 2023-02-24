@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | Tag of the campaign | [optional] 
 **Sender** | [**UpdateEmailCampaignSender**](UpdateEmailCampaignSender.md) |  | [optional] 
 **Name** | **string** | Name of the campaign | [optional] 
-**HtmlContent** | **string** | Body of the message (HTML version). REQUIRED if htmlUrl is empty | [optional] 
+**HtmlContent** | **string** | Body of the message (HTML version). If the campaign is designed using Drag &amp; Drop editor via HTML content, then the design page will not have Drag &amp; Drop editor access for that campaign. REQUIRED if htmlUrl is empty | [optional] 
 **HtmlUrl** | **string** | Url which contents the body of the email message. REQUIRED if htmlContent is empty | [optional] 
 **ScheduledAt** | **string** | UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part). | [optional] 
 **Subject** | **string** | Subject of the campaign | [optional] 
@@ -31,6 +31,8 @@ Name | Type | Description | Notes
 **IpWarmupEnable** | **bool?** | Available for dedicated ip clients. Set this to true if you wish to warm up your ip. | [optional] [default to false]
 **InitialQuota** | **long?** | Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000. | [optional] 
 **IncreaseRate** | **long?** | Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%. | [optional] 
+**UnsubscriptionPageId** | **string** | Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. | [optional] 
+**UpdateFormId** | **string** | Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

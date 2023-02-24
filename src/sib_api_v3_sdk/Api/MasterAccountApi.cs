@@ -50,7 +50,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will provide the list all the sub-accounts of the master account.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>SubAccountsResponse</returns>
         SubAccountsResponse CorporateSubAccountGet (int? offset, int? limit);
@@ -62,7 +62,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will provide the list all the sub-accounts of the master account.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>ApiResponse of SubAccountsResponse</returns>
         ApiResponse<SubAccountsResponse> CorporateSubAccountGetWithHttpInfo (int? offset, int? limit);
@@ -91,7 +91,7 @@ namespace sib_api_v3_sdk.Api
         /// Get sub-account details
         /// </summary>
         /// <remarks>
-        /// This endpoint will provide the details of specified sub-account organization
+        /// This endpoint will provide the details for the specified sub-account company
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -102,7 +102,7 @@ namespace sib_api_v3_sdk.Api
         /// Get sub-account details
         /// </summary>
         /// <remarks>
-        /// This endpoint will provide the details of specified sub-account organization
+        /// This endpoint will provide the details for the specified sub-account company
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -132,6 +132,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CorporateSubAccountIdPlanPutWithHttpInfo (long? id, SubAccountUpdatePlanRequest updatePlanDetails);
         /// <summary>
+        /// Create an API key for a sub-account
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will generate an API v3 key for a sub account
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>CreateApiKeyResponse</returns>
+        CreateApiKeyResponse CorporateSubAccountKeyPost (CreateApiKeyRequest createApiKeyRequest);
+
+        /// <summary>
+        /// Create an API key for a sub-account
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will generate an API v3 key for a sub account
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>ApiResponse of CreateApiKeyResponse</returns>
+        ApiResponse<CreateApiKeyResponse> CorporateSubAccountKeyPostWithHttpInfo (CreateApiKeyRequest createApiKeyRequest);
+        /// <summary>
         /// Create a new sub-account under a master account.
         /// </summary>
         /// <remarks>
@@ -139,8 +160,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>CreateModel</returns>
-        CreateModel CorporateSubAccountPost (CreateSubAccount subAccountCreate);
+        /// <returns>CreateSubAccountResponse</returns>
+        CreateSubAccountResponse CorporateSubAccountPost (CreateSubAccount subAccountCreate);
 
         /// <summary>
         /// Create a new sub-account under a master account.
@@ -150,13 +171,13 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>ApiResponse of CreateModel</returns>
-        ApiResponse<CreateModel> CorporateSubAccountPostWithHttpInfo (CreateSubAccount subAccountCreate);
+        /// <returns>ApiResponse of CreateSubAccountResponse</returns>
+        ApiResponse<CreateSubAccountResponse> CorporateSubAccountPostWithHttpInfo (CreateSubAccount subAccountCreate);
         /// <summary>
         /// Generate SSO token to access Sendinblue
         /// </summary>
         /// <remarks>
-        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -167,7 +188,7 @@ namespace sib_api_v3_sdk.Api
         /// Generate SSO token to access Sendinblue
         /// </summary>
         /// <remarks>
-        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -201,7 +222,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will provide the list all the sub-accounts of the master account.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>Task of SubAccountsResponse</returns>
         System.Threading.Tasks.Task<SubAccountsResponse> CorporateSubAccountGetAsync (int? offset, int? limit);
@@ -213,7 +234,7 @@ namespace sib_api_v3_sdk.Api
         /// This endpoint will provide the list all the sub-accounts of the master account.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>Task of ApiResponse (SubAccountsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SubAccountsResponse>> CorporateSubAccountGetAsyncWithHttpInfo (int? offset, int? limit);
@@ -242,7 +263,7 @@ namespace sib_api_v3_sdk.Api
         /// Get sub-account details
         /// </summary>
         /// <remarks>
-        /// This endpoint will provide the details of specified sub-account organization
+        /// This endpoint will provide the details for the specified sub-account company
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -253,7 +274,7 @@ namespace sib_api_v3_sdk.Api
         /// Get sub-account details
         /// </summary>
         /// <remarks>
-        /// This endpoint will provide the details of specified sub-account organization
+        /// This endpoint will provide the details for the specified sub-account company
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -283,6 +304,27 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> CorporateSubAccountIdPlanPutAsyncWithHttpInfo (long? id, SubAccountUpdatePlanRequest updatePlanDetails);
         /// <summary>
+        /// Create an API key for a sub-account
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will generate an API v3 key for a sub account
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>Task of CreateApiKeyResponse</returns>
+        System.Threading.Tasks.Task<CreateApiKeyResponse> CorporateSubAccountKeyPostAsync (CreateApiKeyRequest createApiKeyRequest);
+
+        /// <summary>
+        /// Create an API key for a sub-account
+        /// </summary>
+        /// <remarks>
+        /// This endpoint will generate an API v3 key for a sub account
+        /// </remarks>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>Task of ApiResponse (CreateApiKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateApiKeyResponse>> CorporateSubAccountKeyPostAsyncWithHttpInfo (CreateApiKeyRequest createApiKeyRequest);
+        /// <summary>
         /// Create a new sub-account under a master account.
         /// </summary>
         /// <remarks>
@@ -290,8 +332,8 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>Task of CreateModel</returns>
-        System.Threading.Tasks.Task<CreateModel> CorporateSubAccountPostAsync (CreateSubAccount subAccountCreate);
+        /// <returns>Task of CreateSubAccountResponse</returns>
+        System.Threading.Tasks.Task<CreateSubAccountResponse> CorporateSubAccountPostAsync (CreateSubAccount subAccountCreate);
 
         /// <summary>
         /// Create a new sub-account under a master account.
@@ -301,13 +343,13 @@ namespace sib_api_v3_sdk.Api
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>Task of ApiResponse (CreateModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateModel>> CorporateSubAccountPostAsyncWithHttpInfo (CreateSubAccount subAccountCreate);
+        /// <returns>Task of ApiResponse (CreateSubAccountResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateSubAccountResponse>> CorporateSubAccountPostAsyncWithHttpInfo (CreateSubAccount subAccountCreate);
         /// <summary>
         /// Generate SSO token to access Sendinblue
         /// </summary>
         /// <remarks>
-        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -318,7 +360,7 @@ namespace sib_api_v3_sdk.Api
         /// Generate SSO token to access Sendinblue
         /// </summary>
         /// <remarks>
-        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </remarks>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -571,7 +613,7 @@ namespace sib_api_v3_sdk.Api
         /// Get the list of all the sub-accounts of the master account. This endpoint will provide the list all the sub-accounts of the master account.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>SubAccountsResponse</returns>
         public SubAccountsResponse CorporateSubAccountGet (int? offset, int? limit)
@@ -584,7 +626,7 @@ namespace sib_api_v3_sdk.Api
         /// Get the list of all the sub-accounts of the master account. This endpoint will provide the list all the sub-accounts of the master account.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>ApiResponse of SubAccountsResponse</returns>
         public ApiResponse< SubAccountsResponse > CorporateSubAccountGetWithHttpInfo (int? offset, int? limit)
@@ -654,7 +696,7 @@ namespace sib_api_v3_sdk.Api
         /// Get the list of all the sub-accounts of the master account. This endpoint will provide the list all the sub-accounts of the master account.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>Task of SubAccountsResponse</returns>
         public async System.Threading.Tasks.Task<SubAccountsResponse> CorporateSubAccountGetAsync (int? offset, int? limit)
@@ -668,7 +710,7 @@ namespace sib_api_v3_sdk.Api
         /// Get the list of all the sub-accounts of the master account. This endpoint will provide the list all the sub-accounts of the master account.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset">Page number of sub-accounts listing</param>
+        /// <param name="offset">Index of the first sub-account in the page</param>
         /// <param name="limit">Number of sub-accounts to be displayed on each page</param>
         /// <returns>Task of ApiResponse (SubAccountsResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<SubAccountsResponse>> CorporateSubAccountGetAsyncWithHttpInfo (int? offset, int? limit)
@@ -888,7 +930,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get sub-account details This endpoint will provide the details of specified sub-account organization
+        /// Get sub-account details This endpoint will provide the details for the specified sub-account company
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -900,7 +942,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get sub-account details This endpoint will provide the details of specified sub-account organization
+        /// Get sub-account details This endpoint will provide the details for the specified sub-account company
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -965,7 +1007,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get sub-account details This endpoint will provide the details of specified sub-account organization
+        /// Get sub-account details This endpoint will provide the details for the specified sub-account company
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -978,7 +1020,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Get sub-account details This endpoint will provide the details of specified sub-account organization
+        /// Get sub-account details This endpoint will provide the details for the specified sub-account company
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Id of the sub-account organization</param>
@@ -1222,14 +1264,183 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
+        /// Create an API key for a sub-account This endpoint will generate an API v3 key for a sub account
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>CreateApiKeyResponse</returns>
+        public CreateApiKeyResponse CorporateSubAccountKeyPost (CreateApiKeyRequest createApiKeyRequest)
+        {
+             ApiResponse<CreateApiKeyResponse> localVarResponse = CorporateSubAccountKeyPostWithHttpInfo(createApiKeyRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an API key for a sub-account This endpoint will generate an API v3 key for a sub account
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>ApiResponse of CreateApiKeyResponse</returns>
+        public ApiResponse< CreateApiKeyResponse > CorporateSubAccountKeyPostWithHttpInfo (CreateApiKeyRequest createApiKeyRequest)
+        {
+            // verify the required parameter 'createApiKeyRequest' is set
+            if (createApiKeyRequest == null)
+                throw new ApiException(400, "Missing required parameter 'createApiKeyRequest' when calling MasterAccountApi->CorporateSubAccountKeyPost");
+
+            var localVarPath = "./corporate/subAccount/key";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (createApiKeyRequest != null && createApiKeyRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(createApiKeyRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = createApiKeyRequest; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CorporateSubAccountKeyPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<CreateApiKeyResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (CreateApiKeyResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateApiKeyResponse)));
+        }
+
+        /// <summary>
+        /// Create an API key for a sub-account This endpoint will generate an API v3 key for a sub account
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>Task of CreateApiKeyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateApiKeyResponse> CorporateSubAccountKeyPostAsync (CreateApiKeyRequest createApiKeyRequest)
+        {
+             ApiResponse<CreateApiKeyResponse> localVarResponse = await CorporateSubAccountKeyPostAsyncWithHttpInfo(createApiKeyRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Create an API key for a sub-account This endpoint will generate an API v3 key for a sub account
+        /// </summary>
+        /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createApiKeyRequest">Values to generate API key for sub-account</param>
+        /// <returns>Task of ApiResponse (CreateApiKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CreateApiKeyResponse>> CorporateSubAccountKeyPostAsyncWithHttpInfo (CreateApiKeyRequest createApiKeyRequest)
+        {
+            // verify the required parameter 'createApiKeyRequest' is set
+            if (createApiKeyRequest == null)
+                throw new ApiException(400, "Missing required parameter 'createApiKeyRequest' when calling MasterAccountApi->CorporateSubAccountKeyPost");
+
+            var localVarPath = "./corporate/subAccount/key";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (createApiKeyRequest != null && createApiKeyRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(createApiKeyRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = createApiKeyRequest; // byte array
+            }
+
+            // authentication (api-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
+            {
+                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
+            }
+            // authentication (partner-key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
+            {
+                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CorporateSubAccountKeyPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<CreateApiKeyResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (CreateApiKeyResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateApiKeyResponse)));
+        }
+
+        /// <summary>
         /// Create a new sub-account under a master account. This endpoint will create a new sub-account under a master account
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>CreateModel</returns>
-        public CreateModel CorporateSubAccountPost (CreateSubAccount subAccountCreate)
+        /// <returns>CreateSubAccountResponse</returns>
+        public CreateSubAccountResponse CorporateSubAccountPost (CreateSubAccount subAccountCreate)
         {
-             ApiResponse<CreateModel> localVarResponse = CorporateSubAccountPostWithHttpInfo(subAccountCreate);
+             ApiResponse<CreateSubAccountResponse> localVarResponse = CorporateSubAccountPostWithHttpInfo(subAccountCreate);
              return localVarResponse.Data;
         }
 
@@ -1238,8 +1449,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>ApiResponse of CreateModel</returns>
-        public ApiResponse< CreateModel > CorporateSubAccountPostWithHttpInfo (CreateSubAccount subAccountCreate)
+        /// <returns>ApiResponse of CreateSubAccountResponse</returns>
+        public ApiResponse< CreateSubAccountResponse > CorporateSubAccountPostWithHttpInfo (CreateSubAccount subAccountCreate)
         {
             // verify the required parameter 'subAccountCreate' is set
             if (subAccountCreate == null)
@@ -1300,9 +1511,9 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<CreateModel>(localVarStatusCode,
+            return new ApiResponse<CreateSubAccountResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
+                (CreateSubAccountResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSubAccountResponse)));
         }
 
         /// <summary>
@@ -1310,10 +1521,10 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>Task of CreateModel</returns>
-        public async System.Threading.Tasks.Task<CreateModel> CorporateSubAccountPostAsync (CreateSubAccount subAccountCreate)
+        /// <returns>Task of CreateSubAccountResponse</returns>
+        public async System.Threading.Tasks.Task<CreateSubAccountResponse> CorporateSubAccountPostAsync (CreateSubAccount subAccountCreate)
         {
-             ApiResponse<CreateModel> localVarResponse = await CorporateSubAccountPostAsyncWithHttpInfo(subAccountCreate);
+             ApiResponse<CreateSubAccountResponse> localVarResponse = await CorporateSubAccountPostAsyncWithHttpInfo(subAccountCreate);
              return localVarResponse.Data;
 
         }
@@ -1323,8 +1534,8 @@ namespace sib_api_v3_sdk.Api
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subAccountCreate">values to create new sub-account</param>
-        /// <returns>Task of ApiResponse (CreateModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CreateModel>> CorporateSubAccountPostAsyncWithHttpInfo (CreateSubAccount subAccountCreate)
+        /// <returns>Task of ApiResponse (CreateSubAccountResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CreateSubAccountResponse>> CorporateSubAccountPostAsyncWithHttpInfo (CreateSubAccount subAccountCreate)
         {
             // verify the required parameter 'subAccountCreate' is set
             if (subAccountCreate == null)
@@ -1385,13 +1596,13 @@ namespace sib_api_v3_sdk.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<CreateModel>(localVarStatusCode,
+            return new ApiResponse<CreateSubAccountResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (CreateModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateModel)));
+                (CreateSubAccountResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateSubAccountResponse)));
         }
 
         /// <summary>
-        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -1403,7 +1614,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -1475,7 +1686,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>
@@ -1488,7 +1699,7 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+        /// Generate SSO token to access Sendinblue This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ssoTokenRequest">Values to generate SSO token for sub-account</param>

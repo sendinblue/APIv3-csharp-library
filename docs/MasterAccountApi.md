@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CorporateSubAccountIdDelete**](MasterAccountApi.md#corporatesubaccountiddelete) | **DELETE** /corporate/subAccount/{id} | Delete a sub-account
 [**CorporateSubAccountIdGet**](MasterAccountApi.md#corporatesubaccountidget) | **GET** /corporate/subAccount/{id} | Get sub-account details
 [**CorporateSubAccountIdPlanPut**](MasterAccountApi.md#corporatesubaccountidplanput) | **PUT** /corporate/subAccount/{id}/plan | Update sub-account plan
+[**CorporateSubAccountKeyPost**](MasterAccountApi.md#corporatesubaccountkeypost) | **POST** /corporate/subAccount/key | Create an API key for a sub-account
 [**CorporateSubAccountPost**](MasterAccountApi.md#corporatesubaccountpost) | **POST** /corporate/subAccount | Create a new sub-account under a master account.
 [**CorporateSubAccountSsoTokenPost**](MasterAccountApi.md#corporatesubaccountssotokenpost) | **POST** /corporate/subAccount/ssoToken | Generate SSO token to access Sendinblue
 
@@ -111,7 +112,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
 
             var apiInstance = new MasterAccountApi();
-            var offset = 56;  // int? | Page number of sub-accounts listing
+            var offset = 56;  // int? | Index of the first sub-account in the page
             var limit = 56;  // int? | Number of sub-accounts to be displayed on each page
 
             try
@@ -133,7 +134,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int?**| Page number of sub-accounts listing | 
+ **offset** | **int?**| Index of the first sub-account in the page | 
  **limit** | **int?**| Number of sub-accounts to be displayed on each page | 
 
 ### Return type
@@ -224,7 +225,7 @@ void (empty response body)
 
 Get sub-account details
 
-This endpoint will provide the details of specified sub-account organization
+This endpoint will provide the details for the specified sub-account company
 
 ### Example
 ```csharp
@@ -359,9 +360,79 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="corporatesubaccountkeypost"></a>
+# **CorporateSubAccountKeyPost**
+> CreateApiKeyResponse CorporateSubAccountKeyPost (CreateApiKeyRequest createApiKeyRequest)
+
+Create an API key for a sub-account
+
+This endpoint will generate an API v3 key for a sub account
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
+namespace Example
+{
+    public class CorporateSubAccountKeyPostExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api-key
+            Configuration.Default.AddApiKey("api-key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("api-key", "Bearer");
+            // Configure API key authorization: partner-key
+            Configuration.Default.AddApiKey("partner-key", "YOUR_PARTNER_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("partner-key", "Bearer");
+
+            var apiInstance = new MasterAccountApi();
+            var createApiKeyRequest = new CreateApiKeyRequest(); // CreateApiKeyRequest | Values to generate API key for sub-account
+
+            try
+            {
+                // Create an API key for a sub-account
+                CreateApiKeyResponse result = apiInstance.CorporateSubAccountKeyPost(createApiKeyRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling MasterAccountApi.CorporateSubAccountKeyPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createApiKeyRequest** | [**CreateApiKeyRequest**](CreateApiKeyRequest.md)| Values to generate API key for sub-account | 
+
+### Return type
+
+[**CreateApiKeyResponse**](CreateApiKeyResponse.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="corporatesubaccountpost"></a>
 # **CorporateSubAccountPost**
-> CreateModel CorporateSubAccountPost (CreateSubAccount subAccountCreate)
+> CreateSubAccountResponse CorporateSubAccountPost (CreateSubAccount subAccountCreate)
 
 Create a new sub-account under a master account.
 
@@ -396,7 +467,7 @@ namespace Example
             try
             {
                 // Create a new sub-account under a master account.
-                CreateModel result = apiInstance.CorporateSubAccountPost(subAccountCreate);
+                CreateSubAccountResponse result = apiInstance.CorporateSubAccountPost(subAccountCreate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -416,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateModel**](CreateModel.md)
+[**CreateSubAccountResponse**](CreateSubAccountResponse.md)
 
 ### Authorization
 
@@ -435,7 +506,7 @@ Name | Type | Description  | Notes
 
 Generate SSO token to access Sendinblue
 
-This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced with actual token.
+This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.sendinblue.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
 
 ### Example
 ```csharp
