@@ -10,10 +10,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using RestSharp.Portable;
 
 namespace sib_api_v3_sdk.Client
 {
