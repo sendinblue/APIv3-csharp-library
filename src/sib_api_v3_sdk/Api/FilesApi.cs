@@ -10,14 +10,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
 namespace sib_api_v3_sdk.Api
 {
+    using System.Net.Http;
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
@@ -315,17 +315,7 @@ namespace sib_api_v3_sdk.Api
         /// <value>The base path</value>
         public String GetBasePath()
         {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
-        }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
+            return this.Configuration.ApiClient.RestClient.BaseAddress.ToString();
         }
 
         /// <summary>
@@ -351,28 +341,6 @@ namespace sib_api_v3_sdk.Api
         }
 
         /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
-        }
-
-        /// <summary>
         /// Get all files 
         /// </summary>
         /// <exception cref="sib_api_v3_sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -386,7 +354,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>FileList</returns>
         public FileList CrmFilesGet (string entity = null, string entityIds = null, int? dateFrom = null, int? dateTo = null, long? offset = null, long? limit = null, string sort = null)
         {
-             ApiResponse<FileList> localVarResponse = CrmFilesGetWithHttpInfo(entity, entityIds, dateFrom, dateTo, offset, limit, sort);
+             var localVarResponse = CrmFilesGetWithHttpInfo(entity, entityIds, dateFrom, dateTo, offset, limit, sort);
              return localVarResponse.Data;
         }
 
@@ -402,66 +370,33 @@ namespace sib_api_v3_sdk.Api
         /// <param name="limit">Number of documents per page (optional, default to 50)</param>
         /// <param name="sort">Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed (optional)</param>
         /// <returns>ApiResponse of FileList</returns>
-        public ApiResponse< FileList > CrmFilesGetWithHttpInfo (string entity = null, string entityIds = null, int? dateFrom = null, int? dateTo = null, long? offset = null, long? limit = null, string sort = null)
+        public ApiResponse<FileList> CrmFilesGetWithHttpInfo (string entity = null, string entityIds = null, int? dateFrom = null, int? dateTo = null, long? offset = null, long? limit = null, string sort = null)
         {
 
             var localVarPath = "./crm/files";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarQueryParams = new Dictionary<string, string>();
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            if (entity != null) localVarQueryParams["entity"] = entity;
+            if (entityIds != null) localVarQueryParams["entityIds"] = entityIds;
+            if (dateFrom != null) localVarQueryParams["dateFrom"] = dateFrom.ToString();
+            if (dateTo != null) localVarQueryParams["dateTo"] = dateTo.ToString();
+            if (offset != null) localVarQueryParams["offset"] = offset.ToString();
+            if (limit != null) localVarQueryParams["limit"] = limit.ToString();
+            if (sort != null) localVarQueryParams["sort"] = sort;
 
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (entity != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entity", entity)); // query parameter
-            if (entityIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entityIds", entityIds)); // query parameter
-            if (dateFrom != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateFrom", dateFrom)); // query parameter
-            if (dateTo != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateTo", dateTo)); // query parameter
-            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
-            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json", localVarQueryParams);
+            var response = this.Configuration.ApiClient.RestClient.SendAsync(request).Result;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesGet", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int)response.StatusCode;
             return new ApiResponse<FileList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileList)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileList) this.Configuration.ApiClient.Deserialize(response, typeof(FileList)));
         }
 
         /// <summary>
@@ -478,7 +413,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of FileList</returns>
         public async System.Threading.Tasks.Task<FileList> CrmFilesGetAsync (string entity = null, string entityIds = null, int? dateFrom = null, int? dateTo = null, long? offset = null, long? limit = null, string sort = null)
         {
-             ApiResponse<FileList> localVarResponse = await CrmFilesGetAsyncWithHttpInfo(entity, entityIds, dateFrom, dateTo, offset, limit, sort);
+             var localVarResponse = await CrmFilesGetAsyncWithHttpInfo(entity, entityIds, dateFrom, dateTo, offset, limit, sort);
              return localVarResponse.Data;
 
         }
@@ -499,62 +434,29 @@ namespace sib_api_v3_sdk.Api
         {
 
             var localVarPath = "./crm/files";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarQueryParams = new Dictionary<string, string>();
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            if (entity != null) localVarQueryParams["entity"] = entity;
+            if (entityIds != null) localVarQueryParams["entityIds"] = entityIds;
+            if (dateFrom != null) localVarQueryParams["dateFrom"] = dateFrom.ToString();
+            if (dateTo != null) localVarQueryParams["dateTo"] = dateTo.ToString();
+            if (offset != null) localVarQueryParams["offset"] = offset.ToString();
+            if (limit != null) localVarQueryParams["limit"] = limit.ToString();
+            if (sort != null) localVarQueryParams["sort"] = sort;
 
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (entity != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entity", entity)); // query parameter
-            if (entityIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "entityIds", entityIds)); // query parameter
-            if (dateFrom != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateFrom", dateFrom)); // query parameter
-            if (dateTo != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dateTo", dateTo)); // query parameter
-            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
-            if (sort != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sort", sort)); // query parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json", localVarQueryParams);
+            var response = await this.Configuration.ApiClient.RestClient.SendAsync(request);
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesGet", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) response.StatusCode;
             return new ApiResponse<FileList>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileList)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileList) this.Configuration.ApiClient.Deserialize(response, typeof(FileList)));
         }
 
         /// <summary>
@@ -565,7 +467,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>FileData</returns>
         public FileData CrmFilesIdDataGet (string id)
         {
-             ApiResponse<FileData> localVarResponse = CrmFilesIdDataGetWithHttpInfo(id);
+             var localVarResponse = CrmFilesIdDataGetWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -581,57 +483,20 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdDataGet");
 
-            var localVarPath = "./crm/files/{id}/data";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarPath = $"./crm/files/{id}/data";
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json");
+            var response = this.Configuration.ApiClient.RestClient.SendAsync(request).Result;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdDataGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdDataGet", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) response.StatusCode;
             return new ApiResponse<FileData>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileData)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileData) this.Configuration.ApiClient.Deserialize(response, typeof(FileData)));
         }
 
         /// <summary>
@@ -642,9 +507,8 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of FileData</returns>
         public async System.Threading.Tasks.Task<FileData> CrmFilesIdDataGetAsync (string id)
         {
-             ApiResponse<FileData> localVarResponse = await CrmFilesIdDataGetAsyncWithHttpInfo(id);
+             var localVarResponse = await CrmFilesIdDataGetAsyncWithHttpInfo(id);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -659,57 +523,20 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdDataGet");
 
-            var localVarPath = "./crm/files/{id}/data";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarPath = $"./crm/files/{id}/data";
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json");
+            var response = await this.Configuration.ApiClient.RestClient.SendAsync(request);
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdDataGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdDataGet", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) response.StatusCode;
             return new ApiResponse<FileData>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileData)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileData) this.Configuration.ApiClient.Deserialize(response, typeof(FileData)));
         }
 
         /// <summary>
@@ -735,56 +562,19 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdDelete");
 
-            var localVarPath = "./crm/files/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarPath = $"./crm/files/{id}";
+            var request = this.Configuration.ApiClient.PrepareJsonDeleteRequest(localVarPath, "application/json");
+            var response = this.Configuration.ApiClient.RestClient.SendAsync(request).Result;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdDelete", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdDelete", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) response.StatusCode;
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -812,56 +602,19 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdDelete");
 
-            var localVarPath = "./crm/files/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarPath = $"./crm/files/{id}";
+            var request = this.Configuration.ApiClient.PrepareJsonDeleteRequest(localVarPath, "application/json");
+            var response = await this.Configuration.ApiClient.RestClient.SendAsync(request);
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdDelete", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdDelete", response);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) response.StatusCode;
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -873,7 +626,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>FileDownloadableLink</returns>
         public FileDownloadableLink CrmFilesIdGet (string id)
         {
-             ApiResponse<FileDownloadableLink> localVarResponse = CrmFilesIdGetWithHttpInfo(id);
+             var localVarResponse = CrmFilesIdGetWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -889,57 +642,21 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdGet");
 
-            var localVarPath = "./crm/files/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarPath = $"./crm/files/{id}";
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json");
+            var response = this.Configuration.ApiClient.RestClient.SendAsync(request).Result;
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) response.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdGet", response);
                 if (exception != null) throw exception;
             }
 
             return new ApiResponse<FileDownloadableLink>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileDownloadableLink) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileDownloadableLink)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileDownloadableLink) this.Configuration.ApiClient.Deserialize(response, typeof(FileDownloadableLink)));
         }
 
         /// <summary>
@@ -950,7 +667,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of FileDownloadableLink</returns>
         public async System.Threading.Tasks.Task<FileDownloadableLink> CrmFilesIdGetAsync (string id)
         {
-             ApiResponse<FileDownloadableLink> localVarResponse = await CrmFilesIdGetAsyncWithHttpInfo(id);
+             var localVarResponse = await CrmFilesIdGetAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -967,57 +684,21 @@ namespace sib_api_v3_sdk.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FilesApi->CrmFilesIdGet");
 
-            var localVarPath = "./crm/files/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarPath = $"./crm/files/{id}";
+            var request = this.Configuration.ApiClient.PrepareJsonGetRequest(localVarPath, "application/json");
+            var response = await this.Configuration.ApiClient.RestClient.SendAsync(request);
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) response.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesIdGet", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesIdGet", response);
                 if (exception != null) throw exception;
             }
 
             return new ApiResponse<FileDownloadableLink>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (FileDownloadableLink) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileDownloadableLink)));
+                response.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FileDownloadableLink) this.Configuration.ApiClient.Deserialize(response, typeof(FileDownloadableLink)));
         }
 
         /// <summary>
@@ -1031,7 +712,7 @@ namespace sib_api_v3_sdk.Api
         /// <returns>FileData</returns>
         public FileData CrmFilesPost (System.IO.Stream file, string dealId = null, long? contactId = null, string companyId = null)
         {
-             ApiResponse<FileData> localVarResponse = CrmFilesPostWithHttpInfo(file, dealId, contactId, companyId);
+             var localVarResponse = CrmFilesPostWithHttpInfo(file, dealId, contactId, companyId);
              return localVarResponse.Data;
         }
 
@@ -1051,56 +732,26 @@ namespace sib_api_v3_sdk.Api
                 throw new ApiException(400, "Missing required parameter 'file' when calling FilesApi->CrmFilesPost");
 
             var localVarPath = "./crm/files";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarFormParams = new Dictionary<string, string>();
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
             if (dealId != null) localVarFormParams.Add("dealId", this.Configuration.ApiClient.ParameterToString(dealId)); // form parameter
             if (contactId != null) localVarFormParams.Add("contactId", this.Configuration.ApiClient.ParameterToString(contactId)); // form parameter
             if (companyId != null) localVarFormParams.Add("companyId", this.Configuration.ApiClient.ParameterToString(companyId)); // form parameter
 
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var request = this.Configuration.ApiClient.PrepareMultipartFormsRequest(
+                localVarPath,
+                "application/json",
+                file,
+                localVarFormParams);
+            var localVarResponse = this.Configuration.ApiClient.RestClient.SendAsync(request).Result;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesPost", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             return new ApiResponse<FileData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (FileData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileData)));
@@ -1117,9 +768,8 @@ namespace sib_api_v3_sdk.Api
         /// <returns>Task of FileData</returns>
         public async System.Threading.Tasks.Task<FileData> CrmFilesPostAsync (System.IO.Stream file, string dealId = null, long? contactId = null, string companyId = null)
         {
-             ApiResponse<FileData> localVarResponse = await CrmFilesPostAsyncWithHttpInfo(file, dealId, contactId, companyId);
+             var localVarResponse = await CrmFilesPostAsyncWithHttpInfo(file, dealId, contactId, companyId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1138,56 +788,27 @@ namespace sib_api_v3_sdk.Api
                 throw new ApiException(400, "Missing required parameter 'file' when calling FilesApi->CrmFilesPost");
 
             var localVarPath = "./crm/files";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            var localVarFormParams = new Dictionary<string, string>();
 
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
             if (dealId != null) localVarFormParams.Add("dealId", this.Configuration.ApiClient.ParameterToString(dealId)); // form parameter
             if (contactId != null) localVarFormParams.Add("contactId", this.Configuration.ApiClient.ParameterToString(contactId)); // form parameter
             if (companyId != null) localVarFormParams.Add("companyId", this.Configuration.ApiClient.ParameterToString(companyId)); // form parameter
 
-            // authentication (api-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api-key")))
-            {
-                localVarHeaderParams["api-key"] = this.Configuration.GetApiKeyWithPrefix("api-key");
-            }
-            // authentication (partner-key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("partner-key")))
-            {
-                localVarHeaderParams["partner-key"] = this.Configuration.GetApiKeyWithPrefix("partner-key");
-            }
-
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            var request = this.Configuration.ApiClient.PrepareMultipartFormsRequest(
+                localVarPath,
+                "application/json",
+                file,
+                localVarFormParams);
+            var localVarResponse = await this.Configuration.ApiClient.RestClient.SendAsync(request);
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CrmFilesPost", localVarResponse);
+                var exception = ExceptionFactory("CrmFilesPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             return new ApiResponse<FileData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (FileData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileData)));

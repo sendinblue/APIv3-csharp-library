@@ -11,18 +11,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-using RestSharp.Portable;
-using RestSharp.Portable.HttpClient;
 
 namespace sib_api_v3_sdk.Client
 {
+    using System.Net.Http.Headers;
+    using System.Web;
+    using Microsoft.AspNetCore.WebUtilities;
+
     /// <summary>
     /// API client is mainly responsible for making the HTTP call to the API backend.
     /// </summary>
@@ -34,27 +35,15 @@ namespace sib_api_v3_sdk.Client
         };
 
         /// <summary>
-        /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(IRestRequest request);
-
-        /// <summary>
-        /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(IRestRequest request, IRestResponse response);
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default configuration.
         /// </summary>
         public ApiClient()
         {
             Configuration = sib_api_v3_sdk.Client.Configuration.Default;
-            RestClient = new RestClient("https://api.sendinblue.com/v3");
-            RestClient.IgnoreResponseStatusCode = true;
+            RestClient = new HttpClient();
+            RestClient.BaseAddress = new Uri("https://api.sendinblue.com/v3");
+            // RestClient.IgnoreResponseStatusCode = true;
         }
 
         /// <summary>
@@ -66,8 +55,8 @@ namespace sib_api_v3_sdk.Client
         {
             Configuration = config ?? sib_api_v3_sdk.Client.Configuration.Default;
 
-            RestClient = new RestClient(Configuration.BasePath);
-            RestClient.IgnoreResponseStatusCode = true;
+            RestClient = new HttpClient();
+            RestClient.BaseAddress = new Uri(config.BasePath);
         }
 
         /// <summary>
@@ -80,8 +69,8 @@ namespace sib_api_v3_sdk.Client
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            RestClient = new RestClient(basePath);
-            RestClient.IgnoreResponseStatusCode = true;
+            RestClient = new HttpClient();
+            RestClient.BaseAddress = new Uri(basePath);
             Configuration = Client.Configuration.Default;
         }
 
@@ -107,45 +96,133 @@ namespace sib_api_v3_sdk.Client
         /// Gets or sets the RestClient.
         /// </summary>
         /// <value>An instance of the RestClient</value>
-        public RestClient RestClient { get; set; }
+        public HttpClient RestClient { get; set; }
 
         // Creates and sets up a RestRequest prior to a call.
-        private RestRequest PrepareRequest(
-            String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType)
+        private HttpRequestMessage PrepareRequest(
+            string path,
+            HttpMethod method,
+            List<KeyValuePair<string, string>> queryParams,
+            Object postBody,
+            Dictionary<string, string> headerParams,
+            Dictionary<string, string> formParams,
+            Dictionary<string, object> fileParams,
+            string contentType)
         {
-            var request = new RestRequest(path, method);
-            // disable ResetSharp.Portable built-in serialization
-            request.Serializer = null;
+            var request = new HttpRequestMessage(method, path);
+            var uriBuilder = new UriBuilder(path);
+            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
 
-            // add path parameter, if any
-            foreach(var param in pathParams)
-                request.AddParameter(param.Key, param.Value, ParameterType.UrlSegment);
+            // // add header parameter, if any
+            // foreach(var param in headerParams)
+            //     request.AddHeader(param.Key, param.Value);
 
-            // add header parameter, if any
-            foreach(var param in headerParams)
-                request.AddHeader(param.Key, param.Value);
+            // // add query parameter, if any
+            // foreach(var param in queryParams)
+            //     query[param.Key] = param.Value;
 
-            // add query parameter, if any
-            foreach(var param in queryParams)
-                request.AddQueryParameter(param.Key, param.Value);
+            // // add form parameter, if any
+            // foreach(var param in formParams)
+            //     request.AddParameter(param.Key, param.Value);
+            var formContent = new FormUrlEncodedContent(formParams);
+            request.Content = formContent;
 
-            // add form parameter, if any
-            foreach(var param in formParams)
-                request.AddParameter(param.Key, param.Value);
+            // // add file parameter, if any
+            // foreach(var param in fileParams)
+            // {
+            //     request.AddFile(param.Value);
+            // }
 
-            // add file parameter, if any
-            foreach(var param in fileParams)
+            // if (postBody != null) // http body (model or byte[]) parameter
+            // {
+            //     request.AddParameter(new Parameter { Value = postBody, Type = ParameterType.RequestBody, ContentType = contentType });
+            // }
+
+            return request;
+        }
+
+        internal HttpRequestMessage PreparePostBodyRequest(string path, string acceptHeader, string postBody)
+        {
+            var request = GetBaseRequest(path, HttpMethod.Post);
+
+            // Set Headers
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
+
+            request.Content = new StringContent(postBody);
+
+            return request;
+        }
+
+        internal HttpRequestMessage PrepareMultipartFormsRequest(
+            string path,
+            string acceptHeader,
+            System.IO.Stream file,
+            Dictionary<string, string> formParams)
+        {
+            // TODO: need to verify all form requests are POSTS
+            var request = GetBaseRequest(path, HttpMethod.Post);
+
+            // Set Headers
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
+
+            // Set Content
+            var multipartContent = new MultipartFormDataContent();
+            if (file != null)
             {
-                request.AddFile(param.Value);
-            }
+                var fileName = "no_file_name_provided";
+                if (file is FileStream)
+                    fileName = Path.GetFileName(((FileStream)file).Name);
 
-            if (postBody != null) // http body (model or byte[]) parameter
-            {
-                request.AddParameter(new Parameter { Value = postBody, Type = ParameterType.RequestBody, ContentType = contentType });
+                var streamContent = new StreamContent(file);
+                multipartContent.Add(streamContent, "file", fileName);
             }
+            foreach (var param in formParams)
+                multipartContent.Add(new StringContent(param.Value), param.Key);
+
+            request.Content = multipartContent;
+
+            return request;
+        }
+
+        internal HttpRequestMessage PrepareJsonGetRequest(
+            string path,
+            string acceptHeader,
+            Dictionary<string, string> queryParams = null)
+        {
+            var request = GetBaseRequest(path, HttpMethod.Get, queryParams);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
+
+            return request;
+        }
+
+        internal HttpRequestMessage PrepareJsonDeleteRequest(
+            string path,
+            string acceptHeader)
+        {
+            var request = GetBaseRequest(path, HttpMethod.Delete);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
+
+            return request;
+        }
+
+        private HttpRequestMessage GetBaseRequest(string path, HttpMethod method, Dictionary<string, string> queryParams = null)
+        {
+            if (queryParams != null && queryParams.Any())
+                path = QueryHelpers.AddQueryString(path, queryParams);
+
+            var request = new HttpRequestMessage(method, path);
+
+            // Set headers
+            foreach (var header in this.Configuration.DefaultHeader)
+                request.Headers.Add(header.Key, header.Value);
+
+            var apiKey = this.Configuration.GetApiKeyWithPrefix("api-key");
+            var partnerKey = this.Configuration.GetApiKeyWithPrefix("partner-key");
+            if (string.IsNullOrEmpty(apiKey))
+                request.Headers.Add("api-key", apiKey);
+
+            if (string.IsNullOrEmpty(partnerKey))
+                request.Headers.Add("partner-key", partnerKey);
 
             return request;
         }
@@ -164,14 +241,26 @@ namespace sib_api_v3_sdk.Client
         /// <param name="contentType">Content Type of the request</param>
         /// <returns>Object</returns>
         public Object CallApi(
-            String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String path,
+            HttpMethod method,
+            List<KeyValuePair<String, String>> queryParams,
+            Object postBody,
+            Dictionary<String, String> headerParams,
+            Dictionary<String, String> formParams,
+            Dictionary<String, object> fileParams,
+            // Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, formParams, fileParams,
-                pathParams, contentType);
+                path,
+                method,
+                queryParams,
+                postBody,
+                headerParams,
+                formParams,
+                fileParams,
+                // pathParams,
+                contentType);
 
             // set timeout
             RestClient.Timeout = TimeSpan.FromMilliseconds(Configuration.Timeout);
@@ -180,14 +269,14 @@ namespace sib_api_v3_sdk.Client
             if (!Configuration.UserAgent.ToLower().StartsWith("sendinblue_"))
                 Configuration.UserAgent = "sendinblue_clientAPI/v4.0.2/c#";
 
-            RestClient.UserAgent = Configuration.UserAgent;
+            // TODO: set user agent
+            // RestClient.UserAgent = Configuration.UserAgent;
 
-            InterceptRequest(request);
-            var response = RestClient.Execute(request).Result;
-            InterceptResponse(request, response);
+            var response = RestClient.SendAsync(request).Result;
 
             return (Object) response;
         }
+
         /// <summary>
         /// Makes the asynchronous HTTP request.
         /// </summary>
@@ -202,42 +291,23 @@ namespace sib_api_v3_sdk.Client
         /// <param name="contentType">Content type.</param>
         /// <returns>The Task instance.</returns>
         public async System.Threading.Tasks.Task<Object> CallApiAsync(
-            String path, Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
+            String path, HttpMethod method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            Dictionary<String, object> fileParams, Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, formParams, fileParams,
-                pathParams, contentType);
-            InterceptRequest(request);
-            var response = await RestClient.Execute(request);
-            InterceptResponse(request, response);
+                path,
+                method,
+                queryParams,
+                postBody,
+                headerParams,
+                formParams,
+                fileParams,
+                // pathParams,
+                contentType);
+            var response = await RestClient.SendAsync(request);
             return (Object)response;
-        }
-
-        /// <summary>
-        /// Escape string (url-encoded).
-        /// </summary>
-        /// <param name="str">String to be escaped.</param>
-        /// <returns>Escaped string.</returns>
-        public string EscapeString(string str)
-        {
-            return UrlEncode(str);
-        }
-
-        /// <summary>
-        /// Create FileParameter based on Stream.
-        /// </summary>
-        /// <param name="name">Parameter name.</param>
-        /// <param name="stream">Input stream.</param>
-        /// <returns>FileParameter.</returns>
-        public FileParameter ParameterToFile(string name, Stream stream)
-        {
-            if (stream is FileStream)
-                return FileParameter.Create(name, ReadAsBytes(stream), Path.GetFileName(((FileStream)stream).Name));
-            else
-                return FileParameter.Create(name, ReadAsBytes(stream), "no_file_name_provided");
         }
 
         /// <summary>
@@ -250,17 +320,22 @@ namespace sib_api_v3_sdk.Client
         public string ParameterToString(object obj)
         {
             if (obj is DateTime)
+            {
+
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
                 // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
                 return ((DateTime)obj).ToString (Configuration.DateTimeFormat);
+            }
             else if (obj is DateTimeOffset)
+            {
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
                 // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTimeOffset)obj).ToString (Configuration.DateTimeFormat);
+                return ((DateTimeOffset)obj).ToString(Configuration.DateTimeFormat);
+            }
             else if (obj is IList)
             {
                 var flattenedString = new StringBuilder();
@@ -273,9 +348,13 @@ namespace sib_api_v3_sdk.Client
                 return flattenedString.ToString();
             }
             else if (obj is bool)
+            {
                 return ((bool)obj).ToString().ToLower();
+            }
             else
+            {
                 return Convert.ToString (obj);
+            }
         }
 
         /// <summary>
@@ -284,12 +363,13 @@ namespace sib_api_v3_sdk.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(HttpResponseMessage response, Type type)
         {
-            IHttpHeaders headers = response.Headers;
+            var headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
-                return response.RawBytes;
+                // TODO
+                return response.Content.ReadAsByteArrayAsync().Result;
             }
 
             // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
@@ -306,19 +386,21 @@ namespace sib_api_v3_sdk.Client
                         var match = regex.Match(header.ToString());
                         if (match.Success)
                         {
-                            string fileName = filePath + SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, response.RawBytes);
+                            var fileName = filePath + SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
+
+                            // TODO: use async/await
+                            File.WriteAllBytes(fileName, response.Content.ReadAsByteArrayAsync().Result);
                             return new FileStream(fileName, FileMode.Open);
                         }
                     }
                 }
-                var stream = new MemoryStream(response.RawBytes);
+                var stream = new MemoryStream(response.Content.ReadAsByteArrayAsync().Result);
                 return stream;
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content,  null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(response.Content.ToString(),  null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
             if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
@@ -329,7 +411,7 @@ namespace sib_api_v3_sdk.Client
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(response.Content, type, serializerSettings);
+                return JsonConvert.DeserializeObject(response.Content.ToString(), type, serializerSettings);
             }
             catch (Exception e)
             {
@@ -437,8 +519,8 @@ namespace sib_api_v3_sdk.Client
         /// <returns>Byte array</returns>
         public static byte[] ReadAsBytes(Stream inputStream)
         {
-            byte[] buf = new byte[16*1024];
-            using (MemoryStream ms = new MemoryStream())
+            var buf = new byte[16*1024];
+            using (var ms = new MemoryStream())
             {
                 int count;
                 while ((count = inputStream.Read(buf, 0, buf.Length)) > 0)
@@ -469,13 +551,13 @@ namespace sib_api_v3_sdk.Client
                 return Uri.EscapeDataString(input);
             }
 
-            StringBuilder sb = new StringBuilder(input.Length * 2);
-            int index = 0;
+            var sb = new StringBuilder(input.Length * 2);
+            var index = 0;
 
             while (index < input.Length)
             {
-                int length = Math.Min(input.Length - index, maxLength);
-                string subString = input.Substring(index, length);
+                var length = Math.Min(input.Length - index, maxLength);
+                var subString = input.Substring(index, length);
 
                 sb.Append(Uri.EscapeDataString(subString));
                 index += subString.Length;
@@ -491,7 +573,7 @@ namespace sib_api_v3_sdk.Client
         /// <returns>Filename</returns>
         public static string SanitizeFilename(string filename)
         {
-            Match match = Regex.Match(filename, @".*[/\\](.*)$");
+            var match = Regex.Match(filename, @".*[/\\](.*)$");
 
             if (match.Success)
             {

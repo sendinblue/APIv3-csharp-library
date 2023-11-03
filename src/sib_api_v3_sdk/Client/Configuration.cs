@@ -9,12 +9,9 @@
  */
 
 using System;
-using System.Reflection;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace sib_api_v3_sdk.Client
 {
@@ -229,7 +226,7 @@ namespace sib_api_v3_sdk.Client
                 _basePath = value;
                 // pass-through to ApiClient if it's set.
                 if(_apiClient != null) {
-                    _apiClient.RestClient.BaseUrl = new Uri(_basePath);
+                    _apiClient.RestClient.BaseAddress = new Uri(_basePath);
                 }
             }
         }
@@ -244,7 +241,7 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public virtual int Timeout
         {
-            get { return (int)ApiClient.RestClient.Timeout.GetValueOrDefault(TimeSpan.FromSeconds(0)).TotalMilliseconds; }
+            get { return (int)ApiClient.RestClient.Timeout.TotalMilliseconds; }
             set { ApiClient.RestClient.Timeout = TimeSpan.FromMilliseconds(value); }
         }
 
@@ -413,7 +410,7 @@ namespace sib_api_v3_sdk.Client
         /// </summary>
         public static String ToDebugReport()
         {
-            String report = "C# SDK (sib_api_v3_sdk) Debug Report:\n";
+            var report = "C# SDK (sib_api_v3_sdk) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 3.0.0\n";
             report += "    SDK Package Version: " + Version + "\n";

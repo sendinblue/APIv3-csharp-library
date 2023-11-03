@@ -21,7 +21,7 @@ namespace sib_api_v3_sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IContactsApi : IApiAccessor
+    public interface IContactsApiOld : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -1316,7 +1316,7 @@ namespace sib_api_v3_sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ContactsApi : IContactsApi
+    public partial class ContactsApiOld : IContactsApi
     {
         private sib_api_v3_sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
