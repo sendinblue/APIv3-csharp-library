@@ -54,7 +54,7 @@ namespace sib_api_v3_sdk.Client
             if (status >= 400)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.Content),
+                    string.Format("Error calling {0}. StatusCode {1}: {2}", methodName, response.StatusCode, response.Content),
                     response.Content);
             }
             
