@@ -1,3 +1,4 @@
+# [DEPRECATED:warning:] api-v3-sdk
 # SendinBlue's API v3 C# Library
 
 SendinBlue's API exposes the entire SendinBlue features via a standardized programmatic interface. Please refer to the full [documentation](https://developers.sendinblue.com) to learn more.
