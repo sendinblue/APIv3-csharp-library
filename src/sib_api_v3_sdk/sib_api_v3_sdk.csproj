@@ -22,11 +22,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FubarCoder.RestSharp.Portable.Core" Version="4.0.8" />
-    <PackageReference Include="FubarCoder.RestSharp.Portable.HttpClient" Version="4.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
 
